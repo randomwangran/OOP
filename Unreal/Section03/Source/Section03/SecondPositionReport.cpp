@@ -1,23 +1,25 @@
 // Fill out your copyright notice in the Description page of Project Settings.
 
-#include "PrositionReport.h"
-#include <iostream>
+#include "SecondPositionReport.h"
+
 
 // Sets default values for this component's properties
-UPrositionReport::UPrositionReport()
+USecondPositionReport::USecondPositionReport()
 {
 	// Set this component to be initialized when the game starts, and to be ticked every frame.  You can turn these features
 	// off to improve performance if you don't need them.
 	PrimaryComponentTick.bCanEverTick = true;
+
+	// ...
 }
 
 
 // Called when the game starts
-void UPrositionReport::BeginPlay()
+void USecondPositionReport::BeginPlay()
 {
-	Super::BeginPlay(); 
+	Super::BeginPlay();
 
-		UE_LOG(LogTemp, Warning, TEXT("!Position report reporting for duty on Chair! -by Ran"));
+	UE_LOG(LogTemp, Warning, TEXT("!Position report reporting for duty on Chair! -by Ran"));
 
 	// ...
 	
@@ -25,7 +27,7 @@ void UPrositionReport::BeginPlay()
 
 
 // Called every frame
-void UPrositionReport::TickComponent(float DeltaTime, ELevelTick TickType, FActorComponentTickFunction* ThisTickFunction)
+void USecondPositionReport::TickComponent(float DeltaTime, ELevelTick TickType, FActorComponentTickFunction* ThisTickFunction)
 {
 	Super::TickComponent(DeltaTime, TickType, ThisTickFunction);
 
