@@ -15,13 +15,20 @@
 # */Intermediate
 # */Saved
 # BuildingEscape/Content/StarterContent/
-
+*/*/Content/*.uasset
 */*/Build
 */*/Binaries
 */*/DerivedDataCache
 */*/Intermediate
 */*/Saved
 */BuildingEscape/Content/StarterContent/
+
+*/*/*/Build
+*/*/*/Binaries
+*/*/*/DerivedDataCache
+*/*/*/Intermediate
+*/*/*/Saved
+*/*/BuildingEscape/Content/StarterContent/
 
 ######################
 # VS Generated Files #
