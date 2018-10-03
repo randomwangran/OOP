@@ -1,8 +1,11 @@
-This is a track of Ran's learning journel to master C++.
-
+This is Ran's journey to explore C++.
 
 # Basic
-The very first learning material is a website (https://www.learncpp.com/). Ran finished the whole content of the learning material in that web.
+- [LearnCpp.com](https://www.learncpp.com/): cover basic aspects of C++ with many coding assignments
+
+  [Done] [Ran's commitment](https://github.com/randomwangran/cpp/tree/master/learnCpp)
 
 # Project
-## Unreal
+- [The Unreal Engine Developer Course](https://www.udemy.com/unrealcourse/learn/v4/overview): explore c++ via writing high-quality games
+
+  [Doing] [Ran's commitment](https://github.com/randomwangran/cpp/tree/master/Unreal/Section03)
