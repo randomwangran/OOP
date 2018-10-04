@@ -13,18 +13,22 @@ UPositionReporter::UPositionReporter()
 	// ...
 }
 
-
 // Called when the game starts
 void UPositionReporter::BeginPlay()
 {
 	Super::BeginPlay();
 	
 	FString ObjectName = GetOwner()->GetName();
-	UE_LOG(LogTemp, Warning, TEXT("Position report reporting for %s"), *ObjectName);
+	//FString ObjectPos = "X= something, Y = something, etc??";
+	FString ObjectPos_X = FString::SanitizeFloat(GetOwner()->GetActorLocation().X);
+	FString ObjectPos_Y = FString::SanitizeFloat(GetOwner()->GetActorLocation().Y);
+	FString ObjectPos_Z = FString::SanitizeFloat(GetOwner()->GetActorLocation().Z);
+
+	UE_LOG(LogTemp, Warning, TEXT("%s is at (%s,%s,%s)"), *ObjectName, *ObjectPos_X, *ObjectPos_Y, *ObjectPos_Z);
 	// ...
 	
 }
-
+ 
 
 // Called every frame
 void UPositionReporter::TickComponent(float DeltaTime, ELevelTick TickType, FActorComponentTickFunction* ThisTickFunction)
