@@ -2,7 +2,7 @@
 
 #include "OpenDoor.h"
 #include "Gameframework/Actor.h"
-
+#include "Runtime/Engine/Classes/Engine/World.h"
 // Sets default values for this component's properties
 UOpenDoor::UOpenDoor()
 {
@@ -19,6 +19,10 @@ void UOpenDoor::BeginPlay()
 {
 	Super::BeginPlay();
 	//OpenDoor();
+
+	// automatical set the link between the pressure point and the person standing on it
+	ActorThatOpens = GetWorld()->GetFirstPlayerController()->GetPawn();
+
 
 }
 
@@ -41,7 +45,9 @@ void UOpenDoor::TickComponent(float DeltaTime, ELevelTick TickType, FActorCompon
 	if (PressurePlate->IsOverlappingActor(ActorThatOpens))
 	{
 		OpenDoor();
+		//LastDoorOpenTime = GetWorld()->GetTimeSeconds();
 	}
+	 
 	// ...
 }
 
