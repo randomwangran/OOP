@@ -17,11 +17,13 @@ public:
 	// Sets default values for this component's properties
 	UOpenDoor();
 
+	void OpenDoor();
+	void CloseDoor();
 protected:
 	// Called when the game starts
 	virtual void BeginPlay() override;
 
-	void OpenDoor();
+
 
 public:	
 	// Called every frame
@@ -29,11 +31,17 @@ public:
 
 private:
 	UPROPERTY(VisibleAnywhere)
-		float OpenAngle = 45.0f;
+		float OpenAngle = -45.0f;
 
 	UPROPERTY(EditAnywhere)
 		ATriggerVolume* PressurePlate;
-		
+	
+	UPROPERTY(EditAnywhere)
+		float DoorCloseDelay = .6f;
+
+	float LastDoorOpenTime;
+
 		AActor* ActorThatOpens;
+		AActor* Owner;
 
 };
