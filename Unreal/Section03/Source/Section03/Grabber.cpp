@@ -33,8 +33,7 @@ void UGrabber::TickComponent(float DeltaTime, ELevelTick TickType, FActorCompone
 	Super::TickComponent(DeltaTime, TickType, ThisTickFunction);
 
 
-	// get palyer's view
-
+	/// get palyer's view
 	FVector PlayerPointLocation;
 	FRotator PlayerPointRotation;
 	GetWorld()->GetFirstPlayerController()->GetPlayerViewPoint(
@@ -60,5 +59,25 @@ void UGrabber::TickComponent(float DeltaTime, ELevelTick TickType, FActorCompone
 		0.f,
 		10.f
 	);
+
+	/// set query parameters
+	FCollisionQueryParams TraceParameters(FName(TEXT("")), false, GetOwner());
+	FHitResult Hit;
+
+
+	GetWorld()->LineTraceSingleByObjectType(
+		OUT Hit,
+		PlayerPointLocation,
+		LineTraceEnd,
+		FCollisionObjectQueryParams(ECollisionChannel::ECC_PhysicsBody),
+		TraceParameters
+	);
+
+	AActor* Actor = Hit.GetActor();
+
+	if (Actor)
+	{
+		UE_LOG(LogTemp, Warning, TEXT("Laser is pointing at: %s"), *(Actor->GetName()))
+	}
 	// ...
 }
