@@ -22,8 +22,21 @@ void UGrabber::BeginPlay()
 
 	UE_LOG(LogTemp, Warning, TEXT("Grabber is here!"));
 
-	// ...
+	// find physics handle
+
+	PhysicsHandle = GetOwner()->FindComponentByClass<UPhysicsHandleComponent>();
 	
+	if (PhysicsHandle)
+	{
+
+	}
+
+	else
+
+	{
+		UE_LOG(LogTemp, Error, TEXT("No component found for %s"), *(GetWorld()->GetFirstPlayerController()->GetPawn()->GetName()));
+
+	}
 }
 
 
@@ -45,7 +58,7 @@ void UGrabber::TickComponent(float DeltaTime, ELevelTick TickType, FActorCompone
 	FString PlayerRotation = PlayerPointRotation.ToString();
 
 	//UE_LOG(LogTemp, Warning, TEXT("Player is at %s, with a roation: %s"), *PlayerLocation, *PlayerRotation);
-	float Reach = 100.0f;
+
 	FVector LineTraceEnd = PlayerPointLocation + PlayerPointRotation.Vector()* Reach;
 	
 	
@@ -67,7 +80,7 @@ void UGrabber::TickComponent(float DeltaTime, ELevelTick TickType, FActorCompone
 
 	GetWorld()->LineTraceSingleByObjectType(
 		OUT Hit,
-		PlayerPointLocation,
+		PlayerPointLocation, 
 		LineTraceEnd,
 		FCollisionObjectQueryParams(ECollisionChannel::ECC_PhysicsBody),
 		TraceParameters
