@@ -37,8 +37,26 @@ void UGrabber::BeginPlay()
 		UE_LOG(LogTemp, Error, TEXT("No component found for %s"), *(GetWorld()->GetFirstPlayerController()->GetPawn()->GetName()));
 
 	}
+
+	InputComponent = GetOwner()->FindComponentByClass<UInputComponent>();
+
+	if (InputComponent)
+	{
+		UE_LOG(LogTemp, Error, TEXT("Input component found"));
+
+		InputComponent->BindAction("Grab", IE_Pressed, this, &UGrabber::Grab);
+	}
+
+	else
+	{
+		UE_LOG(LogTemp, Error, TEXT("Input component found for %s"), *(GetWorld()->GetFirstPlayerController()->GetPawn()->GetName()));
+	}
 }
 
+
+void UGrabber::Grab() {
+	UE_LOG(LogTemp, Warning, TEXT("Grab key press"))
+}
 
 // Called every frame
 void UGrabber::TickComponent(float DeltaTime, ELevelTick TickType, FActorComponentTickFunction* ThisTickFunction)
