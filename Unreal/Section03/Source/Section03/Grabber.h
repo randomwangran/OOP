@@ -36,5 +36,6 @@ private:
 
 	/// rey case and grab in reach
 	void Grab();
+	void Release();
 	
 };
