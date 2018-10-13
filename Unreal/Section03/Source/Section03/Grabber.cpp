@@ -22,10 +22,15 @@ void UGrabber::BeginPlay()
 
 	UE_LOG(LogTemp, Warning, TEXT("Grabber is here!"));
 
+	FindPhysicsHandleComponent();
+}
+
+void UGrabber::FindPhysicsHandleComponent()
+{
 	// find physics handle
 
 	PhysicsHandle = GetOwner()->FindComponentByClass<UPhysicsHandleComponent>();
-	
+
 	if (PhysicsHandle)
 	{
 
