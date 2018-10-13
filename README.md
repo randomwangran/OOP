@@ -1,7 +1,7 @@
 This is Ran's journey to explore C++.
 
 # Basic
-- [LearnCpp.com](https://www.learncpp.com/): cover basic aspects of C++ with many coding assignments
+- [LearnCpp.com](https://www.learncpp.com/): cover basic aspects of C++ with hands-on coding assignments
 
   [Done] [Ran's commitment](https://github.com/randomwangran/cpp/tree/master/learnCpp)
 
