@@ -94,18 +94,6 @@ void UGrabber::TickComponent(float DeltaTime, ELevelTick TickType, FActorCompone
 	//UE_LOG(LogTemp, Warning, TEXT("Player is at %s, with a roation: %s"), *PlayerLocation, *PlayerRotation);
 
 	FVector LineTraceEnd = PlayerPointLocation + PlayerPointRotation.Vector()* Reach;
-	
-	
-	DrawDebugLine(
-		GetWorld(),
-		PlayerPointLocation,
-		LineTraceEnd,
-		FColor(255, 0, 0),
-		false,
-		0.f,
-		0.f,
-		10.f
-	);
 
 	/// set query parameters
 	FCollisionQueryParams TraceParameters(FName(TEXT("")), false, GetOwner());
