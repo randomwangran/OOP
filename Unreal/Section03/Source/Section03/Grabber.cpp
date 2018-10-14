@@ -20,12 +20,17 @@ void UGrabber::BeginPlay()
 {
 	Super::BeginPlay();
 
-	UE_LOG(LogTemp, Warning, TEXT("Grabber is here!"));
+	FindPhysicsHandleComponent();
 
+	SetupInputComponent();
+}
+
+void UGrabber::FindPhysicsHandleComponent()
+{
 	// find physics handle
 
 	PhysicsHandle = GetOwner()->FindComponentByClass<UPhysicsHandleComponent>();
-	
+
 	if (PhysicsHandle)
 	{
 
@@ -38,6 +43,10 @@ void UGrabber::BeginPlay()
 
 	}
 
+}
+
+void UGrabber::SetupInputComponent()
+{
 	InputComponent = GetOwner()->FindComponentByClass<UInputComponent>();
 
 	if (InputComponent)
@@ -59,6 +68,8 @@ void UGrabber::BeginPlay()
 
 void UGrabber::Grab() {
 	UE_LOG(LogTemp, Warning, TEXT("Grab key press"))
+
+		GetFirstPhysicBodyInReach();
 }
 
 void UGrabber::Release() {
@@ -69,34 +80,25 @@ void UGrabber::Release() {
 void UGrabber::TickComponent(float DeltaTime, ELevelTick TickType, FActorComponentTickFunction* ThisTickFunction)
 {
 	Super::TickComponent(DeltaTime, TickType, ThisTickFunction);
+}
 
+FHitResult UGrabber::GetFirstPhysicBodyInReach() const
+{
 
 	/// get palyer's view
 	FVector PlayerPointLocation;
 	FRotator PlayerPointRotation;
 	GetWorld()->GetFirstPlayerController()->GetPlayerViewPoint(
-	OUT	PlayerPointLocation,
-	OUT PlayerPointRotation
+		OUT	PlayerPointLocation,
+		OUT PlayerPointRotation
 	);
-	
+
 	FString PlayerLocation = PlayerPointLocation.ToString();
 	FString PlayerRotation = PlayerPointRotation.ToString();
 
-	//UE_LOG(LogTemp, Warning, TEXT("Player is at %s, with a roation: %s"), *PlayerLocation, *PlayerRotation);
+	// TODO UE_LOG(LogTemp, Warning, TEXT("Player is at %s, with a roation: %s"), *PlayerLocation, *PlayerRotation);
 
 	FVector LineTraceEnd = PlayerPointLocation + PlayerPointRotation.Vector()* Reach;
-	
-	
-	DrawDebugLine(
-		GetWorld(),
-		PlayerPointLocation,
-		LineTraceEnd,
-		FColor(255, 0, 0),
-		false,
-		0.f,
-		0.f,
-		10.f
-	);
 
 	/// set query parameters
 	FCollisionQueryParams TraceParameters(FName(TEXT("")), false, GetOwner());
@@ -105,7 +107,7 @@ void UGrabber::TickComponent(float DeltaTime, ELevelTick TickType, FActorCompone
 
 	GetWorld()->LineTraceSingleByObjectType(
 		OUT Hit,
-		PlayerPointLocation, 
+		PlayerPointLocation,
 		LineTraceEnd,
 		FCollisionObjectQueryParams(ECollisionChannel::ECC_PhysicsBody),
 		TraceParameters
@@ -118,4 +120,5 @@ void UGrabber::TickComponent(float DeltaTime, ELevelTick TickType, FActorCompone
 		UE_LOG(LogTemp, Warning, TEXT("Laser is pointing at: %s"), *(Actor->GetName()))
 	}
 	// ...
+	return FHitResult();
 }
