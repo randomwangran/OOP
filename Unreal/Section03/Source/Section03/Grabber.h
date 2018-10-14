@@ -40,4 +40,6 @@ private:
 	void Release();
 	void FindPhysicsHandleComponent();
 	void SetupInputComponent();
+
+	FHitResult GetFirstPhysicBodyInReach() const;
 };
