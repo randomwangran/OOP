@@ -21,6 +21,8 @@ void UGrabber::BeginPlay()
 	Super::BeginPlay();
 
 	FindPhysicsHandleComponent();
+
+	SetupInputComponent();
 }
 
 void UGrabber::FindPhysicsHandleComponent()
@@ -41,6 +43,10 @@ void UGrabber::FindPhysicsHandleComponent()
 
 	}
 
+}
+
+void UGrabber::SetupInputComponent()
+{
 	InputComponent = GetOwner()->FindComponentByClass<UInputComponent>();
 
 	if (InputComponent)
