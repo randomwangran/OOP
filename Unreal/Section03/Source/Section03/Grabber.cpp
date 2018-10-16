@@ -3,6 +3,7 @@
 #include "Grabber.h"
 #include "Runtime/Engine/Classes/Engine/World.h"
 #include "DrawDebugHelpers.h"
+#include "Components/PrimitiveComponent.h"
 #define OUT
 // Sets default values for this component's properties
 UGrabber::UGrabber()
@@ -39,7 +40,7 @@ void UGrabber::FindPhysicsHandleComponent()
 	else
 
 	{
-		UE_LOG(LogTemp, Error, TEXT("No component found for %s"), *(GetWorld()->GetFirstPlayerController()->GetPawn()->GetName()));
+		UE_LOG(LogTemp, Error, TEXT("No component found for %s"), *(GetWorld()->GetFirstPlayerController()->GetPawn()->GetName()))
 
 	}
 
@@ -69,17 +70,51 @@ void UGrabber::SetupInputComponent()
 void UGrabber::Grab() {
 	UE_LOG(LogTemp, Warning, TEXT("Grab key press"))
 
-		GetFirstPhysicBodyInReach();
+		auto HitResult = GetFirstPhysicBodyInReach();
+	    auto ComponentToGrab = HitResult.GetComponent();
+		auto ActorHit = HitResult.GetActor();
+
+		if(ActorHit)
+		{ 
+			PhysicsHandle->GrabComponentAtLocation(
+				ComponentToGrab,
+				NAME_None,
+				ComponentToGrab->GetOwner()->GetActorLocation()
+			);
+		}
 }
 
 void UGrabber::Release() {
 	UE_LOG(LogTemp, Warning, TEXT("Release key press"))
+		PhysicsHandle->ReleaseComponent();
 }
 
 // Called every frame
 void UGrabber::TickComponent(float DeltaTime, ELevelTick TickType, FActorComponentTickFunction* ThisTickFunction)
 {
 	Super::TickComponent(DeltaTime, TickType, ThisTickFunction);
+
+
+	/// get palyer's view
+	FVector PlayerPointLocation;
+	FRotator PlayerPointRotation;
+	GetWorld()->GetFirstPlayerController()->GetPlayerViewPoint(
+		OUT	PlayerPointLocation,
+		OUT PlayerPointRotation
+	);
+
+
+	// TODO UE_LOG(LogTemp, Warning, TEXT("Player is at %s, with a roation: %s"), *PlayerLocation, *PlayerRotation);
+
+	FVector LineTraceEnd = PlayerPointLocation + PlayerPointRotation.Vector() * Reach;
+
+	/// This is a dangours zone. If you the UE throw your an expection here. Go backto L87
+	/// Add the physicsHandle to the default pawn; compile and save it!
+	if (PhysicsHandle->GrabbedComponent)
+	{
+		 //move the object
+		PhysicsHandle->SetTargetLocation(LineTraceEnd);
+	}
 }
 
 FHitResult UGrabber::GetFirstPhysicBodyInReach() const
@@ -96,7 +131,7 @@ FHitResult UGrabber::GetFirstPhysicBodyInReach() const
 	FString PlayerLocation = PlayerPointLocation.ToString();
 	FString PlayerRotation = PlayerPointRotation.ToString();
 
-	// TODO UE_LOG(LogTemp, Warning, TEXT("Player is at %s, with a roation: %s"), *PlayerLocation, *PlayerRotation);
+	// UE_LOG(LogTemp, Warning, TEXT("Player is at %s, with a roation: %s"), *PlayerLocation, *PlayerRotation);
 
 	FVector LineTraceEnd = PlayerPointLocation + PlayerPointRotation.Vector()* Reach;
 
@@ -120,5 +155,5 @@ FHitResult UGrabber::GetFirstPhysicBodyInReach() const
 		UE_LOG(LogTemp, Warning, TEXT("Laser is pointing at: %s"), *(Actor->GetName()))
 	}
 	// ...
-	return FHitResult();
+	return Hit;
 }
