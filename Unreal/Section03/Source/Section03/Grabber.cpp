@@ -52,8 +52,6 @@ void UGrabber::SetupInputComponent()
 
 	if (InputComponent)
 	{
-		UE_LOG(LogTemp, Error, TEXT("Input component found"));
-
 		InputComponent->BindAction("Grab", IE_Pressed, this, &UGrabber::Grab);
 
 		InputComponent->BindAction("Grab", IE_Released, this, &UGrabber::Release);
