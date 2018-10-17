@@ -3,6 +3,8 @@
 #include "OpenDoor.h"
 #include "Gameframework/Actor.h"
 #include "Runtime/Engine/Classes/Engine/World.h"
+#include "Grabber.h"
+#include OUT
 // Sets default values for this component's properties
 UOpenDoor::UOpenDoor()
 {
@@ -21,15 +23,13 @@ void UOpenDoor::BeginPlay()
 	//OpenDoor();
 
 	Owner = GetOwner();
-	// automatical set the link between the pressure point and the person standing on it
-	ActorThatOpens = GetWorld()->GetFirstPlayerController()->GetPawn();
 
 }
 
 void UOpenDoor::OpenDoor()
 {
 
-	Owner->SetActorRotation(FRotator(0.0f, -45.0f, 0.0f));
+	Owner->SetActorRotation(FRotator(0.0f, 0.0f, 0.0f));
 }
 
 void UOpenDoor::CloseDoor()
@@ -44,7 +44,7 @@ void UOpenDoor::TickComponent(float DeltaTime, ELevelTick TickType, FActorCompon
 {
 	Super::TickComponent(DeltaTime, TickType, ThisTickFunction);
 
-	if (PressurePlate->IsOverlappingActor(ActorThatOpens))
+	if (GetTotalMassOfActorsOnPlate() > 50.f) // TODO make into parameter
 	{
 		OpenDoor();
 		LastDoorOpenTime = GetWorld()->GetTimeSeconds();
@@ -54,6 +54,16 @@ void UOpenDoor::TickComponent(float DeltaTime, ELevelTick TickType, FActorCompon
 	{
 		CloseDoor();
 	}
-	// ...
 }
 
+
+float UOpenDoor::GetTotalMassOfActorsOnPlate() 
+{
+	float TotalMass = 0.f;
+
+	TArray<AActor*> OverlappingActors;
+	PressurePlate->GetOverlappingActors(OUT OverlappingActors);
+
+
+	return TotalMass;
+}

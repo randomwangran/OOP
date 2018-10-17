@@ -31,7 +31,7 @@ public:
 
 private:
 	UPROPERTY(VisibleAnywhere)
-		float OpenAngle = -45.0f;
+		float OpenAngle = -90.0f;
 
 	UPROPERTY(EditAnywhere)
 		ATriggerVolume* PressurePlate;
@@ -41,7 +41,9 @@ private:
 
 	float LastDoorOpenTime;
 
-		AActor* ActorThatOpens;
-		AActor* Owner;
+	AActor* ActorThatOpens;
+	AActor* Owner;
 
+	// return actor mass in Kg
+	float GetTotalMassOfActorsOnPlate();
 };
