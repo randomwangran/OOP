@@ -53,9 +53,7 @@ void UGrabber::SetupInputComponent()
 	if (InputComponent)
 	{
 		InputComponent->BindAction("Grab", IE_Pressed, this, &UGrabber::Grab);
-
 		InputComponent->BindAction("Grab", IE_Released, this, &UGrabber::Release);
-
 	}
 
 	else
@@ -92,47 +90,15 @@ void UGrabber::TickComponent(float DeltaTime, ELevelTick TickType, FActorCompone
 {
 	Super::TickComponent(DeltaTime, TickType, ThisTickFunction);
 
-
-	/// get palyer's view
-	FVector PlayerPointLocation;
-	FRotator PlayerPointRotation;
-	GetWorld()->GetFirstPlayerController()->GetPlayerViewPoint(
-		OUT	PlayerPointLocation,
-		OUT PlayerPointRotation
-	);
-
-
-	// TODO UE_LOG(LogTemp, Warning, TEXT("Player is at %s, with a roation: %s"), *PlayerLocation, *PlayerRotation);
-
-	FVector LineTraceEnd = PlayerPointLocation + PlayerPointRotation.Vector() * Reach;
-
-	/// This is a dangours zone. If you the UE throw your an expection here. Go backto L87
-	/// Add the physicsHandle to the default pawn; compile and save it!
 	if (PhysicsHandle->GrabbedComponent)
 	{
 		 //move the object
-		PhysicsHandle->SetTargetLocation(LineTraceEnd);
+		PhysicsHandle->SetTargetLocation(LineTraceEnd());
 	}
 }
 
 FHitResult UGrabber::GetFirstPhysicBodyInReach() const
 {
-
-	/// get palyer's view
-	FVector PlayerPointLocation;
-	FRotator PlayerPointRotation;
-	GetWorld()->GetFirstPlayerController()->GetPlayerViewPoint(
-		OUT	PlayerPointLocation,
-		OUT PlayerPointRotation
-	);
-
-	FString PlayerLocation = PlayerPointLocation.ToString();
-	FString PlayerRotation = PlayerPointRotation.ToString();
-
-	// UE_LOG(LogTemp, Warning, TEXT("Player is at %s, with a roation: %s"), *PlayerLocation, *PlayerRotation);
-
-	FVector LineTraceEnd = PlayerPointLocation + PlayerPointRotation.Vector()* Reach;
-
 	/// set query parameters
 	FCollisionQueryParams TraceParameters(FName(TEXT("")), false, GetOwner());
 	FHitResult Hit;
@@ -140,8 +106,8 @@ FHitResult UGrabber::GetFirstPhysicBodyInReach() const
 
 	GetWorld()->LineTraceSingleByObjectType(
 		OUT Hit,
-		PlayerPointLocation,
-		LineTraceEnd,
+		LineTraceStart(),
+		LineTraceEnd(),
 		FCollisionObjectQueryParams(ECollisionChannel::ECC_PhysicsBody),
 		TraceParameters
 	);
@@ -152,6 +118,31 @@ FHitResult UGrabber::GetFirstPhysicBodyInReach() const
 	{
 		UE_LOG(LogTemp, Warning, TEXT("Laser is pointing at: %s"), *(Actor->GetName()))
 	}
-	// ...
 	return Hit;
+}
+
+FVector UGrabber::LineTraceStart() const
+{
+	/// get palyer's view
+	FVector PlayerPointLocation;
+	FRotator PlayerPointRotation;
+	GetWorld()->GetFirstPlayerController()->GetPlayerViewPoint(
+		OUT	PlayerPointLocation,
+		OUT PlayerPointRotation
+	);
+
+	return PlayerPointLocation;
+}
+
+FVector UGrabber::LineTraceEnd() const
+{
+	/// get palyer's view
+	FVector PlayerPointLocation;
+	FRotator PlayerPointRotation;
+	GetWorld()->GetFirstPlayerController()->GetPlayerViewPoint(
+		OUT	PlayerPointLocation,
+		OUT PlayerPointRotation
+	);
+
+	return ( PlayerPointLocation + PlayerPointRotation.Vector()* Reach );
 }
