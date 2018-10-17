@@ -4,7 +4,7 @@
 #include "Gameframework/Actor.h"
 #include "Runtime/Engine/Classes/Engine/World.h"
 #include "Grabber.h"
-#include OUT
+#define OUT
 // Sets default values for this component's properties
 UOpenDoor::UOpenDoor()
 {
