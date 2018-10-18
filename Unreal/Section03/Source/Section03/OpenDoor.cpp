@@ -28,13 +28,13 @@ void UOpenDoor::BeginPlay()
 
 void UOpenDoor::OpenDoor()
 {
-
+	if (!Owner) { return; }
 	Owner->SetActorRotation(FRotator(0.0f, 0.0f, 0.0f));
 }
 
 void UOpenDoor::CloseDoor()
 {
-
+	if (!Owner) { return; }
 	Owner->SetActorRotation(FRotator(0.0f, -90.0f, 0.0f));
 
 }
@@ -63,7 +63,14 @@ float UOpenDoor::GetTotalMassOfActorsOnPlate()
 
 	TArray<AActor*> OverlappingActors;
 	TArray<ABrush*> Component;
-	PressurePlate->GetOverlappingActors(OUT OverlappingActors);
+	if (PressurePlate)
+	{
+		PressurePlate->GetOverlappingActors(OUT OverlappingActors);
+	}
+	else
+	{
+		UE_LOG(LogTemp, Warning, TEXT("PressurePlate is a null pointer"))
+	}
 
 	for (const auto &Actor : OverlappingActors)
 	{

@@ -48,6 +48,7 @@ void UGrabber::FindPhysicsHandleComponent()
 
 void UGrabber::SetupInputComponent()
 {
+
 	InputComponent = GetOwner()->FindComponentByClass<UInputComponent>();
 
 	if (InputComponent)
@@ -70,6 +71,7 @@ void UGrabber::Grab() {
 	    auto ComponentToGrab = HitResult.GetComponent();
 		auto ActorHit = HitResult.GetActor();
 
+		if (!PhysicsHandle) { return; }
 		if(ActorHit)
 		{ 
 			PhysicsHandle->GrabComponentAtLocation(
@@ -81,6 +83,7 @@ void UGrabber::Grab() {
 }
 
 void UGrabber::Release() {
+	if (!PhysicsHandle) { return; }
 	UE_LOG(LogTemp, Warning, TEXT("Release key press"))
 		PhysicsHandle->ReleaseComponent();
 }
@@ -90,6 +93,7 @@ void UGrabber::TickComponent(float DeltaTime, ELevelTick TickType, FActorCompone
 {
 	Super::TickComponent(DeltaTime, TickType, ThisTickFunction);
 
+	if (!PhysicsHandle) { return; }
 	if (PhysicsHandle->GrabbedComponent)
 	{
 		 //move the object
