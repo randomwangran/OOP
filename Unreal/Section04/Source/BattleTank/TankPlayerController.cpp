@@ -14,7 +14,7 @@ void ATankPlayerController::BeginPlay()
 	}
 	else
 	{
-		UE_LOG(LogTemp, Warning, TEXT("Player controller pocessing: %s"), *(ControlledTank->GetName()))
+		//UE_LOG(LogTemp, Warning, TEXT("Player controller pocessing: %s"), *(ControlledTank->GetName()))
 	}
 
 }
@@ -39,7 +39,7 @@ void ATankPlayerController::AimTowardsCrosshair()
 
 	if ( GetSightRayHitLocation(hitLocation) )
 	{
-		UE_LOG(LogTemp, Warning, TEXT("HitLocation, %s"), *hitLocation.ToString())
+		// UE_LOG(LogTemp, Warning, TEXT("Look direction, %s"), *hitLocation.ToString())
 	}
 
 }
@@ -47,6 +47,12 @@ void ATankPlayerController::AimTowardsCrosshair()
 bool ATankPlayerController::GetSightRayHitLocation(FVector &OutHitLocation) const
 {
 
-	OutHitLocation = FVector(1.0);
+	int32 ViewportSizeX, ViewportSizeY;
+	GetViewportSize(ViewportSizeX, ViewportSizeY);
+
+	FVector2D ScreenLocation;
+	ScreenLocation.X = ViewportSizeX * CrossHairXLocation;
+	ScreenLocation.Y = ViewportSizeY * CrossHairYLocation;
+	
 	return true;
 }
