@@ -1,6 +1,7 @@
 // Fill out your copyright notice in the Description page of Project Settings.
 
 #include "TankPlayerController.h"
+#include "Runtime/Engine/Classes/Engine/World.h"
 #include "BattleTank.h"
 
 void ATankPlayerController::BeginPlay()
@@ -57,7 +58,9 @@ bool ATankPlayerController::GetSightRayHitLocation(FVector &OutHitLocation) cons
 	FVector LookDirection;
 	if (GetLookDirection(ScreenLocation, LookDirection))
 	{
-		UE_LOG(LogTemp, Warning, TEXT("World direction is, %s"), *LookDirection.ToString())
+		//UE_LOG(LogTemp, Warning, TEXT("World direction is, %s"), *LookDirection.ToString())
+
+		GetLookVectorHitLocation(LookDirection);
 	}
 	return true;
 }
@@ -71,6 +74,41 @@ bool ATankPlayerController::GetLookDirection(FVector2D ScreenLocation, FVector& 
 		ScreenLocation.Y,
 		WorldLocation,
 		LookDirection);
+}
 
-		
+bool ATankPlayerController::GetLookVectorHitLocation(FVector LookDirection) const
+{
+	FHitResult Hit;
+
+	/// get palyer's view
+	FVector PlayerPointLocation;
+	FRotator PlayerPointRotation;
+	GetWorld()->GetFirstPlayerController()->GetPlayerViewPoint(
+		OUT	PlayerPointLocation,
+		OUT PlayerPointRotation
+	);
+
+	float Reach = 1000000.f;
+	FVector LineTraceEnd = LookDirection * Reach;
+
+
+	FCollisionQueryParams TraceParameters(FName(TEXT("")), false, GetOwner());
+
+
+	if (GetWorld()->LineTraceSingleByChannel(
+		Hit,
+		PlayerPointLocation,
+		LineTraceEnd,
+		ECollisionChannel::ECC_Visibility,
+		TraceParameters,
+		ECollisionResponse::ECR_Block
+	)) {
+
+		AActor* PointingAtWhat = Hit.GetActor();
+		UE_LOG(LogTemp, Warning, TEXT("Crosshair is pointing at %s"), *(PointingAtWhat->GetTargetLocation().ToString()))
+
+		return true;
+	}
+	else
+		return false;
 }

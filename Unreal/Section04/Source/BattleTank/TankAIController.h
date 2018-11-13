@@ -21,4 +21,6 @@ public:
 	virtual void BeginPlay() override;
 	
 	ATank* GetPlayerTank() const;
+
+
 };
