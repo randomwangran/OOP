@@ -2,6 +2,7 @@
 
 #include "TankPlayerController.h"
 #include "Runtime/Engine/Classes/Engine/World.h"
+#include "Runtime/Engine/Classes/Engine/NetSerialization.h"
 #include "BattleTank.h"
 
 void ATankPlayerController::BeginPlay()
@@ -102,11 +103,11 @@ bool ATankPlayerController::GetLookVectorHitLocation(FVector LookDirection) cons
 		ECollisionChannel::ECC_Visibility,
 		TraceParameters,
 		ECollisionResponse::ECR_Block
-	)) {
+	    )) {
 
-		AActor* PointingAtWhat = Hit.GetActor();
-		UE_LOG(LogTemp, Warning, TEXT("Crosshair is pointing at %s"), *(PointingAtWhat->GetTargetLocation().ToString()))
-
+		FVector_NetQuantize WhatItHit = Hit.Location;
+		UE_LOG(LogTemp, Warning, TEXT("Crosshair is pointing at %s"), *(WhatItHit.ToString()))
+		
 		return true;
 	}
 	else
