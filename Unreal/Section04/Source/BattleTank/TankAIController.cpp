@@ -43,3 +43,13 @@ ATank* ATankAIController::GetPlayerTank() const
 
 	return Cast<ATank>(GetPawn());
 }
+
+void ATankAIController::Tick(float DeltaTime)
+{
+	Super::Tick(DeltaTime);
+
+	FVector hitLocation(1,1,1);
+	
+	GetControlledTank()->AimAt(hitLocation);
+
+}
