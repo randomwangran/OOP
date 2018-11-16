@@ -41,7 +41,7 @@ void ATankPlayerController::AimTowardsCrosshair()
 
 	if ( GetSightRayHitLocation(hitLocation) )
 	{
-		// bool UE_LOG(LogTemp, Warning, TEXT("Look direction, %s"), *hitLocation.ToString())
+		GetControlledTank()->AimAt(hitLocation);
 	}
 
 }
@@ -61,12 +61,12 @@ bool ATankPlayerController::GetSightRayHitLocation(FVector &OutHitLocation) cons
 	{
 		//UE_LOG(LogTemp, Warning, TEXT("World direction is, %s"), *LookDirection.ToString())
 
-		GetLookVectorHitLocation(LookDirection);
+		GetLookVectorHitLocation(LookDirection, OutHitLocation);
 	}
 	return true;
 }
 
-bool ATankPlayerController::GetLookDirection(FVector2D ScreenLocation, FVector& LookDirection) const
+bool ATankPlayerController::GetLookDirection(FVector2D ScreenLocation, FVector &LookDirection) const
 {
 	FVector WorldLocation; // discarded
 
@@ -77,7 +77,7 @@ bool ATankPlayerController::GetLookDirection(FVector2D ScreenLocation, FVector& 
 		LookDirection);
 }
 
-bool ATankPlayerController::GetLookVectorHitLocation(FVector LookDirection) const
+bool ATankPlayerController::GetLookVectorHitLocation(FVector LookDirection, FVector &OutHitLocation) const
 {
 	FHitResult Hit;
 
@@ -105,11 +105,11 @@ bool ATankPlayerController::GetLookVectorHitLocation(FVector LookDirection) cons
 		ECollisionResponse::ECR_Block
 	    )) {
 
-		FVector_NetQuantize WhatItHit = Hit.Location;
-		UE_LOG(LogTemp, Warning, TEXT("Crosshair is pointing at %s"), *(WhatItHit.ToString()))
+		OutHitLocation = Hit.Location;
+		//UE_LOG(LogTemp, Warning, TEXT("Crosshair is pointing at %s"), *(OutHitLocation.ToString()))
 		
 		return true;
 	}
-	else
+	    OutHitLocation = FVector(0);
 		return false;
 }
