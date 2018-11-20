@@ -31,6 +31,7 @@ public:
 
 	bool GetLookVectorHitLocation(FVector LookDirection, FVector &OutHitLocation) const;
 
+	friend class TankAIController;
 
 private:
 	UPROPERTY(EditAnywhere)

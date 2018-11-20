@@ -1,5 +1,6 @@
 // Fill out your copyright notice in the Description page of Project Settings.
 
+#include "TankPlayerController.h"
 #include "TankAIController.h"
 
 void ATankAIController::BeginPlay()
@@ -28,28 +29,35 @@ void ATankAIController::BeginPlay()
 		UE_LOG(LogTemp, Warning, TEXT("Find: %s"), *(PlayerTank->GetName()))
 	}
 
+	//debugging
+	//ATankPlayerController aPlayer;
+
+    //FVector playerLocation = aPlayer.ATankPlayerController::GetPlayerLocation();
+
+	//UE_LOG(LogTemp, Warning, TEXT("Find: %s"), *(playerLocation.ToString()))
 }
 
 ATank* ATankAIController::GetControlledTank() const
 {
-
 	return Cast<ATank>(GetPawn());
 }
 
 
-
 ATank* ATankAIController::GetPlayerTank() const
 {
-
-	return Cast<ATank>(GetPawn());
+	auto PlayerPawn = GetWorld()->GetFirstPlayerController()->GetPawn();
+	if (!PlayerPawn) { return nullptr; } // Note the !, very important
+	return Cast<ATank>(PlayerPawn);
 }
 
 void ATankAIController::Tick(float DeltaTime)
 {
 	Super::Tick(DeltaTime);
-
-	FVector hitLocation(1,1,1);
+		
+	//FVector playerLocation(1, 1, 1);
 	
-	GetControlledTank()->AimAt(hitLocation);
-
+	if (GetPlayerTank())
+	{
+		GetControlledTank()->AimAt(GetPlayerTank()->GetActorLocation());
+	}
 }

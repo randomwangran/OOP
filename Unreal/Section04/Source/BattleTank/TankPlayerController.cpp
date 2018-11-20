@@ -81,7 +81,7 @@ bool ATankPlayerController::GetLookVectorHitLocation(FVector LookDirection, FVec
 {
 	FHitResult Hit;
 
-	/// get palyer's view
+	/// get player's view
 	FVector PlayerPointLocation;
 	FRotator PlayerPointRotation;
 	GetWorld()->GetFirstPlayerController()->GetPlayerViewPoint(
