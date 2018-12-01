@@ -1,0 +1,7 @@
+* L139 Creat default sub objects in C++
+
+** notes in lecture
+
+** question that I do not understand
+
+** a-ha moment for me
