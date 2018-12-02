@@ -25,9 +25,9 @@ void ATankPlayerController::Tick(float DeltaTime)
 	AimTowardsCrosshair();
 }
 
-UTankAimingComponent* ATankPlayerController::GetControlledTank() const
+ATank* ATankPlayerController::GetControlledTank() const
 {
-	return Cast<UTankAimingComponent>(GetPawn());
+	return Cast<ATank>(GetPawn());
 }
 
 void ATankPlayerController::AimTowardsCrosshair()
@@ -37,7 +37,7 @@ void ATankPlayerController::AimTowardsCrosshair()
 	FVector HitLocation; // Out parameter
 	if (GetSightRayHitLocation(HitLocation)) // Has "side-effect", is going to line trace
 	{
-		GetControlledTank()->AimAt(HitLocation);
+		///GetControlledTank()->AimAt(HitLocation);
 	}
 }
 
