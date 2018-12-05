@@ -12,4 +12,6 @@
     When I try to get the owner of the 'aiming component', the UE
     crush without any info.
     
-** a-ha moment for me
+** a-ha moment
+
+   [[file:Source/screenCapture/tankBodyOutPutCorrectAimingLocation.png][Result]]
