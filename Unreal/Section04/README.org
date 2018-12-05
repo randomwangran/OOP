@@ -10,8 +10,26 @@
 ** notes in lecture
 
 ** question that I do not understand
-
 *** crash
     
     When I try to get the owner of the 'aiming component', the UE
     crush without any info.
+
+** a-ha moment
+*** pointer to pointer
+
+    This is the first time that I use it intentionlly in real
+    programming, and it is in this lesson, that I've learnt that it is
+    useful when you want to separate a function in a class.
+
+    I've stuck in this issue for a long time. At first, I think I
+    should write another getter to return a 'UTankAimingComponent' so
+    that the tank can use AimAt method defined in
+    'UTankAimingComponent' class.
+
+    ```cpp
+    UTankAimingComponent* ATankAIController::GetAimingComponent() const
+    {
+	return Cast<UTankAimingComponent>(GetPawn());
+    }
+    ```
