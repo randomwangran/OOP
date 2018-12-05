@@ -9,8 +9,6 @@
 
    Finally, I got auto-org-mode to assist me............
 
-   #+CAPTION: Test
-   #+NAME: fig:Test
    [[Source/screenCapture/tankBodyOutPutCorrectAimingLocation.png]]
 
 ** notes in lecture
