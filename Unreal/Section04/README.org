@@ -7,6 +7,8 @@
    
    [[file:Source/screenCapture/tankBodyOutPutCorrectAimingLocation.png][Result]]
 
+   [[file:Source/screenCapture/tankBodyOutPutCorrectAimingLocation.png]]
+
    Finally, I got auto-org-mode to assist me............
 
    [[Source/screenCapture/tankBodyOutPutCorrectAimingLocation.png]]
