@@ -1,5 +1,3 @@
-#+OPTIONS: toc:2
-#+TOC: headlines 2
 * L139 Creat default sub objects in C++
 ** goal
 
@@ -7,13 +5,7 @@
 
 ** result
    
-   [[file:Source/screenCapture/tankBodyOutPutCorrectAimingLocation.png][Result]]
-
    [[file:Source/screenCapture/tankBodyOutPutCorrectAimingLocation.png]]
-
-   Finally, I got auto-org-mode to assist me............
-
-   [[Source/screenCapture/tankBodyOutPutCorrectAimingLocation.png]]
 
 ** notes in lecture
 
@@ -23,7 +15,3 @@
     
     When I try to get the owner of the 'aiming component', the UE
     crush without any info.
-
-   
-
-* L140 Test

@@ -61,3 +61,6 @@ DerivedDataCache/*
 
 # Starter Content
 Content/StarterContent
+
+# My stuff
+*.hd
