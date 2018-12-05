@@ -78,10 +78,10 @@ should write another getter to return a 'UTankAimingComponent' so
 that the tank can use AimAt method defined in
 'UTankAimingComponent' class.
 
-\`\`\`cpp
+```cpp
 UTankAimingComponent\* ATankAIController::GetAimingComponent() const
 {
     return Cast<UTankAimingComponent>(GetPawn());
 }
-\`\`\`
+```
 
