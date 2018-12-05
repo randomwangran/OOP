@@ -1,0 +1,27 @@
+* L139 Creat default sub objects in C++
+** goal
+
+   Refactoring the code so that the aiming log is a separated class.
+
+** result
+   
+   [[file:Source/screenCapture/tankBodyOutPutCorrectAimingLocation.png][Result]]
+
+   Finally, I got auto-org-mode to assist me............
+
+   #+CAPTION: Test
+   #+NAME: fig:Test
+   [[Source/screenCapture/tankBodyOutPutCorrectAimingLocation.png]]
+
+** notes in lecture
+
+** question that I do not understand
+
+*** crash
+    
+    When I try to get the owner of the 'aiming component', the UE
+    crush without any info.
+
+   
+
+* L140 Test
