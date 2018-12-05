@@ -1,3 +1,5 @@
+#+OPTIONS: toc:2
+#+TOC: headlines 2
 * L139 Creat default sub objects in C++
 ** goal
 
