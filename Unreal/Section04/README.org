@@ -27,9 +27,11 @@
     that the tank can use AimAt method defined in
     'UTankAimingComponent' class.
 
-    ```cpp
+    #+BEGIN_SRC 
     UTankAimingComponent* ATankAIController::GetAimingComponent() const
     {
 	return Cast<UTankAimingComponent>(GetPawn());
     }
-    ```
+    #+END_SRC
+
+

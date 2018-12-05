@@ -2,19 +2,19 @@
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#orgda0752e">1. L139 Creat default sub objects in C++</a>
+<li><a href="#org8e07690">1. L139 Creat default sub objects in C++</a>
 <ul>
-<li><a href="#org9155146">1.1. goal</a></li>
-<li><a href="#orgc5f9c45">1.2. result</a></li>
-<li><a href="#org566104b">1.3. notes in lecture</a></li>
-<li><a href="#org8fe9d20">1.4. question that I do not understand</a>
+<li><a href="#org8f24d46">1.1. goal</a></li>
+<li><a href="#org83d1946">1.2. result</a></li>
+<li><a href="#org3097914">1.3. notes in lecture</a></li>
+<li><a href="#orgfb6f80a">1.4. question that I do not understand</a>
 <ul>
-<li><a href="#orga0eaeef">1.4.1. crash</a></li>
+<li><a href="#org65412d1">1.4.1. crash</a></li>
 </ul>
 </li>
-<li><a href="#orgf438b5c">1.5. a-ha moment</a>
+<li><a href="#org496c3e6">1.5. a-ha moment</a>
 <ul>
-<li><a href="#orgb43c77c">1.5.1. pointer to pointer</a></li>
+<li><a href="#orged3db71">1.5.1. pointer to pointer</a></li>
 </ul>
 </li>
 </ul>
@@ -23,36 +23,36 @@
 </div>
 </div>
 
-<a id="orgda0752e"></a>
+<a id="org8e07690"></a>
 
 # L139 Creat default sub objects in C++
 
 
-<a id="org9155146"></a>
+<a id="org8f24d46"></a>
 
 ## goal
 
 Refactoring the code so that the aiming log is a separated class.
 
 
-<a id="orgc5f9c45"></a>
+<a id="org83d1946"></a>
 
 ## result
 
 ![img](Source/screenCapture/tankBodyOutPutCorrectAimingLocation.png)
 
 
-<a id="org566104b"></a>
+<a id="org3097914"></a>
 
 ## notes in lecture
 
 
-<a id="org8fe9d20"></a>
+<a id="orgfb6f80a"></a>
 
 ## question that I do not understand
 
 
-<a id="orga0eaeef"></a>
+<a id="org65412d1"></a>
 
 ### crash
 
@@ -60,12 +60,12 @@ When I try to get the owner of the 'aiming component', the UE
 crush without any info.
 
 
-<a id="orgf438b5c"></a>
+<a id="org496c3e6"></a>
 
 ## a-ha moment
 
 
-<a id="orgb43c77c"></a>
+<a id="orged3db71"></a>
 
 ### pointer to pointer
 
@@ -78,10 +78,8 @@ should write another getter to return a 'UTankAimingComponent' so
 that the tank can use AimAt method defined in
 'UTankAimingComponent' class.
 
-```cpp
-UTankAimingComponent\* ATankAIController::GetAimingComponent() const
+UTankAimingComponent* ATankAIController::GetAimingComponent() const
 {
     return Cast<UTankAimingComponent>(GetPawn());
 }
-```
 
