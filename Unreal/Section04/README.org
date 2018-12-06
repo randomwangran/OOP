@@ -10,10 +10,28 @@
 ** notes in lecture
 
 ** question that I do not understand
-*** crash
+*** UE4 .19 crash when try to access directly from 'GetAimingComponent' class
+
+    [[https://www.udemy.com/unrealcourse/learn/v4/questions/5772629][My question url]]
     
     When I try to get the owner of the 'aiming component', the UE
-    crush without any info.
+    crush without any info. The bad code is
+    [here](https://github.com/randomwangran/cpp/blob/4903f7304a0c02b15983c36c88ffa025a503753a/Unreal/Section04/Source/BattleTank/Private/TankAIController.cpp)
+
+    My question is simple: why UE4 crash (compiled successfuly but
+    crash when Play game) without providing any infomation?
+
+    In my bad code: I try to access different
+    children (ATank and UTankAimingComponent) who share the parent
+    (AActor).
+
+    This is not accessible, and the compile should complain about the
+    wrong useage instead of crashing without any infomation.
+
+    Why this happen?
+
+    For the details of this issue, following is the analyse of my bad
+    code.
 
 ** a-ha moment
 *** pointer to pointer
@@ -38,3 +56,27 @@
     ~TankAIController~, the code compiled, which is the result of
     commit ~4903f7304a0c02b15983c36c88ffa025a503753a~. But as soon as
     I click ~Play~ button, UE4 crash without any information.
+
+    Since ~GetControlledTank~ is a pointer of ~UTankAimingComponent~,
+    which is derived from ~ATankAIController~. And ~ATankAIController~
+    is drived from ~AAIController~. Then, ~AAIController~ is drived
+    from ~AController~. Next, ~AController~ is drived from
+    ~AActor~. Then, ~AActor~ is drived from ~UObject~ is drived from
+    ~UObjectBaseUtility~. Finally ~UObjectBaseUtility~ is drived from
+    ~UObjectBase~.
+
+    The diagram for the ~Tank~ class is:
+
+    #+BEGIN_CENTER
+    ATank --> APawn --> AActor --> ...
+    #+END_CENTER
+
+    As you can see ~Tank~ and ~UTankAimingComponent~ has a same parent
+    ~AActor~. This is the moment I make a huge mistake: different
+    children cannot access each other even they share the parrent.
+
+    The correct way to do this to using
+    ~GetControlledTank()->TankAimingComponent->AimAt(GetPlayerTank()->GetActorLocation());~
+    , i.e., the pointer to pointer, which will correct guide the
+    ~Tank~ class's instance (AI tanks and Player tank) to use the the
+    ~AimAt~ method defined in the separated class ~UTankAimingComponent~.
