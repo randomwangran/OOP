@@ -37,7 +37,7 @@ void ATankPlayerController::AimTowardsCrosshair()
 	FVector HitLocation; // Out parameter
 	if (GetSightRayHitLocation(HitLocation)) // Has "side-effect", is going to line trace
 	{
-		///GetControlledTank()->AimAt(HitLocation);
+		GetControlledTank()->TankAimingComponent->AimAt(HitLocation);
 	}
 }
 
@@ -84,7 +84,7 @@ bool ATankPlayerController::GetLookDirection(FVector2D ScreenLocation, FVector& 
 	FVector CameraWorldLocation; // To be discarded
 	return  DeprojectScreenPositionToWorld(
 		ScreenLocation.X,
-		ScreenLocation.Y, 
+		ScreenLocation.Y,
 		CameraWorldLocation,
 		LookDirection
 	);

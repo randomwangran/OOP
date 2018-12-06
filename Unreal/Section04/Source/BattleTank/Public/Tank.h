@@ -14,7 +14,7 @@ class BATTLETANK_API ATank : public APawn
 public:
 	//void AimAt(FVector HitLocation);
 
-protected:
+public:
 	UTankAimingComponent* TankAimingComponent = nullptr;
 	
 private:

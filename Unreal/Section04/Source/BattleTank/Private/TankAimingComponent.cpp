@@ -36,7 +36,17 @@ void UTankAimingComponent::TickComponent(float DeltaTime, ELevelTick TickType, F
 void UTankAimingComponent::AimAt(FVector HitLocation)
 {
 	auto OurTankName = GetOwner()->GetName();
-	//UE_LOG(LogTemp, Warning, TEXT("%s aiming at %s"), *OurTankName, *HitLocation.ToString());
-	UE_LOG(LogTemp, Warning, TEXT("Tank name is %s"), *OurTankName);
+	//auto OurTankName = GetWorld();
+	UE_LOG(LogTemp, Warning, TEXT("%s aiming at %s"), *OurTankName, *HitLocation.ToString());
+	//UE_LOG(LogTemp, Warning, TEXT("Tank name is %s"), *OurTankName);
 	//UE_LOG(LogTemp, Warning, TEXT("Aiming at %s"), *HitLocation.ToString());
 }
+
+//void UTankAimingComponent::Test()
+//{
+//	auto TestName = GetOwner()->GetName();
+//	UE_LOG(LogTemp, Warning, TEXT("Tank name is %s"), *TestName);
+//	//UE_LOG(LogTemp, Warning, TEXT("Success"));
+//}
+
+

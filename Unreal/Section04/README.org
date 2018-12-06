@@ -23,15 +23,18 @@
     useful when you want to separate a function in a class.
 
     I've stuck in this issue for a long time. At first, I think I
-    should write another getter to return a 'UTankAimingComponent' so
-    that the tank can use AimAt method defined in
+    should write another getter to return a 'UTankAimingComponent'
+    pointer so that the tank can use ~AimAt~ method defined in
     'UTankAimingComponent' class.
 
-    #+BEGIN_SRC 
+    #+BEGIN_SRC c++
     UTankAimingComponent* ATankAIController::GetAimingComponent() const
     {
-	return Cast<UTankAimingComponent>(GetPawn());
+        return Cast<UTankAimingComponent>(GetPawn());
     }
     #+END_SRC
 
-
+    However, when I call ~GetAimingComponent~ From class
+    ~TankAIController~, the code compiled, which is the result of
+    commit ~4903f7304a0c02b15983c36c88ffa025a503753a~. But as soon as
+    I click ~Play~ button, UE4 crash without any information.
