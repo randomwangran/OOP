@@ -7,8 +7,7 @@
    
    [[file:Source/screenCapture/tankBodyOutPutCorrectAimingLocation.png]]
 
-** notes in lecture
-
+** notes
 ** question that I do not understand
 *** UE4 .19 crash when try to access directly from 'GetAimingComponent' class
 
@@ -80,3 +79,5 @@
     , i.e., the pointer to pointer, which will correct guide the
     ~Tank~ class's instance (AI tanks and Player tank) to use the the
     ~AimAt~ method defined in the separated class ~UTankAimingComponent~.
+
+
