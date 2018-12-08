@@ -49,6 +49,7 @@
      class hierarchy with the actual instances of those classes.
 
      ===================
+
      #+BEGIN_SRC 
      ATank* ATankAIController::GetControlledTank() const
      {
@@ -79,7 +80,7 @@
          ACat* Cat = Cast<ACat>(Animal);
          Cat->Meow();
      }
-
+     
      int main(){ 
          ADog* Dog = GetDog(); 
 	 DoSomething(Dog); 
@@ -111,16 +112,18 @@
      read your reply and did some further research. Following is some
      thing that I still not very clear.
 
+     #+BEGIN_QUOTE
      > Since ~GetControlledTank~ is a pointer of ~UTankAimingComponent~,
      > which is derived from ~ATankAIController
-     
+     >
      > This is not correct. UTankAimingComponent is not derived from
      > ATankAIController, they are unrelated.
+     #+END_QUOTE
 
      Thanks for pointing out my mistake. ~UTankAimingComponent~ is not
      derived from ~ATankAIController~. It is drived from
-     ~UActorComponent~. Then -> UObject -> UObjectBaseUtility ->
-     UObjectBase. 
+     ~UActorComponent~. Then ~-> UObject -> UObjectBaseUtility ->
+     UObjectBase~. 
 
      On the other hand, the inheritance hierarchy for ~ATank~ is:
 
@@ -136,7 +139,7 @@
      > As you can see ~Tank~ and ~UTankAimingComponent~ has a same parent
      > ~AActor~. This is the moment I make a huge mistake: different children
      > cannot access each other even they share the parrent.
-
+     >
      > What do you mean by this? It seems like you're confusing the
      > class hierarchy with the actual instances of those classes.
 
@@ -164,7 +167,7 @@
      >     return Cast<ATank>(GetPawn());
      > }
      > #+END_SRC
- 
+     >
      > UTankAimingComponent* ATankAIController::GetAimingComponent()
      > const { return Cast<UTankAimingComponent>(GetPawn()); } The first
      > function is correct the second is not. GetPawn returns a pointer
@@ -211,26 +214,26 @@
      =====================================================================
      
      > Consider the following
-
+     >
      > #+BEGIN_SRC 
      > class AAnimal{};
      > class ACat : public AAnimal{ /*code*/ };
      > class ADog : public AAnimal{ /*code*/ };
- 
+     >
      > ADog* GetDog();
- 
+     >
      > void DoSomething(AAnimal* Animal)
      > {
      >     ACat* Cat = Cast<ACat>(Animal);
      >     Cat->Meow();
      > }
-
+     >
      > int main(){ 
      >     ADog* Dog = GetDog(); 
      >     DoSomething(Dog); 
      > }
      > #+END_SRC
- 
+     >
      > The DoSomething function takes an AAnimal but then casts it to
      > ACat*, in main I give it a ADog* which means the cast will fail
      > and attempting to dereference it on the next line after the cast
@@ -305,18 +308,18 @@
      It seems yes, but why don't we use?
 
      #+BEGIN_SRC 
-         return dynamic_cast<ATank*>(GetPawn());
+     return dynamic_cast<ATank*>(GetPawn());
      #+END_SRC
      
 
      > ===================
-
+     >
      > TankAimingComponent is a protected member of ATank and should
      > remain protected, what you're trying to accomplish would mean
      > creating a function on ATank that returns the
      > TankAimingComponent. Meaning the code you should have by the end
      > would be
-
+     >
      > #+BEGIN_SRC 
      > GetControlledTank()->GetAimingComponent()->AimAt(HitLocation);
      > #+END_SRC
