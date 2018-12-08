@@ -2,19 +2,19 @@
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#org0e00794">1. L139 Creat default sub objects in C++</a>
+<li><a href="#orga88126a">1. L139 Creat default sub objects in C++</a>
 <ul>
-<li><a href="#org2eb4e56">1.1. goal</a></li>
-<li><a href="#org442e2dd">1.2. result</a></li>
-<li><a href="#orga608d87">1.3. notes</a></li>
-<li><a href="#org216bed2">1.4. question that I do not understand</a>
+<li><a href="#orge51c0f4">1.1. goal</a></li>
+<li><a href="#orgdf33aeb">1.2. result</a></li>
+<li><a href="#org4940fa7">1.3. notes</a></li>
+<li><a href="#org9b39fe6">1.4. question that I do not understand</a>
 <ul>
-<li><a href="#orgc2498a5">1.4.1. UE4 .19 crash when try to access directly from 'GetAimingComponent' class</a></li>
+<li><a href="#orgf45a74e">1.4.1. UE4 .19 crash when try to access directly from 'GetAimingComponent' class</a></li>
 </ul>
 </li>
-<li><a href="#orgbc364f8">1.5. a-ha moment</a>
+<li><a href="#org36b022d">1.5. a-ha moment</a>
 <ul>
-<li><a href="#orgc39e5a3">1.5.1. pointer to pointer</a></li>
+<li><a href="#org328b473">1.5.1. pointer to pointer</a></li>
 </ul>
 </li>
 </ul>
@@ -23,36 +23,36 @@
 </div>
 </div>
 
-<a id="org0e00794"></a>
+<a id="orga88126a"></a>
 
 # L139 Creat default sub objects in C++
 
 
-<a id="org2eb4e56"></a>
+<a id="orge51c0f4"></a>
 
 ## goal
 
 Refactoring the code so that the aiming log is a separated class.
 
 
-<a id="org442e2dd"></a>
+<a id="orgdf33aeb"></a>
 
 ## result
 
 ![img](Source/screenCapture/tankBodyOutPutCorrectAimingLocation.png)
 
 
-<a id="orga608d87"></a>
+<a id="org4940fa7"></a>
 
 ## notes
 
 
-<a id="org216bed2"></a>
+<a id="org9b39fe6"></a>
 
 ## question that I do not understand
 
 
-<a id="orgc2498a5"></a>
+<a id="orgf45a74e"></a>
 
 ### UE4 .19 crash when try to access directly from 'GetAimingComponent' class
 
@@ -152,11 +152,11 @@ Refactoring the code so that the aiming log is a separated class.
     read your reply and did some further research. Following is some
     thing that I still not very clear.
     
-    > > Since `GetControlledTank` is a pointer of `UTankAimingComponent`,
-    > > which is derived from ~ATankAIController
-    > >
-    > > This is not correct. UTankAimingComponent is not derived from
-    > > ATankAIController, they are unrelated.
+    > Since `GetControlledTank` is a pointer of `UTankAimingComponent`,
+    > which is derived from ~ATankAIController
+    > 
+    > This is not correct. UTankAimingComponent is not derived from
+    > ATankAIController, they are unrelated.
     
     Thanks for pointing out my mistake. `UTankAimingComponent` is not
     derived from `ATankAIController`. It is drived from
@@ -175,7 +175,7 @@ Refactoring the code so that the aiming log is a separated class.
     > As you can see `Tank` and `UTankAimingComponent` has a same parent
     > `AActor`. This is the moment I make a huge mistake: different children
     > cannot access each other even they share the parrent.
-    >
+    > 
     > What do you mean by this? It seems like you're confusing the
     > class hierarchy with the actual instances of those classes.
     
@@ -197,13 +197,12 @@ Refactoring the code so that the aiming log is a separated class.
     access this `AimAt` function.
     
     > `=================`
-    > #+BEGIN<sub>SRC</sub> c++
-    > ATank\* ATankAIController::GetControlledTank() const
+    > 
+    > ATank* ATankAIController::GetControlledTank() const
     > {
     >     return Cast<ATank>(GetPawn());
     > }
-    > #+END<sub>SRC</sub>
-    >
+    > 
     > UTankAimingComponent\* ATankAIController::GetAimingComponent()
     > const { return Cast<UTankAimingComponent>(GetPawn()); } The first
     > function is correct the second is not. GetPawn returns a pointer
@@ -243,29 +242,26 @@ Refactoring the code so that the aiming log is a separated class.
     especially when it is a request from a component. Unreal should
     be able to understand my intention. Why they did not implement
     this straigthforward thought? Do I miss something?
-    `===================================================================`
     
     > Consider the following
-    >
-    > #+BEGIN<sub>SRC</sub> 
+    > 
     > class AAnimal{};
-    > class ACat : public AAnimal{ ***code*** };
-    > class ADog : public AAnimal{ ***code*** };
-    >
-    > ADog\* GetDog();
-    >
-    > void DoSomething(AAnimal\* Animal)
+    > class ACat : public AAnimal{ /*code*/ };
+    > class ADog : public AAnimal{ /*code*/ };
+    > 
+    > ADog* GetDog();
+    > 
+    > void DoSomething(AAnimal* Animal)
     > {
-    >     ACat\* Cat = Cast<ACat>(Animal);
+    >     ACat* Cat = Cast<ACat>(Animal);
     >     Cat->Meow();
     > }
-    >
+    > 
     > int main(){ 
-    >     ADog\* Dog = GetDog(); 
+    >     ADog* Dog = GetDog(); 
     >     DoSomething(Dog); 
     > }
-    > #+END<sub>SRC</sub>
-    >
+    > 
     > The DoSomething function takes an AAnimal but then casts it to
     > ACat\*, in main I give it a ADog\* which means the cast will fail
     > and attempting to dereference it on the next line after the cast
@@ -320,11 +316,13 @@ Refactoring the code so that the aiming log is a separated class.
     {
         return TCastImpl<From, To>::DoCast(Src);
     }
+    #+END_SRC c++
     
-    What does it mean? Is `Cast` in the following code a dynamic
+    What does it mean? Is ~Cast~ in the following code a dynamic
     casting, which will convert the base-class pointer into
     derived-class pointer?
     
+    #+BEGIN_SRC c++
     ATank* ATankAIController::GetControlledTank() const
     {
         return Cast<ATank>(GetPawn());
@@ -335,16 +333,13 @@ Refactoring the code so that the aiming log is a separated class.
     return dynamic_cast<ATank*>(GetPawn());
     
     > `=================`
-    >
     > TankAimingComponent is a protected member of ATank and should
     > remain protected, what you're trying to accomplish would mean
     > creating a function on ATank that returns the
     > TankAimingComponent. Meaning the code you should have by the end
     > would be
-    >
-    > #+BEGIN<sub>SRC</sub> 
+    > 
     > GetControlledTank()->GetAimingComponent()->AimAt(HitLocation);
-    > #+END<sub>SRC</sub>
     
     I use your suggestoin in `TankAIController.cpp` in my commit: <https://github.com/randomwangran/cpp/blob/4903f7304a0c02b15983c36c88ffa025a503753a/Unreal/Section04/Source/BattleTank/Private/TankAIController.cpp>
     
@@ -363,10 +358,11 @@ Refactoring the code so that the aiming log is a separated class.
     </div>
     
     But fail to compile:
-    CompilerResultsLog: Error: ~\\\Unreal\Section04\Source\BattleTank\Private\TankAIController.cpp(32) : error C2039: 'GetAimingComponent': is not a member of 'ATank'
+    
+    CompilerResultsLog: Error: ~\\Unreal\Section04\Source\BattleTank\Private\TankAIController.cpp(32) : error C2039: 'GetAimingComponent': is not a member of 'ATank'
     CompilerResultsLog: Error: ~\unreal\section04\source\battletank\public\Tank.h(10) : note: see declaration of 'ATank'
-    CompilerResultsLog: Error: ~\\\Unreal\Section04\Source\BattleTank\Private\TankAIController.cpp(32) : error C2065: 'HitLocation': undeclared identifier
-    CompilerResultsLog: ERROR: UBT ERROR: Failed to produce item: ~\\\Unreal\Section04\Binaries\Win64\UE4Editor-BattleTank-685.dll
+    CompilerResultsLog: Error: ~\\Unreal\Section04\Source\BattleTank\Private\TankAIController.cpp(32) : error C2065: 'HitLocation': undeclared identifier
+    CompilerResultsLog: ERROR: UBT ERROR: Failed to produce item: ~\\Unreal\Section04\Binaries\Win64\UE4Editor-BattleTank-685.dll
     
     GetAimingComponent is not a member of `ATank`
     
@@ -393,12 +389,12 @@ Refactoring the code so that the aiming log is a separated class.
     Ran
 
 
-<a id="orgbc364f8"></a>
+<a id="org36b022d"></a>
 
 ## a-ha moment
 
 
-<a id="orgc39e5a3"></a>
+<a id="org328b473"></a>
 
 ### pointer to pointer
 

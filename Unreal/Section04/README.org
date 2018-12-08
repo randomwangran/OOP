@@ -113,11 +113,11 @@
      thing that I still not very clear.
 
      #+BEGIN_QUOTE
-     > Since ~GetControlledTank~ is a pointer of ~UTankAimingComponent~,
-     > which is derived from ~ATankAIController
-     >
-     > This is not correct. UTankAimingComponent is not derived from
-     > ATankAIController, they are unrelated.
+     Since ~GetControlledTank~ is a pointer of ~UTankAimingComponent~,
+     which is derived from ~ATankAIController
+     
+     This is not correct. UTankAimingComponent is not derived from
+     ATankAIController, they are unrelated.
      #+END_QUOTE
 
      Thanks for pointing out my mistake. ~UTankAimingComponent~ is not
@@ -136,12 +136,15 @@
      ~UTankAimingComponent~ and ~ATank~ shared the same parent
      according to the inheritance hierarchy. (~UObject~). 
 
-     > As you can see ~Tank~ and ~UTankAimingComponent~ has a same parent
-     > ~AActor~. This is the moment I make a huge mistake: different children
-     > cannot access each other even they share the parrent.
-     >
-     > What do you mean by this? It seems like you're confusing the
-     > class hierarchy with the actual instances of those classes.
+     #+BEGIN_QUOTE
+     As you can see ~Tank~ and ~UTankAimingComponent~ has a same parent
+     ~AActor~. This is the moment I make a huge mistake: different children
+     cannot access each other even they share the parrent.
+     
+     What do you mean by this? It seems like you're confusing the
+     class hierarchy with the actual instances of those classes.
+     #+END_QUOTE
+     
 
      What I mean was that, at that time, I thought as long as two
      class shared the same parent at some levels in the inheritance
@@ -160,22 +163,24 @@
      (~UObject~). Then both ~Tank~ and ~UTankAimingComponent~ can
      access this ~AimAt~ function.
 
-     > ===================
-     > #+BEGIN_SRC c++
-     > ATank* ATankAIController::GetControlledTank() const
-     > {
-     >     return Cast<ATank>(GetPawn());
-     > }
-     > #+END_SRC
-     >
-     > UTankAimingComponent* ATankAIController::GetAimingComponent()
-     > const { return Cast<UTankAimingComponent>(GetPawn()); } The first
-     > function is correct the second is not. GetPawn returns a pointer
-     > to the same object, casting it doesn't magically make it get the
-     > thing that you're looking for, it just says treat it as if it
-     > were this type instead. It compiles because the class hierarchy
-     > you described, APawn and UTankAimingComponent share a common base
-     > class though this isn't what you want to do.
+     #+BEGIN_QUOTE
+     ===================
+     #+BEGIN_SRC c++
+     ATank* ATankAIController::GetControlledTank() const
+     {
+         return Cast<ATank>(GetPawn());
+     }
+     #+END_SRC
+
+     UTankAimingComponent* ATankAIController::GetAimingComponent()
+     const { return Cast<UTankAimingComponent>(GetPawn()); } The first
+     function is correct the second is not. GetPawn returns a pointer
+     to the same object, casting it doesn't magically make it get the
+     thing that you're looking for, it just says treat it as if it
+     were this type instead. It compiles because the class hierarchy
+     you described, APawn and UTankAimingComponent share a common base
+     class though this isn't what you want to do.
+     #+END_QUOTE
 
      I am just curious about why 
 
@@ -211,35 +216,36 @@
      especially when it is a request from a component. Unreal should
      be able to understand my intention. Why they did not implement
      this straigthforward thought? Do I miss something?
-     =====================================================================
-     
-     > Consider the following
-     >
-     > #+BEGIN_SRC 
-     > class AAnimal{};
-     > class ACat : public AAnimal{ /*code*/ };
-     > class ADog : public AAnimal{ /*code*/ };
-     >
-     > ADog* GetDog();
-     >
-     > void DoSomething(AAnimal* Animal)
-     > {
-     >     ACat* Cat = Cast<ACat>(Animal);
-     >     Cat->Meow();
-     > }
-     >
-     > int main(){ 
-     >     ADog* Dog = GetDog(); 
-     >     DoSomething(Dog); 
-     > }
-     > #+END_SRC
-     >
-     > The DoSomething function takes an AAnimal but then casts it to
-     > ACat*, in main I give it a ADog* which means the cast will fail
-     > and attempting to dereference it on the next line after the cast
-     > will be undefined behaviour (crash in Unreal) because Cat will be
-     > nullptr since the cast failed.
 
+     #+BEGIN_QUOTE
+     Consider the following
+
+     #+BEGIN_SRC 
+     class AAnimal{};
+     class ACat : public AAnimal{ /*code*/ };
+     class ADog : public AAnimal{ /*code*/ };
+
+     ADog* GetDog();
+
+     void DoSomething(AAnimal* Animal)
+     {
+         ACat* Cat = Cast<ACat>(Animal);
+         Cat->Meow();
+     }
+
+     int main(){ 
+         ADog* Dog = GetDog(); 
+         DoSomething(Dog); 
+     }
+     #+END_SRC
+
+     The DoSomething function takes an AAnimal but then casts it to
+     ACat*, in main I give it a ADog* which means the cast will fail
+     and attempting to dereference it on the next line after the cast
+     will be undefined behaviour (crash in Unreal) because Cat will be
+     nullptr since the cast failed.
+     #+END_QUOTE
+     
      Thanks for providing the code snippet. It really helps me to
      understand.
 
@@ -263,7 +269,7 @@
      For ~Cast~ in c++, I've learn that: everytime you cast something,
      you have to make sure that it is succeeded. To achieve this:
 
-     #+BEGIN_SRC 
+     #+BEGIN_SRC c++
      void DoSomething(AAnimal* Animal)
      {
          ACat* Cat = Cast<ACat>(Animal);
@@ -285,20 +291,20 @@
      
      In the head file ~Casts.h~
 
-     #+BEGIN_SRC 
+     #+BEGIN_SRC c++
      // Dynamically cast an object type-safely.
      template <typename To, typename From>
      FORCEINLINE To* Cast(From* Src)
      {
          return TCastImpl<From, To>::DoCast(Src);
      }
-     #+END_SRC
+     #+END_SRC c++
 
      What does it mean? Is ~Cast~ in the following code a dynamic
      casting, which will convert the base-class pointer into
      derived-class pointer?
      
-     #+BEGIN_SRC 
+     #+BEGIN_SRC c++
      ATank* ATankAIController::GetControlledTank() const
      {
          return Cast<ATank>(GetPawn());
@@ -307,22 +313,22 @@
 
      It seems yes, but why don't we use?
 
-     #+BEGIN_SRC 
+     #+BEGIN_SRC c++
      return dynamic_cast<ATank*>(GetPawn());
      #+END_SRC
      
-
-     > ===================
-     >
-     > TankAimingComponent is a protected member of ATank and should
-     > remain protected, what you're trying to accomplish would mean
-     > creating a function on ATank that returns the
-     > TankAimingComponent. Meaning the code you should have by the end
-     > would be
-     >
-     > #+BEGIN_SRC 
-     > GetControlledTank()->GetAimingComponent()->AimAt(HitLocation);
-     > #+END_SRC
+     #+BEGIN_QUOTE
+     ===================
+     TankAimingComponent is a protected member of ATank and should
+     remain protected, what you're trying to accomplish would mean
+     creating a function on ATank that returns the
+     TankAimingComponent. Meaning the code you should have by the end
+     would be
+     #+BEGIN_SRC 
+     GetControlledTank()->GetAimingComponent()->AimAt(HitLocation);
+     #+END_SRC     
+     #+END_QUOTE
+     
 
      I use your suggestoin in ~TankAIController.cpp~ in my commit: https://github.com/randomwangran/cpp/blob/4903f7304a0c02b15983c36c88ffa025a503753a/Unreal/Section04/Source/BattleTank/Private/TankAIController.cpp
 
@@ -341,10 +347,13 @@
      #+END_CENTER
 
      But fail to compile:
+
+     #+BEGIN_SRC 
      CompilerResultsLog: Error: ~\\Unreal\Section04\Source\BattleTank\Private\TankAIController.cpp(32) : error C2039: 'GetAimingComponent': is not a member of 'ATank'
      CompilerResultsLog: Error: ~\unreal\section04\source\battletank\public\Tank.h(10) : note: see declaration of 'ATank'
      CompilerResultsLog: Error: ~\\Unreal\Section04\Source\BattleTank\Private\TankAIController.cpp(32) : error C2065: 'HitLocation': undeclared identifier
      CompilerResultsLog: ERROR: UBT ERROR: Failed to produce item: ~\\Unreal\Section04\Binaries\Win64\UE4Editor-BattleTank-685.dll
+     #+END_SRC
 
      GetAimingComponent is not a member of ~ATank~
 
@@ -370,7 +379,6 @@
 
      This is really a long reply, but I've learn a lot of new stuff
      and refesh my mind on old stuff. I hope it is not daunting you.
-
 
      Ran
 
