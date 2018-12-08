@@ -93,8 +93,7 @@
      will be undefined behaviour (crash in Unreal) because Cat will be
      nullptr since the cast failed.
 
-     ===================
-
+     
      TankAimingComponent is a protected member of ATank and should
      remain protected, what you're trying to accomplish would mean
      creating a function on ATank that returns the
@@ -164,7 +163,6 @@
      access this ~AimAt~ function.
 
      #+BEGIN_QUOTE
-     ===================
      #+BEGIN_SRC c++
      ATank* ATankAIController::GetControlledTank() const
      {
@@ -207,7 +205,6 @@
      did not complain was that they share a common base class:
      ~UObject~.
 
-     =====================================================================
      When I was writing the code like:
 
      ~return Cast<ATank>(GetPawn());~
@@ -318,7 +315,6 @@
      #+END_SRC
      
      #+BEGIN_QUOTE
-     ===================
      TankAimingComponent is a protected member of ATank and should
      remain protected, what you're trying to accomplish would mean
      creating a function on ATank that returns the

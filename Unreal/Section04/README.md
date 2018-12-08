@@ -2,19 +2,19 @@
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#orga88126a">1. L139 Creat default sub objects in C++</a>
+<li><a href="#orgc352469">1. L139 Creat default sub objects in C++</a>
 <ul>
-<li><a href="#orge51c0f4">1.1. goal</a></li>
-<li><a href="#orgdf33aeb">1.2. result</a></li>
-<li><a href="#org4940fa7">1.3. notes</a></li>
-<li><a href="#org9b39fe6">1.4. question that I do not understand</a>
+<li><a href="#org92fd43f">1.1. goal</a></li>
+<li><a href="#orgbbcc652">1.2. result</a></li>
+<li><a href="#org8fca8b0">1.3. notes</a></li>
+<li><a href="#orgbd77388">1.4. question that I do not understand</a>
 <ul>
-<li><a href="#orgf45a74e">1.4.1. UE4 .19 crash when try to access directly from 'GetAimingComponent' class</a></li>
+<li><a href="#org7fa0d5f">1.4.1. UE4 .19 crash when try to access directly from 'GetAimingComponent' class</a></li>
 </ul>
 </li>
-<li><a href="#org36b022d">1.5. a-ha moment</a>
+<li><a href="#org1766de7">1.5. a-ha moment</a>
 <ul>
-<li><a href="#org328b473">1.5.1. pointer to pointer</a></li>
+<li><a href="#orge22d8ae">1.5.1. pointer to pointer</a></li>
 </ul>
 </li>
 </ul>
@@ -23,36 +23,36 @@
 </div>
 </div>
 
-<a id="orga88126a"></a>
+<a id="orgc352469"></a>
 
 # L139 Creat default sub objects in C++
 
 
-<a id="orge51c0f4"></a>
+<a id="org92fd43f"></a>
 
 ## goal
 
 Refactoring the code so that the aiming log is a separated class.
 
 
-<a id="orgdf33aeb"></a>
+<a id="orgbbcc652"></a>
 
 ## result
 
 ![img](Source/screenCapture/tankBodyOutPutCorrectAimingLocation.png)
 
 
-<a id="org4940fa7"></a>
+<a id="org8fca8b0"></a>
 
 ## notes
 
 
-<a id="org9b39fe6"></a>
+<a id="orgbd77388"></a>
 
 ## question that I do not understand
 
 
-<a id="orgf45a74e"></a>
+<a id="org7fa0d5f"></a>
 
 ### UE4 .19 crash when try to access directly from 'GetAimingComponent' class
 
@@ -135,8 +135,6 @@ Refactoring the code so that the aiming log is a separated class.
     will be undefined behaviour (crash in Unreal) because Cat will be
     nullptr since the cast failed.
     
-    `=================`
-    
     TankAimingComponent is a protected member of ATank and should
     remain protected, what you're trying to accomplish would mean
     creating a function on ATank that returns the
@@ -196,8 +194,6 @@ Refactoring the code so that the aiming log is a separated class.
     (`UObject`). Then both `Tank` and `UTankAimingComponent` can
     access this `AimAt` function.
     
-    > `=================`
-    > 
     > ATank* ATankAIController::GetControlledTank() const
     > {
     >     return Cast<ATank>(GetPawn());
@@ -233,7 +229,6 @@ Refactoring the code so that the aiming log is a separated class.
     did not complain was that they share a common base class:
     `UObject`.
     
-    `===================================================================`
     When I was writing the code like:
     
     `return Cast<ATank>(GetPawn());`
@@ -332,7 +327,6 @@ Refactoring the code so that the aiming log is a separated class.
     
     return dynamic_cast<ATank*>(GetPawn());
     
-    > `=================`
     > TankAimingComponent is a protected member of ATank and should
     > remain protected, what you're trying to accomplish would mean
     > creating a function on ATank that returns the
@@ -389,12 +383,12 @@ Refactoring the code so that the aiming log is a separated class.
     Ran
 
 
-<a id="org36b022d"></a>
+<a id="org1766de7"></a>
 
 ## a-ha moment
 
 
-<a id="org328b473"></a>
+<a id="orge22d8ae"></a>
 
 ### pointer to pointer
 
