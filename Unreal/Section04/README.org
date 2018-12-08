@@ -328,7 +328,7 @@
 
      I use your suggestoin in ~TankAIController.cpp~ in my commit: https://github.com/randomwangran/cpp/blob/4903f7304a0c02b15983c36c88ffa025a503753a/Unreal/Section04/Source/BattleTank/Private/TankAIController.cpp
 
-     #+BEGIN_CENTER
+     #+BEGIN_SRC c++
      void ATankAIController::Tick(float DeltaTime)
      {
 	Super::Tick(DeltaTime);
@@ -340,7 +340,7 @@
 		GetControlledTank()->GetAimingComponent()->AimAt(HitLocation);
 	}
      }
-     #+END_CENTER
+     #+END_SRC
 
      But fail to compile:
 

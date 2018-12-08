@@ -2,19 +2,19 @@
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#orgc352469">1. L139 Creat default sub objects in C++</a>
+<li><a href="#orgddbb134">1. L139 Creat default sub objects in C++</a>
 <ul>
-<li><a href="#org92fd43f">1.1. goal</a></li>
-<li><a href="#orgbbcc652">1.2. result</a></li>
-<li><a href="#org8fca8b0">1.3. notes</a></li>
-<li><a href="#orgbd77388">1.4. question that I do not understand</a>
+<li><a href="#orgab47645">1.1. goal</a></li>
+<li><a href="#orgbbad9b7">1.2. result</a></li>
+<li><a href="#orge76dc4d">1.3. notes</a></li>
+<li><a href="#org91ce224">1.4. question that I do not understand</a>
 <ul>
-<li><a href="#org7fa0d5f">1.4.1. UE4 .19 crash when try to access directly from 'GetAimingComponent' class</a></li>
+<li><a href="#orgc3aded0">1.4.1. UE4 .19 crash when try to access directly from 'GetAimingComponent' class</a></li>
 </ul>
 </li>
-<li><a href="#org1766de7">1.5. a-ha moment</a>
+<li><a href="#orgfbd0daa">1.5. a-ha moment</a>
 <ul>
-<li><a href="#orge22d8ae">1.5.1. pointer to pointer</a></li>
+<li><a href="#org2226b6d">1.5.1. pointer to pointer</a></li>
 </ul>
 </li>
 </ul>
@@ -23,36 +23,36 @@
 </div>
 </div>
 
-<a id="orgc352469"></a>
+<a id="orgddbb134"></a>
 
 # L139 Creat default sub objects in C++
 
 
-<a id="org92fd43f"></a>
+<a id="orgab47645"></a>
 
 ## goal
 
 Refactoring the code so that the aiming log is a separated class.
 
 
-<a id="orgbbcc652"></a>
+<a id="orgbbad9b7"></a>
 
 ## result
 
 ![img](Source/screenCapture/tankBodyOutPutCorrectAimingLocation.png)
 
 
-<a id="org8fca8b0"></a>
+<a id="orge76dc4d"></a>
 
 ## notes
 
 
-<a id="orgbd77388"></a>
+<a id="org91ce224"></a>
 
 ## question that I do not understand
 
 
-<a id="org7fa0d5f"></a>
+<a id="orgc3aded0"></a>
 
 ### UE4 .19 crash when try to access directly from 'GetAimingComponent' class
 
@@ -337,7 +337,6 @@ Refactoring the code so that the aiming log is a separated class.
     
     I use your suggestoin in `TankAIController.cpp` in my commit: <https://github.com/randomwangran/cpp/blob/4903f7304a0c02b15983c36c88ffa025a503753a/Unreal/Section04/Source/BattleTank/Private/TankAIController.cpp>
     
-    <div class="org-center">
     void ATankAIController::Tick(float DeltaTime)
     {
        Super::Tick(DeltaTime);
@@ -349,7 +348,6 @@ Refactoring the code so that the aiming log is a separated class.
     	   GetControlledTank()->GetAimingComponent()->AimAt(HitLocation);
        }
     }
-    </div>
     
     But fail to compile:
     
@@ -383,12 +381,12 @@ Refactoring the code so that the aiming log is a separated class.
     Ran
 
 
-<a id="org1766de7"></a>
+<a id="orgfbd0daa"></a>
 
 ## a-ha moment
 
 
-<a id="orge22d8ae"></a>
+<a id="org2226b6d"></a>
 
 ### pointer to pointer
 
