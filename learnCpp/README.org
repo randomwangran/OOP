@@ -240,6 +240,140 @@
 
 ** [[https://www.learncpp.com/cpp-tutorial/82-classes-and-class-members][8.2 Classes and class members]]
 
+*** TODO Access other function's local variables
+
+**** intial question
+
+     https://www.learncpp.com/cpp-tutorial/82-classes-and-class-members/comment-page-3/#comment-380067
+
+     In construction a class, should we define all the varibles out of
+     memeber functions? I think it is not. Because I can define some
+     varibles in the mumeber functions, and it works. My questions, is this
+     a good practice? Or, Should we avoid define varibles within a member
+     function? If you can not understand me, please let me know. Here I
+     make an example:
+
+     #+BEGIN_SRC c++
+     #include <iostream>
+     #include <string>
+     
+     class Employee
+     {
+     public:
+         std::string m_name;
+         int m_id;
+         double m_wage;
+        
+     
+         // Print employee information to the screen
+         void print()
+         {
+             int m_test = 2;
+             std::cout << "Name: " << m_name <<
+                     "  Id: " << m_id << 
+                     "  Wage: $" << m_wage << '\n'; 
+                    
+             std::cout << "We have " << m_test << " employees. "<<std::endl;
+         }
+     };
+     
+     int main()
+     {
+         // Declare two employees
+         Employee alex { "Alex", 1, 25.00 };
+         Employee joe { "Joe", 2, 22.25 };
+     
+         // Print out the employee information
+         alex.print();
+         joe.print();
+     
+         return 0;
+     }
+     #+END_SRC
+
+     My question is `int m_test = 2;` a bad programming habit?
+
+**** Alex's reply
+
+     In general, there's nothing wrong with using local variables in a
+     member function. Use them just like you would for non-member
+     functions (e.g. when you don't need their values to persist
+     beyond the scope of the function). The way you've used it here
+     doesn't make sense though, since print() gets called for each
+     employee, and your "We have 2 employees" statement will get
+     printed twice.
+
+**** my 2nd reply
+
+     Is the following thought a bad programming habit? Accessing a
+     local variable in a member function of a class from another class.
+     For example, I want to access `people` ( in the class 'Employee')
+     from another class as shown in the flowing code:
+
+     #+BEGIN_SRC c++
+     struct employeeGPS
+     {
+         double x;
+         double y;
+         double z;
+     };
+      
+     class Employee
+     {
+     public:
+      
+         std::string m_name;
+         employeeGPS m_people;
+         
+         void print();
+      
+         friend class Boss;
+     };
+      
+     void Employee::print()
+     {
+      
+         employeeGPS people;
+      
+         people.x = 1;
+      
+         std::cout << "Name: " << m_name <<
+                 "  X Location: " << m_people.employeeGPS::x <<
+                 "  Y Location: " << m_people.employeeGPS::y << 
+                 "  Z Location: " << m_people.employeeGPS::z <<'\n'; 
+            
+         std::cout << "Dummy variable in local function: " << people.x <<'\n';         
+     }
+     #+END_SRC
+
+     The class `Boss` is shown in the following code:
+
+     #+BEGIN_SRC c++
+     class Boss
+     {
+     public:
+         void BossChecker(Employee &employee)
+         {
+             std::cout << employee.m_name << std::endl;
+         }
+         
+         void BossAccessToFriendFunction(Employee &employee)
+         {
+             employee.printB();
+         }
+     };
+     #+END_SRC
+
+     Is that possible to access the local variable ( people.x ) in
+     ~Employee::print()~ from an object of class ~Boss~ ? Or, is this
+     a bad thought? Is there any other method to achieve this thought?
+
+**** nascardriver's reply
+
+     That's what the "friend" keyword is for. You'll learn about it later in chapter 8.
+
+**** final remarks
+
 ** [[https://www.learncpp.com/cpp-tutorial/83-public-vs-private-access-specifiers][8.3 Public vs private access specifiers]]
 
 ** [[https://www.learncpp.com/cpp-tutorial/84-access-functions-and-encapsulation][8.4 Access functions and encapsulation]]
