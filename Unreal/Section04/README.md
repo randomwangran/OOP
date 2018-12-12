@@ -2,19 +2,19 @@
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#orgddbb134">1. L139 Creat default sub objects in C++</a>
+<li><a href="#orga0e2efe">1. L139 Creat default sub objects in C++</a>
 <ul>
-<li><a href="#orgab47645">1.1. goal</a></li>
-<li><a href="#orgbbad9b7">1.2. result</a></li>
-<li><a href="#orge76dc4d">1.3. notes</a></li>
-<li><a href="#org91ce224">1.4. question that I do not understand</a>
+<li><a href="#org76a508c">1.1. goal</a></li>
+<li><a href="#org0a89909">1.2. result</a></li>
+<li><a href="#org2cfe252">1.3. notes</a></li>
+<li><a href="#org604f314">1.4. question that I do not understand</a>
 <ul>
-<li><a href="#orgc3aded0">1.4.1. UE4 .19 crash when try to access directly from 'GetAimingComponent' class</a></li>
+<li><a href="#org5eea747">1.4.1. UE4 .19 crash when try to access directly from 'GetAimingComponent' class</a></li>
 </ul>
 </li>
-<li><a href="#orgfbd0daa">1.5. a-ha moment</a>
+<li><a href="#org28a08c7">1.5. a-ha moment</a>
 <ul>
-<li><a href="#org2226b6d">1.5.1. pointer to pointer</a></li>
+<li><a href="#org8e91a4a">1.5.1. pointer to pointer</a></li>
 </ul>
 </li>
 </ul>
@@ -23,36 +23,36 @@
 </div>
 </div>
 
-<a id="orgddbb134"></a>
+<a id="orga0e2efe"></a>
 
 # L139 Creat default sub objects in C++
 
 
-<a id="orgab47645"></a>
+<a id="org76a508c"></a>
 
 ## goal
 
 Refactoring the code so that the aiming log is a separated class.
 
 
-<a id="orgbbad9b7"></a>
+<a id="org0a89909"></a>
 
 ## result
 
 ![img](Source/screenCapture/tankBodyOutPutCorrectAimingLocation.png)
 
 
-<a id="orge76dc4d"></a>
+<a id="org2cfe252"></a>
 
 ## notes
 
 
-<a id="org91ce224"></a>
+<a id="org604f314"></a>
 
 ## question that I do not understand
 
 
-<a id="orgc3aded0"></a>
+<a id="org5eea747"></a>
 
 ### UE4 .19 crash when try to access directly from 'GetAimingComponent' class
 
@@ -380,13 +380,115 @@ Refactoring the code so that the aiming log is a separated class.
     
     Ran
 
+4.  Daniel's 2nd reply
 
-<a id="orgfbd0daa"></a>
+    > If void UTankAimingComponent::AimAt(FVector HitLocation) is something like void UObject::AimAt(FVector HitLocation)
+    
+    It's not, we defined it in UTankAimingComponent so it's not in any parent class. This is the first instance of it.
+    
+    > It is natually to think that GetPawn() should find it’s Pawn  especially when it is a request from a component. Unreal should be able to understand my intention. Why they did not implement this straigthforward thought? Do I miss something?
+    
+    Getters don't **find**, they ****get****. Controllers control pawns so by nature they hold a pointer to the pawn they are controlling.
+    If you want an analogy think of a remote control car. That car has a remote control that controls it. In code that would mean storing a pointer to that car to be able to perform actions on it like move it when you give it input to do so.
+    
+    Extending that analogy to what you're doing with the casting is trying to treat that car to be a wheel. They share a common abstract idea that they are things that exist in the world but are otherwise somewhat unrelated.
+    
+    In code
+    \`\`\`cpp
+    
+    class ARCController : public AActor
+    {
+    public:
+    GetCar() const { return Car; } 
+    private:
+    ACar\* Car;
+    };
+    
+    class ACar : public APawn
+    {
+    TArray<UWheel> Wheels;
+    };
+    \`\`\`
+    
+    \`GetCar\` gets the car the controller controls. All casts do is treat this type as if it were that type so casting it to UWheel isn't going to magically get you a component on the car.
+    Think about it if it worked the way you think it does then imagine not having an array of wheels but 4 separate UWheel pointers. Which one would the cast supposed give you?
+    
+    `========`
+    
+    \`\`\`cpp
+    static To\* DoCast(UObject\* Src)
+    {
+    return Src && Src->IsA<To>() ? (To\*)Src : nullptr;
+    }
+    \`\`\`
+    Unreal Casts do runtime checks to see if the \`From\` is a child of \`To\`, if it is it then performs a C-Style cast which basically just picks whichever cast that works. Otherwise it returns \`nullptr\`
+    
+    Also I was wrong earlier about "It compiles because the class hierarchy you described". I thought Unreal also did compile time checks as well but it does not.
+    It compiles because you can cast a pointer to any other type of pointer which using C++'s named casts would be a reinterpret<sub>cast</sub>.
+    
+    > It seems yes, but why don’t we use dynamic<sub>cast</sub>? 
+    
+    Refer to this <https://forums.unrealengine.com/development-discussion/c-gameplay-programming/40599-casting-c-syntax-and-ue-syntax>
+    
+    > I use your suggestoin in TankAIController.cpp in my commit: 
+    
+    "what you’re trying to accomplish would mean ****creating a function on ATank**** that returns the TankAimingComponent"
+    You didn't create the function I said you should create.
+
+5.  my 3rd reply
+
+    Since there are many sub-questions, I divided it into sub-tree to
+    study the confusion after reading your reply.
+    
+    1.  where to define `AimAt` function
+    
+        In my previous post, I made a speculation of where to define `AimAt`:
+        
+        > 
+        > If `void UTankAimingComponent::AimAt(FVector HitLocation)` is
+        > something like `void UObject::AimAt(FVector HitLocation)` and
+        > they are public inherit from upper parents till the same parent
+        > (`UObject`). Then both `Tank` and `UTankAimingComponent` can
+        > access this `AimAt` function.
+        
+        The reason why I make this speculation is that I cannot compile
+        my code if `AimAt` is not declared in `Tank.h`.
+        
+        I've checked Ben's solution (`54f0adb`). I saw the `AimAt`
+        function was defined in two places:
+        
+        -   [Tank.cpp](https://github.com/UnrealCourse/04_BattleTank/blob/54f0adbad057940cb229f4541a727f2383b53e9b/BattleTank/Source/BattleTank/Private/Tank.cpp#L38)
+        
+        -   [TankAimingComponent.cpp](https://github.com/UnrealCourse/04_BattleTank/blob/54f0adbad057940cb229f4541a727f2383b53e9b/BattleTank/Source/BattleTank/Private/TankAimingComponent.cpp#L37)
+        
+        Is this redundant? Correct me if I am wrong.
+        
+        Different from Ben's solution, [in my solution](https://github.com/randomwangran/cpp/blob/b3c8415642f7a2ac0fc0a7a77126ddd45a4ba043/Unreal/Section04/Source/BattleTank/Public/Tank.h), I did not declare
+        it in `Tank.cpp`, but only defined it in `TankAimingComponent.cpp`.
+        
+        The direct method to test my speculation is to write `AimAt`
+        function in `UObject`, then see what will happen.
+        
+        However, you wrote:
+        
+        > It's not, we defined it in UTankAimingComponent so it's not in any parent class. This is the first instance of it.
+        
+        `AimAt` function is indeed defined in `UTankAimingComponent`,
+        but in Ben's solutuion
+        `54f0adbad057940cb229f4541a727f2383b53e9b`, it is defined twice
+        in: (as I previous pointed out):
+        
+        -   [Tank.cpp](https://github.com/UnrealCourse/04_BattleTank/blob/54f0adbad057940cb229f4541a727f2383b53e9b/BattleTank/Source/BattleTank/Private/Tank.cpp#L38)
+        
+        -   [TankAimingComponent.cpp](https://github.com/UnrealCourse/04_BattleTank/blob/54f0adbad057940cb229f4541a727f2383b53e9b/BattleTank/Source/BattleTank/Private/TankAimingComponent.cpp#L37)
+
+
+<a id="org28a08c7"></a>
 
 ## a-ha moment
 
 
-<a id="org2226b6d"></a>
+<a id="org8e91a4a"></a>
 
 ### pointer to pointer
 

@@ -470,7 +470,20 @@
       The direct method to test my speculation is to write ~AimAt~
       function in ~UObject~, then see what will happen.
 
-      However, 
+      However, you wrote:
+
+      #+BEGIN_QUOTE
+      It's not, we defined it in UTankAimingComponent so it's not in any parent class. This is the first instance of it.
+      #+END_QUOTE
+
+      ~AimAt~ function is indeed defined in ~UTankAimingComponent~,
+      but in Ben's solutuion
+      ~54f0adbad057940cb229f4541a727f2383b53e9b~, it is defined twice
+      in: (as I previous pointed out):
+
+      - [[https://github.com/UnrealCourse/04_BattleTank/blob/54f0adbad057940cb229f4541a727f2383b53e9b/BattleTank/Source/BattleTank/Private/Tank.cpp#L38][Tank.cpp]]
+
+      - [[https://github.com/UnrealCourse/04_BattleTank/blob/54f0adbad057940cb229f4541a727f2383b53e9b/BattleTank/Source/BattleTank/Private/TankAimingComponent.cpp#L37][TankAimingComponent.cpp]]
 
 ** a-ha moment
 *** pointer to pointer
