@@ -382,14 +382,22 @@
      
      > If void UTankAimingComponent::AimAt(FVector HitLocation) is something like void UObject::AimAt(FVector HitLocation)
 
-     It's not, we defined it in UTankAimingComponent so it's not in any parent class. This is the first instance of it.
+     It's not, we defined it in UTankAimingComponent so it's not in
+     any parent class. This is the first instance of it.
      
      > It is natually to think that GetPawn() should find it’s Pawn  especially when it is a request from a component. Unreal should be able to understand my intention. Why they did not implement this straigthforward thought? Do I miss something?
      
-     Getters don't *find*, they **get**. Controllers control pawns so by nature they hold a pointer to the pawn they are controlling.
-     If you want an analogy think of a remote control car. That car has a remote control that controls it. In code that would mean storing a pointer to that car to be able to perform actions on it like move it when you give it input to do so.
+     Getters don't *find*, they **get**. Controllers control pawns so
+     by nature they hold a pointer to the pawn they are controlling.
+     If you want an analogy think of a remote control car. That car
+     has a remote control that controls it. In code that would mean
+     storing a pointer to that car to be able to perform actions on it
+     like move it when you give it input to do so.
      
-     Extending that analogy to what you're doing with the casting is trying to treat that car to be a wheel. They share a common abstract idea that they are things that exist in the world but are otherwise somewhat unrelated.
+     Extending that analogy to what you're doing with the casting is
+     trying to treat that car to be a wheel. They share a common
+     abstract idea that they are things that exist in the world but
+     are otherwise somewhat unrelated.
      
      In code
      ```cpp
@@ -470,7 +478,7 @@
       The direct method to test my speculation is to write ~AimAt~
       function in ~UObject~, then see what will happen.
 
-      However, you wrote:
+      However, you suggested: 
 
       #+BEGIN_QUOTE
       It's not, we defined it in UTankAimingComponent so it's not in any parent class. This is the first instance of it.
@@ -484,6 +492,29 @@
       - [[https://github.com/UnrealCourse/04_BattleTank/blob/54f0adbad057940cb229f4541a727f2383b53e9b/BattleTank/Source/BattleTank/Private/Tank.cpp#L38][Tank.cpp]]
 
       - [[https://github.com/UnrealCourse/04_BattleTank/blob/54f0adbad057940cb229f4541a727f2383b53e9b/BattleTank/Source/BattleTank/Private/TankAimingComponent.cpp#L37][TankAimingComponent.cpp]]
+
+
+      So, in the compile time, it is naturally to ask:
+
+      Which ~AimAt~, i.g. [[https://github.com/UnrealCourse/04_BattleTank/blob/54f0adbad057940cb229f4541a727f2383b53e9b/BattleTank/Source/BattleTank/Private/TankAIController.cpp#L31][~AI~]] and [[https://github.com/UnrealCourse/04_BattleTank/blob/54f0adbad057940cb229f4541a727f2383b53e9b/BattleTank/Source/BattleTank/Private/TankPlayerController.cpp#L40][Player]], the program is calling.
+
+      Than answer, to me, is simple: it is the
+      [[https://github.com/UnrealCourse/04_BattleTank/blob/54f0adbad057940cb229f4541a727f2383b53e9b/BattleTank/Source/BattleTank/Private/TankAimingComponent.cpp#L37][TankAimingComponent.cpp]], because it print out the name and
+      location of the tank. 
+
+      My confusion is, do we need the extra definition of ~AimAt~
+      function in [[https://github.com/UnrealCourse/04_BattleTank/blob/54f0adbad057940cb229f4541a727f2383b53e9b/BattleTank/Source/BattleTank/Private/Tank.cpp#L38][Tank.cpp]]? Why we need? If not, delete it would be a
+      better choice?
+
+***** Getter and analogy
+      
+      #+BEGIN_QUOTE
+      Getters don't *find*, they **get**.
+      #+END_QUOTE
+
+      I agree with you. That's what the ~Getters~ supposed to do. The
+      instruction of ~find~ should be given by other method.
+      
 
 ** a-ha moment
 *** pointer to pointer
