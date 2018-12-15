@@ -515,6 +515,47 @@
       I agree with you. That's what the ~Getters~ supposed to do. The
       instruction of ~find~ should be given by other method.
       
+      I've check UE4's source code, 
+
+      #+BEGIN_SRC c++
+      /** Getter for Pawn */
+	FORCEINLINE APawn* GetPawn() const { return Pawn; }
+      #+END_SRC
+      
+      #+BEGIN_SRC c++
+#include <iostream>
+using namespace std;
+
+class pawn
+{
+    public:
+        int type;
+        int getPawn()
+		{
+			return type;
+		}
+        pawn()
+		{
+			type = 1;
+		}
+};
+
+class componentOfPawn : public pawn
+{
+    public:
+        componentOfPawn()
+		{
+			type = 2;
+		}
+};
+
+int main ()
+{
+   componentOfPawn *b = new componentOfPawn();
+   cout<< b->getPawn();
+}
+      
+      #+END_SRC
 
 ** a-ha moment
 *** pointer to pointer
