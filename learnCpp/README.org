@@ -466,6 +466,11 @@
 
 ** [[https://www.learncpp.com/cpp-tutorial/111-introduction-to-inheritance][11.1 Introduction to inheritance]]
 
+*** when to use inherit?
+
+    If two objects have a relation ~has~, then it's not
+    inheritance. Better to use ~Object composition~.
+    
 ** [[https://www.learncpp.com/cpp-tutorial/112-basic-inheritance-in-c][11.2 Basic inheritance in C++]]
 
 ** [[https://www.learncpp.com/cpp-tutorial/113-order-of-construction-of-derived-classes][11.3 Order of construction of derived classes]]
