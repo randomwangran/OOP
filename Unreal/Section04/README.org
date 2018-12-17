@@ -524,7 +524,7 @@
 
       ~GetPawn()~ return a ~APawn~ pointer.
 
-      At this moment, I start to think that why ~UTankAimingComponent~
+      At this moment, I start to think why ~UTankAimingComponent~
 
       is not inherit from ~ATank~ but instead:
 
@@ -548,8 +548,108 @@
       protection, etc...), in our game, ~ATank~ has
       ~UTankAimingComponent~.
 
-      So, I figure out what was wrong.	
+      So, I figure out what was wrong.
 
+
+      #+BEGIN_QUOTE
+      If you want an analogy think of a remote control car. That car
+      has a remote control that controls it. In code that would mean
+      storing a pointer to that car to be able to perform actions on it
+      like move it when you give it input to do so.
+      #+END_QUOTE
+
+      Using the analogy given, I think that ~remote controller~ would
+      be best to use ~object composition~ if someone needs to build
+      the system that you are referring.
+
+***** casting  analogy
+
+      #+BEGIN_QUOTE
+      Extending that analogy to what you're doing with the casting is
+      trying to treat that car to be a wheel. They share a common
+      abstract idea that they are things that exist in the world but
+      are otherwise somewhat unrelated.
+      #+END_QUOTE
+
+      I jsut want to make it a little bit clear. After re-read my code
+      and this comment, [[https://github.com/randomwangran/cpp/blob/4903f7304a0c02b15983c36c88ffa025a503753a/Unreal/Section04/Source/BattleTank/Private/TankAIController.cpp][my old code]]:
+
+      #+BEGIN_SRC c++
+      UTankAimingComponent* ATankAIController::GetAimingComponent() const
+{
+	return Cast<UTankAimingComponent>(GetPawn());
+}
+
+ATank* ATankAIController::GetPlayerTank() const
+{
+	auto PlayerPawn = GetWorld()->GetFirstPlayerController()->GetPawn();
+	if (!PlayerPawn) { return nullptr; } // Note the !, very important
+	return Cast<ATank>(PlayerPawn);
+}
+      #+END_SRC
+
+      
+      As I wrote: ~return Cast<UTankAimingComponent>(GetPawn());~. I
+      tried to cast a ~APawn~ pointer into a ~UTankAimingComponent~
+      pointer. Using the analogy we are talking, i.e., ~ATank~ is the
+      ~car~ and ~UTankAimingComponent~ is the ~remoter controller~.
+
+      I tried to converted this ~remoter controller~ into a
+      ~car~. Because I want to use the function (~AimAt~) in the ~car~
+      class. This is wrong! As you wrote:
+
+      #+BEGIN_QUOTE
+      They share a common abstract idea that they are things that
+      exist in the world but are otherwise somewhat unrelated.
+      #+END_QUOTE
+
+      I want to make it more precise:
+
+      First, in a form of analogy, ~car~ and ~remote controller~ do
+      not share the a common abstract idea. They has a relation: ~car~
+      has a ~remote controller~. This is an indication of using
+      object composition insteady of using inheritance.
+
+      Second, in this unreal challenge in build the tank game,
+      ~ATank~ has a ~UTankAimingComponent~. So, this not the place to
+      use inheritance stuff.
+
+      Then, the next question would be: why we cast ~APawn~ into
+      ~ATank~. That is because ~ATank~ is ~APawn~! (Wow~ exactly
+      matched the phrase in c++ book). why we need a ~ATank~ pointer
+      instead of ~APawn~ pointer? That is because we need to know
+      which tank we are talking about. And that's how to use
+      ~GetName~ int the following code:
+
+      #+BEGIN_SRC c++
+      void ATankPlayerController::BeginPlay()
+{
+	Super::BeginPlay();
+
+	auto ControlledTank = GetControlledTank();
+	if (!ControlledTank)
+	{
+		UE_LOG(LogTemp, Warning, TEXT("PlayController not possesing a tank"));
+	}
+	else
+	{
+		UE_LOG(LogTemp, Warning, TEXT("PlayerController possessing: %s"), *(ControlledTank->GetName()));
+	}
+}
+      
+      #+END_SRC
+
+      I start to feel that ~Cast~ is a tool that for inheritance stuff
+      in c++. If you want to use the functionaility that is in an abstract
+      entity in parent class, you ~Cast~ that pointer into the child
+      class, then you use converted pointer to access the
+      functionality in the parent class. Then you achive the
+      ~Polymorphic~ in c++! Becasue differnt child will generate
+      different result in using the functionality in parent class. In
+      our case, Different AI tanks will generate different name.
+
+      Wow! I love c++.
+      
 ** a-ha moment
 *** pointer to pointer
 
