@@ -650,6 +650,22 @@ ATank* ATankAIController::GetPlayerTank() const
 
       Wow! I love c++.
       
+***** cpp code: ~GetCar~
+      
+      
+
+***** additional question
+      
+      For get function in unreal, why UE use ~FORCEINLINE~ keyword?
+
+      What are they? The getter function is already so simple but why
+      we need more stuff here?
+
+      #+BEGIN_SRC c++
+      /** Getter for Pawn */
+	FORCEINLINE APawn* GetPawn() const { return Pawn; }
+      #+END_SRC
+
 ** a-ha moment
 *** pointer to pointer
 
