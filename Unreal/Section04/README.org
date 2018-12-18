@@ -562,7 +562,7 @@
       be best to use ~object composition~ if someone needs to build
       the system that you are referring.
 
-***** casting  analogy
+***** casting analogy
 
       #+BEGIN_QUOTE
       Extending that analogy to what you're doing with the casting is
@@ -652,8 +652,60 @@ ATank* ATankAIController::GetPlayerTank() const
       
 ***** cpp code: ~GetCar~
       
-      
+      Thanks for providing this code snippet.
 
+      First, I just want to reinforece my understing from the previous
+      sub-tree, i.e., casting analogy. 
+
+      ~ACar~ has ~ARCController~, so it is the best to write it as a
+      object composition to deal with it. And, you did it by declaring
+      a ~TArray<UWheel> Wheels;~, which is good.
+
+      ~ACar~ is ~APawn~, so you do the public inheritance from
+      ~APawn~, which is good again.
+
+      I read your following comments several times but I have hard
+      time to understand:
+
+      #+BEGIN_QUOTE
+      All casts do is treat this type as if it were that type so casting it to UWheel isn't going to magically get you a component on the car.
+      #+END_QUOTE
+
+      From my understanding, do you mean that casting something
+      (~ARCController~?) into ~UWheel~ won't convert it into a
+      compoent of a car?
+      
+      Now I know that it won't work becasue ~ARCController~ and
+      ~UWheel~ do not have any inheritance relation. ~Cast~ won't help
+      in this situation.
+
+      But the reason why I do the following cast in my previous reply:
+
+      #+BEGIN_SRC c++
+     UTankAimingComponent* ATankAIController::GetAimingComponent() const { 
+         return Cast<UTankAimingComponent>(GetPawn()); 
+     }
+     #+END_SRC
+
+     is that I need a ~UTankAimingComponent~ pointer, to access
+     ~UTankAimingComponent~'s function: ~AimAt~.
+
+     That's what a naive programmer really want to know. But he
+     forgot ~UTankAimingComponent~ does not have a direct inheritance
+     realation to ~APawn~. It is inherited from ~UActorComponent ->
+     UObject -> UObjectBaseUtility -> UObjectBase~
+
+     Although ~UTankAimingComponent~ share the same base ~UObject~
+     with ~ATank~, (I speculate that it is too far), cast won't work
+     for ~UTankAimingComponent~. But it works for ~ATank~ because
+     ~ATank~ is directly derived from ~APawn~.
+
+     Then I got a super hard question:
+
+     Is that possible to write a getter function within
+     ~UTankAimingComponent~ so that it returns the first derived class
+     of ~APawn~?
+      
 ***** additional question
       
       For get function in unreal, why UE use ~FORCEINLINE~ keyword?
