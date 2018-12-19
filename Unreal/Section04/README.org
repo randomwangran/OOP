@@ -705,7 +705,44 @@ ATank* ATankAIController::GetPlayerTank() const
      Is that possible to write a getter function within
      ~UTankAimingComponent~ so that it returns the first derived class
      of ~APawn~?
+
+***** Daniel gives me a question      
+
+      #+BEGIN_QUOTE
+      Think about it if it worked the way you think it does then imagine not having an array of wheels but 4 separate UWheel pointers. Which one would the cast supposed give you?
+      #+END_QUOTE
       
+      I am not sure what this question is asking. 
+
+      #+BEGIN_QUOTE
+      having an array of wheels but 4 separate UWheel pointers
+      #+END_QUOTE
+
+      If this is ture, the code supppoese to write like this:
+
+      #+BEGIN_SRC c++
+      class ACar : public APawn
+     {
+     TArray<UWheel> *Wheels;
+     };
+      #+END_SRC
+
+      You declare a type (~UWheel~) of ~TArray~, which is array of
+      pointer? I've learned that in c++, a const array share many
+      similarities between a pointer, but there are some differeces,
+      i.e., ~sizeof()~. This may little bit of the question, but if I
+      am incorrectly understanding your question, please let me know.
+      
+      #+BEGIN_QUOTE
+      Which one would the cast supposed give you?
+      #+END_QUOTE
+      
+      Are you asking ~cast~ ~UWheel~ into ~ACar~, (that's my old
+      thoughts), which is wrong. You can not do that. Again, ~UWheel~
+      do not have inheritance relation with ~ACar~. 
+
+      Correct me if I mis understanding your question.
+
 ***** additional question
       
       For get function in unreal, why UE use ~FORCEINLINE~ keyword?
