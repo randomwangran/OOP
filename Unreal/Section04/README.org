@@ -706,7 +706,7 @@ ATank* ATankAIController::GetPlayerTank() const
      ~UTankAimingComponent~ so that it returns the first derived class
      of ~APawn~?
 
-***** Daniel gives me a question      
+***** Daniel gives me a question
 
       #+BEGIN_QUOTE
       Think about it if it worked the way you think it does then imagine not having an array of wheels but 4 separate UWheel pointers. Which one would the cast supposed give you?
@@ -743,6 +743,11 @@ ATank* ATankAIController::GetPlayerTank() const
 
       Correct me if I mis understanding your question.
 
+***** unreal ~DoCast~ Ternary operators
+      
+      
+
+      
 ***** additional question
       
       For get function in unreal, why UE use ~FORCEINLINE~ keyword?
