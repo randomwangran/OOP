@@ -76,6 +76,21 @@
 
 ** [[https://www.learncpp.com/cpp-tutorial/34-sizeof-comma-and-conditional-operators][3.4 Sizeof, comma, and conditional operators]]
 
+*** Ternary operators
+
+    #+BEGIN_SRC c++
+    static To* DoCast(UObject* Src)
+    {
+    return Src && Src->IsA<To>() ? (To*)Src : nullptr;
+    }
+    #+END_SRC
+   
+    It's ugly, but it is just a if-statement.
+
+    (Checker)? Option_A: Option_B.
+
+    If checker ture, then Opetion_A, else Option_B.
+
 ** [[https://www.learncpp.com/cpp-tutorial/35-relational-operators-comparisons][3.5 Relational operators (comparisons)]]
 
 ** [[https://www.learncpp.com/cpp-tutorial/36-logical-operators][3.6 Logical operators]]
