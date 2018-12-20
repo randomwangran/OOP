@@ -217,8 +217,6 @@
 
 ** [[https://www.learncpp.com/cpp-tutorial/71-function-parameters-and-arguments][7.1 Function parameters and arguments]]
 
-*** https://www.youtube.com/watch?v=2SUvWfNJSsM&feature=youtu.be
-
 ** [[https://www.learncpp.com/cpp-tutorial/72-passing-arguments-by-value][7.2 Passing arguments by value]]
 
 ** [[https://www.learncpp.com/cpp-tutorial/73-passing-arguments-by-reference][7.3 Passing arguments by reference]]
@@ -240,6 +238,8 @@
 ** [[https://www.learncpp.com/cpp-tutorial/7-10-stdvector-capacity-and-stack-behavior][7.10 std::vector capacity and stack behavior]]
 
 ** [[https://www.learncpp.com/cpp-tutorial/7-11-recursion][7.11 Recursion]]
+*** Youtube video deomo
+    https://www.youtube.com/watch?v=2SUvWfNJSsM&feature=youtu.be
 
 ** [[https://www.learncpp.com/cpp-tutorial/712-handling-errors-assert-cerr-exit-and-exceptions][7.12 Handling errors, cerr and exit]]
 
