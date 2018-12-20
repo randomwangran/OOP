@@ -744,9 +744,23 @@ ATank* ATankAIController::GetPlayerTank() const
       Correct me if I mis understanding your question.
 
 ***** unreal ~DoCast~ Ternary operators
-      
-      
 
+      #+BEGIN_SRC c++
+      // Dynamically cast an object type-safely.
+      template <typename To, typename From>
+      FORCEINLINE To* Cast(From* Src)
+      {
+      return TCastImpl<From, To>::DoCast(Src);
+      }
+      #+END_SRC c++
+
+
+      #+BEGIN_SRC c++
+      static To* DoCast(UObject* Src)
+      {
+      return Src && Src->IsA<To>() ? (To*)Src : nullptr;
+      }
+      #+END_SRC
       
 ***** additional question
       
