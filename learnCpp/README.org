@@ -531,7 +531,6 @@
 ** [[https://www.learncpp.com/cpp-tutorial/12-x-chapter-12-comprehensive-quiz][12.x Chapter 12 comprehensive quiz]]
 
 * Chapter 13: Templates
-
 ** [[https://www.learncpp.com/cpp-tutorial/131-function-templates][13.1 Function templates]]
 
 ** [[https://www.learncpp.com/cpp-tutorial/132-function-template-instances][13.2 Function template instances]]
