@@ -745,6 +745,8 @@ ATank* ATankAIController::GetPlayerTank() const
 
 ***** unreal ~DoCast~ Ternary operators
 
+      In my 2nd reply, I was confused by the following code:
+      
       #+BEGIN_SRC c++
       // Dynamically cast an object type-safely.
       template <typename To, typename From>
@@ -754,12 +756,69 @@ ATank* ATankAIController::GetPlayerTank() const
       }
       #+END_SRC c++
 
+      Thanks for pointing out the ~DoCast~ code:
 
       #+BEGIN_SRC c++
       static To* DoCast(UObject* Src)
       {
       return Src && Src->IsA<To>() ? (To*)Src : nullptr;
       }
+      #+END_SRC
+
+      But it is too abstract for me.
+      
+      I found the original code you referred to me:
+
+      #+BEGIN_SRC c++
+      template <typename From, typename To>
+      struct TCastImpl<From, To, ECastType::UObjectToUObject>
+      {
+      FORCEINLINE static To* DoCast( UObject* Src )
+	{
+		return Src && Src->IsA<To>() ? (To*)Src : nullptr;
+	}
+
+	FORCEINLINE static To* DoCastCheckedWithoutTypeCheck( UObject* Src )
+	{
+		return (To*)Src;
+	}
+	};
+      #+END_SRC
+
+      I just want to know
+
+      How Unreal check ~`From` is a child of `To`~? If I had somehow
+      to write a piece code to do this kind of check, I would do the
+      following snippet:
+      
+      #+BEGIN_SRC c++
+      
+      #+END_SRC
+      
+      ~IsA~ looks great! It's an indication of the inheritance checker!
+
+      #+BEGIN_SRC c++
+	public:
+		template <typename OtherClassType>
+		FORCEINLINE bool IsA( OtherClassType SomeBase ) const
+		{
+			// We have a cyclic dependency between UObjectBaseUtility and UClass,
+			// so we use a template to allow inlining of something we haven't yet seen, because it delays compilation until the function is called.
+
+			// 'static_assert' that this thing is actually a UClass pointer or convertible to it.
+			const UClass* SomeBaseClass = SomeBase;
+			(void)SomeBaseClass;
+			checkfSlow(SomeBaseClass, TEXT("IsA(NULL) cannot yield meaningful results"));
+
+			const UClass* ThisClass = GetClass();
+
+			// Stop the compiler doing some unnecessary branching for nullptr checks
+			ASSUME(SomeBaseClass);
+			ASSUME(ThisClass);
+
+			return IsAWorkaround(ThisClass, SomeBaseClass);
+
+      
       #+END_SRC
       
 ***** additional question
