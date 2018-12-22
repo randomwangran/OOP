@@ -787,12 +787,27 @@ ATank* ATankAIController::GetPlayerTank() const
 
       I just want to know
 
-      How Unreal check ~`From` is a child of `To`~? If I had somehow
+      How Unreal do runtime check to see if `From` is a child of `To`? If I had somehow
       to write a piece code to do this kind of check, I would do the
       following snippet:
       
       #+BEGIN_SRC c++
-      
+      class ParentA {
+
+      public: ParentA(){}
+
+      };
+
+      class ParentB {
+      public: ParentB(){}
+
+      };
+
+      class childA : public ParentA {
+
+      public ChildA(){}
+
+      }
       #+END_SRC
       
       ~IsA~ looks great! It's an indication of the inheritance checker!
