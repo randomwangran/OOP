@@ -792,6 +792,10 @@ ATank* ATankAIController::GetPlayerTank() const
       following snippet:
       
       #+BEGIN_SRC c++
+      #include <iostream>
+
+      using namespace std;
+
       class ParentA {
 
       public: ParentA(){}
@@ -805,8 +809,23 @@ ATank* ATankAIController::GetPlayerTank() const
 
       class childA : public ParentA {
 
-      public ChildA(){}
+      public: 
+            
+            int ChildA(){}
 
+      };
+
+      class childB : public ParentB {
+
+      public:
+        
+            int ChildB(){}
+
+      };
+
+      int main() {
+
+          std::cout<<"Hello world!"<<std::endl;
       }
       #+END_SRC
       
