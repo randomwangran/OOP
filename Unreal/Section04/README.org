@@ -824,11 +824,20 @@ ATank* ATankAIController::GetPlayerTank() const
       };
 
       int main() {
-
+      
+      childA lucifer;
+      childB angela;
+      
           std::cout<<"Hello world!"<<std::endl;
       }
       #+END_SRC
-      
+
+      My question is: 
+
+      - where do I define ~IsA~ checker function?
+
+
+
       ~IsA~ looks great! It's an indication of the inheritance checker!
 
       #+BEGIN_SRC c++
@@ -854,7 +863,21 @@ ATank* ATankAIController::GetPlayerTank() const
 
       
       #+END_SRC
+
+***** what is #if #endif in ~UObjectBaseUtility.h~
       
+      Those things looks like magic to me:
+
+      #+BEGIN_SRC c++
+      #if UCLASS_FAST_ISA_IMPL == UCLASS_ISA_INDEXTREE
+      return ObjClass->IsAUsingFastTree(*TestCls);
+      #elif UCLASS_FAST_ISA_IMPL == UCLASS_ISA_CLASSARRAY
+      return ObjClass->IsAUsingClassArray(*TestCls);
+      #endif
+      #+END_SRC
+
+      What are they? why we need them?
+
 ***** additional question
       
       For get function in unreal, why UE use ~FORCEINLINE~ keyword?
