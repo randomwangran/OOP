@@ -797,7 +797,6 @@ ATank* ATankAIController::GetPlayerTank() const
       using namespace std;
 
       class ParentA {
-
       public: ParentA(){}
 
       };
@@ -808,7 +807,6 @@ ATank* ATankAIController::GetPlayerTank() const
       };
 
       class childA : public ParentA {
-
       public: 
             
             int ChildA(){}
@@ -816,7 +814,6 @@ ATank* ATankAIController::GetPlayerTank() const
       };
 
       class childB : public ParentB {
-
       public:
         
             int ChildB(){}
@@ -835,6 +832,16 @@ ATank* ATankAIController::GetPlayerTank() const
       My question is: 
 
       - where do I define ~IsA~ checker function?
+
+      As I further thing this question, I start to ask my self:
+
+      - why we need to do runtime checks to see one class is a child
+        of another class?
+
+      For example, ~childA~ is a child of ~ParentA~. If ~childA~ want
+      to accesss some functions in its parent class, i.e. ~ParentA~,
+      it should have no problem. However, if the request is from
+      ~childB~, the situation is different. 
 
 
 
