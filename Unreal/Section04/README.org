@@ -682,29 +682,29 @@ ATank* ATankAIController::GetPlayerTank() const
       But the reason why I do the following cast in my previous reply:
 
       #+BEGIN_SRC c++
-     UTankAimingComponent* ATankAIController::GetAimingComponent() const { 
-         return Cast<UTankAimingComponent>(GetPawn()); 
-     }
-     #+END_SRC
+      UTankAimingComponent* ATankAIController::GetAimingComponent() const { 
+      return Cast<UTankAimingComponent>(GetPawn()); 
+      }
+      #+END_SRC
 
-     is that I need a ~UTankAimingComponent~ pointer, to access
-     ~UTankAimingComponent~'s function: ~AimAt~.
+      is that I need a ~UTankAimingComponent~ pointer, to access
+      ~UTankAimingComponent~'s function: ~AimAt~.
 
-     That's what a naive programmer really want to know. But he
-     forgot ~UTankAimingComponent~ does not have a direct inheritance
-     realation to ~APawn~. It is inherited from ~UActorComponent ->
-     UObject -> UObjectBaseUtility -> UObjectBase~
+      That's what a naive programmer really want to know. But he
+      forgot ~UTankAimingComponent~ does not have a direct inheritance
+      realation to ~APawn~. It is inherited from ~UActorComponent ->
+      UObject -> UObjectBaseUtility -> UObjectBase~
 
-     Although ~UTankAimingComponent~ share the same base ~UObject~
-     with ~ATank~, (I speculate that it is too far), cast won't work
-     for ~UTankAimingComponent~. But it works for ~ATank~ because
-     ~ATank~ is directly derived from ~APawn~.
+      Although ~UTankAimingComponent~ share the same base ~UObject~
+      with ~ATank~, (I speculate that it is too far), cast won't work
+      for ~UTankAimingComponent~. But it works for ~ATank~ because
+      ~ATank~ is directly derived from ~APawn~.
 
-     Then I got a super hard question:
+      Then I got a super hard question:
 
-     Is that possible to write a getter function within
-     ~UTankAimingComponent~ so that it returns the first derived class
-     of ~APawn~?
+      Is that possible to write a getter function within
+      ~UTankAimingComponent~ so that it returns the first derived class
+      of ~APawn~?
 
 ***** Daniel gives me a question
 
@@ -722,9 +722,9 @@ ATank* ATankAIController::GetPlayerTank() const
 
       #+BEGIN_SRC c++
       class ACar : public APawn
-     {
-     TArray<UWheel> *Wheels;
-     };
+      {
+      TArray<UWheel> *Wheels;
+      };
       #+END_SRC
 
       You declare a type (~UWheel~) of ~TArray~, which is array of
@@ -741,7 +741,7 @@ ATank* ATankAIController::GetPlayerTank() const
       thoughts), which is wrong. You can not do that. Again, ~UWheel~
       do not have inheritance relation with ~ACar~. 
 
-      Correct me if I mis understanding your question.
+      Correct me if I mis-understanding your question.
 
 ***** unreal ~DoCast~ Ternary operators
 
@@ -766,7 +766,7 @@ ATank* ATankAIController::GetPlayerTank() const
       #+END_SRC
 
       But it is too abstract for me.
-      
+
       I found the original code you referred to me:
 
       #+BEGIN_SRC c++
@@ -774,23 +774,85 @@ ATank* ATankAIController::GetPlayerTank() const
       struct TCastImpl<From, To, ECastType::UObjectToUObject>
       {
       FORCEINLINE static To* DoCast( UObject* Src )
-	{
-		return Src && Src->IsA<To>() ? (To*)Src : nullptr;
-	}
+      {
+      return Src && Src->IsA<To>() ? (To*)Src : nullptr;
+      }
 
-	FORCEINLINE static To* DoCastCheckedWithoutTypeCheck( UObject* Src )
-	{
-		return (To*)Src;
-	}
-	};
+      FORCEINLINE static To* DoCastCheckedWithoutTypeCheck( UObject* Src )
+      {
+      return (To*)Src;
+      }
+      };
       #+END_SRC
 
-      I just want to know
-
-      How Unreal do runtime check to see if `From` is a child of `To`? If I had somehow
-      to write a piece code to do this kind of check, I would do the
-      following snippet:
+      ~IsA(UObjectBaseUtility.h)~ looks great! It's an indication of the inheritance checker!
       
+      #+BEGIN_SRC c++
+      public:
+		template <typename OtherClassType>
+		FORCEINLINE bool IsA( OtherClassType SomeBase ) const
+		{
+			// We have a cyclic dependency between UObjectBaseUtility and UClass,
+			// so we use a template to allow inlining of something we haven't yet seen, because it delays compilation until the function is called.
+
+			// 'static_assert' that this thing is actually a UClass pointer or convertible to it.
+			const UClass* SomeBaseClass = SomeBase;
+			(void)SomeBaseClass;
+			checkfSlow(SomeBaseClass, TEXT("IsA(NULL) cannot yield meaningful results"));
+
+			const UClass* ThisClass = GetClass();
+
+			// Stop the compiler doing some unnecessary branching for nullptr checks
+			ASSUME(SomeBaseClass);
+			ASSUME(ThisClass);
+
+			return IsAWorkaround(ThisClass, SomeBaseClass);
+      #+END_SRC
+
+      Too abstract to me. Then, I look it in its *.cpp file:
+
+      #+BEGIN_SRC c++
+	bool UObjectBaseUtility::IsA( const UClass* SomeBase ) const
+	{
+		UE_CLOG(!SomeBase, LogObj, Fatal, TEXT("IsA(NULL) cannot yield meaningful results"));
+
+		UClass* ThisClass = GetClass();
+
+		bool bOldResult = false;
+		for ( UClass* TempClass=ThisClass; TempClass; TempClass=TempClass->GetSuperClass() )
+		{
+			if ( TempClass == SomeBase )
+			{
+				bOldResult = true;
+				break;
+			}
+		}
+      #+END_SRC
+
+      The ~for~ loops looks interesting.
+      
+      When we write for, it looks like this:
+
+      #+BEGIN_SRC c++
+      for (int count=0; count < 10; ++count)
+      #+END_SRC
+
+      Unreal do this:
+      #+BEGIN_SRC c++
+      for ( UClass* TempClass=ThisClass; TempClass; TempClass=TempClass->GetSuperClass() )
+      #+END_SRC
+      
+      The second one looks strange to me. Usually, it is a termination
+      condition of a look. In unreal, it is a ~UClass~ pointer.
+
+      How can we use a pointer to set condition within a ~for~ loop?
+
+      Now, I just want to know:
+
+      How Unreal do runtime check to see if `From` is a child of `To`?
+      If I had somehow to write a piece code to do this kind of check,
+      I would do the following snippet:
+
       #+BEGIN_SRC c++
       #include <iostream>
 
@@ -825,15 +887,15 @@ ATank* ATankAIController::GetPlayerTank() const
       childA lucifer;
       childB angela;
       
-          std::cout<<"Hello world!"<<std::endl;
+      std::cout<<"Hello world!"<<std::endl;
       }
       #+END_SRC
 
-      My question is: 
+      My question is:
 
       - where do I define ~IsA~ checker function?
 
-      As I further thing this question, I start to ask my self:
+      As I further study this question, I start to ask my self:
 
       - why we need to do runtime checks to see one class is a child
         of another class?
@@ -841,8 +903,8 @@ ATank* ATankAIController::GetPlayerTank() const
       For example, ~childA~ is a child of ~ParentA~. If ~childA~ want
       to accesss some functions in its parent class, i.e. ~ParentA~,
       it should have no problem. However, if the request is from
-      ~childB~, the situation is different. 
-      
+      ~childB~, the situation is different.
+
       Things getting interesting: I found a reference that debates
       about the issue I am facing.
 
@@ -854,32 +916,8 @@ ATank* ATankAIController::GetPlayerTank() const
 
       https://en.wikipedia.org/wiki/Liskov_substitution_principle
 
-
-      ~IsA~ looks great! It's an indication of the inheritance checker!
-
-      #+BEGIN_SRC c++
-	public:
-		template <typename OtherClassType>
-		FORCEINLINE bool IsA( OtherClassType SomeBase ) const
-		{
-			// We have a cyclic dependency between UObjectBaseUtility and UClass,
-			// so we use a template to allow inlining of something we haven't yet seen, because it delays compilation until the function is called.
-
-			// 'static_assert' that this thing is actually a UClass pointer or convertible to it.
-			const UClass* SomeBaseClass = SomeBase;
-			(void)SomeBaseClass;
-			checkfSlow(SomeBaseClass, TEXT("IsA(NULL) cannot yield meaningful results"));
-
-			const UClass* ThisClass = GetClass();
-
-			// Stop the compiler doing some unnecessary branching for nullptr checks
-			ASSUME(SomeBaseClass);
-			ASSUME(ThisClass);
-
-			return IsAWorkaround(ThisClass, SomeBaseClass);
-
-      
-      #+END_SRC
+      It seems that it is a bad idea to write a class that need to
+      known what class an object is.
 
 ***** what is #if #endif in ~UObjectBaseUtility.h~
       
