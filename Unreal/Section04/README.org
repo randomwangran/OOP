@@ -842,7 +842,11 @@ ATank* ATankAIController::GetPlayerTank() const
       to accesss some functions in its parent class, i.e. ~ParentA~,
       it should have no problem. However, if the request is from
       ~childB~, the situation is different. 
+      
+      Things getting interesting: I found a reference that debates
+      about the issue I am facing.
 
+      https://stackoverflow.com/questions/307765/how-do-i-check-if-an-objects-type-is-a-particular-subclass-in-c
 
       ~IsA~ looks great! It's an indication of the inheritance checker!
 
