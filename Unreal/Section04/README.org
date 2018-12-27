@@ -848,6 +848,13 @@ ATank* ATankAIController::GetPlayerTank() const
 
       https://stackoverflow.com/questions/307765/how-do-i-check-if-an-objects-type-is-a-particular-subclass-in-c
 
+      Then I found a concept:
+
+      LSP: Liskov substitution principle
+
+      https://en.wikipedia.org/wiki/Liskov_substitution_principle
+
+
       ~IsA~ looks great! It's an indication of the inheritance checker!
 
       #+BEGIN_SRC c++
