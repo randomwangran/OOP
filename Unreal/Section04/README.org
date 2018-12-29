@@ -752,7 +752,7 @@ ATank* ATankAIController::GetPlayerTank() const
       template <typename To, typename From>
       FORCEINLINE To* Cast(From* Src)
       {
-      return TCastImpl<From, To>::DoCast(Src);
+          return TCastImpl<From, To>::DoCast(Src);
       }
       #+END_SRC c++
 
@@ -761,7 +761,7 @@ ATank* ATankAIController::GetPlayerTank() const
       #+BEGIN_SRC c++
       static To* DoCast(UObject* Src)
       {
-      return Src && Src->IsA<To>() ? (To*)Src : nullptr;
+          return Src && Src->IsA<To>() ? (To*)Src : nullptr;
       }
       #+END_SRC
 
@@ -775,12 +775,12 @@ ATank* ATankAIController::GetPlayerTank() const
       {
       FORCEINLINE static To* DoCast( UObject* Src )
       {
-      return Src && Src->IsA<To>() ? (To*)Src : nullptr;
+          return Src && Src->IsA<To>() ? (To*)Src : nullptr;
       }
 
       FORCEINLINE static To* DoCastCheckedWithoutTypeCheck( UObject* Src )
       {
-      return (To*)Src;
+          return (To*)Src;
       }
       };
       #+END_SRC
@@ -812,21 +812,21 @@ ATank* ATankAIController::GetPlayerTank() const
       Too abstract to me. Then, I look it in its *.cpp file:
 
       #+BEGIN_SRC c++
-	bool UObjectBaseUtility::IsA( const UClass* SomeBase ) const
-	{
-		UE_CLOG(!SomeBase, LogObj, Fatal, TEXT("IsA(NULL) cannot yield meaningful results"));
-
-		UClass* ThisClass = GetClass();
-
-		bool bOldResult = false;
-		for ( UClass* TempClass=ThisClass; TempClass; TempClass=TempClass->GetSuperClass() )
-		{
-			if ( TempClass == SomeBase )
-			{
-				bOldResult = true;
-				break;
-			}
-		}
+      bool UObjectBaseUtility::IsA( const UClass* SomeBase ) const
+      {
+      UE_CLOG(!SomeBase, LogObj, Fatal, TEXT("IsA(NULL) cannot yield meaningful results"));
+      
+      UClass* ThisClass = GetClass();
+      
+      bool bOldResult = false;
+      for ( UClass* TempClass=ThisClass; TempClass; TempClass=TempClass->GetSuperClass() )
+      {
+      if ( TempClass == SomeBase )
+      {
+      bOldResult = true;
+      break;
+      }
+      }
       #+END_SRC
 
       The ~for~ loops looks interesting.
@@ -837,15 +837,94 @@ ATank* ATankAIController::GetPlayerTank() const
       for (int count=0; count < 10; ++count)
       #+END_SRC
 
-      Unreal do this:
+      But! Unreal do this:
       #+BEGIN_SRC c++
       for ( UClass* TempClass=ThisClass; TempClass; TempClass=TempClass->GetSuperClass() )
       #+END_SRC
       
       The second one looks strange to me. Usually, it is a termination
-      condition of a look. In unreal, it is a ~UClass~ pointer.
+      condition of a loop. In unreal, it is a ~UClass~ pointer.
 
       How can we use a pointer to set condition within a ~for~ loop?
+
+      - As I further reading this reply, the second item in for loop
+        in C++ programming seems a bool condition. Only two states can
+        be determined within the second item: true of false.
+
+      If it is true, the loop continue; if not, stop.
+
+      See, within that for loop, UE do a check:
+
+      #+BEGIN_SRC c+
+      if ( TempClass == SomeBase )
+      {
+          bOldResult = true;
+	  break;
+      }
+      #+END_SRC
+
+      ~SomeBase~ class is the input argument of the function:
+
+      ~bool UObjectBaseUtility::IsA( const UClass* SomeBase ) const~
+
+      
+      In ~UObjectBase.h~, If found ~GetClass~
+      
+      #+BEGIN_SRC c++
+FORCEINLINE UClass* GetClass() const
+{
+    return ClassPrivate;
+}
+#+END_SRC
+      
+      What is ~ClassPrivate~?
+
+      And it is found the definition of ~UObjectBase.h~ class:
+      #+BEGIN_SRC c++
+ UClass*							ClassPrivate;
+ #+END_SRC
+
+      Return a ~UClass~ pointer? Does not sound interesting to me. So
+      I goback to UE's for loop:
+
+      What is ~GetSuperClass~ for?
+
+      In ~UObject/Class.h~ writes this:
+
+      #+BEGIN_SRC c++
+      /** Returns parent class, the parent of a Class is always another class */
+      UClass* GetSuperClass() const
+      {
+          return (UClass*)GetSuperStruct();
+      }
+      #+END_SRC
+
+      What the hell of this Getter?!
+      
+      The return type is a pointer whose type is ~UClass~, and the
+      method to return this stuff is called ~GetSuperStruct()~ 
+
+      #+BEGIN_SRC c++
+      /** Struct this inherits from, may be null */
+      UStruct* GetSuperStruct() const
+      {
+      return SuperStruct;
+      }
+      #+END_SRC
+
+      What is ~SuperStruct~?
+
+      #+BEGIN_SRC c++
+      /** Struct this inherits from, may be null */
+      UStruct* SuperStruct;
+      #+END_SRC
+      
+      It's a pointer whose data type is ~UStruct~.
+
+      Now, I become more confused?
+
+      My initial question is how the for loop check the class
+      inherientce?
 
       Now, I just want to know:
 
