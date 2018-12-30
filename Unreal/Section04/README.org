@@ -926,11 +926,12 @@ FORCEINLINE UClass* GetClass() const
       My initial question is how the for loop check the class
       inherientce?
 
-      Now, I just want to know:
+      To make the question concise:
 
-      How Unreal do runtime check to see if `From` is a child of `To`?
-      If I had somehow to write a piece code to do this kind of check,
-      I would do the following snippet:
+      - [TODO] How does UE check one class is a child of another?
+
+      To achive this check, is that possible to write a simple code to
+      illustrate the check method?
 
       #+BEGIN_SRC c++
       #include <iostream>
@@ -966,6 +967,9 @@ FORCEINLINE UClass* GetClass() const
       childA lucifer;
       childB angela;
       
+      // how to check lucifer is not a child of 
+      // ParentB?
+
       std::cout<<"Hello world!"<<std::endl;
       }
       #+END_SRC
