@@ -494,8 +494,8 @@
 
    They reason why I ask this question is that I am trying to
    understand a piece code in Unreal Game Editor.
-   
-   [code]
+
+#+BEGIN_SRC c++
    #include "pch.h" // what's this headfile?
    #include <iostream>
    #include <string>
@@ -587,7 +587,7 @@
    It is more handy.
 
    */
-   [/code]
+#+END_SRC
 *** when to use inherit?
 
     If two objects have a relation ~has~, then it's not
