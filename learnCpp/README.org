@@ -588,6 +588,73 @@
 
    */
 #+END_SRC
+**** nascardriver reply
+
+     #+BEGIN_SRC c++
+std::cout << std::is_base_of_v<ParentA, decltype(angela)> << '\n';
+std::cout << std::is_base_of_v<ParentA, decltype(lucifer)> << '\n';
+std::cout << std::is_base_of_v<ParentB, decltype(angela)> << '\n';
+std::cout << std::is_base_of_v<ParentB, decltype(lucifer)> << '\n';
+     #+END_SRC
+**** my reply to nascardriver
+     
+     Thanks for pointing out this amazing std library: boost.
+
+     It solve my problem.
+
+     But, I recently have a temperation to know more details about
+     c++. For example, after reading your code, I start to read source
+     code of ~is_base_of_v~:
+
+     #+BEGIN_SRC c++
+
+#ifndef BOOST_TT_IS_BASE_OF_HPP_INCLUDED
+#define BOOST_TT_IS_BASE_OF_HPP_INCLUDED
+
+#include <boost/type_traits/is_base_and_derived.hpp>
+#include <boost/type_traits/is_same.hpp>
+#include <boost/type_traits/is_class.hpp>
+
+namespace boost {
+
+   namespace detail{
+      template <class B, class D>
+      struct is_base_of_imp
+      {
+          typedef typename remove_cv<B>::type ncvB;
+          typedef typename remove_cv<D>::type ncvD;
+          BOOST_STATIC_CONSTANT(bool, value = (
+            (::boost::detail::is_base_and_derived_impl<ncvB,ncvD>::value) ||
+            (::boost::is_same<ncvB,ncvD>::value && ::boost::is_class<ncvB>::value)));
+      };
+   }
+
+   template <class Base, class Derived> struct is_base_of
+      : public integral_constant<bool, (::boost::detail::is_base_of_imp<Base, Derived>::value)> {};
+
+   template <class Base, class Derived> struct is_base_of<Base, Derived&> : false_type{};
+   template <class Base, class Derived> struct is_base_of<Base&, Derived&> : false_type{};
+   template <class Base, class Derived> struct is_base_of<Base&, Derived> : false_type{};
+
+} // namespace boost
+
+#endif // BOOST_TT_IS_BASE_AND_DERIVED_HPP_INCLUDED
+#+END_SRC
+
+     I don't know if you are interesting to know how those code
+     working? I mean, understanding to a degree such that a
+     five-year-old girl could understanding if amount of time being
+     post here.
+
+     To be honest with you, I don't know how ~is_base_of_v~
+     works. The things I can do is to google any things I don't
+     understand.
+
+     I am not sure it is very effective, but the key point is that I
+     do not have any burdon on it. It's not like a semester that I
+     have to finish it within some time. In my current case, I can
+     study it as much as possible I'd like to.
+
 *** when to use inherit?
 
     If two objects have a relation ~has~, then it's not
