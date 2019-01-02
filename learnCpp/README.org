@@ -800,10 +800,37 @@
 
 * Chapter 13: Templates
 ** [[https://www.learncpp.com/cpp-tutorial/131-function-templates][13.1 Function templates]]
-
 ** [[https://www.learncpp.com/cpp-tutorial/132-function-template-instances][13.2 Function template instances]]
-
+*** concept
+    function templete instance: the one we know its type
 ** [[https://www.learncpp.com/cpp-tutorial/133-template-classes][13.3 Template classes]]
+*** a-ha
+**** splittering template class issue
+
+     When I was reading ~tail_type~ head file, which is a bunch of
+     template definition, I did not realize the structure of how to
+     manage the file structure of code with a lots of function
+     definition.
+
+     Separating the declaration into *.h and implymentation into *.cpp
+     won't work for template class.
+
+     Alex suggests 3 ways to walk around this issue:
+     
+     - writing *.h into *.cpp
+     - second mathod is to defined a new file *.inl and include into
+       *.h file
+     - three-file approach:
+
+       1. template class definition in the head file
+
+       2. template class memember function in the code file
+
+       3. a list of instantiated classs one need
+
+     so the question to me:
+
+     Which strategy the ~tail_type~ is using?
 
 ** [[https://www.learncpp.com/cpp-tutorial/134-template-non-type-parameters][13.4 Template non-type parameters]]
 
