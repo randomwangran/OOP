@@ -495,7 +495,7 @@
    They reason why I ask this question is that I am trying to
    understand a piece code in Unreal Game Editor.
 
-#+BEGIN_SRC c++
+   #+BEGIN_SRC c++
    #include "pch.h" // what's this headfile?
    #include <iostream>
    #include <string>
@@ -591,10 +591,10 @@
 **** nascardriver reply
 
      #+BEGIN_SRC c++
-std::cout << std::is_base_of_v<ParentA, decltype(angela)> << '\n';
-std::cout << std::is_base_of_v<ParentA, decltype(lucifer)> << '\n';
-std::cout << std::is_base_of_v<ParentB, decltype(angela)> << '\n';
-std::cout << std::is_base_of_v<ParentB, decltype(lucifer)> << '\n';
+     std::cout << std::is_base_of_v<ParentA, decltype(angela)> << '\n';
+     std::cout << std::is_base_of_v<ParentA, decltype(lucifer)> << '\n';
+     std::cout << std::is_base_of_v<ParentB, decltype(angela)> << '\n';
+     std::cout << std::is_base_of_v<ParentB, decltype(lucifer)> << '\n';
      #+END_SRC
 **** my reply to nascardriver
      
@@ -608,16 +608,16 @@ std::cout << std::is_base_of_v<ParentB, decltype(lucifer)> << '\n';
 
      #+BEGIN_SRC c++
 
-#ifndef BOOST_TT_IS_BASE_OF_HPP_INCLUDED
-#define BOOST_TT_IS_BASE_OF_HPP_INCLUDED
+     #ifndef BOOST_TT_IS_BASE_OF_HPP_INCLUDED
+     #define BOOST_TT_IS_BASE_OF_HPP_INCLUDED
 
-#include <boost/type_traits/is_base_and_derived.hpp>
-#include <boost/type_traits/is_same.hpp>
-#include <boost/type_traits/is_class.hpp>
+     #include <boost/type_traits/is_base_and_derived.hpp>
+     #include <boost/type_traits/is_same.hpp>
+     #include <boost/type_traits/is_class.hpp>
 
-namespace boost {
+     namespace boost {
 
-   namespace detail{
+     namespace detail{
       template <class B, class D>
       struct is_base_of_imp
       {
@@ -654,7 +654,76 @@ namespace boost {
      do not have any burdon on it. It's not like a semester that I
      have to finish it within some time. In my current case, I can
      study it as much as possible I'd like to.
+**** nascardrive 2nd reply
+     > Thanks for pointing out this amazing std library: boost 
 
+     I did not and will not recommend using boost in my replies. boost
+     is a feature-rich library of which many features have already
+     been implemented into the standard library. You don't need
+     boost. @std::is_base_of_v can be used after including the
+     <type_traits> header.
+
+     I don't think you read the chapter about templates yet, which is
+     what this is all about. I'll try to keep it simple: I'm following
+     the possible implementation shown at cppreference (
+     https://en.cppreference.com/w/cpp/types/is_base_of ). Actual
+     implementations might differ.
+
+     C++ has a feature, SFINAE. When the compiler has to construct
+     types during compile time (Types that where not explicitly
+     specified by the coder), an error might occur, because the type
+     cannot be constructed (Don't confuse "construct" with
+     constructors of classes, I mean "build" or "come up with"). This
+     error isn't treated as a compiler error, instead the
+     function/type it occurred at is ignored and cannot be used.
+     @std::is_base_of first tests if both types are classes by
+     attempting to create a pointer to a data member
+
+     1 2 3 // @T is your class (or non-class) type // @p is a pointer
+     to an int-member of a @T int T::*p{ nullptr }; @T will be filled
+     in by the compiler. If it can't be filled in, @T is not a class
+     type.  Once the compiler knows both types are classes, it checks
+     if they are unions (I couldn't find an implementation for
+     @std::is_union). If a type is a class and not a union, it
+     continues.  The compiler then tries creates a pointer to an
+     object of the derived class and tries to call a function that has
+     been overloaded to take either a pointer to the base class, or a
+     void*. Base class pointer can implicitly be cast to parent class
+     pointers. Depending on the function that has been called, the
+     compiler knows if the type is a base of the other type.
+
+     Once you're done with chapter 12, you can also use
+
+     1
+     2
+     3
+     4
+     std::cout << !!dynamic_cast<ParentA *>(&angela) << '\n';
+     std::cout << !!dynamic_cast<ParentA *>(&lucifer) << '\n';
+     std::cout << !!dynamic_cast<ParentB *>(&angela) << '\n';
+     std::cout << !!dynamic_cast<ParentB *>(&lucifer) << '\n';
+
+     as opposed to the code I posted earlier. This should be easier to
+     understand for now.
+**** my rep to nascardrive 2nd
+
+     Sorry about ~boost~, the reason why I pick up ~boost~ is that I
+     did not copy your code to my IDE, I just do a search on my
+     computer: with a filename: ~c:/Program Files/Epic
+     Games/UE_4.19/Engine/Plugins/Editor/USDImporter/Source/ThirdParty/USD/include/boost/type_traits/is_base_of.hpp~. At
+     that time I thought I was a third part library. I opened it and
+     found it. Indeed, I go to their website and read something about
+     it. I found that the repo of ~boost~ is crazy:
+
+     https://github.com/boostorg/boost
+
+     46973 comments. But I cannot view their source code on github for
+     some reasons. For example:
+     https://github.com/boostorg/boost/tree/master/libs
+     They use git-submodule with some magic stuff...
+
+
+     
 *** when to use inherit?
 
     If two objects have a relation ~has~, then it's not
