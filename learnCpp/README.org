@@ -721,8 +721,33 @@
      some reasons. For example:
      https://github.com/boostorg/boost/tree/master/libs
      They use git-submodule with some magic stuff...
+     
+     I follow your suggestion by adding the head file ~type_traits~ in
+     that c++ code snippet. It works!
 
+     I read the source code of ~type_traits~, and it writes:
 
+     #+BEGIN_SRC c++
+	// STRUCT TEMPLATE is_base_of
+	template<class _Base,
+	class _Derived>
+	struct is_base_of
+		: bool_constant<__is_base_of(_Base, _Derived)>
+	{	// determine whether _Base is a base of or the same as _Derived
+	};
+     #+END_SRC
+     
+     However, I still confused how the code works. I try to find the
+     implymentation of ~is_base_of~, but I had some hard time. Really
+     appreciteing if you could pointing out the reference I could
+     further study and then I could understand what's going on here.
+
+     I double checked my study record. I indeed read that chapter 9
+     monuth
+     ago. https://github.com/randomwangran/cpp/tree/master/learnCpp/Chapter13
+     Maybe, I return it to alex.
+
+     So, I reread all the material in that chapter.
      
 *** when to use inherit?
 
