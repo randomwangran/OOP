@@ -805,7 +805,7 @@
     function templete instance: the one we know its type
 ** [[https://www.learncpp.com/cpp-tutorial/133-template-classes][13.3 Template classes]]
 *** a-ha
-**** splittering template class issue
+**** splittering template class issue                                  
 
      When I was reading ~tail_type~ head file, which is a bunch of
      template definition, I did not realize the structure of how to
@@ -824,13 +824,26 @@
 
        1. template class definition in the head file
 
-       2. template class memember function in the code file
+       2. <<target>> template class memember function in the code file
 
        3. a list of instantiated classs one need
 
      so the question to me:
 
      Which strategy the ~tail_type~ is using?
+**** what is the naming convention for MSVS?
+
+     I found some files in this folder:
+     ~c:/Program Files (x86)/Microsoft Visual
+     Studio/2017/Community/VC/Tools/MSVC/14.15.26726/include/~
+
+     are ended with *.h; some of file do not have any file extension,
+     which is not a typcial MS-VS coding style.
+
+     What I've found that is the file without exetension are (perhaps)
+     a bunch of template defination.
+
+     It seems to me, the method is [[target]]
 
 ** [[https://www.learncpp.com/cpp-tutorial/134-template-non-type-parameters][13.4 Template non-type parameters]]
 
