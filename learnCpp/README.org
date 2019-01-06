@@ -324,7 +324,7 @@
 
      Is the following thought a bad programming habit? Accessing a
      local variable in a member function of a class from another class.
-     For example, I want to access `people` ( in the class 'Employee')
+     For example, I want to access `people` ( in the class 'Employee' )
      from another class as shown in the flowing code:
 
      #+BEGIN_SRC c++
@@ -492,7 +492,7 @@
    I want the program compile and print out me a message that tells me
    ~childA~ class is not inherient from ~ParentB~ ?
 
-   They reason why I ask this question is that I am trying to
+   The reason why I ask this question is that I am trying to
    understand a piece code in Unreal Game Editor.
 
    #+BEGIN_SRC c++
@@ -862,6 +862,20 @@
 ** [[https://www.learncpp.com/cpp-tutorial/134-template-non-type-parameters][13.4 Template non-type parameters]]
 
 ** [[https://www.learncpp.com/cpp-tutorial/13-5-function-template-specialization][13.5 Function template specialization]]
+
+*** function template specialization is cool
+
+    If you have a template but want a particular type of function
+    doing some magic stuff. That's what you need.
+
+    The example of Storage class with datatype char* is
+    interesting. User input a temporary string. Programmer then store
+    that string into a class. But after delete the temporary string,
+    the class has some issue about the string just initialized.
+
+    The reason is that the default constructor was just done a shollow
+    copy when new class was created. That's the reason why we need
+    spcialization.
 
 ** [[https://www.learncpp.com/cpp-tutorial/136-class-template-specialization][13.6 Class template specialization]]
 
