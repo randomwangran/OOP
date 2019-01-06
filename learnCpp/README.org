@@ -805,7 +805,7 @@
     function templete instance: the one we know its type
 ** [[https://www.learncpp.com/cpp-tutorial/133-template-classes][13.3 Template classes]]
 *** a-ha
-**** splittering template class issue                                  
+**** splittering template class issue
 
      When I was reading ~tail_type~ head file, which is a bunch of
      template definition, I did not realize the structure of how to
