@@ -804,6 +804,20 @@
 *** concept
     function templete instance: the one we know its type
 ** [[https://www.learncpp.com/cpp-tutorial/133-template-classes][13.3 Template classes]]
+*** questions
+    what's this?
+
+    #+BEGIN_SRC c++
+    const tmp<volScalarField>& tmuEff
+    #+END_SRC
+
+    It's a class whose type is volScalarField but the coding style is
+    not my choice.
+
+    #+BEGIN_SRC c++
+    const tmp<volScalarField> &tmuEff
+    #+END_SRC
+
 *** a-ha
 **** splittering template class issue
 
