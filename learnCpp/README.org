@@ -878,7 +878,30 @@
     spcialization.
 
 ** [[https://www.learncpp.com/cpp-tutorial/136-class-template-specialization][13.6 Class template specialization]]
+*** what is byte?
 
+    Why cpu cannot address info smaller than a byte?
+
+    I checked [[https://en.wikipedia.org/wiki/Byte][wiki]]:
+    
+    #+BEGIN_QUOTE
+    Historically, the byte was the number of bits used to encode a single character of text in a computer
+    #+END_QUOTE
+    
+    that's the answer. To encode a singe character of text.
+
+    What's fasnating me is the link the wiki pointer to: Computer
+    System project strech.
+
+    Great book! Added to my see the world destination
+
+    #+BEGIN_QUOTE
+    this book is aimed at sheding ligth on how it is done and why the
+    system was designed the way it is, as well as describing some
+    alternative courses that were examined and rejected.
+    #+END_QUOTE
+
+    
 ** [[https://www.learncpp.com/cpp-tutorial/137-partial-template-specialization][13.7 Partial template specialization]]
 
 ** [[https://www.learncpp.com/cpp-tutorial/13-8-partial-template-specialization-for-pointers][13.8 Partial template specialization for pointers]]
