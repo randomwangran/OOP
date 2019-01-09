@@ -901,9 +901,8 @@
     alternative courses that were examined and rejected.
     #+END_QUOTE
 
-    
 ** [[https://www.learncpp.com/cpp-tutorial/137-partial-template-specialization][13.7 Partial template specialization]]
-
+   why ~hello world~ has blanks in between charactistic?
 ** [[https://www.learncpp.com/cpp-tutorial/13-8-partial-template-specialization-for-pointers][13.8 Partial template specialization for pointers]]
 
 ** [[https://www.learncpp.com/cpp-tutorial/13-x-chapter-13-comprehensive-quiz][13.x Chapter 13 comprehensive quiz]]
