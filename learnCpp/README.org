@@ -903,6 +903,50 @@
 
 ** [[https://www.learncpp.com/cpp-tutorial/137-partial-template-specialization][13.7 Partial template specialization]]
    why ~hello world~ has blanks in between charactistic?
+
+   Hi Alex:
+
+   I just did a really minior revise on your source code to achive
+   what you want to do, insteading of using Partial template
+   specialization.
+
+   #+BEGIN_SRC c++
+   void print(StaticArray<T, size> &array)
+   {
+	for (int count = 0; count < size; ++count)
+		std::cout << array[count];
+		}
+   #+END_SRC
+
+   As I prepare to ask Alex, I found it is not necessary. Indeed, the
+   Partical template has its power if the main function looks like
+   this:
+
+   #+BEGIN_SRC c++
+   	// declare a char array
+	StaticArray<char, 14> char14;
+
+	strcpy_s(char14.getArray(), 14, "Hello, world!");
+
+	// Print the array
+	print(char14);
+
+	std::cout << std::endl;
+
+	// declare an int array
+	StaticArray<int, 4> int4;
+	int4[0] = 0;
+	int4[1] = 1;
+	int4[2] = 2;
+	int4[3] = 3;
+
+	// Print the array
+	print(int4);
+
+	return 0;
+   #+END_SRC
+
+   cool.
 ** [[https://www.learncpp.com/cpp-tutorial/13-8-partial-template-specialization-for-pointers][13.8 Partial template specialization for pointers]]
 
 ** [[https://www.learncpp.com/cpp-tutorial/13-x-chapter-13-comprehensive-quiz][13.x Chapter 13 comprehensive quiz]]
