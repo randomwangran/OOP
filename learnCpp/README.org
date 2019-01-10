@@ -462,7 +462,6 @@
 ** [[https://www.learncpp.com/cpp-tutorial/9-x-chapter-9-comprehensive-quiz][9.x Chapter 9 comprehensive quiz]]
 
 * Chapter 10: An introduction to object relationships
-
 ** [[https://www.learncpp.com/cpp-tutorial/10-1-object-relationships][10.1 Object relationships]]
 
 ** [[https://www.learncpp.com/cpp-tutorial/102-composition][10.2 Composition]]
@@ -948,7 +947,8 @@
 
    cool.
 ** [[https://www.learncpp.com/cpp-tutorial/13-8-partial-template-specialization-for-pointers][13.8 Partial template specialization for pointers]]
-
+   So cool. A template write to deal with non-pointer type of data and
+   pointer type of data.
 ** [[https://www.learncpp.com/cpp-tutorial/13-x-chapter-13-comprehensive-quiz][13.x Chapter 13 comprehensive quiz]]
 
 * Chapter 14: Exceptions
