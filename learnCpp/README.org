@@ -747,6 +747,11 @@
      Maybe, I return it to alex.
 
      So, I reread all the material in that chapter.
+
+     After I revise the basic idea of template, I continue with your
+     reply. I don't know the feature, SFINAE (subsitution failure is
+     not an errore). I found [[this pag][this page explain very well]] (but it is in
+     chinese). 
      
 *** when to use inherit?
 
