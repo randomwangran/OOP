@@ -215,6 +215,64 @@
 
 * Chapter 7: Functions
 ** [[https://www.learncpp.com/cpp-tutorial/71-function-parameters-and-arguments][7.1 Function parameters and arguments]]
+   Why this happen?
+
+   #+BEGIN_SRC c++
+#include "pch.h"
+#include <iostream>
+
+struct A {};
+void foo(A const& a) {}
+void callFoo() {
+	foo(A());
+}
+
+int main()
+{
+    std::cout << "Hello World!\n"; 
+}
+   #+END_SRC
+
+   The compile okay and programm works.
+
+   #+BEGIN_SRC c++
+   #include "pch.h"
+#include <iostream>
+
+int main()
+{
+	struct A {};
+	void foo(A const& a) {}
+	void callFoo() {
+		foo(A());
+	}
+    std::cout << "Hello World!\n"; 
+}
+   #+END_SRC
+
+   Even I put ";" at the end of function:
+
+   #+BEGIN_SRC c++
+#include "pch.h"
+#include <iostream>
+
+int main()
+{
+	struct A {};
+	void foo(A const& a) {};
+	void callFoo() {
+		foo(A());
+	};
+
+    std::cout << "Hello World!\n"; 
+}
+   #+END_SRC
+
+   The complier still complain about ";".
+
+   My question is what ";" really means? Why it works when the
+   function is defined out of the main function, but not within the
+   main function?
 
 ** [[https://www.learncpp.com/cpp-tutorial/72-passing-arguments-by-value][7.2 Passing arguments by value]]
 
