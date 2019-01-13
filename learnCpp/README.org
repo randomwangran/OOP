@@ -214,7 +214,6 @@
 ** [[https://www.learncpp.com/cpp-tutorial/6-x-chapter-6-comprehensive-quiz][6.x Chapter 6 comprehensive quiz]]
 
 * Chapter 7: Functions
-
 ** [[https://www.learncpp.com/cpp-tutorial/71-function-parameters-and-arguments][7.1 Function parameters and arguments]]
 
 ** [[https://www.learncpp.com/cpp-tutorial/72-passing-arguments-by-value][7.2 Passing arguments by value]]
@@ -753,6 +752,22 @@
      not an errore). I found [[this pag][this page explain very well]] (but it is in
      chinese). 
      
+     What is token?
+
+     #+BEGIN_SRC c++
+struct A {};
+struct B: public A {}; // structure can do inherient?
+struct C {};
+
+void foo(A const&) {} // what is A const& represent?
+void foo(B const&) {}
+
+void callFoo() {
+  foo( A() );
+  foo( B() );
+  foo( C() );
+}
+     #+END_SRC
 *** when to use inherit?
 
     If two objects have a relation ~has~, then it's not
