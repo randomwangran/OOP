@@ -275,9 +275,26 @@ int main()
    function is defined out of the main function, but not within the
    main function?
 *** nascardriver's reply
-You cannot define functions inside functions.
-If you want to define a function in-line, have a look at lambda-functions.
+    You cannot define functions inside functions.
+    If you want to define a function in-line, have a look at lambda-functions.
+*** my reply
 
+    I guess it is because I read too much elisp code. As a result, my
+    brain changes to think c++ should have the same capcity.
+
+    What's lambda? I first check elisp:
+
+    (defun)
+
+    ((lambda (x) (* x 2)) 7) 
+
+    (defun double(x)
+    (* x 2))
+
+    (double 7)
+
+    (macroexpand '(defun double (x) (* x 2)))
+**** 
 ** [[https://www.learncpp.com/cpp-tutorial/72-passing-arguments-by-value][7.2 Passing arguments by value]]
 
 ** [[https://www.learncpp.com/cpp-tutorial/73-passing-arguments-by-reference][7.3 Passing arguments by reference]]
