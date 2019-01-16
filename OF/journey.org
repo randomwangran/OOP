@@ -1,0 +1,92 @@
+* [[http://cfd-china.com/topic/2188/25%25E4%25BA%25BF%25E7%25BD%2591%25E6%25A0%25BC%25E7%259B%25B4%25E6%258E%25A5%25E6%25A8%25A1%25E6%258B%259F/7][why mesh not pass]]
+
+  I am using OF-dev version (don't know exactly the date I downloaded
+  it).
+
+  The main classes are found in the flowing path:
+
+  #+BEGIN_SRC 
+  ~/OpenFOAM-dev/src/dynamicMesh/polyTopoChange/polyTopoChange/modifyObject/  
+  #+END_SRC
+
+  This for loop:
+
+  #+BEGIN_SRC c++
+  //Line 707
+  //~/OpenFOAM-dev/applications/utilities/mesh/manipulation/createPatch/createPatch.C
+
+  void changePatchID
+(
+    const polyMesh& mesh,
+    const label faceID,
+    const label patchID,
+    polyTopoChange& meshMod
+)
+  #+END_SRC
+  
+  is the point that I feel something might wrong.
+  
+  I don't know exactly what ~polyModifyFace~ is a function or a
+  class. I double checked the defination of ~polyModifyFace~:
+
+  #+BEGIN_SRC c++
+  //Line 82
+  //~OpenFOAM-dev/src/dynamicMesh/polyTopoChange/polyTopoChange/modifyObject/polyModifyPoint.H
+  meshMod.setAction
+    (
+        polyModifyFace
+        (
+            mesh.faces()[faceID],               // face
+            faceID,                             // face ID
+            mesh.faceOwner()[faceID],           // owner
+            -1,                                 // neighbour
+            false,                              // flip flux
+            patchID,                            // patch ID
+            false,                              // remove from zone
+            zoneID,                             // zone ID
+            zoneFlip                            // zone flip
+        )
+    );
+  #+END_SRC
+
+  I think ~polyModifyFace~ really looks like a function definitio in
+  c++, but I migth wrong.
+  
+  Another thing that I feel strange is that the implymentation of the
+  following classes are missing.
+
+  #+BEGIN_SRC 
+  3.5k 12-14 23:52 polyModifyCell.H
+  7.5k 12-14 23:52 polyModifyFace.H
+  4.2k 12-14 23:52 polyModifyPoint.H
+  #+END_SRC
+
+  Is that becasue those classes are too easy?
+
+  I furthe study the class (~/OpenFOAM-dev/src/dynamicMesh/polyTopoChange/polyTopoChange/modifyObject/polyModifyFace.H):
+
+
+  #+BEGIN_SRC c++
+        //- Construct and return a clone
+        virtual autoPtr<topoAction> clone() const
+        {
+            return autoPtr<topoAction>(new polyModifyFace(*this));
+        }
+  #+END_SRC
+
+  Is this ~clone()~ function mess up all the things? If so, what's the
+  limited of it? How big (size of the mesh) the OF can handle?
+
+  I agree with you. This mesh is converted from *.msh file without any
+  issue. ~convertMesh~ seems have a much large memery requirment. I am
+  not sure exactly the order of it.
+
+  What I want to do, is to run some small test to investigate the
+  memery usage of ~convertMesh~ and ~creatPatch~.
+
+  Finally, why make it (~matchToTolerance~) smaller? Do you have any
+  reference to this point? I might (can remember exactly) just use
+  some default number here.
+
+
+  
