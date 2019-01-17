@@ -131,3 +131,19 @@
   
   @wwzhao thanks for helping. This test case was built ~Jul 06 2018~,
   so I am not sure the exactly envirmental varibles that I was playing with.
+
+  I've double checked the:
+
+  #+BEGIN_SRC sh
+  echo $WM_LABEL_SIZE
+  32
+  #+END_SRC
+
+  It looks like a right direction to further study this stuff. But, it
+  needs more time, since I need to rebuid OF. Which Version would you
+  like to suggest me to run? dev or v4.1?
+
+  Also, if the default $WM_LABEL_SIZE is indeed 32, what is its
+  theoretical upper limmited, i.e. running pisoFoam (motobike tutorial?).
+
+  Can I change to any number (2^{5,6,7,8})?
