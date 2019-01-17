@@ -90,8 +90,8 @@
   
 ** 2nd round
 
-   The reason why I checked ~polyModifyFace~ is that I wanted to study
-   the piece of code in 
+   The reason why I checked ~polyModifyFace~ was that I wanted to study
+   the piece of code in:
   #+BEGIN_SRC c++
   //Line 82
   //~OpenFOAM-dev/src/dynamicMesh/polyTopoChange/polyTopoChange/modifyObject/polyModifyPoint.H [wrong!]
@@ -113,7 +113,7 @@
     );
   #+END_SRC
 
-  I don't the reason why it crash, that's why I am asking.
+  I don't know the reason why it crash, that's why I am asking.
 
   #+BEGIN_SRC c++
   return autoPtr<topoAction>(new polyModifyFace(*this));
@@ -127,7 +127,6 @@
   #+END_SRC
 
   I don't know.
-
   
   @wwzhao thanks for helping. This test case was built ~Jul 06 2018~,
-  so I am not sure the exactly envirmental varibles that I was playing with.
+  so I am not sure the exactly environmental varibles that I was playing with.

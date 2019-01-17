@@ -1110,7 +1110,6 @@ void callFoo() {
 ** [[https://www.learncpp.com/cpp-tutorial/13-x-chapter-13-comprehensive-quiz][13.x Chapter 13 comprehensive quiz]]
 
 * Chapter 14: Exceptions
-
 ** [[https://www.learncpp.com/cpp-tutorial/141-the-need-for-exceptions][14.1 The need for exceptions]]
 
 ** [[https://www.learncpp.com/cpp-tutorial/142-basic-exception-handling][14.2 Basic exception handling]]
