@@ -1,4 +1,4 @@
-* [[http://cfd-china.com/topic/2188/25%25E4%25BA%25BF%25E7%25BD%2591%25E6%25A0%25BC%25E7%259B%25B4%25E6%258E%25A5%25E6%25A8%25A1%25E6%258B%259F/7][why mesh not pass]]
+* [[http://cfd-china.com/topic/2191/openfoam%E5%91%A8%E6%9C%9F%E8%BE%B9%E7%95%8C%E7%94%9F%E6%88%90%E4%B8%8D%E6%88%90%E5%8A%9F-cyclic%E7%9A%84%E9%97%AE%E9%A2%98][why mesh not pass]]
 
   I am using OF-dev version (don't know exactly the date I downloaded
   it).
@@ -129,4 +129,20 @@
   I don't know.
   
   @wwzhao thanks for helping. This test case was built ~Jul 06 2018~,
-  so I am not sure the exactly environmental varibles that I was playing with.
+  so I am not sure the exactly envirmental varibles that I was playing with.
+
+  I've double checked the:
+
+  #+BEGIN_SRC sh
+  echo $WM_LABEL_SIZE
+  32
+  #+END_SRC
+
+  It looks like a right direction to further study this stuff. But, it
+  needs more time, since I need to rebuid OF. Which Version would you
+  like to suggest me to run? dev or v4.1?
+
+  Also, if the default $WM_LABEL_SIZE is indeed 32, what is its
+  theoretical upper limmited, i.e. running pisoFoam (motobike tutorial?).
+
+  Can I change to any number (2^{5,6,7,8})?
