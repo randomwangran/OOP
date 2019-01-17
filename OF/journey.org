@@ -87,6 +87,47 @@
   Finally, why make it (~matchToTolerance~) smaller? Do you have any
   reference to this point? I might (can remember exactly) just use
   some default number here.
+  
+** 2nd round
 
+   The reason why I checked ~polyModifyFace~ is that I wanted to study
+   the piece of code in 
+  #+BEGIN_SRC c++
+  //Line 82
+  //~OpenFOAM-dev/src/dynamicMesh/polyTopoChange/polyTopoChange/modifyObject/polyModifyPoint.H [wrong!]
+  ///OpenFOAM-dev/applications/utilities/mesh/manipulation/createPatch/createPatch.C [correct]
+  meshMod.setAction
+    (
+        polyModifyFace
+        (
+            mesh.faces()[faceID],               // face
+            faceID,                             // face ID
+            mesh.faceOwner()[faceID],           // owner
+            -1,                                 // neighbour
+            false,                              // flip flux
+            patchID,                            // patch ID
+            false,                              // remove from zone
+            zoneID,                             // zone ID
+            zoneFlip                            // zone flip
+        )
+    );
+  #+END_SRC
+
+  I don't the reason why it crash, that's why I am asking.
+
+  #+BEGIN_SRC c++
+  return autoPtr<topoAction>(new polyModifyFace(*this));
+  #+END_SRC
+
+  Do you know how this function could trigger the following exception:
+
+  #+BEGIN_SRC c++
+  terminate called after throwing an instance of 'std::bad_array_new_length'
+  what():  std::bad_array_new_length
+  #+END_SRC
+
+  I don't know.
 
   
+  @wwzhao thanks for helping. This test case was built ~Jul 06 2018~,
+  so I am not sure the exactly envirmental varibles that I was playing with.
