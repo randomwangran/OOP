@@ -146,3 +146,21 @@
   theoretical upper limmited, i.e. running pisoFoam (motobike tutorial?).
 
   Can I change to any number (2^{5,6,7,8})?
+
+** reply to wwzhao: study $WM_LABEL_SIZE
+
+   What is the meaning of:
+
+   #+BEGIN_QUOTE
+   label representing for the sizes of point, face, and cell.
+   #+END_QUOTE
+
+   I read this book: The OpenFOAM technology primer. On page, 41, in
+   the paragrah: points, the last sentence writes:
+
+   #+BEGIN_QUOTE
+   The position is stored as ~label~
+   #+END_QUOTE
+
+   
+
