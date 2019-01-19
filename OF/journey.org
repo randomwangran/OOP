@@ -89,7 +89,6 @@
   some default number here.
   
 ** 2nd round
-
    The reason why I checked ~polyModifyFace~ was that I wanted to study
    the piece of code in:
   #+BEGIN_SRC c++
@@ -159,8 +158,31 @@
    the paragrah: points, the last sentence writes:
 
    #+BEGIN_QUOTE
-   The position is stored as ~label~
+   The position is stored as ~label~;
+
+   This (faces) is a nested list, containing one element per face.
    #+END_QUOTE
 
+
+   From my understanding, one ~label~ means a single point's xyz
+   location stored in the ~constant/polyMesh/points~ file.
+
+   So, to represent a single face, one need a ~labelList~ and a
+   ~labelListList~ to give sufficient info to the computer.
+   
+   For example, you have a point whose coordinates is (-0.0206 0
+   -0.0005) and we denote it as a label, i.e., 1.
+
+   I may constructure 4 points just what I've done. Then, I got a list
+   of list: 1,2,3,and 4.
+
+   If I have that list of list, I would say that I've already define a
+   face. This is ture, as you can see the example given at page 42:
+
+   #+BEGIN_QUOTE
+   // Face 0 with it's four point labels as labelsit
+   4(1 20 172 153)
+   #+END_QUOTE
+   
    
 
