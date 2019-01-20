@@ -184,5 +184,6 @@
    4(1 20 172 153)
    #+END_QUOTE
    
+** [[https://www.learncpp.com/cpp-tutorial/24-integers/#comment-377315][int_32 and int_64]]
    
-https://www.learncpp.com/cpp-tutorial/24-integers/#comment-377315
+   Does my OF a 32 version? How to check OF is a 32 or 64 version application?
