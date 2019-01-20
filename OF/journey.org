@@ -185,5 +185,10 @@
    #+END_QUOTE
    
 ** [[https://www.learncpp.com/cpp-tutorial/24-integers/#comment-377315][int_32 and int_64]]
-   
+
    Does my OF a 32 version? How to check OF is a 32 or 64 version application?
+   #+BEGIN_SRC sh
+   $ file pisoFoam
+
+   pisoFoam: ELF 64-bit LSB executable, x86-64, version 1 (SYSV), dynamically linked, interpreter /cvmfs/soft.computecanada.ca/nix/var/nix/profiles/16.09/lib/ld-linux-x86-64.so.2, for GNU/Linux 2.6.32, BuildID[sha1]=66306ba1b0d4e34b5b7267398e679fb58d23c619, not stripped
+   #+END_SRC
