@@ -189,8 +189,80 @@
    Does my OF a 32 version? How to check OF is a 32 or 64 version application?
    #+BEGIN_SRC sh
    $ file pisoFoam
-
    pisoFoam: ELF 64-bit LSB executable, x86-64, version 1 (SYSV), dynamically linked, interpreter /cvmfs/soft.computecanada.ca/nix/var/nix/profiles/16.09/lib/ld-linux-x86-64.so.2, for GNU/Linux 2.6.32, BuildID[sha1]=66306ba1b0d4e34b5b7267398e679fb58d23c619, not stripped
    #+END_SRC
 
    what is ~size_t~?
+
+   why 4 bytes is 32-bit?
+
+   a byte has a total number of 256 states ( 0 through 255 ), which is
+   ( 2 in power of 8 = 256 )
+
+   So, 4 bytes, you gana have 4 * 8 = 32 bit states, which is ( 2 in
+   power of 32 = 4294967296)
+
+   Why I cannot build 64-bit project on my 64-bit machine (I am using )?
+
+   Yes you can, just choice x64 debugger.
+   #+BEGIN_SRC c++
+#include "pch.h"
+#include <iostream>
+#include <stdio.h>
+#include <string>
+#include <chrono>
+
+
+using namespace std;
+
+class Timer
+{
+private:
+	// Type aliases to make accessing nested type easier                                                                                                                                          
+	using clock_t = std::chrono::high_resolution_clock;
+	using second_t = std::chrono::duration<double, std::ratio<1> >;
+
+	std::chrono::time_point<clock_t> m_beg;
+
+public:
+	Timer() : m_beg(clock_t::now())
+	{
+	}
+
+	void reset()
+	{
+		m_beg = clock_t::now();
+	}
+
+	double elapsed() const
+	{
+		return std::chrono::duration_cast<second_t>(clock_t::now() - m_beg).count();
+	}
+};
+
+class dummy
+{
+private:
+	int m_array[1];
+
+public:
+	dummy() // zero the member array                                                                                                                                                  
+	{
+		// If we want the array to have values, we'll have to use assignment here                                                                                                                    
+		m_array[0] = 4294967295;
+	}
+};
+
+
+int main()
+{
+	Timer x32_timer;
+	dummy x32;
+	std::cout << "Time elapsed: " << x32_timer.elapsed() << "\n";
+	// x32 Time elapsed: 1.956e-06
+	// x64 Time elapsed: 3.424e-06
+	// almost 1.8 time slower.
+    std::cout << "Hello World!\n";
+}
+   
+   #+END_SRC
