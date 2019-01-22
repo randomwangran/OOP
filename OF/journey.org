@@ -1,100 +1,100 @@
 * [[http://cfd-china.com/topic/2191/openfoam%E5%91%A8%E6%9C%9F%E8%BE%B9%E7%95%8C%E7%94%9F%E6%88%90%E4%B8%8D%E6%88%90%E5%8A%9F-cyclic%E7%9A%84%E9%97%AE%E9%A2%98][why mesh not pass]]
 
-  I am using OF-dev version (don't know exactly the date I downloaded
-  it).
+** initial asking
+   I am using OF-dev version (don't know exactly the date I downloaded
+   it).
 
-  The main classes are found in the flowing path:
+   The main classes are found in the flowing path:
 
-  #+BEGIN_SRC 
-  ~/OpenFOAM-dev/src/dynamicMesh/polyTopoChange/polyTopoChange/modifyObject/  
-  #+END_SRC
+   #+BEGIN_SRC 
+   ~/OpenFOAM-dev/src/dynamicMesh/polyTopoChange/polyTopoChange/modifyObject/  
+   #+END_SRC
 
-  This for loop:
+   This for loop:
 
-  #+BEGIN_SRC c++
-  //Line 707
-  //~/OpenFOAM-dev/applications/utilities/mesh/manipulation/createPatch/createPatch.C
+   #+BEGIN_SRC c++
+   //Line 707
+   //~/OpenFOAM-dev/applications/utilities/mesh/manipulation/createPatch/createPatch.C
 
-  void changePatchID
-(
-    const polyMesh& mesh,
-    const label faceID,
-    const label patchID,
-    polyTopoChange& meshMod
-)
-  #+END_SRC
+   void changePatchID
+ (
+     const polyMesh& mesh,
+     const label faceID,
+     const label patchID,
+     polyTopoChange& meshMod
+ )
+   #+END_SRC
   
-  is the point that I feel something might wrong.
+   is the point that I feel something might wrong.
   
-  I don't know exactly what ~polyModifyFace~ is a function or a
-  class. I double checked the defination of ~polyModifyFace~:
+   I don't know exactly what ~polyModifyFace~ is a function or a
+   class. I double checked the defination of ~polyModifyFace~:
 
-  #+BEGIN_SRC c++
-  //Line 82
-  //~OpenFOAM-dev/src/dynamicMesh/polyTopoChange/polyTopoChange/modifyObject/polyModifyPoint.H
-  meshMod.setAction
-    (
-        polyModifyFace
-        (
-            mesh.faces()[faceID],               // face
-            faceID,                             // face ID
-            mesh.faceOwner()[faceID],           // owner
-            -1,                                 // neighbour
-            false,                              // flip flux
-            patchID,                            // patch ID
-            false,                              // remove from zone
-            zoneID,                             // zone ID
-            zoneFlip                            // zone flip
-        )
-    );
-  #+END_SRC
+   #+BEGIN_SRC c++
+   //Line 82
+   //~OpenFOAM-dev/src/dynamicMesh/polyTopoChange/polyTopoChange/modifyObject/polyModifyPoint.H
+   meshMod.setAction
+     (
+         polyModifyFace
+         (
+             mesh.faces()[faceID],               // face
+             faceID,                             // face ID
+             mesh.faceOwner()[faceID],           // owner
+             -1,                                 // neighbour
+             false,                              // flip flux
+             patchID,                            // patch ID
+             false,                              // remove from zone
+             zoneID,                             // zone ID
+             zoneFlip                            // zone flip
+         )
+     );
+   #+END_SRC
 
-  I think ~polyModifyFace~ really looks like a function definitio in
-  c++, but I migth wrong.
+   I think ~polyModifyFace~ really looks like a function definitio in
+   c++, but I migth wrong.
   
-  Another thing that I feel strange is that the implymentation of the
-  following classes are missing.
+   Another thing that I feel strange is that the implymentation of the
+   following classes are missing.
 
-  #+BEGIN_SRC 
-  3.5k 12-14 23:52 polyModifyCell.H
-  7.5k 12-14 23:52 polyModifyFace.H
-  4.2k 12-14 23:52 polyModifyPoint.H
-  #+END_SRC
+   #+BEGIN_SRC 
+   3.5k 12-14 23:52 polyModifyCell.H
+   7.5k 12-14 23:52 polyModifyFace.H
+   4.2k 12-14 23:52 polyModifyPoint.H
+   #+END_SRC
 
-  Is that becasue those classes are too easy?
+   Is that becasue those classes are too easy?
 
-  I furthe study the class (~/OpenFOAM-dev/src/dynamicMesh/polyTopoChange/polyTopoChange/modifyObject/polyModifyFace.H):
+   I furthe study the class (~/OpenFOAM-dev/src/dynamicMesh/polyTopoChange/polyTopoChange/modifyObject/polyModifyFace.H):
 
 
-  #+BEGIN_SRC c++
-        //- Construct and return a clone
-        virtual autoPtr<topoAction> clone() const
-        {
-            return autoPtr<topoAction>(new polyModifyFace(*this));
-        }
-  #+END_SRC
+   #+BEGIN_SRC c++
+         //- Construct and return a clone
+         virtual autoPtr<topoAction> clone() const
+         {
+             return autoPtr<topoAction>(new polyModifyFace(*this));
+         }
+   #+END_SRC
 
-  Is this ~clone()~ function mess up all the things? If so, what's the
-  limited of it? How big (size of the mesh) the OF can handle?
+   Is this ~clone()~ function mess up all the things? If so, what's the
+   limited of it? How big (size of the mesh) the OF can handle?
 
-  I agree with you. This mesh is converted from *.msh file without any
-  issue. ~convertMesh~ seems have a much large memery requirment. I am
-  not sure exactly the order of it.
+   I agree with you. This mesh is converted from *.msh file without any
+   issue. ~createPatch~ seems have a much large memery requirment. I am
+   not sure exactly the order of it.
 
-  What I want to do, is to run some small test to investigate the
-  memery usage of ~convertMesh~ and ~creatPatch~.
+   What I want to do, is to run some small test to investigate the
+   memery usage of ~convertMesh~ and ~creatPatch~.
 
-  Finally, why make it (~matchToTolerance~) smaller? Do you have any
-  reference to this point? I might (can remember exactly) just use
-  some default number here.
+   Finally, why make it (~matchToTolerance~) smaller? Do you have any
+   reference to this point? I might (can remember exactly) just use
+   some default number here.
   
 ** 2nd round
    The reason why I checked ~polyModifyFace~ was that I wanted to study
    the piece of code in:
   #+BEGIN_SRC c++
   //Line 82
-  //~OpenFOAM-dev/src/dynamicMesh/polyTopoChange/polyTopoChange/modifyObject/polyModifyPoint.H [wrong!]
-  ///OpenFOAM-dev/applications/utilities/mesh/manipulation/createPatch/createPatch.C [correct]
+  ///OpenFOAM-dev/applications/utilities/mesh/manipulation/createPatch/createPatch.C
   meshMod.setAction
     (
         polyModifyFace
@@ -115,6 +115,7 @@
   I don't know the reason why it crash, that's why I am asking.
 
   #+BEGIN_SRC c++
+  //188
   return autoPtr<topoAction>(new polyModifyFace(*this));
   #+END_SRC
 
@@ -130,7 +131,7 @@
   @wwzhao thanks for helping. This test case was built ~Jul 06 2018~,
   so I am not sure the exactly envirmental varibles that I was playing with.
 
-  I've double checked the:
+  I've double checked the ~LABEL_SIZE~
 
   #+BEGIN_SRC sh
   echo $WM_LABEL_SIZE
@@ -147,7 +148,6 @@
   Can I change to any number (2^{5,6,7,8})?
 
 ** reply to wwzhao: study $WM_LABEL_SIZE
-
    What is the meaning of:
 
    #+BEGIN_QUOTE
@@ -162,7 +162,6 @@
 
    This (faces) is a nested list, containing one element per face.
    #+END_QUOTE
-
 
    From my understanding, one ~label~ means a single point's xyz
    location stored in the ~constant/polyMesh/points~ file.
@@ -183,6 +182,66 @@
    // Face 0 with it's four point labels as labelsit
    4(1 20 172 153)
    #+END_QUOTE
+** change from 32 to 64 not always success
+   I recently read [[https://github.com/sbeamer/gapbs/issues/9][an issue]], the reporter has a similar error
+   (although he used different software):
+
+   #+BEGIN_SRC c++
+   ./converter -f benchmark/graphs/raw/twitter.el -b benchmark/graphs/twitter.sg
+Read Time:           57.28654
+terminate called after throwing an instance of 'std::bad_array_new_length'
+  what():  std::bad_array_new_length
+  make: *** [benchmark/graphs/twitter.sg] Aborted
+   #+END_SRC
+   
+   He changed the software from:
+   #+BEGIN_SRC c++
+   typedef int64_t NodeID;
+typedef int64_t WeightT;
+If I change it back to 32 bit, the error goes away.
+typedef int32_t NodeID;
+typedef int32_t WeightT;
+   #+END_SRC
+
+   At the end of that conversation, the reporter mentioned the reason
+   why this error exists is because of the dowonloading issue by
+   comparing MD5 hashes.
+   
+   So, I think I need further investigate this issue before I really
+   made something on cluster.
+
+** what is ~clone()~
+   As I further read the source code of
+   ~/OpenFOAM-dev/src/dynamicMesh/polyTopoChange/polyTopoChange/modifyObject/polyModifyFace.H~
+
+   I found myself not understand:
+
+   #+BEGIN_SRC c++
+   // 187
+        //- Construct and return a clone
+        virtual autoPtr<topoAction> clone() const
+        {
+            return autoPtr<topoAction>(new polyModifyFace(*this));
+        }
+   #+END_SRC
+
+   What is meaning of this constructor? Which class use this function?
+
+   I latter found the the class using ~clone()~:
+   ~/OpenFOAM-dev/src/dynamicMesh/polyTopoChange/polyTopoChange/topoAction/topoAction.H~
+
+   what does this mean?
+   ~const = 0~
+   #+BEGIN_SRC c++
+   virtual autoPtr<topoAction> clone() const = 0;
+   #+END_SRC
+** Why there is nothing in Destructor
+   #+BEGIN_SRC c++
+   //194
+   // Default Destructor
+   #+END_SRC
+** something interesting
+   cyclist: 1c1707e8a20719056bfc9a232527c5bd
    
 ** [[https://www.learncpp.com/cpp-tutorial/24-integers/#comment-377315][int_32 and int_64]]
 
