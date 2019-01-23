@@ -954,63 +954,63 @@ void callFoo() {
     Why it cannot be compiled using ~char*~? as the return type of ~speak~?
 
     #+BEGIN_SRC c++
- #include "pch.h"
- #include <iostream>
- #include <string>
+#include "pch.h"
+#include <iostream>
+#include <string>
 
- class Animal // This Animal is an abstract base class
- {
- protected:
-	 std::string m_name;
+class Animal // This Animal is an abstract base class
+{
+protected:
+	std::string m_name;
 
- public:
-	 Animal(std::string name)
-		 : m_name(name)
-	 {
-	 }
+public:
+	Animal(std::string name)
+		: m_name(name)
+	{
+	}
 
-	 std::string getName() { return m_name; }
-	 virtual const char* speak() const  = 0; // note that speak is now a pure virtual function
- };
+	std::string getName() { return m_name; }
+	virtual  char* speak()   = 0; // note that speak is now a pure virtual function
+};
 
- class Cat : public Animal
- {
- public:
-	 Cat(std::string name)
-		 : Animal(name)
-	 {
-	 }
+class Cat : public Animal
+{
+public:
+	Cat(std::string name)
+		: Animal(name)
+	{
+	}
 
-	 virtual  const char* speak() const { return "Meow"; }
- };
+	virtual   char* speak()  { return "Meow"; }
+};
 
- class Dog : public Animal
- {
- public:
-	 Dog(std::string name)
-		 : Animal(name)
-	 {
-	 }
+class Dog : public Animal
+{
+public:
+	Dog(std::string name)
+		: Animal(name)
+	{
+	}
 
-	 virtual  const char* speak() const { return "Woof"; }
- };
+	virtual  char* speak()  { return "Woof"; }
+};
 
- class Cow : public Animal
- {
- public:
-	 Cow(std::string name)
-		 : Animal(name)
-	 {
-	 }
+class Cow : public Animal
+{
+public:
+	Cow(std::string name)
+		: Animal(name)
+	{
+	}
 
-	 virtual  const char* speak() const { return "Moo"; }
- };
+	virtual  char* speak()  { return "Moo"; }
+};
 
- int main()
- {
-	 Cow cow("Betsy");
-	 std::cout << cow.getName() << " says " << cow.speak() << '\n';
- } 
+int main()
+{
+	Cow cow("Betsy");
+	std::cout << cow.getName() << " says " << cow.speak() << '\n';
+} 
     #+END_SRC
 
     #+BEGIN_SRC c++
