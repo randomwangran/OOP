@@ -944,7 +944,83 @@ void callFoo() {
 ** [[https://www.learncpp.com/cpp-tutorial/125-the-virtual-table][12.5 The virtual table]]
 
 ** [[https://www.learncpp.com/cpp-tutorial/126-pure-virtual-functions-abstract-base-classes-and-interface-classes][12.6 Pure virtual functions, abstract base classes, and interface classes]]
+   If you want to implyment a function only in its drived class, use a
+   pure virtual function. It will serve as a reminder.
 
+
+*** question
+    What's the different between ~const char*~ and ~char*~?
+
+    Why it cannot be compiled using ~char*~? as the return type of ~speak~?
+
+    #+BEGIN_SRC c++
+ #include "pch.h"
+ #include <iostream>
+ #include <string>
+
+ class Animal // This Animal is an abstract base class
+ {
+ protected:
+	 std::string m_name;
+
+ public:
+	 Animal(std::string name)
+		 : m_name(name)
+	 {
+	 }
+
+	 std::string getName() { return m_name; }
+	 virtual const char* speak() const  = 0; // note that speak is now a pure virtual function
+ };
+
+ class Cat : public Animal
+ {
+ public:
+	 Cat(std::string name)
+		 : Animal(name)
+	 {
+	 }
+
+	 virtual  const char* speak() const { return "Meow"; }
+ };
+
+ class Dog : public Animal
+ {
+ public:
+	 Dog(std::string name)
+		 : Animal(name)
+	 {
+	 }
+
+	 virtual  const char* speak() const { return "Woof"; }
+ };
+
+ class Cow : public Animal
+ {
+ public:
+	 Cow(std::string name)
+		 : Animal(name)
+	 {
+	 }
+
+	 virtual  const char* speak() const { return "Moo"; }
+ };
+
+ int main()
+ {
+	 Cow cow("Betsy");
+	 std::cout << cow.getName() << " says " << cow.speak() << '\n';
+ } 
+    #+END_SRC
+
+    #+BEGIN_SRC c++
+ Severity	Code	Description	Project	File	Line	Suppression State
+ Error (active)	E0120	return value type does not match the function type	ConsoleApplication7	
+ Error (active)	E0120	return value type does not match the function type	ConsoleApplication7	
+ Error (active)	E0120	return value type does not match the function type	ConsoleApplication7	
+ Error	C2440	'return': cannot convert from 'const char [5]' to 'char *'	ConsoleApplication7	
+ Error	C2440	'return': cannot convert from 'const char [5]' to 'char *'	ConsoleApplication7	
+    #+END_SRC
 ** [[https://www.learncpp.com/cpp-tutorial/128-virtual-base-classes][12.7 Virtual base classes]]
 
 ** [[https://www.learncpp.com/cpp-tutorial/12-8-object-slicing][12.8 Object slicing]]

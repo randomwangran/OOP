@@ -1,5 +1,4 @@
 * [[http://cfd-china.com/topic/2191/openfoam%E5%91%A8%E6%9C%9F%E8%BE%B9%E7%95%8C%E7%94%9F%E6%88%90%E4%B8%8D%E6%88%90%E5%8A%9F-cyclic%E7%9A%84%E9%97%AE%E9%A2%98][why mesh not pass]]
-
 ** initial asking
    I am using OF-dev version (don't know exactly the date I downloaded
    it).
@@ -227,7 +226,7 @@ typedef int32_t WeightT;
 
    What is meaning of this constructor? Which class use this function?
 
-   I latter found the the class using ~clone()~:
+   I later found the the class using ~clone()~:
    ~/OpenFOAM-dev/src/dynamicMesh/polyTopoChange/polyTopoChange/topoAction/topoAction.H~
 
    what does this mean?
@@ -235,6 +234,45 @@ typedef int32_t WeightT;
    #+BEGIN_SRC c++
    virtual autoPtr<topoAction> clone() const = 0;
    #+END_SRC
+   
+   This is a pure virtual function. but what's wrong with const?
+
+   I found this piece of code explain the ~const~ stuff very well.
+
+   #+BEGIN_SRC c++
+#include "pch.h"
+#include <iostream>
+#include <string>
+
+class MyClass
+{
+private:
+	int var;
+
+public:
+	void MyFunc() { var = 3; }
+
+	void MyConstFunc() const
+	{
+	}
+
+};
+
+
+int main()
+{
+	MyClass c;
+
+	c.MyFunc();        // ok
+	c.MyConstFunc();   // ok
+
+	const MyClass m;
+
+	m.MyConstFunc();   // ok
+	m.MyFunc();        // not ok, it's not const
+
+} 
+#+END_SRC
 ** Why there is nothing in Destructor
    #+BEGIN_SRC c++
    //194
@@ -242,9 +280,7 @@ typedef int32_t WeightT;
    #+END_SRC
 ** something interesting
    cyclist: 1c1707e8a20719056bfc9a232527c5bd
-   
 ** [[https://www.learncpp.com/cpp-tutorial/24-integers/#comment-377315][int_32 and int_64]]
-
    Does my OF a 32 version? How to check OF is a 32 or 64 version application?
    #+BEGIN_SRC sh
    $ file pisoFoam
@@ -323,5 +359,4 @@ int main()
 	// almost 1.8 time slower.
     std::cout << "Hello World!\n";
 }
-   
    #+END_SRC
