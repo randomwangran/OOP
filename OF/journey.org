@@ -209,7 +209,7 @@ typedef int32_t WeightT;
    So, I think I need further investigate this issue before I really
    made something on cluster.
 
-** what is ~clone()~
+** TODO what is ~clone()~
    As I further read the source code of
    ~/OpenFOAM-dev/src/dynamicMesh/polyTopoChange/polyTopoChange/modifyObject/polyModifyFace.H~
 
@@ -273,6 +273,38 @@ int main()
 
 } 
 #+END_SRC
+
+   It looks like ~topoAction.H~ is an abstract class. In order to see
+   what' really going on with ~clone()~ function
+   
+   I search the ~clone()~ function within the ~src~ folder
+
+   I goback to where I started:
+
+   #+BEGIN_SRC c++
+//187
+//- Construct and return a clone
+virtual autoPtr<topoAction> clone() const
+{
+return autoPtr<topoAction>(new polyModifyFace(*this));
+}
+#+END_SRC
+
+   I then try to study ~autoPtr~:
+
+   It seems this template is widely used in OF.
+
+   The ~OpenFOAM-dev/src/OpenFOAM/containers/Lists/List/List.H is
+   interesting!
+
+   For example:
+
+   #+BEGIN_SRC c++
+   // 182  ~OpenFOAM-dev/src/OpenFOAM/containers/Lists/List/List.H
+        //- Clone
+        inline autoPtr<List<T>> clone() const;
+   #+END_SRC
+
 ** Why there is nothing in Destructor
    #+BEGIN_SRC c++
    //194
@@ -297,7 +329,7 @@ int main()
    So, 4 bytes, you gana have 4 * 8 = 32 bit states, which is ( 2 in
    power of 32 = 4294967296)
 
-   Why I cannot build 64-bit project on my 64-bit machine (I am using )?
+   Why I cannot build 64-bit project on my 64-bit machine ( )?
 
    Yes you can, just choice x64 debugger.
    #+BEGIN_SRC c++
