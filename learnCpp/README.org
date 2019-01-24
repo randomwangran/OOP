@@ -166,7 +166,6 @@
 ** [[https://www.learncpp.com/cpp-tutorial/5-x-chapter-5-comprehensive-quiz][5.x Chapter 5 comprehensive quiz]]
 
 * Chapter 6: Arrays, Strings, Pointers, and References
-
 ** [[https://www.learncpp.com/cpp-tutorial/61-arrays-part-i][6.1 Arrays (Part I)]]
 
 ** [[https://www.learncpp.com/cpp-tutorial/62-arrays-part-ii][6.2 Arrays (Part II)]]
@@ -930,7 +929,6 @@ void callFoo() {
 ** [[https://www.learncpp.com/cpp-tutorial/11-x-chapter-11-comprehensive-quiz][11.x Chapter 11 comprehensive quiz]]
 
 * Chapter 12: Virtual Functions
-
 ** [[https://www.learncpp.com/cpp-tutorial/121-pointers-and-references-to-the-base-class-of-derived-objects][12.1 Pointers and references to the base class of derived objects]]
 
 ** [[https://www.learncpp.com/cpp-tutorial/122-virtual-functions][12.2 Virtual functions and polymorphism]]
@@ -946,8 +944,6 @@ void callFoo() {
 ** [[https://www.learncpp.com/cpp-tutorial/126-pure-virtual-functions-abstract-base-classes-and-interface-classes][12.6 Pure virtual functions, abstract base classes, and interface classes]]
    If you want to implyment a function only in its drived class, use a
    pure virtual function. It will serve as a reminder.
-
-
 *** question
     What's the different between ~const char*~ and ~char*~?
 
@@ -1021,6 +1017,66 @@ int main()
  Error	C2440	'return': cannot convert from 'const char [5]' to 'char *'	ConsoleApplication7	
  Error	C2440	'return': cannot convert from 'const char [5]' to 'char *'	ConsoleApplication7	
     #+END_SRC
+*** nascardriver reply
+    #+BEGIN_QUOTE
+    - Line 8, 12, 24, 35, 46, 55: Uniform initialization
+    #+END_QUOTE
+    Thanks for reminding for the uniform initalization when
+    constructing the class.
+    
+    #+BEGIN_QUOTE
+    @getName should return a const reference. Copying data is slow.
+    #+END_QUOTE
+
+    I agree with you. Indeed I copy from Alex code, maybe we could
+    suggest him to improve this point.
+
+    #+BEGIN_QUOTE
+    @main: Missing return statement
+    #+END_QUOTE
+
+    I am sorry to put ~return 0;~ in the main.
+
+    The word "immutable memory" is cool. What's the difference
+    between "immutable memory" and a "regular memory". I mean I know
+    the former could not be modified. What I want to know is the magic
+    of complier: how does the computer know some part of memory is
+    "immutable"?
+
+    As I further read your explaination, I start to think:
+
+    if a string is this:
+
+    #+BEGIN_SRC c++
+    { "STRING" }
+    #+END_SRC
+    
+    It means it's an immutable string literal? Am I right?
+
+    At the end of reading your explaination, I write my understanding:
+
+    #+BEGIN_QUOTE
+    What's the different between ~const char*~ and ~char*~?
+    Why it cannot be compiled using ~char*~? as the return type of ~speak~?
+    #+END_QUOTE
+
+    ~const char*~ is an immutable string whose memory cannot be
+    modified.
+
+    ~char*~ is a regular string whose memory can be modified.
+
+    In the snippets codes:
+
+    For example:
+
+    #+BEGIN_SRC c++
+    virtual  char* speak()  { return "Moo"; }
+    #+END_SRC
+
+    The return thing: ~{ return "Moo" }~ is an immutable string, which
+    cannot be modified. However, the function declaration is ~char*~,
+    which means it can be modified! That's contradictive to what is
+    pass in it, so the complier complain.
 ** [[https://www.learncpp.com/cpp-tutorial/128-virtual-base-classes][12.7 Virtual base classes]]
 
 ** [[https://www.learncpp.com/cpp-tutorial/12-8-object-slicing][12.8 Object slicing]]
