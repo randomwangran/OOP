@@ -305,6 +305,44 @@ return autoPtr<topoAction>(new polyModifyFace(*this));
         inline autoPtr<List<T>> clone() const;
    #+END_SRC
 
+   emm, what is ~autoPtr<List<T>>~?
+
+   Is this an autoPtr whose date type is ~List<T>~, which is another
+   nested date type called ~List~ whose data type is <T>.
+
+   This constructor looks interesting, the argument of it:
+
+   ~const List<T>& a~.
+
+   #+BEGIN_SRC c++
+   //~/OpenFOAM-dev/src/OpenFOAM/containers/Lists/List/List.C
+   //102
+template<class T>
+Foam::List<T>::List(const List<T>& a) 
+:
+    UList<T>(nullptr, a.size_)
+{
+    if (this->size_)
+    {
+        alloc();
+
+        #ifdef USEMEMCPY
+        if (contiguous<T>())
+        {
+            memcpy(this->v_, a.v_, this->byteSize());
+        }
+        else
+        #endif
+        {
+            List_ACCESS(T, (*this), vp);
+            List_CONST_ACCESS(T, a, ap);
+            List_FOR_ALL((*this), i)
+                List_ELEM((*this), vp, i) = List_ELEM(a, ap, i);
+            List_END_FOR_ALL
+        }
+    }
+}
+   #+END_SRC
 ** Why there is nothing in Destructor
    #+BEGIN_SRC c++
    //194
