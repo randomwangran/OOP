@@ -1017,7 +1017,7 @@ int main()
  Error	C2440	'return': cannot convert from 'const char [5]' to 'char *'	ConsoleApplication7	
  Error	C2440	'return': cannot convert from 'const char [5]' to 'char *'	ConsoleApplication7	
     #+END_SRC
-*** nascardriver reply
+*** reply to nascardriver
     #+BEGIN_QUOTE
     - Line 8, 12, 24, 35, 46, 55: Uniform initialization
     #+END_QUOTE
@@ -1077,6 +1077,23 @@ int main()
     cannot be modified. However, the function declaration is ~char*~,
     which means it can be modified! That's contradictive to what is
     pass in it, so the complier complain.
+*** nascardriver's reply
+    #+BEGIN_QUOTE
+        > how does the computer know some part of memory is
+"immutable"?  You can address 2^64 bytes. 2^64 bytes are 16 EiB
+(16777216 TiB). Of course, you don't have that much physical
+memory. To work around this, your computer uses memory pages, like a
+book. But some pages can be missing, this allows you to address the
+entire memory range without actually having that much memory.  Each
+page has flags, which specify whether it's memory is readable,
+writable, and/or executable.  Your program consists of regions. Each
+region with it's own purpose (constants, code, data, etc.). The page
+the regions get loaded into get their flags set
+accordingly. Eg. constants are in a read-only page, code is in a
+read/execute-page.  How does the computer know the flags? This can be
+either controlled by hardware, which is faster, or by software (Your
+OS).
+    #+END_QUOTE
 ** [[https://www.learncpp.com/cpp-tutorial/128-virtual-base-classes][12.7 Virtual base classes]]
 
 ** [[https://www.learncpp.com/cpp-tutorial/12-8-object-slicing][12.8 Object slicing]]
