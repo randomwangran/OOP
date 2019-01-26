@@ -1094,6 +1094,8 @@ read/execute-page.  How does the computer know the flags? This can be
 either controlled by hardware, which is faster, or by software (Your
 OS).
     #+END_QUOTE
+*** interesting info
+    [[https://www.cnsnevada.com/what-is-the-memory-capacity-of-a-human-brain/]][our brain size]]
 ** [[https://www.learncpp.com/cpp-tutorial/128-virtual-base-classes][12.7 Virtual base classes]]
 
 ** [[https://www.learncpp.com/cpp-tutorial/12-8-object-slicing][12.8 Object slicing]]
