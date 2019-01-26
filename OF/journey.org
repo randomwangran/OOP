@@ -343,6 +343,49 @@ Foam::List<T>::List(const List<T>& a)
     }
 }
    #+END_SRC
+
+   Is this snippet code cause the termination?
+
+   #+BEGIN_SRC c++
+   template<class T>
+Foam::List<T>::List(const List<T>& a)
+:
+    UList<T>(nullptr, a.size_)
+{
+    if (this->size_)
+    {
+        alloc();
+
+        #ifdef USEMEMCPY
+        if (contiguous<T>())
+        {
+            memcpy(this->v_, a.v_, this->byteSize()); // why do memcpy?
+        }
+        else
+        #endif
+        {
+            List_ACCESS(T, (*this), vp);
+            List_CONST_ACCESS(T, a, ap);
+            List_FOR_ALL((*this), i)
+                List_ELEM((*this), vp, i) = List_ELEM(a, ap, i);
+            List_END_FOR_ALL
+        }
+    }
+}
+   #+END_SRC
+
+   what does this mean?
+   #+BEGIN_QUOTE
+   Storage is not allocated during construction or use but is supplied to
+    the constructor as an argument.  This type of list is particularly useful
+    for lists that refer to parts of existing lists such as SubList.
+   #+END_QUOTE
+
+   What is the naming convention if a varible's name end up with an
+   underline?
+
+   My answer: priviate variable?
+
 ** Why there is nothing in Destructor
    #+BEGIN_SRC c++
    //194
