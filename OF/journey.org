@@ -386,6 +386,38 @@ Foam::List<T>::List(const List<T>& a)
 
    My answer: priviate variable?
 
+   ~Size_~ is a private data declared in ~UList.H~.
+
+   
+** what is difference between ~UList~ and ~List~?
+~UList~:
+#+BEGIN_QUOTE
+    A 1D vector of objects of type \<T\>, where the size of the vector is
+    known and can be used for subscript bounds checking, etc.
+
+    Storage is not allocated during construction or use but is supplied to
+    the constructor as an argument.  This type of list is particularly useful
+    for lists that refer to parts of existing lists such as SubList.
+#+END_QUOTE
+
+~List~:
+#+BEGIN_QUOTE
+    A 1D array of objects of type \<T\>, where the size of the vector
+    is known and used for subscript bounds checking, etc.
+
+    Storage is allocated on free-store during construction.
+#+END_QUOTE
+
+~SubList~
+#+BEGIN_QUOTE
+    A List obtained as a section of another List.
+
+    Since the SubList is itself unallocated, no storage is allocated or
+    de-allocated during its use.  To achieve this behaviour, SubList is
+    derived from UList rather than List.
+#+END_QUOTE
+
+what is the meaning of ~free-store during construction.~?
 ** Why there is nothing in Destructor
    #+BEGIN_SRC c++
    //194
