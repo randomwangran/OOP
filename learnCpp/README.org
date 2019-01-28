@@ -1079,7 +1079,7 @@ int main()
     pass in it, so the complier complain.
 *** nascardriver's reply
     #+BEGIN_QUOTE
-        > how does the computer know some part of memory is
+how does the computer know some part of memory is
 "immutable"?  You can address 2^64 bytes. 2^64 bytes are 16 EiB
 (16777216 TiB). Of course, you don't have that much physical
 memory. To work around this, your computer uses memory pages, like a
@@ -1094,6 +1094,24 @@ read/execute-page.  How does the computer know the flags? This can be
 either controlled by hardware, which is faster, or by software (Your
 OS).
     #+END_QUOTE
+*** reply to nascardriver
+    I like your metaphor using a book, but I have some more
+    questions. If I want to declare a memory space of 16 EiB using a
+    book, which has 16 pages. Assumming each page has a size of 1 EiB,
+    it should have no problem. However, today's technologies are not
+    there yet. We can have a book of 16 pages, but each page only have
+    1 PiB. How can this book has a compacity of 16 EiB memory? 
+
+    This is my understanding reading your metaphor. We have a 16 pages
+    book. But, to claim we have a super big memory machine, we say
+    that this 16 pages book missing some pages. In reality, there are
+    some missing pages, 1024/(16-1) = 68.2666 pages, in between the
+    real pages (Page 1 ~ Page 2). Is this what it mean by "some pages
+    are missing."
+
+    If this is ture, what's the purpose of doing this? Indeed, if a
+    page is missing, you cannot read or write on that page, so what's
+    the purpose of doing so?
 *** interesting info
     [[https://www.cnsnevada.com/what-is-the-memory-capacity-of-a-human-brain/]][our brain size]]
 ** [[https://www.learncpp.com/cpp-tutorial/128-virtual-base-classes][12.7 Virtual base classes]]
