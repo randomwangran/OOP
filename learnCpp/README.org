@@ -944,7 +944,7 @@ void callFoo() {
 ** [[https://www.learncpp.com/cpp-tutorial/126-pure-virtual-functions-abstract-base-classes-and-interface-classes][12.6 Pure virtual functions, abstract base classes, and interface classes]]
    If you want to implyment a function only in its drived class, use a
    pure virtual function. It will serve as a reminder.
-*** question
+*** DONE question
     What's the different between ~const char*~ and ~char*~?
 
     Why it cannot be compiled using ~char*~? as the return type of ~speak~?
@@ -1016,8 +1016,8 @@ int main()
  Error (active)	E0120	return value type does not match the function type	ConsoleApplication7	
  Error	C2440	'return': cannot convert from 'const char [5]' to 'char *'	ConsoleApplication7	
  Error	C2440	'return': cannot convert from 'const char [5]' to 'char *'	ConsoleApplication7	
-    #+END_SRC
-*** reply to nascardriver
+    #+END_SRC*
+*** DONE reply to nascardriver
     #+BEGIN_QUOTE
     - Line 8, 12, 24, 35, 46, 55: Uniform initialization
     #+END_QUOTE
@@ -1077,7 +1077,7 @@ int main()
     cannot be modified. However, the function declaration is ~char*~,
     which means it can be modified! That's contradictive to what is
     pass in it, so the complier complain.
-*** nascardriver's reply
+*** DONE nascardriver's reply
     #+BEGIN_QUOTE
 how does the computer know some part of memory is
 "immutable"?  You can address 2^64 bytes. 2^64 bytes are 16 EiB
@@ -1094,7 +1094,7 @@ read/execute-page.  How does the computer know the flags? This can be
 either controlled by hardware, which is faster, or by software (Your
 OS).
     #+END_QUOTE
-*** reply to nascardriver
+*** DONE reply to nascardriver
     I like your metaphor using a book, but I have some more
     questions. If I want to declare a memory space of 16 EiB using a
     book, which has 16 pages. Assumming each page has a size of 1 EiB,
@@ -1112,7 +1112,7 @@ OS).
     If this is ture, what's the purpose of doing this? Indeed, if a
     page is missing, you cannot read or write on that page, so what's
     the purpose of doing so?
-*** nascardriver's reply
+*** TODO nascardriver's reply
     You can address 16EiB, but not all at once. You want to be able to
     address the full 16EiB, because that's easier than having to care
     about how much physical memory there is. The 16EiB don't fit into

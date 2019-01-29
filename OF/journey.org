@@ -1,5 +1,5 @@
 * [[http://cfd-china.com/topic/2191/openfoam%E5%91%A8%E6%9C%9F%E8%BE%B9%E7%95%8C%E7%94%9F%E6%88%90%E4%B8%8D%E6%88%90%E5%8A%9F-cyclic%E7%9A%84%E9%97%AE%E9%A2%98][why mesh not pass]]
-** initial asking
+** DONE initial asking
    I am using OF-dev version (don't know exactly the date I downloaded
    it).
 
@@ -88,7 +88,7 @@
    reference to this point? I might (can remember exactly) just use
    some default number here.
   
-** 2nd round
+** DONE 2nd round
    The reason why I checked ~polyModifyFace~ was that I wanted to study
    the piece of code in:
   #+BEGIN_SRC c++
@@ -146,7 +146,7 @@
 
   Can I change to any number (2^{5,6,7,8})?
 
-** reply to wwzhao: study $WM_LABEL_SIZE
+** TODO reply to wwzhao: study $WM_LABEL_SIZE
    What is the meaning of:
 
    #+BEGIN_QUOTE
@@ -181,7 +181,7 @@
    // Face 0 with it's four point labels as labelsit
    4(1 20 172 153)
    #+END_QUOTE
-** change from 32 to 64 not always success
+** DONE change from 32 to 64 not always success
    I recently read [[https://github.com/sbeamer/gapbs/issues/9][an issue]], the reporter has a similar error
    (although he used different software):
 
@@ -208,7 +208,6 @@ typedef int32_t WeightT;
    
    So, I think I need further investigate this issue before I really
    made something on cluster.
-
 ** TODO what is ~clone()~
    As I further read the source code of
    ~/OpenFOAM-dev/src/dynamicMesh/polyTopoChange/polyTopoChange/modifyObject/polyModifyFace.H~
@@ -224,7 +223,7 @@ typedef int32_t WeightT;
         }
    #+END_SRC
 
-   What is meaning of this constructor? Which class use this function?
+   What is meaning of this ~clone()~ function? Which class use this function?
 
    I later found the the class using ~clone()~:
    ~/OpenFOAM-dev/src/dynamicMesh/polyTopoChange/polyTopoChange/topoAction/topoAction.H~
@@ -235,9 +234,12 @@ typedef int32_t WeightT;
    virtual autoPtr<topoAction> clone() const = 0;
    #+END_SRC
    
-   This is a pure virtual function. but what's wrong with const?
+   This is a pure virtual function. but what's wrong with const? It's
+   just a constant pure function. Noting that the pure virtual
+   function will remind the code something wrong if s/he forget to
+   implyment the function in the drived class.
 
-   I found this piece of code explain the ~const~ stuff very well.
+   I found the following code explaining the ~const~ stuff very well.
 
    #+BEGIN_SRC c++
 #include "pch.h"
@@ -277,7 +279,7 @@ int main()
    It looks like ~topoAction.H~ is an abstract class. In order to see
    what' really going on with ~clone()~ function
    
-   I search the ~clone()~ function within the ~src~ folder
+   I search the ~clone()~ function within the ~src~ folder.
 
    I goback to where I started:
 
@@ -294,7 +296,7 @@ return autoPtr<topoAction>(new polyModifyFace(*this));
 
    It seems this template is widely used in OF.
 
-   The ~OpenFOAM-dev/src/OpenFOAM/containers/Lists/List/List.H is
+   The ~OpenFOAM-dev/src/OpenFOAM/containers/Lists/List/List.H~ is
    interesting!
 
    For example:
@@ -387,9 +389,7 @@ Foam::List<T>::List(const List<T>& a)
    My answer: priviate variable?
 
    ~Size_~ is a private data declared in ~UList.H~.
-
-   
-** what is difference between ~UList~ and ~List~?
+** DONE what is difference between ~UList~ and ~List~?
 ~UList~:
 #+BEGIN_QUOTE
     A 1D vector of objects of type \<T\>, where the size of the vector is
@@ -416,16 +416,16 @@ Foam::List<T>::List(const List<T>& a)
     de-allocated during its use.  To achieve this behaviour, SubList is
     derived from UList rather than List.
 #+END_QUOTE
-
-what is the meaning of ~free-store during construction.~?
-** Why there is nothing in Destructor
+   what is the meaning of ~free-store during construction.~? Take away
+   message is that the ~UList~ not allow storage during construction,
+   whereas ~List~ is okay. But what does it mean: storage during
+   construction?
+** TODO Why there is nothing in Destructor
    #+BEGIN_SRC c++
    //194
    // Default Destructor
    #+END_SRC
-** something interesting
-   cyclist: 1c1707e8a20719056bfc9a232527c5bd
-** [[https://www.learncpp.com/cpp-tutorial/24-integers/#comment-377315][int_32 and int_64]]
+** DONE [[https://www.learncpp.com/cpp-tutorial/24-integers/#comment-377315][int_32 and int_64]]
    Does my OF a 32 version? How to check OF is a 32 or 64 version application?
    #+BEGIN_SRC sh
    $ file pisoFoam
@@ -442,9 +442,12 @@ what is the meaning of ~free-store during construction.~?
    So, 4 bytes, you gana have 4 * 8 = 32 bit states, which is ( 2 in
    power of 32 = 4294967296)
 
-   Why I cannot build 64-bit project on my 64-bit machine ( )?
+   Why I cannot build 64-bit project on my 64-bit machine?
 
    Yes you can, just choice x64 debugger.
+
+   Following code illustrate that building doing a simple assignment,
+   x32 is faster than x64.
    #+BEGIN_SRC c++
 #include "pch.h"
 #include <iostream>
@@ -505,3 +508,5 @@ int main()
     std::cout << "Hello World!\n";
 }
    #+END_SRC
+** something interesting
+   cyclist: 1c1707e8a20719056bfc9a232527c5bd
