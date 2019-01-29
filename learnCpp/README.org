@@ -1112,8 +1112,30 @@ OS).
     If this is ture, what's the purpose of doing this? Indeed, if a
     page is missing, you cannot read or write on that page, so what's
     the purpose of doing so?
+*** nascardriver's reply
+    You can address 16EiB, but not all at once. You want to be able to
+    address the full 16EiB, because that's easier than having to care
+    about how much physical memory there is. The 16EiB don't fit into
+    your RAM. The addresses you see are virtual, ie. they're just
+    aliases for a physical address. If you have 1 byte of memory at
+    the virtual address 0x1000 and 1 byte of memory at address
+    0x500000, then there won't be a huge gap of unused
+    memory. Instead, this memory could be near each other in physical
+    address space. So your 2 bytes don't occupy 0x499000 bytes, but
+    instead, only 2 pages (However much that may be).  In our book
+    analogy: You have a book with 100 pages, but you want to be able
+    to use 1000 site numbers. You don't need 1000 site numbers at
+    once. The pages don't have numbers on them, so you can write down
+    whatever number you like. If your book is empty and you want a
+    page to have number 782, you can write number 782 and the first
+    physical page of the book. You can write 695 on the second
+    physical page. You have now used a virtual range of 782-695=87
+    pages, but you have used only 2 physical pages.  How you choose
+    the next physical page and how you map physical to virtual
+    addresses can have a big impact on performance. Luckily, your
+    hardware/os takes care of that.
 *** interesting info
-    [[https://www.cnsnevada.com/what-is-the-memory-capacity-of-a-human-brain/]][our brain size]]
+    [[https://www.cnsnevada.com/what-is-the-memory-capacity-of-a-human-brain/][our brain size]].
 ** [[https://www.learncpp.com/cpp-tutorial/128-virtual-base-classes][12.7 Virtual base classes]]
 
 ** [[https://www.learncpp.com/cpp-tutorial/12-8-object-slicing][12.8 Object slicing]]
