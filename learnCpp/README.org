@@ -1135,7 +1135,11 @@ OS).
     addresses can have a big impact on performance. Luckily, your
     hardware/os takes care of that.
 *** interesting info
-    [[https://www.cnsnevada.com/what-is-the-memory-capacity-of-a-human-brain/][our brain size]].
+    - [[https://www.cnsnevada.com/what-is-the-memory-capacity-of-a-human-brain/][our brain size]].
+    - when I see 0x1000, [[https://medium.com/@savas/why-do-we-use-hexadecimal-d6d80b56f026][I read this article]]. Excellent explanation
+      why people use hexadecimal.
+    - [[http://www.linfo.org/memory.html][memoery description]]: very good explanation on what is register,
+      cache (L1,L2,L3), and other concepts of memory
 ** [[https://www.learncpp.com/cpp-tutorial/128-virtual-base-classes][12.7 Virtual base classes]]
 
 ** [[https://www.learncpp.com/cpp-tutorial/12-8-object-slicing][12.8 Object slicing]]
