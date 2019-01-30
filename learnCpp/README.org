@@ -1134,6 +1134,36 @@ OS).
     the next physical page and how you map physical to virtual
     addresses can have a big impact on performance. Luckily, your
     hardware/os takes care of that.
+*** reply to nascardrive
+    #+BEGIN_QUOTE
+    You can address 16EiB, but not all at once
+    #+END_QUOTE
+    What does it mean? If I have a regular memory, e.g., [[https://www.amazon.ca/Corsair-Vengeance-3000MHz-Desktop-Memory/dp/B01EI5Z8ZE/ref=sr_1_1?s=electronics&ie=UTF8&qid=1548865159&sr=1-1&keywords=RAM&th=1][Corsair
+    Vengeance LPX 32GB DDR4 3000 C15 for Intel 100 Series - White]]
+    (https://www.amazon.ca/Corsair-Vengeance-3000MHz-Desktop-Memory/dp/B01EI5Z8ZE/ref=sr_1_1?s=electronics&ie=UTF8&qid=1548865159&sr=1-1&keywords=RAM&th=1),
+    Do you mean that I could address 16EiB's memory using this 32GiB
+    memory card?
+    #+BEGIN_QUOTE
+    The 16EiB don't fit into
+    your RAM.
+    #+END_QUOTE
+    From my understanding: assuming the longest URL ( 2000 characters
+    ) that a typical broswer can handle
+    (https://stackoverflow.com/questions/417142/what-is-the-maximum-length-of-a-url-in-different-browsers). A
+    character has a size of 1 byte, so the maximum URL could have a
+    maximum size of ( 2000 * 1 byte = 2000 byte ). Assuming in idea
+    condition that the memory we just purchurse on amamzon, i.e. 32
+    GiB, we could store ( 34359740000 / 2000 = 17179870 ) in our
+    memory. Obviously, we are not able to claim that our memory is
+    able to store a data whose size is 16 EiB ( 18446744073.71 GiB =
+    19807040628566999040 byte ). However, if we claim that each of
+    those URL is another memory whose size is ( 19807040628566999040
+    /17179870 = 1152921449846.0697921462735166215 byte =
+    1073.741773000052 GiB ). In other word, if we open the broswer and
+    open the URL that is written in the memory, and if we could read
+    and write stuff on that address (URL), we then claim that we have
+    just bought a memory with 16 EiB.
+    
 *** interesting info
     - [[https://www.cnsnevada.com/what-is-the-memory-capacity-of-a-human-brain/][our brain size]].
     - when I see 0x1000, [[https://medium.com/@savas/why-do-we-use-hexadecimal-d6d80b56f026][I read this article]]. Excellent explanation
