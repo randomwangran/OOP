@@ -1,0 +1,18 @@
+* shi zhong
+** [[https://liam.page/2016/05/01/Introduction-to-Memory-Addressing/][memory blog]]
+*** basic
+**** linear memory and linear address
+     I am not sure the correct jargon here. Linear memory is just
+     another way to manage memory? For the "physical memory", the
+     adress of it is this: 1,2,3,4,5,6,...
+     
+     For the "linear memory", we say memoery adress is like this:
+     1,3,5,7,9...
+
+     The first element of both "physical" and "linear memory" is 1,
+     but the second is different. "Physical" memory is 2, whereas
+     "linear" memory is 3.
+
+     I am correct?
+   
+   
