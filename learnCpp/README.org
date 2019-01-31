@@ -1153,7 +1153,7 @@ OS).
     character has a size of 1 byte, so the maximum URL could have a
     maximum size of ( 2000 * 1 byte = 2000 byte ). Assuming in idea
     condition that the memory we just purchurse on amamzon, i.e. 32
-    GiB, we could store ( 34359740000 / 2000 = 17179870 ) in our
+    GiB, we could store ( 34359740000 / 2000 = 17179870 ) URLs in our
     memory. Obviously, we are not able to claim that our memory is
     able to store a data whose size is 16 EiB ( 18446744073.71 GiB =
     19807040628566999040 byte ). However, if we claim that each of
@@ -1162,7 +1162,27 @@ OS).
     1073.741773000052 GiB ). In other word, if we open the broswer and
     open the URL that is written in the memory, and if we could read
     and write stuff on that address (URL), we then claim that we have
-    just bought a memory with 16 EiB.
+    just bought a memory with 16 EiB? Is this what you mean?
+
+    I had hard time in understanding virtual and physical address. It
+    seems that there's no virtual memoery because it's just alias for
+    a physical memoery. If so, could we just use the term physical
+    address in further discussion. Correct me if I miss something
+    about virtual address.
+
+    Go back to our book analogy. I don't understand your
+    explanation. See, if we have a book with 100 pages. We claim that
+    this book has a capcity of saving data whose size is 16 EiB. To
+    show other people, we have such a big memory. We need to test
+    it. The test is to store 1000 site number ( 1000 URLs)? Each site
+    number (URL) has a size of ( 16 / 1000 EiB = 18446744073.71 / 1000
+    GiB = 19807040628566999040 / 1000 byte ). So if we open this book
+    and read the data on that page, and we found the correct URL, we
+    could then claim that we have such a big memory.
+
+    The issue is that we don't have such a big page. In reality, each
+    page of that book could only store 1 GiB data. My question is how
+    to adress 16 EiB data using this normal memoery?
     
 *** interesting info
     - [[https://www.cnsnevada.com/what-is-the-memory-capacity-of-a-human-brain/][our brain size]].
