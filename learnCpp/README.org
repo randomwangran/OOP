@@ -1256,7 +1256,7 @@ about increasing the addressable range.
 
 You as a programmer don't notice anything of the mapping, you only see
 virtual addresses.
-**** reply to nascardirver
+**** TODO reply to nascardirver
 >> Do you mean that I could address 16EiB's memory using this 32GiB
 >> memory card?
 >
@@ -1267,7 +1267,10 @@ using 32 GiB"?
 
 I ask this question because my first impression to it is not. You buy
 a 32 GiB memory card. You could only have that space of memory. Why
-someone could claim such a big memory.
+someone could claim such a big memory. (After reading your comment
+below, I start to understand what you are saying here. We cannot have
+such a big memoery card, but it doesn't mean that we could not address
+a big memoery. Indeed, very small size of memory card, i.e. )
 
 >URL That example is correct up to "However, if we claim [...]". I
 >understand the calculation you're doing, but I don't understand what
@@ -1281,7 +1284,10 @@ let me know.
 >We never claim to be able to store 16 EiB, but
 >we're able to use addresses 0x00000000'00000000 to 0xFFFFFFFF'FFFFFFFF
 >on a 64 bit machine. But not all at a time.
-I calculate this number: 0xFFFFFFFF'FFFFFFFF - 0x00000000'00000000 = 1.844674407371E+19
+
+I calculate this number: 0xFFFFFFFF'FFFFFFFF - 0x00000000'00000000 =
+>1.844674407371E+19 (byte?)
+
 >> It seems that there's no virtual memoery because it's just alias for
 >> a physical memoery 
 >
