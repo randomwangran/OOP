@@ -273,7 +273,7 @@ int main()
 	m.MyConstFunc();   // ok
 	m.MyFunc();        // not ok, it's not const
 
-} 
+}
 #+END_SRC
 
    It looks like ~topoAction.H~ is an abstract class. In order to see
@@ -425,6 +425,100 @@ Foam::List<T>::List(const List<T>& a)
    //194
    // Default Destructor
    #+END_SRC
+** prepare a issue for OF
+
+   Dear OpenFOAM(OF) maintainers:
+
+   I recently want to test the upper limmited of mesh size, i.e., what
+   is the biggest size that OF could handle.
+
+   This is the mesh ( a total number of 256000000 cells )I build. I am
+   sorry tha not using snappyHexMesh to build this mesh, instead I use
+   Ansys/ICEM 17.1 to build it.
+
+   #+BEGIN_SRC 
+$ checkMesh
+/*---------------------------------------------------------------------------*\
+| =========                 |                                                 |
+| \\      /  F ield         | OpenFOAM: The Open Source CFD Toolbox           |
+|  \\    /   O peration     | Version:  4.1                                   |
+|   \\  /    A nd           | Web:      www.OpenFOAM.org                      |
+|    \\/     M anipulation  |                                                 |
+\*---------------------------------------------------------------------------*/
+Build  : 4.1
+Exec   : checkMesh
+Date   : Jul 06 2018
+Time   : 15:54:53
+Host   : "cp0401"
+PID    : 12872
+Case   : /scratch/crazyuser/biggerMesh
+nProcs : 1
+sigFpe : Enabling floating point exception trapping (FOAM_SIGFPE).
+fileModificationChecking : Monitoring run-time modified files using timeStampMaster
+allowSystemOperations : Allowing user-supplied system call operations
+
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
+Create time
+
+Create polyMesh for time = 0
+
+Time = 0
+
+Mesh stats
+    points:           257514000
+    faces:            769512000
+    internal faces:   766488000
+    cells:            256000000
+    faces per cell:   6
+    boundary patches: 5
+    point zones:      0
+    face zones:       1
+    cell zones:       1
+
+Overall number of cells of each type:
+    hexahedra:     256000000
+    prisms:        0
+    wedges:        0
+    pyramids:      0
+    tet wedges:    0
+    tetrahedra:    0
+    polyhedra:     0
+
+Checking topology...
+    Boundary definition OK.
+    Cell to face addressing OK.
+    Point usage OK.
+    Upper triangular ordering OK.
+    Face vertices OK.
+    Number of regions: 1 (OK).
+
+Checking patch topology for multiply connected surfaces...
+    Patch               Faces    Points   Surface topology                  
+    FRONT               1000000  1002000  ok (non-closed singly connected)  
+    INLET               256000   257257   ok (non-closed singly connected)  
+    OUTLET              256000   257257   ok (non-closed singly connected)  
+    CYLINDER            512000   514000   ok (non-closed singly connected)  
+    BACK                1000000  1002000  ok (non-closed singly connected)  
+
+Checking geometry...
+    Overall domain bounding box (-32 -32 0) (32 32 3.33332)
+    Mesh has 3 geometric (non-empty/wedge) directions (1 1 1)
+    Mesh has 3 solution (non-empty) directions (1 1 1)
+    Boundary openness (-4.65606e-16 4.16736e-21 -4.97036e-16) OK.
+    Max cell openness = 3.18122e-16 OK.
+    Max aspect ratio = 29.4282 OK.
+    Minimum face area = 1.3175e-06. Maximum face area = 0.0385213.  Face area magnitudes OK.
+    Min volume = 1.71549e-08. Max volume = 0.000501578.  Total volume = 10720.6.  Cell volumes OK.
+    Mesh non-orthogonality Max: 1.72876e-05 average: 0
+    Non-orthogonality check OK.
+    Face pyramids OK.
+    Max skewness = 0.00266764 OK.
+    Coupled point location match (average 0) OK.
+
+Mesh OK.
+
+End   
+   #+END_SRC
 ** DONE [[https://www.learncpp.com/cpp-tutorial/24-integers/#comment-377315][int_32 and int_64]]
    Does my OF a 32 version? How to check OF is a 32 or 64 version application?
    #+BEGIN_SRC sh
@@ -510,3 +604,4 @@ int main()
    #+END_SRC
 ** something interesting
    cyclist: 1c1707e8a20719056bfc9a232527c5bd
+   
