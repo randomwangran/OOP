@@ -429,11 +429,11 @@ Foam::List<T>::List(const List<T>& a)
 
    Dear OpenFOAM(OF) maintainers:
 
-   I recently want to test the upper limmited of mesh size, i.e., what
+   I recently want to test the upper limitation of mesh size, i.e., what
    is the biggest size that OF could handle.
 
-   This is the mesh ( a total number of 256000000 cells )I build. I am
-   sorry tha not using snappyHexMesh to build this mesh, instead I use
+   This is the mesh ( a total number of 256000000 cells ) I build. I am
+   sorry tha not using snappyHexMesh to build this mesh, instead, I use
    Ansys/ICEM 17.1 to build it.
 
    #+BEGIN_SRC 
@@ -519,6 +519,59 @@ Mesh OK.
 
 End   
    #+END_SRC
+
+   However, when running ~createPatch~ command:
+#+BEGIN_SRC c++
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
+Create time
+ 
+Create polyMesh for time = 0
+ 
+Reading createPatchDict
+ 
+Adding new patch FRONT_CYC as patch 5 from 
+{
+    type            cyclic;
+    neighbourPatch  BACK_CYC;
+    matchTolerance  0.01;
+}
+ 
+Adding new patch BACK_CYC as patch 6 from 
+{
+    type            cyclic;
+    neighbourPatch  FRONT_CYC;
+    matchTolerance  0.01;
+}
+ 
+ 
+Moving faces from patch FRONT to patch 5
+terminate called after throwing an instance of 'std::bad_array_new_length'
+  what():  std::bad_array_new_length
+#+END_SRC
+
+I suspected this terminate call is from
+~OpenFOAM-dev/src/dynamicMesh/polyTopoChange/polyTopoChange/modifyObject/polyModifyFace.H~
+in this ~clone()~ function:
+#+BEGIN_SRC c++
+//- Construct and return a clone
+virtual autoPtr<topoAction> clone() const
+{
+    return autoPtr<topoAction>(new polyModifyFace(*this));
+}
+#+END_SRC
+
+As a newbiew in c++, I just jump into the source code without luck. I
+get lost in finding which array causes the trouble.
+
+One of my friend suggested me:
+
+#+BEGIN_QUOTE
+rebuilding OpenFOAM with a flag WM_LABEL_SIZE=64
+#+END_QUOTE
+
+He mentioned that the upper bond for 32 label size application has a
+maximum capcity of 2^(N-1)-1, which is 2147483647. However, the
+maximum number in the current case (faces) there is 769512000 faces.
 ** DONE [[https://www.learncpp.com/cpp-tutorial/24-integers/#comment-377315][int_32 and int_64]]
    Does my OF a 32 version? How to check OF is a 32 or 64 version application?
    #+BEGIN_SRC sh
