@@ -425,7 +425,7 @@ Foam::List<T>::List(const List<T>& a)
    //194
    // Default Destructor
    #+END_SRC
-** prepare a issue for OF
+** TODO prepare a issue for OF
 
    Dear OpenFOAM(OF) maintainers:
 
@@ -572,6 +572,39 @@ rebuilding OpenFOAM with a flag WM_LABEL_SIZE=64
 He mentioned that the upper bond for 32 label size application has a
 maximum capcity of 2^(N-1)-1, which is 2147483647. However, the
 maximum number in the current case (faces) there is 769512000 faces.
+** TODO attack from WM_LABEL_SIZE
+#+BEGIN_SRC  sh
+grep -rl "WM_LABEL_SIZE" ./*
+./applications/utilities/postProcessing/graphics/PVReaders/PVblockMeshReader/CMakeLists.txt
+./applications/utilities/postProcessing/graphics/PVReaders/PVFoamReader/CMakeLists.txt
+./etc/bashrc
+./etc/config.csh/settings
+./etc/config.csh/unset
+./etc/config.sh/settings
+./etc/config.sh/unset
+./etc/cshrc
+./src/OpenFOAM/primitives/ints/label/label.C
+./src/OpenFOAM/primitives/ints/label/label.H
+./src/OpenFOAM/primitives/ints/uLabel/uLabel.C
+./src/OpenFOAM/primitives/ints/uLabel/uLabel.H
+./wmake/rules/General/general
+#+END_SRC
+
+In: ~/OpenFOAM-dev/etc/config.sh/settings~ ~export
+WM_LABEL_OPTION=Int$WM_LABEL_SIZE~ Then, what is ~export~ meaning in
+this setting file? [[https://superuser.com/questions/153371/what-does-export-do-in-bash][I read this page: exported variable get passed on
+to child processes, not-exported variable do not.]] So, it's just a
+variable defination.
+
+So, what's ~WM_LABEL_OPTION~ really define?
+
+It just construct another variable: ~export
+WM_OPTIONS=$WM_ARCH$WM_COMPILER$WM_PRECISION_OPTION$WM_LABEL_OPTION$WM_COMPILE_OPTION~
+
+So, what's $WM_OPTIONS$ really define?
+
+I don't think I have enough background info in understanding what's
+make file really is. So, I decide to go to basic.
 ** DONE [[https://www.learncpp.com/cpp-tutorial/24-integers/#comment-377315][int_32 and int_64]]
    Does my OF a 32 version? How to check OF is a 32 or 64 version application?
    #+BEGIN_SRC sh
