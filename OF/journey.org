@@ -594,7 +594,7 @@ In: ~/OpenFOAM-dev/etc/config.sh/settings~ ~export
 WM_LABEL_OPTION=Int$WM_LABEL_SIZE~ Then, what is ~export~ meaning in
 this setting file? [[https://superuser.com/questions/153371/what-does-export-do-in-bash][I read this page: exported variable get passed on
 to child processes, not-exported variable do not.]] So, it's just a
-variable defination.
+variable definition.
 
 So, what's ~WM_LABEL_OPTION~ really define?
 
@@ -604,7 +604,7 @@ WM_OPTIONS=$WM_ARCH$WM_COMPILER$WM_PRECISION_OPTION$WM_LABEL_OPTION$WM_COMPILE_O
 So, what's $WM_OPTIONS$ really define?
 
 I don't think I have enough background info in understanding what's
-make file really is. So, I decide to go to basic.
+make file really is. So, I decide to go to basic about make system.
 ** DONE [[https://www.learncpp.com/cpp-tutorial/24-integers/#comment-377315][int_32 and int_64]]
    Does my OF a 32 version? How to check OF is a 32 or 64 version application?
    #+BEGIN_SRC sh
