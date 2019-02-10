@@ -1183,7 +1183,7 @@ OS).
     The issue is that we don't have such a big page. In reality, each
     page of that book could only store 1 GiB data. My question is how
     to adress 16 EiB data using this normal memoery?
-**** nascardirver's reply    
+**** nascardirver's reply
 > Do you mean that I could address 16EiB's memory using this 32GiB
 > memory card?
 
@@ -1257,115 +1257,118 @@ about increasing the addressable range.
 You as a programmer don't notice anything of the mapping, you only see
 virtual addresses.
 **** TODO reply to nascardirver
->> Do you mean that I could address 16EiB's memory using this 32GiB
->> memory card?
->
->Yes
+     
+     Hi Nascardirver:
 
-Let me remind the initial question: "Can we address 16 EiB memory
-using 32 GiB"?
+     I read you reply and have more questions. But let me summary my
+     question first before I jump into the details:
 
-I ask this question because my first impression to it is not. You buy
-a 32 GiB memory card. You could only have that space of memory. Why
-someone could claim such a big memory. (After reading your comment
-below, I start to understand what you are saying here. We cannot have
-such a big memoery card, but it doesn't mean that we could not address
-a big memoery. Indeed, very small size of memory card, i.e. )
-
->URL That example is correct up to "However, if we claim [...]". I
->understand the calculation you're doing, but I don't understand what
->you're trying to show.
-
-I am trying to clear my understanding of this question, i.e., to
-explain that I could buy a book with a capcity of 32 GiB but able to
-adress 16 EiB memoery. If you still have question on this point please
-let me know.
-
->We never claim to be able to store 16 EiB, but
->we're able to use addresses 0x00000000'00000000 to 0xFFFFFFFF'FFFFFFFF
->on a 64 bit machine. But not all at a time.
-
-I calculate this number: 0xFFFFFFFF'FFFFFFFF - 0x00000000'00000000 =
-1.844674407371E+19 (byte?)
-
->> It seems that there's no virtual memoery because it's just alias for
->> a physical memoery 
-
->It's not. Virtual addresses are aliases for for physical
->addresses. Don't mix this up with "when I say 'virtual address' I mean
->'physical address'". Each virtual address translates to a physical
->address. The easiest way of imagining this is a table with virtual
->addresses on one- and physical addresses on the other side
->
->#+BEGIN_SRC 
->virtual     physical
->0x00001000  0x00000020
->0x00004000  0x59F00300
->0xF0000000  0x00001000
->#+END_SRC
-
-Why we need alias for physical address? Is that because physical
-adress is too long? I have experience using bash. One of my favourate
-functionality of bash is to 'alias' my personal command to reduce my
-typing work on a terminal.
-
->Now, if you want to access the virtual address 0x4000, you look into
->that table and see that the memory you want to access is at the
->physical address 0x59F00300.  If the virtual and physical memory has
->the same size, there's no point in doing this, because we could map
->virtual addresses to their identity (ie. 1 is 1, 2 is 2, etc.).  But
->as you already understood, those memory regions don't have the same
->size. Your 32 GiB RAM is way smaller than your 16 EiB virtual memory.
->Here's a table for virtual > physical
->
->#+BEGIN_SRC 
->virtual              physical
->0x0FF05E00'00030000  0x05FA0C00
->0x3A001004'80000000  0x00010000
->0x00000000'003D0000  0x70044000
->#+END_SRC
->
->We have virtual 64 bit addresses which we can use for software. But
->your 32 GiB hardware only has a range from 0x00000000 to
->0xFFFFFFFF. We take the virtual addresses (Only the ones that are in
->use!) and map them to physical addresses. We can only use a maximum of
->0xFFFFFFFF addresses (by count), but the addressable range has
->increased significantly.
-
-This will bring a issue: there must be two virtual memory pointing
-towards the same physical address. What is side effect of this mapping?
-
->> We claim that this book has a capcity of saving data whose size is 16 EiB
-
->No. We cannot change the capacity. The capacity stays at 100 pages. We
->claim that we have more than 100 pages numbers.  Let's say the first
->50 pages are filled in, we can't add any more content to them. Now you
->want to write something on page 400. Of course you don't have a 400th
->page, but you can use 400 as a page number. We write the new content
->on page 51 (Again, how to choose a new page in important, I'll just
->take the next free page) and add an entry in our page table
->
->#+BEGIN_SRC 
->virtual  physical
->400      51
->#+END_SRC
-
-Why we "foo" ourself using 400 page? Is that because we can delete
-some old memory when we need more memory space? But why not just use
-the old memory address?
-
->The next time you access page number 400, you look in your page table,
->see that it's on the physical page 51, and access the physical
->page 51.  Virtual addresses aren't about increasing capacity, they're
->about increasing the addressable range.
->
->You as a programmer don't notice anything of the mapping, you only see
->virtual addresses.
-
-Again, what' the purpose of increasing the addressable range?
-
-**** reply
      What's the purpose of using such alias, i.e., virtual memory?
+
+     >> Do you mean that I could address 16EiB's memory using this 32GiB
+     >> memory card?
+     >
+     >Yes
+
+     Let me remind us the initial question: "Can we address 16 EiB memory
+     using 32 GiB"?
+
+     I ask this question because my first impression to it is not. You buy
+     a 32 GiB memory card. You could only have that space of memory. Why
+     someone could claim such a big memory. (After reading your comment
+     below, I start to understand what you are saying here. We cannot have
+     such a big memoery card, but it doesn't mean that we could not address
+     a big memoery. Indeed, very small size of memory card, i.e. 10 MiB, we
+     could also address a 16 EiB memory.)
+
+     >URL That example is correct up to "However, if we claim [...]". I
+     >understand the calculation you're doing, but I don't understand what
+     >you're trying to show.
+
+     I am trying to clear my understanding of this question, i.e., to
+     explain that I could buy a book with a capcity of 32 GiB but able to
+     adress 16 EiB memoery. If you still have question on this point please
+     let me know.
+
+     >We never claim to be able to store 16 EiB, but
+     >we're able to use addresses 0x00000000'00000000 to 0xFFFFFFFF'FFFFFFFF
+     >on a 64 bit machine. But not all at a time.
+
+     >> It seems that there's no virtual memoery because it's just alias for
+     >> a physical memoery 
+
+     >It's not. Virtual addresses are aliases for for physical
+     >addresses. Don't mix this up with "when I say 'virtual address' I mean
+     >'physical address'". Each virtual address translates to a physical
+     >address. The easiest way of imagining this is a table with virtual
+     >addresses on one- and physical addresses on the other side
+     >
+     >#+BEGIN_SRC 
+     >virtual     physical
+     >0x00001000  0x00000020
+     >0x00004000  0x59F00300
+     >0xF0000000  0x00001000
+     >#+END_SRC
+
+     Why we need alias for physical address? Is that because physical
+     adress is too long? I have experience using bash. One of my favourate
+     functionality of bash is to 'alias' my personal command to reduce my
+     typing work on a terminal.
+
+     >Now, if you want to access the virtual address 0x4000, you look into
+     >that table and see that the memory you want to access is at the
+     >physical address 0x59F00300.  If the virtual and physical memory has
+     >the same size, there's no point in doing this, because we could map
+     >virtual addresses to their identity (ie. 1 is 1, 2 is 2, etc.).  But
+     >as you already understood, those memory regions don't have the same
+     >size. Your 32 GiB RAM is way smaller than your 16 EiB virtual memory.
+     >Here's a table for virtual > physical
+     >
+     >#+BEGIN_SRC 
+     >virtual              physical
+     >0x0FF05E00'00030000  0x05FA0C00
+     >0x3A001004'80000000  0x00010000
+     >0x00000000'003D0000  0x70044000
+     >#+END_SRC
+     >
+     >We have virtual 64 bit addresses which we can use for software. But
+     >your 32 GiB hardware only has a range from 0x00000000 to
+     >0xFFFFFFFF. We take the virtual addresses (Only the ones that are in
+     >use!) and map them to physical addresses. We can only use a maximum of
+     >0xFFFFFFFF addresses (by count), but the addressable range has
+     >increased significantly.
+
+     This will bring a issue: there must be two virtual memory pointing
+     towards the same physical address. What is side effect of this mapping?
+
+     >> We claim that this book has a capcity of saving data whose size is 16 EiB
+
+     >No. We cannot change the capacity. The capacity stays at 100 pages. We
+     >claim that we have more than 100 pages numbers.  Let's say the first
+     >50 pages are filled in, we can't add any more content to them. Now you
+     >want to write something on page 400. Of course you don't have a 400th
+     >page, but you can use 400 as a page number. We write the new content
+     >on page 51 (Again, how to choose a new page in important, I'll just
+     >take the next free page) and add an entry in our page table
+     >
+     >#+BEGIN_SRC 
+     >virtual  physical
+     >400      51
+     >#+END_SRC
+
+     Why we "foo" ourself using 400 page? Is that because we can delete
+     some old memory when we need more memory space? But why not just use
+     the old memory address?
+
+     >The next time you access page number 400, you look in your page table,
+     >see that it's on the physical page 51, and access the physical
+     >page 51.  Virtual addresses aren't about increasing capacity, they're
+     >about increasing the addressable range.
+     >
+     >You as a programmer don't notice anything of the mapping, you only see
+     >virtual addresses.
+
+     Again, what' the purpose of increasing the addressable range?
 
 *** interesting info
     - [[https://www.cnsnevada.com/what-is-the-memory-capacity-of-a-human-brain/][our brain size]].
