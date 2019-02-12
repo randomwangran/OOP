@@ -1409,7 +1409,7 @@ void fooB()
 }
 #+END_SRC
 
-    In the above code, ~fooA~ and ~fooB~ are different function, but
+    In the above code, ~fooA~ and ~fooB~ are different functions, but
     according to this explaination:
 
     > two programs could be loaded into memory and run at the same time
@@ -1420,10 +1420,10 @@ void fooB()
 
     I mean, if you compile this program on your computer, if you can
     fly into your RAM at the exactly location of ~fooA~, you will find
-    a bunch of 01010. This 0101 is ~"Hello, Alex."~ It should be
-    anything else like "Hello, Nascardrive."
+    a bunch of 01010. This 0101 is ~"Hello, Alex."~ It should not be
+    anything else, like "Hello, Nascardrive."
 
-    What do I missing here?
+    What do I forget here?
 *** interesting info
     - [[https://www.cnsnevada.com/what-is-the-memory-capacity-of-a-human-brain/][our brain size]].
     - when I see 0x1000, [[https://medium.com/@savas/why-do-we-use-hexadecimal-d6d80b56f026][I read this article]]. Excellent explanation
