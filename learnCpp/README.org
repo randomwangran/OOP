@@ -1414,6 +1414,11 @@ void fooB()
 
     > two programs could be loaded into memory and run at the same time
 
+    As you can see, I revise the sentence based on this original one:
+
+    (If virtual memory didn't exist, two programs couldn't be loaded
+    into memory and run at the same time,)
+    
     In my naive understand, the information of two functions is
     different. How is that possible for those two functions stored in
     the same physical address at the same time?
@@ -1424,6 +1429,38 @@ void fooB()
     anything else, like "Hello, Nascardrive."
 
     What do I forget here?
+
+**** Point 2
+
+     Yes, point 2 is what I exepected. At the single moment in our
+     world, one memory could only have one information. But
+     explanation from this point does not clarify we we need virtual
+     memory.
+
+**** Point 3
+
+     This point is very interesting! Security issue by using direct
+     memory address. I never know this point. How can this even
+     happen? How a program using a particular part of meomory
+     (physical memory) be able to using the memory that it is not
+     assigned to? Can you provide a c++ piece of code to achieve this?
+     Or, do you have any reference on this point? I would like further
+     do some readings on this topic and share you with my
+     understanding.
+
+**** Point 4
+
+     This is what I speculated before I read this answer. One program
+     (or function) should use one region of memory at one time. What I
+     don't understand is how virtual memory massive improve the
+     performance?
+
+**** Point 5
+
+     I think the reservation mechanism could be also done in physical
+     memory address method? Why using virtual memory address could
+     solve the physical devices issue?
+
 *** interesting info
     - [[https://www.cnsnevada.com/what-is-the-memory-capacity-of-a-human-brain/][our brain size]].
     - when I see 0x1000, [[https://medium.com/@savas/why-do-we-use-hexadecimal-d6d80b56f026][I read this article]]. Excellent explanation
