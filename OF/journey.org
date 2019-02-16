@@ -690,4 +690,13 @@ int main()
    #+END_SRC
 ** something interesting
    cyclist: 1c1707e8a20719056bfc9a232527c5bd
-   
+
+
+* my stuip questions
+** Allrun shell
+
+```sh
+cd ${0%/*} || exit 1    # Run from this directory 
+```
+
+what's this for?
