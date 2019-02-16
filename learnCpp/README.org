@@ -5,6 +5,11 @@ C++ is hard, that's the reason why this README.org file exists. As I
 further explore the world of C++, more interesting things are
 happening.
 
+<2019-02-16 Sat>: During the begaining of 2019, Alex (the creator of
+the learnCpp) started to change the structure of website, so I found
+some URLs are not correct. Once the the website is stable, I will
+update all the links to the new sites.
+
 * Chapter 1: C++ Basics
 
 ** [[https://www.learncpp.com/cpp-tutorial/11-structure-of-a-program][1.1 Structure of a program]]
