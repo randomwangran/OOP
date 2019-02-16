@@ -1403,76 +1403,96 @@ virtual addresses.
     Thanks for sharing the stackoverflow page. But I cannot comment
     their, so I would like to put my further study
     here. Templateypedef metioned 5 points in this reply.
-**** Point 1
+**** 1st paragraph
+***** Point 1
 
-     If virtual memory exists, then we could use the same physical
-     address to loaded information stored in that memory at the same
-     time. I don't understand this point.
+      If virtual memory exists, then we could use the same physical
+      address to loaded information stored in that memory at the same
+      time. I don't understand this point.
 
-#+BEGIN_SRC c++
-void fooA()
-{
-	std::cout << "Hello, Alex.";
-}
+ #+BEGIN_SRC c++
+ void fooA()
+ {
+	 std::cout << "Hello, Alex.";
+ }
 
-void fooB()
-{
-	std::cout << "Hello, Nascardrive.";
-}
-#+END_SRC
+ void fooB()
+ {
+	 std::cout << "Hello, Nascardrive.";
+ }
+ #+END_SRC
 
-    In the above code, ~fooA~ and ~fooB~ are different functions, but
-    according to this explaination:
+     In the above code, ~fooA~ and ~fooB~ are different functions, but
+     according to this explaination:
 
-    > two programs could be loaded into memory and run at the same time
+     > two programs could be loaded into memory and run at the same time
 
-    As you can see, I revise the sentence based on this original one:
+     As you can see, I revise the sentence based on this original one:
 
-    (If virtual memory didn't exist, two programs couldn't be loaded
-    into memory and run at the same time,)
+     (If virtual memory didn't exist, two programs couldn't be loaded
+     into memory and run at the same time,)
     
-    In my naive understand, the information of two functions is
-    different. How is that possible for those two functions stored in
-    the same physical address at the same time?
+     In my naive understand, the information of two functions is
+     different. How is that possible for those two functions stored in
+     the same physical address at the same time?
 
-    I mean, if you compile this program on your computer, if you can
-    fly into your RAM at the exactly location of ~fooA~, you will find
-    a bunch of 01010. This 0101 is ~"Hello, Alex."~ It should not be
-    anything else, like "Hello, Nascardrive."
+     I mean, if you compile this program on your computer, if you can
+     fly into your RAM at the exactly location of ~fooA~, you will find
+     a bunch of 01010. This 0101 is ~"Hello, Alex."~ It should not be
+     anything else, like "Hello, Nascardrive."
 
-    What do I forget here?
-***** 
-**** Point 2
+     What do I forget here?
+****** 
+***** Point 2
 
-     Yes, point 2 is what I exepected. At the single moment in our
-     world, one memory could only have one information. But
-     explanation from this point does not clarify we we need virtual
-     memory.
-***** 
-**** Point 3
+      Yes, point 2 is what I exepected. At the single moment in our
+      world, one memory could only have one information. But
+      explanation from this point does not clarify we we need virtual
+      memory.
+****** 
+***** Point 3
 
-     This point is very interesting! Security issue by using direct
-     memory address. I never know this point. How can this even
-     happen? How a program using a particular part of meomory
-     (physical memory) be able to using the memory that it is not
-     assigned to? Can you provide a c++ piece of code to achieve this?
-     Or, do you have any reference on this point? I would like further
-     do some readings on this topic and share you with my
-     understanding.
-***** 
-**** Point 4
+      This point is very interesting! Security issue by using direct
+      memory address. I never know this point. How can this even
+      happen? How a program using a particular part of meomory
+      (physical memory) be able to using the memory that it is not
+      assigned to? Can you provide a c++ piece of code to achieve this?
+      Or, do you have any reference on this point? I would like further
+      do some readings on this topic and share you with my
+      understanding.
+****** 
+***** Point 4
 
-     This is what I speculated before I read this answer. One program
-     (or function) should use one region of memory at one time. What I
-     don't understand is how virtual memory massive improve the
-     performance?
-***** 
-**** Point 5
+      This is what I speculated before I read this answer. One program
+      (or function) should use one region of memory at one time. What I
+      don't understand is how virtual memory massive improve the
+      performance?
+****** 
+***** Point 5
 
-     I think the reservation mechanism could be also done in physical
-     memory address method? Why using virtual memory address could
-     solve the physical devices issue?
-***** 
+      I think the reservation mechanism could be also done in physical
+      memory address method? Why using virtual memory address could
+      solve the physical devices issue?
+
+**** 2rd paragraph
+
+     > very small size of memory card, i.e. 10 MiB, we
+     could also address a 16 EiB memory
+     Correct
+     
+**** 3nd paragraph
+
+     > there must be two virtual memory addresses pointing
+     toward the same physical address
+     Please elaborate
+
+**** 4th paragraph
+
+     > Why we "foo" ourself using 400 page?  Maybe page numbers 0 to
+     399 are reserved for the credits of the book. Maybe page number
+     400 is a standard page to write the index on.
+     
+
 *** interesting info
     - [[https://www.cnsnevada.com/what-is-the-memory-capacity-of-a-human-brain/][our brain size]].
     - when I see 0x1000, [[https://medium.com/@savas/why-do-we-use-hexadecimal-d6d80b56f026][I read this article]]. Excellent explanation
