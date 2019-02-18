@@ -1,0 +1,71 @@
+#How to run me:
+
+
+
+#To clean the directory, this is optional
+
+foamCleanTutorials
+
+
+
+#To generate the mesh and check mesh quality
+
+blockMesh
+
+checkMesh
+
+
+
+# Now you have four alternatives to run the case, depending if you want to plot the residuals on-the-fly or not.
+
+
+
+pyFoamPlotRunner.py --with-courant icoFoam		(you will need to install PyFoam)
+paraFoam
+
+
+
+# alternatively 
+
+
+
+icoFoam > log.icofoam &
+pyFoamPlotWatcher.py log.icofoam			(you will need to install PyFoam)
+
+
+
+# or 
+
+
+icoFoam | tee log.icofoam
+
+
+
+# or
+
+icoFoam > log.icofoam | tail -f log.icofoam
+
+
+
+# Visualization
+
+paraFoam
+
+
+
+
+
+#NOTE0:
+
+#If you are using TCSH shell use the following redirector:
+#command | tee log
+
+
+#NOTE3:
+
+#In the directorie scripts0, scripts1 and scripts2, you will find many scripts useful for 
+#postprocessing and data analytics.
+
+
+
+
