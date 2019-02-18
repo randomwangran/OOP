@@ -1442,7 +1442,16 @@ virtual addresses.
      anything else, like "Hello, Nascardrive."
 
      What do I forget here?
-****** 
+****** nascard reply
+       Let's say there are 2 programs A and B. Both want their code to
+be loaded at address 0x4000000. Assuming no virtual memory: Program A
+starts and is loaded into memory.  Program B cannot start, because
+address 0x4000000 is occupied.  With virtual memory: Program A starts
+and is loaded into memory.  Program B starts and is loaded into
+memory.  Neither program is using the physical address 0x4000000 (They
+could, but it's unlikely). But both get loaded at their own virtual
+version of 0x4000000.  A single process cannot use the same memory for
+different things. There is only ever 1 information in 1 memory.
 ***** Point 2
 
       Yes, point 2 is what I exepected. At the single moment in our
@@ -1460,20 +1469,36 @@ virtual addresses.
       Or, do you have any reference on this point? I would like further
       do some readings on this topic and share you with my
       understanding.
-****** 
+****** na reply on 2 and 3
+       // Read memory from an arbitrary address and hope it's
+       // used by another process.
+       int *p{ reinterpret_cast<int *>(0x12345678) };
+       std::cout << *p << '\n';
+       Without virtual memory, this could work. With virtual memory, each process has their own version of 0x12345678.
 ***** Point 4
 
       This is what I speculated before I read this answer. One program
       (or function) should use one region of memory at one time. What I
       don't understand is how virtual memory massive improve the
       performance?
-****** 
+****** na reply
+       A process wants memory at address 0x100 and at 0x100000, 1
+bytes each.  Without virtual memory: Now there's a lot of memory in
+between those 2 addresses that's unused and is difficult to use for
+other purposes, because your new data would have to fit in there.
+With virtual memory: The process gets one page of memory for 0x100 and
+one page of memory for 0x100000. Where these pages are in pysical
+memory doesn't matter, they can be right after each other, or spread
+wide apart. The only wasted memory is whatever is unused on those 2
+pages. Since it's unlikely that only 1 bytes is used, the amount of
+wasted memory is little.
 ***** Point 5
 
       I think the reservation mechanism could be also done in physical
       memory address method? Why using virtual memory address could
       solve the physical devices issue?
-
+****** na reply
+       I don't remember your comment about his one. I know I referred to 2 and 3. If this doesn't help, ask again.
 **** 2rd paragraph
 
      > very small size of memory card, i.e. 10 MiB, we
