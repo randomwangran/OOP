@@ -1,14 +1,13 @@
 10 months ago, I read [[https://www.learncpp.com/][the entire website]] word by word and coded every
-assignment by myself. Those subfolders are my commitments to C++.
+assignment by myself. These subfolders are my commitments to C++.
 
 C++ is hard, that's the reason why this README.org file exists. As I
-further explore the world of C++, more interesting things are
-happening.
+further explore the world of C++, I find more interesting things, so I write it down.
 
-<2019-02-16 Sat>: During the begaining of 2019, Alex (the creator of
+<2019-02-16 Sat>: In the begaining of 2019, Alex (the creator of
 the learnCpp) started to change the structure of website, so I found
 some URLs are not correct. Once the the website is stable, I will
-update all the links to the new sites.
+update all the links to the new one.
 
 * Chapter 1: C++ Basics
 
