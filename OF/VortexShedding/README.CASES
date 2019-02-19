@@ -1,3 +1,6 @@
+[Author： Joel Guerrero](https://wiki.openfoam.com/Vortex_shedding_by_Joel_Guerrero)
+
+
 C1	RE = 200	icoFoam and blockMesh
 
 C2	RE = 200	icoFoam and fluentMeshToFoam
