@@ -1,0 +1,14 @@
+* C1
+
+  To use blockMesh, you need to define:
+
+  - vertices
+    
+  - blocks
+
+  - edges
+
+  - patches
+
+
+  by hand, which is almost impossible for complicated geometry.
