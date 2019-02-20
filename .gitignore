@@ -5,7 +5,7 @@
 *.obj
 *.o
 *.out
-*.dat
+
 ##########################
 # Unreal Generated Files #
 ##########################
@@ -34,3 +34,48 @@
 # VS Generated Files #
 ######################
 *.VC.db
+
+##########################
+# OpenFoam Related Files #
+##########################
+
+# OF
+
+*~
+#*
+.#*
+*.obj
+*.swp
+
+## mesh
+processor*
+polyMesh
+
+## post process
+postProcessing
+[1-9]*
+*.[1-9]*
+*.dat
+
+## latex related
+*.xml
+*.tex~
+*.aux
+*.tex~
+*.out
+*.lot
+*.aux
+*.lof
+*.log
+*.toc
+_region_*
+*#
+
+## icem
+*.msh
+*.uns
+*.uns.bak
+
+## back up files
+*.zip
+*.gz
