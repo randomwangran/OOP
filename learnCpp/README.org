@@ -1399,9 +1399,10 @@ virtual addresses.
     400 is a standard page to write the index on.
 *** reply to nascardrive
 
-    Thanks for sharing the stackoverflow page. But I cannot comment
-    their, so I would like to put my further study
-    here. Templateypedef metioned 5 points in this reply.
+    Thanks for sharing [[https://stackoverflow.com/a/19349645/9364954][the stackoverflow page]]. But I cannot comment
+    at that page, so I would like to put my further study
+    here. ~Templateypedef~ metioned 5 points in this reply.
+
 **** 1st paragraph
 ***** Point 1
 
@@ -1409,48 +1410,57 @@ virtual addresses.
       address to loaded information stored in that memory at the same
       time. I don't understand this point.
 
- #+BEGIN_SRC c++
- void fooA()
- {
-	 std::cout << "Hello, Alex.";
- }
+      #+BEGIN_SRC c++
+      void fooA()
+      {
+          std::cout << "Hello, Alex.";
+      }
 
- void fooB()
- {
-	 std::cout << "Hello, Nascardrive.";
- }
- #+END_SRC
+      void fooB()
+      {
+          std::cout << "Hello, Nascardrive.";
+      }
+      #+END_SRC
 
-     In the above code, ~fooA~ and ~fooB~ are different functions, but
-     according to this explaination:
+      In the above code, ~fooA~ and ~fooB~ are different functions, but
+      according to this explaination:
 
-     > two programs could be loaded into memory and run at the same time
+      > two programs could be loaded into memory and run at the same time
 
-     As you can see, I revise the sentence based on this original one:
+      As you can see, I revise the sentence based on this original one:
 
-     (If virtual memory didn't exist, two programs couldn't be loaded
-     into memory and run at the same time,)
+      (If virtual memory didn't exist, two programs couldn't be loaded
+      into memory and run at the same time,)
     
-     In my naive understand, the information of two functions is
-     different. How is that possible for those two functions stored in
-     the same physical address at the same time?
+      In my naive understand, the information of two functions is
+      different. How is that possible for those two functions stored in
+      the same physical address at the same time?
 
-     I mean, if you compile this program on your computer, if you can
-     fly into your RAM at the exactly location of ~fooA~, you will find
-     a bunch of 01010. This 0101 is ~"Hello, Alex."~ It should not be
-     anything else, like "Hello, Nascardrive."
+      I mean, if you compile this program on your computer, if you can
+      fly into your RAM at the exactly location of ~fooA~, you will find
+      a bunch of 01010. This 0101 is ~"Hello, Alex."~ It should not be
+      anything else, like "Hello, Nascardrive."
 
-     What do I forget here?
+      Do I forget something?
+
 ****** nascard reply
+
        Let's say there are 2 programs A and B. Both want their code to
-be loaded at address 0x4000000. Assuming no virtual memory: Program A
-starts and is loaded into memory.  Program B cannot start, because
-address 0x4000000 is occupied.  With virtual memory: Program A starts
-and is loaded into memory.  Program B starts and is loaded into
-memory.  Neither program is using the physical address 0x4000000 (They
-could, but it's unlikely). But both get loaded at their own virtual
-version of 0x4000000.  A single process cannot use the same memory for
-different things. There is only ever 1 information in 1 memory.
+       be loaded at address 0x4000000. Assuming no virtual memory:
+       Program A starts and is loaded into memory.  Program B cannot
+       start, because address 0x4000000 is occupied.  With virtual
+       memory: Program A starts and is loaded into memory.  Program B
+       starts and is loaded into memory.  Neither program is using the
+       physical address 0x4000000 (They could, but it's unlikely). But
+       both get loaded at their own virtual version of 0x4000000.  A
+       single process cannot use the same memory for different
+       things. There is only ever 1 information in 1 memory.
+
+******* my reply
+
+	It seems that virtual memeory is just another way that
+	programmer to index the location of memory.
+
 ***** Point 2
 
       Yes, point 2 is what I exepected. At the single moment in our
