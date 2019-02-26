@@ -1,0 +1,10 @@
+/home/superran/myGitHub/cpp/Dealii/tutorial/step-1/CMakeFiles/edit_cache.dir
+/home/superran/myGitHub/cpp/Dealii/tutorial/step-1/CMakeFiles/rebuild_cache.dir
+/home/superran/myGitHub/cpp/Dealii/tutorial/step-1/CMakeFiles/info.dir
+/home/superran/myGitHub/cpp/Dealii/tutorial/step-1/CMakeFiles/strip_comments.dir
+/home/superran/myGitHub/cpp/Dealii/tutorial/step-1/CMakeFiles/distclean.dir
+/home/superran/myGitHub/cpp/Dealii/tutorial/step-1/CMakeFiles/runclean.dir
+/home/superran/myGitHub/cpp/Dealii/tutorial/step-1/CMakeFiles/step-1.dir
+/home/superran/myGitHub/cpp/Dealii/tutorial/step-1/CMakeFiles/release.dir
+/home/superran/myGitHub/cpp/Dealii/tutorial/step-1/CMakeFiles/run.dir
+/home/superran/myGitHub/cpp/Dealii/tutorial/step-1/CMakeFiles/debug.dir

@@ -79,3 +79,9 @@ _region_*
 ## back up files
 *.zip
 *.gz
+
+##########################
+# Dealii		 #
+##########################
+CMakeFiles
+*.txt
