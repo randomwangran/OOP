@@ -16,3 +16,8 @@
      I am correct?
    
    
+
+* [[https://marinecfd.xyz][CFD-之道]]
+** [[https://marinecfd.xyz/post/openfoam-templated-turbulence-modeling-framework-part-1/][OpenFOAM 湍流模型模板框架分析（一）：顶层设计]]
+
+   - 什么是原则设计?
