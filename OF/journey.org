@@ -695,8 +695,46 @@ int main()
 * my stuip questions
 ** Allrun shell
 
-```sh
-cd ${0%/*} || exit 1    # Run from this directory 
-```
+   I notice that OpenFOAM use this command almost in every tutorial:
 
-what's this for?
+   #+BEGIN_SRC sh
+     cd ${0%/*} || exit 1    # Run from this directory    
+   #+END_SRC
+
+   I usually delete this line then execute: `./Allrun'
+
+   I checkout the bash manual ( This is Edition 4.2, last updated 28
+December 2010, of 'The GNU Bash Reference Manual', for 'Bash', Version
+4.2. )
+
+   At the page: 3.4.2 Special Parameters
+
+   #+BEGIN_QUOTE
+   '0'
+     Expands to the name of the shell or shell script.  This is set at
+     shell initialization.  If Bash is invoked with a file of commands
+     (*note Shell Scripts::), '$0' is set to the name of that file.  If
+     Bash is started with the '-c' option (*note Invoking Bash::), then
+     '$0' is set to the first argument after the string to be executed,
+     if one is present.  Otherwise, it is set to the filename used to
+     invoke Bash, as given by argument zero.
+
+   #+END_QUOTE
+
+   I also check '-c' option on page: 6.1 Invoking Bash
+   #+BEGIN_QUOTE
+   '-c STRING'
+     Read and execute commands from STRING after processing the options,
+     then exit.  Any remaining arguments are assigned to the positional
+     parameters, starting with '$0'.
+   
+   #+END_QUOTE
+
+   Interesting, when I use the command: `bash -c ./Allrun'
+
+   It works.
+
+
+   Why they put this line here?
+
+   
