@@ -1,7 +1,0 @@
-#!/bin/bash
-
-echo "Drag doefficient statistics:"
-gnuplot scripts2/gstats_cd 
-
-echo "Lift doefficient statistics:"
-gnuplot scripts2/gstats_cl 
