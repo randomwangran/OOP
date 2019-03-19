@@ -1,6 +1,6 @@
 #include <iostream>
 int main()
 {
-  // int *p;
+  /* // int *p; */
   std::cout << "hi" << '\n';
 }

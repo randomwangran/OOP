@@ -1482,7 +1482,9 @@ void callFoo() {
       Or, do you have any reference on this point? I would like further
       do some readings on this topic and share you with my
       understanding.
+      
 ****** na reply on 2 and 3
+
        #+BEGIN_SRC c++
 	 // Read memory from an arbitrary address and hope it's
 	 // used by another process.
@@ -1492,12 +1494,14 @@ void callFoo() {
 
        Without virtual memory, this could work. With virtual memory,
        each process has their own version of 0x12345678.
-******* my reply       
+
+       http://tuhdo.github.io/c-ide.html
+******* my reply
 
 	I do a test to understand this problem. From the your code, it
 	means that we could access any part of memory in my machine.
 
-	The first thing I need to know is how do my complider know
+	The first thing I need to know is how do my complier knows
 	this is a direct memory address.
 
 ***** Point 4
@@ -1506,24 +1510,28 @@ void callFoo() {
       (or function) should use one region of memory at one time. What I
       don't understand is how virtual memory massive improve the
       performance?
+
 ****** na reply
+
        A process wants memory at address 0x100 and at 0x100000, 1
-bytes each.  Without virtual memory: Now there's a lot of memory in
-between those 2 addresses that's unused and is difficult to use for
-other purposes, because your new data would have to fit in there.
-With virtual memory: The process gets one page of memory for 0x100 and
-one page of memory for 0x100000. Where these pages are in pysical
-memory doesn't matter, they can be right after each other, or spread
-wide apart. The only wasted memory is whatever is unused on those 2
-pages. Since it's unlikely that only 1 bytes is used, the amount of
-wasted memory is little.
+       bytes each.  Without virtual memory: Now there's a lot of memory in
+       between those 2 addresses that's unused and is difficult to use for
+       other purposes, because your new data would have to fit in there.
+       With virtual memory: The process gets one page of memory for 0x100 and
+       one page of memory for 0x100000. Where these pages are in pysical
+       memory doesn't matter, they can be right after each other, or spread
+       wide apart. The only wasted memory is whatever is unused on those 2
+       pages. Since it's unlikely that only 1 bytes is used, the amount of
+       wasted memory is little.
+
 ***** Point 5
 
       I think the reservation mechanism could be also done in physical
       memory address method? Why using virtual memory address could
       solve the physical devices issue?
 ****** na reply
-       I don't remember your comment about his one. I know I referred to 2 and 3. If this doesn't help, ask again.
+       I don't remember your comment about his one. I know I referred
+       to 2 and 3. If this doesn't help, ask again.
 **** 2rd paragraph
 
      > very small size of memory card, i.e. 10 MiB, we
