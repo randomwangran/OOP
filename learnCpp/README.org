@@ -1496,6 +1496,56 @@ void callFoo() {
        each process has their own version of 0x12345678.
 
        http://tuhdo.github.io/c-ide.html
+
+******** using emacs to write code
+         
+         Strang error. 
+
+         Try to run M-x compile from a c++ source code, but getting
+         this:
+
+         #+BEGIN_SRC sh
+           -*- mode: compilation; default-directory: "~/myGitHub/cpp/codeSnippets/cpp/" -*-
+           Compilation started at Thu Mar 21 12:28:51
+
+           make -k 
+           /bin/bash: make: command not found
+
+           Compilation exited abnormally with code 127 at Thu Mar 21 12:28:52
+
+         #+END_SRC
+
+         What strange is about is that I could compile the code using
+         the same command in the Terminal.
+
+         Here's my command to compile the code:
+
+         #+BEGIN_SRC sh
+           -*- mode: compilation; default-directory: "~/myGitHub/cpp/codeSnippets/cpp/" -*-
+           Compilation started at Thu Mar 21 12:35:41
+
+           g++ /home/superran/myGitHub/cpp/codeSnippets/cpp/virtualMemory.cpp && ./a.out
+           /bin/bash: g++: command not found
+
+           Compilation exited abnormally with code 127 at Thu Mar 21 12:35:42
+
+         #+END_SRC
+
+         The elisp code:
+
+         #+BEGIN_SRC elisp
+           (defun c-gcc-and-run ()
+             "Saves current buffer, runs gcc, and runs ./a.out if compile is successful."
+             (interactive)
+             (save-buffer)
+             (compile (concat "g++ " (buffer-file-name) " && ./a.out")))
+
+         #+END_SRC
+
+         Ref:
+
+         - http://ergoemacs.org/emacs/emacs_env_var_paths.html
+         - elisp manual: 38.3 Operating System Environment
 ******* my reply
 
 	I do a test to understand this problem. From the your code, it
@@ -1523,7 +1573,7 @@ void callFoo() {
        wide apart. The only wasted memory is whatever is unused on those 2
        pages. Since it's unlikely that only 1 bytes is used, the amount of
        wasted memory is little.
-
+       
 ***** Point 5
 
       I think the reservation mechanism could be also done in physical
