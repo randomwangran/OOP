@@ -10,48 +10,18 @@ some URLs are not correct. Once the the website is stable, I will
 update all the links to the new one.
 
 * Chapter 1: C++ Basics
+** [[https://www.learncpp.com/cpp-tutorial/statements-and-the-structure-of-a-program/][1.1 Statements and the structure of a program]]
+** [[https://www.learncpp.com/cpp-tutorial/comments/][1.2 Comments]]
+** [[https://www.learncpp.com/cpp-tutorial/introduction-to-variables/][1.3 Introduction to variables]]
+** [[https://www.learncpp.com/cpp-tutorial/variable-assignment-and-initialization/][1.4 Variable assignment and initialization]]
+** [[https://www.learncpp.com/cpp-tutorial/introduction-to-iostream-cout-cin-and-endl/][1.5 Introduction to iostream: cout, cin, and endl]]
+** [[https://www.learncpp.com/cpp-tutorial/uninitialized-variables-and-undefined-behavior/][1.6 Uninitialized variables and undefined behavior]]
+** [[https://www.learncpp.com/cpp-tutorial/keywords-and-naming-identifiers/][1.7 Keywords and naming identifiers]]
+** [[https://www.learncpp.com/cpp-tutorial/introduction-to-literals-and-operators/][1.8 Introduction to literals and operators]]
+** [[https://www.learncpp.com/cpp-tutorial/introduction-to-expressions/][1.9 Introduction to expressions]]
+** [[https://www.learncpp.com/cpp-tutorial/developing-your-first-program/][1.1 Developing your first program]]
+** [[https://www.learncpp.com/cpp-tutorial/chapter-1-summary-and-quiz/][1.x Chapter 1 summary and quiz]]
 
-** [[https://www.learncpp.com/cpp-tutorial/11-structure-of-a-program][1.1 Structure of a program]]
-
-** [[https://www.learncpp.com/cpp-tutorial/12-comments][1.2 Comments]]
-
-** [[https://www.learncpp.com/cpp-tutorial/13-a-first-look-at-variables-initialization-and-assignment][1.3 A first look at variables, initialization, and assignment]]
-
-** [[https://www.learncpp.com/cpp-tutorial/1-3a-a-first-look-at-cout-cin-endl][1.3a A first look at cout, cin, and endl]]
-
-** [[https://www.learncpp.com/cpp-tutorial/14-a-first-look-at-functions][1.4 A first look at functions and return values]]
-
-** [[https://www.learncpp.com/cpp-tutorial/1-4a-a-first-look-at-function-parameters][1.4a A first look at function parameters and arguments]]
-
-** [[https://www.learncpp.com/cpp-tutorial/1-4b-why-functions-are-useful-and-how-to-use-them-effectively][1.4b Why functions are useful, and how to use them effectively]]
-
-** [[https://www.learncpp.com/cpp-tutorial/14c-keywords-and-naming-identifiers][1.4c Keywords and naming identifiers]]
-
-** [[https://www.learncpp.com/cpp-tutorial/1-4d-a-first-look-at-local-scope][1.4d A first look at local scope]]
-
-** [[https://www.learncpp.com/cpp-tutorial/15-a-first-look-at-operators][1.5 A first look at operators]]
-
-** [[https://www.learncpp.com/cpp-tutorial/16-whitespace-and-basic-formatting][1.6 Whitespace and basic formatting]]
-
-** [[https://www.learncpp.com/cpp-tutorial/17-forward-declarations][1.7 Forward declarations and definitions]]
-
-** [[https://www.learncpp.com/cpp-tutorial/18-programs-with-multiple-files][1.8 Programs with multiple files]]
-
-** [[https://www.learncpp.com/cpp-tutorial/1-8a-naming-conflicts-and-the-std-namespace][1.8a Naming conflicts and the std namespace]]
-
-** [[https://www.learncpp.com/cpp-tutorial/19-header-files][1.9 Header files]]
-
-** [[https://www.learncpp.com/cpp-tutorial/110-a-first-look-at-the-preprocessor][1.10 A first look at the preprocessor]]
-
-** [[https://www.learncpp.com/cpp-tutorial/1-10a-header-guards][1.10a Header guards]]
-
-** [[https://www.learncpp.com/cpp-tutorial/1-10b-how-to-design-your-first-programs][1.10b How to design your first programs]]
-
-** [[https://www.learncpp.com/cpp-tutorial/111-debugging-your-program-stepping-and-breakpoints][1.11 Debugging your program (stepping and breakpoints)]]
-
-** [[https://www.learncpp.com/cpp-tutorial/111a-debugging-your-program-watching-variables-and-the-call-stack][1.11a Debugging your program (watching variables and the call stack)]]
-
-** [[https://www.learncpp.com/cpp-tutorial/112-comprehensive-quiz][1.12 Chapter 1 comprehensive quiz]]
 
 * Chapter 2: Variables and Fundamental Data Types
 
