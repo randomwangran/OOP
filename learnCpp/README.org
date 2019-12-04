@@ -65,7 +65,7 @@ update all the links to the new one.
     return Src && Src->IsA<To>() ? (To*)Src : nullptr;
     }
     #+END_SRC
-   
+
     It's ugly, but it is just a if-statement.
 
     (Checker)? Option_A: Option_B.
@@ -210,7 +210,7 @@ void callFoo() {
 
 int main()
 {
-    std::cout << "Hello World!\n"; 
+    std::cout << "Hello World!\n";
 }
    #+END_SRC
 
@@ -227,7 +227,7 @@ int main()
 	void callFoo() {
 		foo(A());
 	}
-    std::cout << "Hello World!\n"; 
+    std::cout << "Hello World!\n";
 }
    #+END_SRC
 
@@ -245,7 +245,7 @@ int main()
 		foo(A());
 	};
 
-    std::cout << "Hello World!\n"; 
+    std::cout << "Hello World!\n";
 }
    #+END_SRC
 
@@ -266,7 +266,7 @@ int main()
 
     (defun)
 
-    ((lambda (x) (* x 2)) 7) 
+    ((lambda (x) (* x 2)) 7)
 
     (defun double(x)
     (* x 2))
@@ -390,37 +390,37 @@ int main()
      #+BEGIN_SRC c++
      #include <iostream>
      #include <string>
-     
+
      class Employee
      {
      public:
          std::string m_name;
          int m_id;
          double m_wage;
-        
-     
+
+
          // Print employee information to the screen
          void print()
          {
              int m_test = 2;
              std::cout << "Name: " << m_name <<
-                     "  Id: " << m_id << 
-                     "  Wage: $" << m_wage << '\n'; 
-                    
+                     "  Id: " << m_id <<
+                     "  Wage: $" << m_wage << '\n';
+
              std::cout << "We have " << m_test << " employees. "<<std::endl;
          }
      };
-     
+
      int main()
      {
          // Declare two employees
          Employee alex { "Alex", 1, 25.00 };
          Employee joe { "Joe", 2, 22.25 };
-     
+
          // Print out the employee information
          alex.print();
          joe.print();
-     
+
          return 0;
      }
      #+END_SRC
@@ -451,32 +451,32 @@ int main()
          double y;
          double z;
      };
-      
+
      class Employee
      {
      public:
-      
+
          std::string m_name;
          employeeGPS m_people;
-         
+
          void print();
-      
+
          friend class Boss;
      };
-      
+
      void Employee::print()
      {
-      
+
          employeeGPS people;
-      
+
          people.x = 1;
-      
+
          std::cout << "Name: " << m_name <<
                  "  X Location: " << m_people.employeeGPS::x <<
-                 "  Y Location: " << m_people.employeeGPS::y << 
-                 "  Z Location: " << m_people.employeeGPS::z <<'\n'; 
-            
-         std::cout << "Dummy variable in local function: " << people.x <<'\n';         
+                 "  Y Location: " << m_people.employeeGPS::y <<
+                 "  Z Location: " << m_people.employeeGPS::z <<'\n';
+
+         std::cout << "Dummy variable in local function: " << people.x <<'\n';
      }
      #+END_SRC
 
@@ -490,7 +490,7 @@ int main()
          {
              std::cout << employee.m_name << std::endl;
          }
-         
+
          void BossAccessToFriendFunction(Employee &employee)
          {
              employee.printB();
@@ -600,7 +600,7 @@ int main()
 
    Hi, Alex or nascardriver, I encontour an issue that I still have no idea for a long
    time.
-   
+
    In the following code snippet, I try to do a check that:
 
    ChildA is not inherient from ParentB.
@@ -625,7 +625,7 @@ int main()
    std::string getName() const { return m_name; }
 
    void printName() const {
-		
+
    std::cout << "I am a child of A." << std::endl;
 
    }
@@ -635,7 +635,7 @@ int main()
    public: ParentB() {}
 
    std::string m_name;
-		
+
    std::string getName() const { return m_name; }
 
    void functionParentB() {
@@ -682,14 +682,14 @@ int main()
    angela.printNameInChild();
 
    // how to writer a if-else statement to determine one child is a child of a particular parent?
-	
+
    }
 
    /* notes
 
    Why Shift + F11 cannot jump back out the entry point?
 
-   For example, if the cursor is on 
+   For example, if the cursor is on
 
 
    getName(), then press 'F11', I go to its definition,
@@ -713,7 +713,7 @@ int main()
      std::cout << std::is_base_of_v<ParentB, decltype(lucifer)> << '\n';
      #+END_SRC
 **** my reply to nascardriver
-     
+
      Thanks for pointing out this amazing std library: boost.
 
      It solve my problem.
@@ -771,7 +771,7 @@ int main()
      have to finish it within some time. In my current case, I can
      study it as much as possible I'd like to.
 **** nascardrive 2nd reply
-     > Thanks for pointing out this amazing std library: boost 
+     > Thanks for pointing out this amazing std library: boost
 
      I did not and will not recommend using boost in my replies. boost
      is a feature-rich library of which many features have already
@@ -837,7 +837,7 @@ int main()
      some reasons. For example:
      https://github.com/boostorg/boost/tree/master/libs
      They use git-submodule with some magic stuff...
-     
+
      I follow your suggestion by adding the head file ~type_traits~ in
      that c++ code snippet. It works!
 
@@ -852,7 +852,7 @@ int main()
 	{	// determine whether _Base is a base of or the same as _Derived
 	};
      #+END_SRC
-     
+
      However, I still confused how the code works. I try to find the
      implymentation of ~is_base_of~, but I had some hard time. Really
      appreciteing if you could pointing out the reference I could
@@ -868,8 +868,8 @@ int main()
      After I revise the basic idea of template, I continue with your
      reply. I don't know the feature, SFINAE (subsitution failure is
      not an errore). I found [[this pag][this page explain very well]] (but it is in
-     chinese). 
-     
+     chinese).
+
      What is token?
 
      #+BEGIN_SRC c++
@@ -890,7 +890,7 @@ void callFoo() {
 
     If two objects have a relation ~has~, then it's not
     inheritance. Better to use ~Object composition~.
-    
+
 ** [[https://www.learncpp.com/cpp-tutorial/112-basic-inheritance-in-c][11.2 Basic inheritance in C++]]
 
 ** [[https://www.learncpp.com/cpp-tutorial/113-order-of-construction-of-derived-classes][11.3 Order of construction of derived classes]]
@@ -987,16 +987,16 @@ void callFoo() {
       {
 	      Cow cow("Betsy");
 	      std::cout << cow.getName() << " says " << cow.speak() << '\n';
-      } 
+      }
     #+END_SRC
 
     #+BEGIN_SRC c++
     Severity	Code	Description	Project	File	Line	Suppression State
-    Error (active)	E0120	return value type does not match the function type	ConsoleApplication7	
-    Error (active)	E0120	return value type does not match the function type	ConsoleApplication7	
-    Error (active)	E0120	return value type does not match the function type	ConsoleApplication7	
-    Error	C2440	'return': cannot convert from 'const char [5]' to 'char *'	ConsoleApplication7	
-    Error	C2440	'return': cannot convert from 'const char [5]' to 'char *'	ConsoleApplication7	
+    Error (active)	E0120	return value type does not match the function type	ConsoleApplication7
+    Error (active)	E0120	return value type does not match the function type	ConsoleApplication7
+    Error (active)	E0120	return value type does not match the function type	ConsoleApplication7
+    Error	C2440	'return': cannot convert from 'const char [5]' to 'char *'	ConsoleApplication7
+    Error	C2440	'return': cannot convert from 'const char [5]' to 'char *'	ConsoleApplication7
     #+END_SRC*
 *** DONE reply to nascardriver
     #+BEGIN_QUOTE
@@ -1004,7 +1004,7 @@ void callFoo() {
     #+END_QUOTE
     Thanks for reminding for the uniform initalization when
     constructing the class.
-    
+
     #+BEGIN_QUOTE
     @getName should return a const reference. Copying data is slow.
     #+END_QUOTE
@@ -1031,7 +1031,7 @@ void callFoo() {
     #+BEGIN_SRC c++
       { "STRING" }
     #+END_SRC
-    
+
     It means it's an immutable string literal? Am I right?
 
     At the end of reading your explaination, I write my understanding:
@@ -1082,7 +1082,7 @@ void callFoo() {
     book, which has 16 pages. Assumming each page has a size of 1 EiB,
     it should have no problem. However, today's technologies are not
     there yet. We can have a book of 16 pages, but each page only have
-    1 PiB. How can this book has a compacity of 16 EiB memory? 
+    1 PiB. How can this book has a compacity of 16 EiB memory?
 
     This is my understanding reading your metaphor. We have a 16 pages
     book. But, to claim we have a super big memory machine, we say
@@ -1186,7 +1186,7 @@ void callFoo() {
      address. The easiest way of imagining this is a table with virtual
      addresses on one- and physical addresses on the other side
 
-     #+BEGIN_SRC 
+     #+BEGIN_SRC
        virtual     physical
        0x00001000  0x00000020
        0x00004000  0x59F00300
@@ -1202,7 +1202,7 @@ void callFoo() {
      size. Your 32 GiB RAM is way smaller than your 16 EiB virtual memory.
      Here's a table for virtual>physical
 
-     #+BEGIN_SRC 
+     #+BEGIN_SRC
        virtual              physical
        0x0FF05E00'00030000  0x05FA0C00
        0x3A001004'80000000  0x00010000
@@ -1226,7 +1226,7 @@ void callFoo() {
      on page 51 (Again, how to choose a new page in important, I'll just
      take the next free page) and add an entry in our page table
 
-     #+BEGIN_SRC 
+     #+BEGIN_SRC
        virtual  physical
        400      51
      #+END_SRC
@@ -1239,7 +1239,7 @@ void callFoo() {
      You as a programmer don't notice anything of the mapping, you only see
      virtual addresses.
 **** TODO reply to nascardirver
-     
+
      Hi Nascardirver:
 
      I read you reply and have more questions. But let me summary my
@@ -1277,7 +1277,7 @@ void callFoo() {
      >on a 64 bit machine. But not all at a time.
 
      >> It seems that there's no virtual memoery because it's just alias for
-     >> a physical memoery 
+     >> a physical memoery
 
      >It's not. Virtual addresses are aliases for for physical
      >addresses. Don't mix this up with "when I say 'virtual address' I mean
@@ -1285,7 +1285,7 @@ void callFoo() {
      >address. The easiest way of imagining this is a table with virtual
      >addresses on one- and physical addresses on the other side
      >
-     >#+BEGIN_SRC 
+     >#+BEGIN_SRC
      >virtual     physical
      >0x00001000  0x00000020
      >0x00004000  0x59F00300
@@ -1306,7 +1306,7 @@ void callFoo() {
      >size. Your 32 GiB RAM is way smaller than your 16 EiB virtual memory.
      >Here's a table for virtual > physical
      >
-     >#+BEGIN_SRC 
+     >#+BEGIN_SRC
      >virtual              physical
      >0x0FF05E00'00030000  0x05FA0C00
      >0x3A001004'80000000  0x00010000
@@ -1333,7 +1333,7 @@ void callFoo() {
      >on page 51 (Again, how to choose a new page in important, I'll just
      >take the next free page) and add an entry in our page table
      >
-     >#+BEGIN_SRC 
+     >#+BEGIN_SRC
      >virtual  physical
      >400      51
      >#+END_SRC
@@ -1402,7 +1402,7 @@ void callFoo() {
 
       (If virtual memory didn't exist, two programs couldn't be loaded
       into memory and run at the same time,)
-    
+
       In my naive understand, the information of two functions is
       different. How is that possible for those two functions stored in
       the same physical address at the same time?
@@ -1452,7 +1452,7 @@ void callFoo() {
       Or, do you have any reference on this point? I would like further
       do some readings on this topic and share you with my
       understanding.
-      
+
 ****** na reply on 2 and 3
 
        #+BEGIN_SRC c++
@@ -1468,8 +1468,8 @@ void callFoo() {
        http://tuhdo.github.io/c-ide.html
 
 ******** using emacs to write code
-         
-         Strang error. 
+
+         Strang error.
 
          Try to run M-x compile from a c++ source code, but getting
          this:
@@ -1478,7 +1478,7 @@ void callFoo() {
            -*- mode: compilation; default-directory: "~/myGitHub/cpp/codeSnippets/cpp/" -*-
            Compilation started at Thu Mar 21 12:28:51
 
-           make -k 
+           make -k
            /bin/bash: make: command not found
 
            Compilation exited abnormally with code 127 at Thu Mar 21 12:28:52
@@ -1543,7 +1543,7 @@ void callFoo() {
        wide apart. The only wasted memory is whatever is unused on those 2
        pages. Since it's unlikely that only 1 bytes is used, the amount of
        wasted memory is little.
-       
+
 ***** Point 5
 
       I think the reservation mechanism could be also done in physical
@@ -1557,7 +1557,7 @@ void callFoo() {
      > very small size of memory card, i.e. 10 MiB, we
      could also address a 16 EiB memory
      Correct
-     
+
 **** 3nd paragraph
 
      > there must be two virtual memory addresses pointing
@@ -1569,7 +1569,7 @@ void callFoo() {
      > Why we "foo" ourself using 400 page?  Maybe page numbers 0 to
      399 are reserved for the credits of the book. Maybe page number
      400 is a standard page to write the index on.
-     
+
 
 *** interesting info
     - [[https://www.cnsnevada.com/what-is-the-memory-capacity-of-a-human-brain/][our brain size]].
@@ -1619,7 +1619,7 @@ void callFoo() {
      won't work for template class.
 
      Alex suggests 3 ways to walk around this issue:
-     
+
      - writing *.h into *.cpp
      - second mathod is to defined a new file *.inl and include into
        *.h file
@@ -1672,11 +1672,11 @@ void callFoo() {
     Why cpu cannot address info smaller than a byte?
 
     I checked [[https://en.wikipedia.org/wiki/Byte][wiki]]:
-    
+
     #+BEGIN_QUOTE
     Historically, the byte was the number of bits used to encode a single character of text in a computer
     #+END_QUOTE
-    
+
     that's the answer. To encode a singe character of text.
 
     What's fasnating me is the link the wiki pointer to: Computer
