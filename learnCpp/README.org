@@ -11,6 +11,21 @@ update all the links to the new one.
 
 * Chapter 1: C++ Basics
 ** [[https://www.learncpp.com/cpp-tutorial/statements-and-the-structure-of-a-program/][1.1 Statements and the structure of a program]]
+#+BEGIN_SRC cpp
+#include <iostream>
+
+int main()
+{
+   std::cout << "Hello world! ";
+   std::cout << "Just my test";
+   return 0;
+}
+
+#+END_SRC
+
+#+RESULTS:
+: Hello world! Just my test
+
 ** [[https://www.learncpp.com/cpp-tutorial/comments/][1.2 Comments]]
 ** [[https://www.learncpp.com/cpp-tutorial/introduction-to-variables/][1.3 Introduction to variables]]
 ** [[https://www.learncpp.com/cpp-tutorial/variable-assignment-and-initialization/][1.4 Variable assignment and initialization]]
