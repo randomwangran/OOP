@@ -1,0 +1,4 @@
+The goal is to create inner sun.
+
+https://github.com/NVIDIA/VisRTX/blob/a9cc27e06b6e79f8c9f35375f123fe32892cc2bd/src/VisRTX.h.in#L599
+
