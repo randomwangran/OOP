@@ -39,20 +39,20 @@ int main()
 
 
 * Chapter 2
-[[https://www.learncpp.com/cpp-tutorial/introduction-to-functions/][2.1 Introduction to functions]]
-[[https://www.learncpp.com/cpp-tutorial/function-return-values/][2.2 Function return values]]
-[[https://www.learncpp.com/cpp-tutorial/introduction-to-function-parameters-and-arguments/][2.3 Introduction to function parameters and arguments]]
-[[https://www.learncpp.com/cpp-tutorial/introduction-to-local-scope/][2.4 Introduction to local scope]]
-[[https://www.learncpp.com/cpp-tutorial/why-functions-are-useful-and-how-to-use-them-effectively/][2.5 Why functions are useful, and how to use them effectively]]
-[[https://www.learncpp.com/cpp-tutorial/whitespace-and-basic-formatting/][2.6 Whitespace and basic formatting]]
-[[https://www.learncpp.com/cpp-tutorial/forward-declarations/][2.7 Forward declarations and definitions]]
-[[https://www.learncpp.com/cpp-tutorial/programs-with-multiple-code-files/][2.8 Programs with multiple code files]]
-[[https://www.learncpp.com/cpp-tutorial/2-9-naming-collisions-and-an-introduction-to-namespaces/][2.9 Naming collisions and an introduction to namespaces]]
-[[https://www.learncpp.com/cpp-tutorial/introduction-to-the-preprocessor/][2.10 Introduction to the preprocessor]]
-[[https://www.learncpp.com/cpp-tutorial/header-files/][2.11 Header files]]
-[[https://www.learncpp.com/cpp-tutorial/header-guards/][2.12 Header guards]]
-[[https://www.learncpp.com/cpp-tutorial/how-to-design-your-first-programs/][2.13 How to design your first programs]]
-[[https://www.learncpp.com/cpp-tutorial/chapter-2-summary-and-quiz/][2.x Chapter 2 summary and quiz]]
+** [[https://www.learncpp.com/cpp-tutorial/introduction-to-functions/][2.1 Introduction to functions]]
+** [[https://www.learncpp.com/cpp-tutorial/function-return-values/][2.2 Function return values]]
+** [[https://www.learncpp.com/cpp-tutorial/introduction-to-function-parameters-and-arguments/][2.3 Introduction to function parameters and arguments]]
+** [[https://www.learncpp.com/cpp-tutorial/introduction-to-local-scope/][2.4 Introduction to local scope]]
+** [[https://www.learncpp.com/cpp-tutorial/why-functions-are-useful-and-how-to-use-them-effectively/][2.5 Why functions are useful, and how to use them effectively]]
+** [[https://www.learncpp.com/cpp-tutorial/whitespace-and-basic-formatting/][2.6 Whitespace and basic formatting]]
+** [[https://www.learncpp.com/cpp-tutorial/forward-declarations/][2.7 Forward declarations and definitions]]
+** [[https://www.learncpp.com/cpp-tutorial/programs-with-multiple-code-files/][2.8 Programs with multiple code files]]
+** [[https://www.learncpp.com/cpp-tutorial/2-9-naming-collisions-and-an-introduction-to-namespaces/][2.9 Naming collisions and an introduction to namespaces]]
+** [[https://www.learncpp.com/cpp-tutorial/introduction-to-the-preprocessor/][2.10 Introduction to the preprocessor]]
+** [[https://www.learncpp.com/cpp-tutorial/header-files/][2.11 Header files]]
+** [[https://www.learncpp.com/cpp-tutorial/header-guards/][2.12 Header guards]]
+** [[https://www.learncpp.com/cpp-tutorial/how-to-design-your-first-programs/][2.13 How to design your first programs]]
+** [[https://www.learncpp.com/cpp-tutorial/chapter-2-summary-and-quiz/][2.x Chapter 2 summary and quiz]]
 
 * working on to tide
 ** Chapter 2: Variables and Fundamental Data Types
