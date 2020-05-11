@@ -38,1818 +38,1834 @@ int main()
 ** [[https://www.learncpp.com/cpp-tutorial/chapter-1-summary-and-quiz/][1.x Chapter 1 summary and quiz]]
 
 
-* Chapter 2: Variables and Fundamental Data Types
+* Chapter 2
+[[https://www.learncpp.com/cpp-tutorial/introduction-to-functions/][2.1 Introduction to functions]]
+[[https://www.learncpp.com/cpp-tutorial/function-return-values/][2.2 Function return values]]
+[[https://www.learncpp.com/cpp-tutorial/introduction-to-function-parameters-and-arguments/][2.3 Introduction to function parameters and arguments]]
+[[https://www.learncpp.com/cpp-tutorial/introduction-to-local-scope/][2.4 Introduction to local scope]]
+[[https://www.learncpp.com/cpp-tutorial/why-functions-are-useful-and-how-to-use-them-effectively/][2.5 Why functions are useful, and how to use them effectively]]
+[[https://www.learncpp.com/cpp-tutorial/whitespace-and-basic-formatting/][2.6 Whitespace and basic formatting]]
+[[https://www.learncpp.com/cpp-tutorial/forward-declarations/][2.7 Forward declarations and definitions]]
+[[https://www.learncpp.com/cpp-tutorial/programs-with-multiple-code-files/][2.8 Programs with multiple code files]]
+[[https://www.learncpp.com/cpp-tutorial/2-9-naming-collisions-and-an-introduction-to-namespaces/][2.9 Naming collisions and an introduction to namespaces]]
+[[https://www.learncpp.com/cpp-tutorial/introduction-to-the-preprocessor/][2.10 Introduction to the preprocessor]]
+[[https://www.learncpp.com/cpp-tutorial/header-files/][2.11 Header files]]
+[[https://www.learncpp.com/cpp-tutorial/header-guards/][2.12 Header guards]]
+[[https://www.learncpp.com/cpp-tutorial/how-to-design-your-first-programs/][2.13 How to design your first programs]]
+[[https://www.learncpp.com/cpp-tutorial/chapter-2-summary-and-quiz/][2.x Chapter 2 summary and quiz]]
 
-** [[https://www.learncpp.com/cpp-tutorial/2-1-fundamental-variable-definition-initialization-and-assignment][2.1 Fundamental variable definition, initialization, and assignment]]
+* working on to tide
+** Chapter 2: Variables and Fundamental Data Types
+*** [[https://www.learncpp.com/cpp-tutorial/2-1-fundamental-variable-definition-initialization-and-assignment][2.1 Fundamental variable definition, initialization, and assignment]]
 
-** [[https://www.learncpp.com/cpp-tutorial/2-2-void][2.2 Void]]
+*** [[https://www.learncpp.com/cpp-tutorial/2-2-void][2.2 Void]]
 
-** [[https://www.learncpp.com/cpp-tutorial/23-variable-sizes-and-the-sizeof-operator][2.3 Variable sizes and the sizeof operator]]
+*** [[https://www.learncpp.com/cpp-tutorial/23-variable-sizes-and-the-sizeof-operator][2.3 Variable sizes and the sizeof operator]]
 
-** [[https://www.learncpp.com/cpp-tutorial/24-integers][2.4 Integers]]
+*** [[https://www.learncpp.com/cpp-tutorial/24-integers][2.4 Integers]]
 
-** [[https://www.learncpp.com/cpp-tutorial/24a-fixed-width-integers][2.4a Fixed-width integers]]
+*** [[https://www.learncpp.com/cpp-tutorial/24a-fixed-width-integers][2.4a Fixed-width integers]]
 
-** [[https://www.learncpp.com/cpp-tutorial/25-floating-point-numbers][2.5 Floating point numbers]]
+*** [[https://www.learncpp.com/cpp-tutorial/25-floating-point-numbers][2.5 Floating point numbers]]
 
-** [[https://www.learncpp.com/cpp-tutorial/26-boolean-values][2.6 Boolean values and an introduction to if statements]]
+*** [[https://www.learncpp.com/cpp-tutorial/26-boolean-values][2.6 Boolean values and an introduction to if statements]]
 
-** [[https://www.learncpp.com/cpp-tutorial/27-chars][2.7 Chars]]
+*** [[https://www.learncpp.com/cpp-tutorial/27-chars][2.7 Chars]]
 
-** [[https://www.learncpp.com/cpp-tutorial/28-literals][2.8 Literals]]
+*** [[https://www.learncpp.com/cpp-tutorial/28-literals][2.8 Literals]]
 
-** [[https://www.learncpp.com/cpp-tutorial/2-9-symbolic-constants-and-the-const-keyword][2.9 Const, constexpr, and symbolic constants]]
+*** [[https://www.learncpp.com/cpp-tutorial/2-9-symbolic-constants-and-the-const-keyword][2.9 Const, constexpr, and symbolic constants]]
 
-** [[https://www.learncpp.com/cpp-tutorial/210-comprehensive-quiz][2.10 Chapter 2 comprehensive quiz]]
+*** [[https://www.learncpp.com/cpp-tutorial/210-comprehensive-quiz][2.10 Chapter 2 comprehensive quiz]]
 
-* Chapter 3: Operators
+** Chapter 3: Operators
 
-** [[https://www.learncpp.com/cpp-tutorial/31-precedence-and-associativity][3.1 Operator precedence and associativity]]
+*** [[https://www.learncpp.com/cpp-tutorial/31-precedence-and-associativity][3.1 Operator precedence and associativity]]
 
-** [[https://www.learncpp.com/cpp-tutorial/32-arithmetic-operators][3.2 Arithmetic operators]]
+*** [[https://www.learncpp.com/cpp-tutorial/32-arithmetic-operators][3.2 Arithmetic operators]]
 
-** [[https://www.learncpp.com/cpp-tutorial/33-incrementdecrement-operators-and-side-effects][3.3 Increment/decrement operators, and side effects]]
+*** [[https://www.learncpp.com/cpp-tutorial/33-incrementdecrement-operators-and-side-effects][3.3 Increment/decrement operators, and side effects]]
 
-** [[https://www.learncpp.com/cpp-tutorial/34-sizeof-comma-and-conditional-operators][3.4 Sizeof, comma, and conditional operators]]
+*** [[https://www.learncpp.com/cpp-tutorial/34-sizeof-comma-and-conditional-operators][3.4 Sizeof, comma, and conditional operators]]
 
-*** Ternary operators
+**** Ternary operators
+
+     #+BEGIN_SRC c++
+     static To* DoCast(UObject* Src)
+     {
+     return Src && Src->IsA<To>() ? (To*)Src : nullptr;
+     }
+     #+END_SRC
+
+     It's ugly, but it is just a if-statement.
+
+     (Checker)? Option_A: Option_B.
+
+     If checker ture, then Opetion_A, else Option_B.
+
+*** [[https://www.learncpp.com/cpp-tutorial/35-relational-operators-comparisons][3.5 Relational operators (comparisons)]]
+
+*** [[https://www.learncpp.com/cpp-tutorial/36-logical-operators][3.6 Logical operators]]
+
+*** [[https://www.learncpp.com/cpp-tutorial/37-converting-between-binary-and-decimal][3.7 Converting between binary and decimal]]
+
+*** [[https://www.learncpp.com/cpp-tutorial/38-bitwise-operators][3.8 Bitwise operators]]
+
+*** [[https://www.learncpp.com/cpp-tutorial/3-8a-bit-flags-and-bit-masks][3.8a Bit flags and bit masks]]
+
+*** [[https://www.learncpp.com/cpp-tutorial/3-x-comprehensive-quiz][3.x Chapter 3 comprehensive quiz]]
+
+** Chapter 4: Variable Scope and More Types
+
+*** [[https://www.learncpp.com/cpp-tutorial/41-blocks-compound-statements][4.1 Blocks (compound statements)]]
+
+*** [[https://www.learncpp.com/cpp-tutorial/4-1a-local-variables-and-local-scope][4.1a Local variables, scope, and duration]]
+
+*** [[https://www.learncpp.com/cpp-tutorial/42-global-variables][4.2 Global variables and linkage]]
+
+*** [[https://www.learncpp.com/cpp-tutorial/4-2a-why-global-variables-are-evil][4.2a Why global variables are evil]]
+
+*** [[https://www.learncpp.com/cpp-tutorial/43-static-duration-variables][4.3 Static duration variables]]
+
+*** [[https://www.learncpp.com/cpp-tutorial/4-3a-scope-duration-and-linkage-summary][4.3a Scope, duration, and linkage summary]]
+
+*** [[https://www.learncpp.com/cpp-tutorial/4-3b-namespaces][4.3b Namespaces]]
+
+*** [[https://www.learncpp.com/cpp-tutorial/4-3c-using-statements][4.3c Using statements]]
+
+*** [[https://www.learncpp.com/cpp-tutorial/44-implicit-type-conversion-coercion][4.4 Implicit type conversion (coercion)]]
+
+*** [[https://www.learncpp.com/cpp-tutorial/4-4a-explicit-type-conversion-casting][4.4a Explicit type conversion (casting)]]
+
+*** [[https://www.learncpp.com/cpp-tutorial/4-4b-an-introduction-to-stdstring][4.4b An introduction to std::string]]
+
+*** [[https://www.learncpp.com/cpp-tutorial/45-enumerated-types][4.5 Enumerated types]]
+
+*** [[https://www.learncpp.com/cpp-tutorial/4-5a-enum-classes][4.5a Enum classes]]
+
+*** [[https://www.learncpp.com/cpp-tutorial/46-typedefs-and-type-aliases][4.6 Typedefs and type aliases]]
+
+*** [[https://www.learncpp.com/cpp-tutorial/47-structs][4.7 Structs]]
+
+*** [[https://www.learncpp.com/cpp-tutorial/4-8-the-auto-keyword][4.8 The auto keyword]]
+
+*** [[https://www.learncpp.com/cpp-tutorial/4-x-chapter-4-comprehensive-quiz][4.x Chapter 4 comprehensive quiz]]
+
+** Chapter 5: Control Flow
+
+*** [[https://www.learncpp.com/cpp-tutorial/51-control-flow-introduction][5.1 Control flow introduction]]
+
+*** [[https://www.learncpp.com/cpp-tutorial/52-if-statements][5.2 If statements]]
+
+*** [[https://www.learncpp.com/cpp-tutorial/53-switch-statements][5.3 Switch statements]]
+
+*** [[https://www.learncpp.com/cpp-tutorial/54-goto-statements][5.4 Goto statements]]
+
+*** [[https://www.learncpp.com/cpp-tutorial/55-while-statements][5.5 While statements]]
+
+*** [[https://www.learncpp.com/cpp-tutorial/56-do-while-statements][5.6 Do while statements]]
+
+*** [[https://www.learncpp.com/cpp-tutorial/57-for-statements][5.7 For statements]]
+
+*** [[https://www.learncpp.com/cpp-tutorial/58-break-and-continue][5.8 Break and continue]]
+
+*** [[https://www.learncpp.com/cpp-tutorial/59-random-number-generation][5.9 Random number generation]]
+
+*** [[https://www.learncpp.com/cpp-tutorial/5-10-stdcin-extraction-and-dealing-with-invalid-text-input][5.10 std::cin, extraction, and dealing with invalid text input]]
+
+*** [[https://www.learncpp.com/cpp-tutorial/5-11-introduction-to-testing-your-code][5.11 Introduction to testing your code]]
+
+*** [[https://www.learncpp.com/cpp-tutorial/5-x-chapter-5-comprehensive-quiz][5.x Chapter 5 comprehensive quiz]]
+
+** Chapter 6: Arrays, Strings, Pointers, and References
+*** [[https://www.learncpp.com/cpp-tutorial/61-arrays-part-i][6.1 Arrays (Part I)]]
+
+*** [[https://www.learncpp.com/cpp-tutorial/62-arrays-part-ii][6.2 Arrays (Part II)]]
+
+*** [[https://www.learncpp.com/cpp-tutorial/63-arrays-and-loops][6.3 Arrays and loops]]
+
+*** [[https://www.learncpp.com/cpp-tutorial/64-sorting-an-array-using-selection-sort][6.4 Sorting an array using selection sort]]
+
+*** [[https://www.learncpp.com/cpp-tutorial/65-multidimensional-arrays][6.5 Multidimensional arrays]]
+
+*** [[https://www.learncpp.com/cpp-tutorial/66-c-style-strings][6.6 C-style strings]]
+
+*** [[https://www.learncpp.com/cpp-tutorial/67-introduction-to-pointers][6.7 Introduction to pointers]]
+
+*** [[https://www.learncpp.com/cpp-tutorial/6-7a-null-pointers][6.7a Null pointers]]
+
+*** [[https://www.learncpp.com/cpp-tutorial/6-8-pointers-and-arrays][6.8 Pointers and arrays]]
+
+*** [[https://www.learncpp.com/cpp-tutorial/6-8a-pointer-arithmetic-and-array-indexing][6.8a Pointer arithmetic and array indexing]]
+
+*** [[https://www.learncpp.com/cpp-tutorial/6-8b-c-style-string-symbolic-constants][6.8b C-style string symbolic constants]]
+
+*** [[https://www.learncpp.com/cpp-tutorial/69-dynamic-memory-allocation-with-new-and-delete][6.9 Dynamic memory allocation with new and delete]]
+
+*** [[https://www.learncpp.com/cpp-tutorial/6-9a-dynamically-allocating-arrays][6.9a Dynamically allocating arrays]]
+
+*** [[https://www.learncpp.com/cpp-tutorial/610-pointers-and-const][6.10 Pointers and const]]
+
+*** [[https://www.learncpp.com/cpp-tutorial/611-references][6.11 Reference variables]]
+
+*** [[https://www.learncpp.com/cpp-tutorial/6-11a-references-and-const][6.11a References and const]]
+
+*** [[https://www.learncpp.com/cpp-tutorial/612-member-selection-with-pointers-and-references][6.12 Member selection with pointers and references]]
+
+*** [[https://www.learncpp.com/cpp-tutorial/6-12a-for-each-loops][6.12a For each loops]]
+
+*** [[https://www.learncpp.com/cpp-tutorial/613-void-pointers][6.13 Void pointers]]
+
+*** [[https://www.learncpp.com/cpp-tutorial/6-14-pointers-to-pointers][6.14 Pointers to pointers and dynamic multidimensional arrays]]
+
+*** [[https://www.learncpp.com/cpp-tutorial/6-15-an-introduction-to-stdarray][6.15 An introduction to std::array]]
+
+*** [[https://www.learncpp.com/cpp-tutorial/6-16-an-introduction-to-stdvector][6.16 An introduction to std::vector]]
+
+*** [[https://www.learncpp.com/cpp-tutorial/6-x-chapter-6-comprehensive-quiz][6.x Chapter 6 comprehensive quiz]]
+
+** Chapter 7: Functions
+*** [[https://www.learncpp.com/cpp-tutorial/71-function-parameters-and-arguments][7.1 Function parameters and arguments]]
+
+**** Why this happen?
 
     #+BEGIN_SRC c++
-    static To* DoCast(UObject* Src)
-    {
-    return Src && Src->IsA<To>() ? (To*)Src : nullptr;
-    }
+ #include "pch.h"
+ #include <iostream>
+
+ struct A {};
+ void foo(A const& a) {}
+ void callFoo() {
+	 foo(A());
+ }
+
+ int main()
+ {
+     std::cout << "Hello World!\n";
+ }
     #+END_SRC
 
-    It's ugly, but it is just a if-statement.
-
-    (Checker)? Option_A: Option_B.
-
-    If checker ture, then Opetion_A, else Option_B.
-
-** [[https://www.learncpp.com/cpp-tutorial/35-relational-operators-comparisons][3.5 Relational operators (comparisons)]]
-
-** [[https://www.learncpp.com/cpp-tutorial/36-logical-operators][3.6 Logical operators]]
-
-** [[https://www.learncpp.com/cpp-tutorial/37-converting-between-binary-and-decimal][3.7 Converting between binary and decimal]]
-
-** [[https://www.learncpp.com/cpp-tutorial/38-bitwise-operators][3.8 Bitwise operators]]
-
-** [[https://www.learncpp.com/cpp-tutorial/3-8a-bit-flags-and-bit-masks][3.8a Bit flags and bit masks]]
-
-** [[https://www.learncpp.com/cpp-tutorial/3-x-comprehensive-quiz][3.x Chapter 3 comprehensive quiz]]
-
-* Chapter 4: Variable Scope and More Types
-
-** [[https://www.learncpp.com/cpp-tutorial/41-blocks-compound-statements][4.1 Blocks (compound statements)]]
-
-** [[https://www.learncpp.com/cpp-tutorial/4-1a-local-variables-and-local-scope][4.1a Local variables, scope, and duration]]
-
-** [[https://www.learncpp.com/cpp-tutorial/42-global-variables][4.2 Global variables and linkage]]
-
-** [[https://www.learncpp.com/cpp-tutorial/4-2a-why-global-variables-are-evil][4.2a Why global variables are evil]]
-
-** [[https://www.learncpp.com/cpp-tutorial/43-static-duration-variables][4.3 Static duration variables]]
-
-** [[https://www.learncpp.com/cpp-tutorial/4-3a-scope-duration-and-linkage-summary][4.3a Scope, duration, and linkage summary]]
-
-** [[https://www.learncpp.com/cpp-tutorial/4-3b-namespaces][4.3b Namespaces]]
-
-** [[https://www.learncpp.com/cpp-tutorial/4-3c-using-statements][4.3c Using statements]]
-
-** [[https://www.learncpp.com/cpp-tutorial/44-implicit-type-conversion-coercion][4.4 Implicit type conversion (coercion)]]
-
-** [[https://www.learncpp.com/cpp-tutorial/4-4a-explicit-type-conversion-casting][4.4a Explicit type conversion (casting)]]
-
-** [[https://www.learncpp.com/cpp-tutorial/4-4b-an-introduction-to-stdstring][4.4b An introduction to std::string]]
-
-** [[https://www.learncpp.com/cpp-tutorial/45-enumerated-types][4.5 Enumerated types]]
-
-** [[https://www.learncpp.com/cpp-tutorial/4-5a-enum-classes][4.5a Enum classes]]
-
-** [[https://www.learncpp.com/cpp-tutorial/46-typedefs-and-type-aliases][4.6 Typedefs and type aliases]]
-
-** [[https://www.learncpp.com/cpp-tutorial/47-structs][4.7 Structs]]
-
-** [[https://www.learncpp.com/cpp-tutorial/4-8-the-auto-keyword][4.8 The auto keyword]]
-
-** [[https://www.learncpp.com/cpp-tutorial/4-x-chapter-4-comprehensive-quiz][4.x Chapter 4 comprehensive quiz]]
-
-* Chapter 5: Control Flow
-
-** [[https://www.learncpp.com/cpp-tutorial/51-control-flow-introduction][5.1 Control flow introduction]]
-
-** [[https://www.learncpp.com/cpp-tutorial/52-if-statements][5.2 If statements]]
-
-** [[https://www.learncpp.com/cpp-tutorial/53-switch-statements][5.3 Switch statements]]
-
-** [[https://www.learncpp.com/cpp-tutorial/54-goto-statements][5.4 Goto statements]]
-
-** [[https://www.learncpp.com/cpp-tutorial/55-while-statements][5.5 While statements]]
-
-** [[https://www.learncpp.com/cpp-tutorial/56-do-while-statements][5.6 Do while statements]]
-
-** [[https://www.learncpp.com/cpp-tutorial/57-for-statements][5.7 For statements]]
-
-** [[https://www.learncpp.com/cpp-tutorial/58-break-and-continue][5.8 Break and continue]]
-
-** [[https://www.learncpp.com/cpp-tutorial/59-random-number-generation][5.9 Random number generation]]
-
-** [[https://www.learncpp.com/cpp-tutorial/5-10-stdcin-extraction-and-dealing-with-invalid-text-input][5.10 std::cin, extraction, and dealing with invalid text input]]
-
-** [[https://www.learncpp.com/cpp-tutorial/5-11-introduction-to-testing-your-code][5.11 Introduction to testing your code]]
-
-** [[https://www.learncpp.com/cpp-tutorial/5-x-chapter-5-comprehensive-quiz][5.x Chapter 5 comprehensive quiz]]
-
-* Chapter 6: Arrays, Strings, Pointers, and References
-** [[https://www.learncpp.com/cpp-tutorial/61-arrays-part-i][6.1 Arrays (Part I)]]
-
-** [[https://www.learncpp.com/cpp-tutorial/62-arrays-part-ii][6.2 Arrays (Part II)]]
-
-** [[https://www.learncpp.com/cpp-tutorial/63-arrays-and-loops][6.3 Arrays and loops]]
-
-** [[https://www.learncpp.com/cpp-tutorial/64-sorting-an-array-using-selection-sort][6.4 Sorting an array using selection sort]]
-
-** [[https://www.learncpp.com/cpp-tutorial/65-multidimensional-arrays][6.5 Multidimensional arrays]]
-
-** [[https://www.learncpp.com/cpp-tutorial/66-c-style-strings][6.6 C-style strings]]
-
-** [[https://www.learncpp.com/cpp-tutorial/67-introduction-to-pointers][6.7 Introduction to pointers]]
-
-** [[https://www.learncpp.com/cpp-tutorial/6-7a-null-pointers][6.7a Null pointers]]
-
-** [[https://www.learncpp.com/cpp-tutorial/6-8-pointers-and-arrays][6.8 Pointers and arrays]]
-
-** [[https://www.learncpp.com/cpp-tutorial/6-8a-pointer-arithmetic-and-array-indexing][6.8a Pointer arithmetic and array indexing]]
-
-** [[https://www.learncpp.com/cpp-tutorial/6-8b-c-style-string-symbolic-constants][6.8b C-style string symbolic constants]]
-
-** [[https://www.learncpp.com/cpp-tutorial/69-dynamic-memory-allocation-with-new-and-delete][6.9 Dynamic memory allocation with new and delete]]
-
-** [[https://www.learncpp.com/cpp-tutorial/6-9a-dynamically-allocating-arrays][6.9a Dynamically allocating arrays]]
-
-** [[https://www.learncpp.com/cpp-tutorial/610-pointers-and-const][6.10 Pointers and const]]
-
-** [[https://www.learncpp.com/cpp-tutorial/611-references][6.11 Reference variables]]
-
-** [[https://www.learncpp.com/cpp-tutorial/6-11a-references-and-const][6.11a References and const]]
-
-** [[https://www.learncpp.com/cpp-tutorial/612-member-selection-with-pointers-and-references][6.12 Member selection with pointers and references]]
-
-** [[https://www.learncpp.com/cpp-tutorial/6-12a-for-each-loops][6.12a For each loops]]
-
-** [[https://www.learncpp.com/cpp-tutorial/613-void-pointers][6.13 Void pointers]]
-
-** [[https://www.learncpp.com/cpp-tutorial/6-14-pointers-to-pointers][6.14 Pointers to pointers and dynamic multidimensional arrays]]
-
-** [[https://www.learncpp.com/cpp-tutorial/6-15-an-introduction-to-stdarray][6.15 An introduction to std::array]]
-
-** [[https://www.learncpp.com/cpp-tutorial/6-16-an-introduction-to-stdvector][6.16 An introduction to std::vector]]
-
-** [[https://www.learncpp.com/cpp-tutorial/6-x-chapter-6-comprehensive-quiz][6.x Chapter 6 comprehensive quiz]]
-
-* Chapter 7: Functions
-** [[https://www.learncpp.com/cpp-tutorial/71-function-parameters-and-arguments][7.1 Function parameters and arguments]]
-
-*** Why this happen?
-
-   #+BEGIN_SRC c++
-#include "pch.h"
-#include <iostream>
-
-struct A {};
-void foo(A const& a) {}
-void callFoo() {
-	foo(A());
-}
-
-int main()
-{
-    std::cout << "Hello World!\n";
-}
-   #+END_SRC
-
-   The compile okay and programm works.
-
-   #+BEGIN_SRC c++
-   #include "pch.h"
-#include <iostream>
-
-int main()
-{
-	struct A {};
-	void foo(A const& a) {}
-	void callFoo() {
-		foo(A());
-	}
-    std::cout << "Hello World!\n";
-}
-   #+END_SRC
-
-   Even I put ";" at the end of function:
-
-   #+BEGIN_SRC c++
-#include "pch.h"
-#include <iostream>
-
-int main()
-{
-	struct A {};
-	void foo(A const& a) {};
-	void callFoo() {
-		foo(A());
-	};
-
-    std::cout << "Hello World!\n";
-}
-   #+END_SRC
-
-   The complier still complain about ";".
-
-   My question is what ";" really means? Why it works when the
-   function is defined out of the main function, but not within the
-   main function?
-*** nascardriver's reply
-    You cannot define functions inside functions.
-    If you want to define a function in-line, have a look at lambda-functions.
-*** my reply
-
-    I guess it is because I read too much elisp code. As a result, my
-    brain changes to think c++ should have the same capcity.
-
-    What's lambda? I first check elisp:
-
-    (defun)
-
-    ((lambda (x) (* x 2)) 7)
-
-    (defun double(x)
-    (* x 2))
-
-    (double 7)
-
-    (macroexpand '(defun double (x) (* x 2)))
-**** This viedo is great
-     - [[https://youtu.be/oufGYAAVLfQ?t=180][this is how to do default value to a function]]
-
-       why my code is not working as his?
-
-       Thanks for this great tutorial, I am trying to follow your
-       instruction of the following code:
-     #+BEGIN_SRC elisp
-     (defun test-0 (x &optional (y 0))
-     (+ x y))
-     #+END_SRC
-     But I also get this:
-     #+BEGIN_SRC elisp
-     Debugger entered--Lisp error: (error "Malformed arglist: (x &optional (y 0))")
-  signal(error ("Malformed arglist: (x &optional (y 0))"))
-  error("Malformed arglist: %s" (x &optional (y 0)))
-  #f(compiled-function (name arglist &optional docstring decl &rest body) "Define NAME as a function.\nThe definition is (lambda ARGLIST [DOCSTRING] BODY...).\nSee also the function `interactive'.\nDECL is a declaration, optional, of the form (declare DECLS...) where\nDECLS is a list of elements of the form (PROP . VALUES).  These are\ninterpreted according to `defun-declarations-alist'.\nThe return value is undefined." #<bytecode 0x100082173>)(test-0 (x &optional (y 0)) (+ x y))
-  macroexpand((defun test-0 (x &optional (y 0)) (+ x y)) nil)
-  macroexp-macroexpand((defun test-0 (x &optional (y 0)) (+ x y)) nil)
-  macroexp--expand-all((defun test-0 (x &optional (y 0)) (+ x y)))
-  macroexpand-all((defun test-0 (x &optional (y 0)) (+ x y)))
-  eval-sexp-add-defvars((defun test-0 (x &optional (y 0)) (+ x y)))
-  elisp--eval-last-sexp(nil)
-  eval-last-sexp(nil)
-  funcall-interactively(eval-last-sexp nil)
-  call-interactively(eval-last-sexp nil nil)
-  command-execute(eval-last-sexp)
-     #+END_SRC
-
-     I think my code is the same as yours, not sure why this happen on
-     my machine: ~GNU Emacs 26.1 (build 1, x86_64-w64-mingw32) of
-     2018-05-30~
-
-     - I learn ~&rest~
-
-       #+BEGIN_SRC elisp
-       (defun test (&rest args)
-       (print args)
-       (length args))
-       #+END_SRC
-
-       #+BEGIN_SRC elisp
-       (defun test (&rest args)
-       (print args)
-       (length args))
-
-       (test 10)
-       (test 10 10 10)
-       #+END_SRC
-
-     - I learn ~&key~
-       #+BEGIN_SRC elisp
-       (defun test (&key foo bar)
-          (list foo bar))
-
-	  (test :foo 11 :bar 33)
-       #+END_SRC
-
-       I realize that he is teaching lisp not elisp...
-
-** [[https://www.learncpp.com/cpp-tutorial/72-passing-arguments-by-value][7.2 Passing arguments by value]]
-
-** [[https://www.learncpp.com/cpp-tutorial/73-passing-arguments-by-reference][7.3 Passing arguments by reference]]
-
-** [[https://www.learncpp.com/cpp-tutorial/74-passing-arguments-by-address][7.4 Passing arguments by address]]
-
-** [[https://www.learncpp.com/cpp-tutorial/74a-returning-values-by-value-reference-and-address][7.4a Returning values by value, reference, and address]]
-
-** [[https://www.learncpp.com/cpp-tutorial/75-inline-functions][7.5 Inline functions]]
-
-** [[https://www.learncpp.com/cpp-tutorial/76-function-overloading][7.6 Function overloading]]
-
-** [[https://www.learncpp.com/cpp-tutorial/77-default-parameters][7.7 Default parameters]]
-
-** [[https://www.learncpp.com/cpp-tutorial/78-function-pointers][7.8 Function Pointers]]
-
-** [[https://www.learncpp.com/cpp-tutorial/79-the-stack-and-the-heap][7.9 The stack and the heap]]
-
-** [[https://www.learncpp.com/cpp-tutorial/7-10-stdvector-capacity-and-stack-behavior][7.10 std::vector capacity and stack behavior]]
-
-** [[https://www.learncpp.com/cpp-tutorial/7-11-recursion][7.11 Recursion]]
-*** Youtube video deomo
-    https://www.youtube.com/watch?v=2SUvWfNJSsM&feature=youtu.be
-
-** [[https://www.learncpp.com/cpp-tutorial/712-handling-errors-assert-cerr-exit-and-exceptions][7.12 Handling errors, cerr and exit]]
-
-** [[https://www.learncpp.com/cpp-tutorial/7-12a-assert-and-static_assert][7.12a Assert and static_assert]]
-
-** [[https://www.learncpp.com/cpp-tutorial/713-command-line-arguments][7.13 Command line arguments]]
-
-** [[https://www.learncpp.com/cpp-tutorial/714-ellipsis-and-why-to-avoid-them][7.14 Ellipsis (and why to avoid them)]]
-
-** [[https://www.learncpp.com/cpp-tutorial/7-x-chapter-7-comprehensive-quiz][7.x Chapter 7 comprehensive quiz]]
-
-* Chapter 8: Basic object-oriented programming
-
-** [[https://www.learncpp.com/cpp-tutorial/81-welcome-to-object-oriented-programming/][8.1 Welcome to object-oriented programming]]
-
-** [[https://www.learncpp.com/cpp-tutorial/82-classes-and-class-members][8.2 Classes and class members]]
-
-*** TODO Access other function's local variables
-
-**** intial question
-
-     https://www.learncpp.com/cpp-tutorial/82-classes-and-class-members/comment-page-3/#comment-380067
-
-     In construction a class, should we define all the varibles out of
-     memeber functions? I think it is not. Because I can define some
-     varibles in the mumeber functions, and it works. My questions, is this
-     a good practice? Or, Should we avoid define varibles within a member
-     function? If you can not understand me, please let me know. Here I
-     make an example:
-
-     #+BEGIN_SRC c++
-     #include <iostream>
-     #include <string>
-
-     class Employee
-     {
-     public:
-         std::string m_name;
-         int m_id;
-         double m_wage;
-
-
-         // Print employee information to the screen
-         void print()
-         {
-             int m_test = 2;
-             std::cout << "Name: " << m_name <<
-                     "  Id: " << m_id <<
-                     "  Wage: $" << m_wage << '\n';
-
-             std::cout << "We have " << m_test << " employees. "<<std::endl;
-         }
-     };
-
-     int main()
-     {
-         // Declare two employees
-         Employee alex { "Alex", 1, 25.00 };
-         Employee joe { "Joe", 2, 22.25 };
-
-         // Print out the employee information
-         alex.print();
-         joe.print();
-
-         return 0;
-     }
-     #+END_SRC
-
-     My question is `int m_test = 2;` a bad programming habit?
-
-**** Alex's reply
-
-     In general, there's nothing wrong with using local variables in a
-     member function. Use them just like you would for non-member
-     functions (e.g. when you don't need their values to persist
-     beyond the scope of the function). The way you've used it here
-     doesn't make sense though, since print() gets called for each
-     employee, and your "We have 2 employees" statement will get
-     printed twice.
-
-**** my 2nd reply
-
-     Is the following thought a bad programming habit? Accessing a
-     local variable in a member function of a class from another class.
-     For example, I want to access `people` ( in the class 'Employee' )
-     from another class as shown in the flowing code:
-
-     #+BEGIN_SRC c++
-     struct employeeGPS
-     {
-         double x;
-         double y;
-         double z;
-     };
-
-     class Employee
-     {
-     public:
-
-         std::string m_name;
-         employeeGPS m_people;
-
-         void print();
-
-         friend class Boss;
-     };
-
-     void Employee::print()
-     {
-
-         employeeGPS people;
-
-         people.x = 1;
-
-         std::cout << "Name: " << m_name <<
-                 "  X Location: " << m_people.employeeGPS::x <<
-                 "  Y Location: " << m_people.employeeGPS::y <<
-                 "  Z Location: " << m_people.employeeGPS::z <<'\n';
-
-         std::cout << "Dummy variable in local function: " << people.x <<'\n';
-     }
-     #+END_SRC
-
-     The class `Boss` is shown in the following code:
-
-     #+BEGIN_SRC c++
-     class Boss
-     {
-     public:
-         void BossChecker(Employee &employee)
-         {
-             std::cout << employee.m_name << std::endl;
-         }
-
-         void BossAccessToFriendFunction(Employee &employee)
-         {
-             employee.printB();
-         }
-     };
-     #+END_SRC
-
-     Is that possible to access the local variable ( people.x ) in
-     ~Employee::print()~ from an object of class ~Boss~ ? Or, is this
-     a bad thought? Is there any other method to achieve this thought?
-
-**** nascardriver's reply
-
-     That's what the "friend" keyword is for. You'll learn about it later in chapter 8.
-
-**** final remarks
-
-** [[https://www.learncpp.com/cpp-tutorial/83-public-vs-private-access-specifiers][8.3 Public vs private access specifiers]]
-
-** [[https://www.learncpp.com/cpp-tutorial/84-access-functions-and-encapsulation][8.4 Access functions and encapsulation]]
-
-** [[https://www.learncpp.com/cpp-tutorial/85-constructors][8.5 Constructors]]
-
-** [[https://www.learncpp.com/cpp-tutorial/8-5a-constructor-member-initializer-lists][8.5a Constructor member initializer lists]]
-
-** [[https://www.learncpp.com/cpp-programming/8-5b-non-static-member-initialization][8.5b Non-static member initialization]]
-
-** [[https://www.learncpp.com/cpp-tutorial/8-6-overlapping-and-delegating-constructors][8.6 Overlapping and delegating constructors]]
-
-** [[https://www.learncpp.com/cpp-tutorial/8-7-destructors][8.7 Destructors]]
-
-** [[https://www.learncpp.com/cpp-tutorial/8-8-the-hidden-this-pointer][8.8 The hidden &#8220;this&#8221; pointer]]
-
-** [[https://www.learncpp.com/cpp-tutorial/89-class-code-and-header-files][8.9 Class code and header files]]
-
-** [[https://www.learncpp.com/cpp-tutorial/810-const-class-objects-and-member-functions][8.10 Const class objects and member functions]]
-
-** [[https://www.learncpp.com/cpp-tutorial/811-static-member-variables][8.11 Static member variables]]
-
-** [[https://www.learncpp.com/cpp-tutorial/812-static-member-functions][8.12 Static member functions]]
-
-** [[https://www.learncpp.com/cpp-tutorial/813-friend-functions-and-classes][8.13 Friend functions and classes]]
-
-** [[https://www.learncpp.com/cpp-tutorial/814-anonymous-objects][8.14 Anonymous objects]]
-
-** [[https://www.learncpp.com/cpp-tutorial/8-15-nested-types-in-classes][8.15 Nested types in classes]]
-
-** [[https://www.learncpp.com/cpp-tutorial/8-16-timing-your-code][8.16 Timing your code]]
-
-** [[https://www.learncpp.com/cpp-tutorial/8-15-chapter-8-comprehensive-quiz][8.x Chapter 8 comprehensive quiz]]
-
-* Chapter 9: Operator overloading
-
-** [[https://www.learncpp.com/cpp-tutorial/91-introduction-to-operator-overloading][9.1 Introduction to operator overloading]]
-
-** [[https://www.learncpp.com/cpp-tutorial/92-overloading-the-arithmetic-operators-using-friend-functions][9.2 Overloading the arithmetic operators using friend functions]]
-
-** [[https://www.learncpp.com/cpp-tutorial/9-2a-overloading-operators-using-normal-functions][9.2a Overloading operators using normal functions]]
-
-** [[https://www.learncpp.com/cpp-tutorial/93-overloading-the-io-operators][9.3 Overloading the I/O operators]]
-
-** [[https://www.learncpp.com/cpp-tutorial/94-overloading-operators-using-member-functions][9.4 Overloading operators using member functions]]
-
-** [[https://www.learncpp.com/cpp-tutorial/95-overloading-unary-operators][9.5 Overloading unary operators +, -, and !]]
-
-** [[https://www.learncpp.com/cpp-tutorial/96-overloading-the-comparison-operators][9.6 Overloading the comparison operators]]
-
-** [[https://www.learncpp.com/cpp-tutorial/97-overloading-the-increment-and-decrement-operators][9.7 Overloading the increment and decrement operators]]
-
-** [[https://www.learncpp.com/cpp-tutorial/98-overloading-the-subscript-operator][9.8 Overloading the subscript operator]]
-
-** [[https://www.learncpp.com/cpp-tutorial/99-overloading-the-parenthesis-operator][9.9 Overloading the parenthesis operator]]
-
-** [[https://www.learncpp.com/cpp-tutorial/910-overloading-typecasts][9.10 Overloading typecasts]]
-
-** [[https://www.learncpp.com/cpp-tutorial/911-the-copy-constructor][9.11 The copy constructor]]
-
-** [[https://www.learncpp.com/cpp-tutorial/9-12-copy-initialization][9.12 Copy initialization]]
-
-** [[https://www.learncpp.com/cpp-tutorial/9-13-converting-constructors-explicit-and-delete][9.13 Converting constructors, explicit, and delete]]
-
-** [[https://www.learncpp.com/cpp-tutorial/9-14-overloading-the-assignment-operator][9.14 Overloading the assignment operator]]
-
-** [[https://www.learncpp.com/cpp-tutorial/915-shallow-vs-deep-copying][9.15 Shallow vs. deep copying]]
-
-** [[https://www.learncpp.com/cpp-tutorial/9-x-chapter-9-comprehensive-quiz][9.x Chapter 9 comprehensive quiz]]
-
-* Chapter 10: An introduction to object relationships
-** [[https://www.learncpp.com/cpp-tutorial/10-1-object-relationships][10.1 Object relationships]]
-
-** [[https://www.learncpp.com/cpp-tutorial/102-composition][10.2 Composition]]
-
-** [[https://www.learncpp.com/cpp-tutorial/103-aggregation][10.3 Aggregation]]
-
-** [[https://www.learncpp.com/cpp-tutorial/10-4-association][10.4 Association]]
-
-** [[https://www.learncpp.com/cpp-tutorial/10-5-dependencies][10.5 Dependencies]]
-
-** [[https://www.learncpp.com/cpp-tutorial/106-container-classes][10.6 Container classes]]
-
-** [[https://www.learncpp.com/cpp-tutorial/10-7-stdinitializer_list][10.7 std::initializer_list]]
-
-** [[https://www.learncpp.com/cpp-tutorial/10-x-chapter-10-comprehensive-quiz][10.x Chapter 10 comprehensive quiz]]
-
-* Chapter 11: Inheritance
-** [[https://www.learncpp.com/cpp-tutorial/111-introduction-to-inheritance][11.1 Introduction to inheritance]]
-
-   Hi, Alex or nascardriver, I encontour an issue that I still have no idea for a long
-   time.
-
-   In the following code snippet, I try to do a check that:
-
-   ChildA is not inherient from ParentB.
-
-   I want the program compile and print out me a message that tells me
-   ~childA~ class is not inherient from ~ParentB~ ?
-
-   The reason why I ask this question is that I am trying to
-   understand a piece code in Unreal Game Editor.
-
-   #+BEGIN_SRC c++
-   #include "pch.h" // what's this headfile?
-   #include <iostream>
-   #include <string>
-
-   class ParentA {
-
-   public: ParentA() {}
-
-   std::string m_name;
-
-   std::string getName() const { return m_name; }
-
-   void printName() const {
-
-   std::cout << "I am a child of A." << std::endl;
-
-   }
-   };
-
-   class ParentB {
-   public: ParentB() {}
-
-   std::string m_name;
-
-   std::string getName() const { return m_name; }
-
-   void functionParentB() {
-   std::cout << "I am a child of B" << std::endl;
-   }
-   };
-
-   class childA : public ParentA {
-   public:
-
-   int ChildA() {}
-
-   void printNameInChild() {
-
-   std::cout << "This is a message from child A" << std::endl;
-   }
-
-
-   };
-
-   class childB : public ParentB {
-   public:
-
-   int ChildB() {}
-
-   void printNameInChild() {
-
-   std::cout << "This is a message from child B" << std::endl;
-   }
-
-
-   };
-
-   int main() {
-
-   childA lucifer;
-   childB angela;
-
-   lucifer.m_name = "Lucifer";
-   angela.m_name = "Angela";
-
-   //lucifer.printName();
-   lucifer.printNameInChild();
-   angela.printNameInChild();
-
-   // how to writer a if-else statement to determine one child is a child of a particular parent?
-
-   }
-
-   /* notes
-
-   Why Shift + F11 cannot jump back out the entry point?
-
-   For example, if the cursor is on
-
-
-   getName(), then press 'F11', I go to its definition,
-
-   but, I want goback by pressing 'Shift+F11', but not work.
-
-   I guess, its the issue with my emacs kbd set for VS.
-
-   In exploring, I found that "Alt + F11", which is peak definition.
-
-   It is more handy.
-
-   */
-#+END_SRC
-**** nascardriver reply
-
-     #+BEGIN_SRC c++
-     std::cout << std::is_base_of_v<ParentA, decltype(angela)> << '\n';
-     std::cout << std::is_base_of_v<ParentA, decltype(lucifer)> << '\n';
-     std::cout << std::is_base_of_v<ParentB, decltype(angela)> << '\n';
-     std::cout << std::is_base_of_v<ParentB, decltype(lucifer)> << '\n';
-     #+END_SRC
-**** my reply to nascardriver
-
-     Thanks for pointing out this amazing std library: boost.
-
-     It solve my problem.
-
-     But, I recently have a temperation to know more details about
-     c++. For example, after reading your code, I start to read source
-     code of ~is_base_of_v~:
-
-     #+BEGIN_SRC c++
-
-     #ifndef BOOST_TT_IS_BASE_OF_HPP_INCLUDED
-     #define BOOST_TT_IS_BASE_OF_HPP_INCLUDED
-
-     #include <boost/type_traits/is_base_and_derived.hpp>
-     #include <boost/type_traits/is_same.hpp>
-     #include <boost/type_traits/is_class.hpp>
-
-     namespace boost {
-
-     namespace detail{
-      template <class B, class D>
-      struct is_base_of_imp
-      {
-          typedef typename remove_cv<B>::type ncvB;
-          typedef typename remove_cv<D>::type ncvD;
-          BOOST_STATIC_CONSTANT(bool, value = (
-            (::boost::detail::is_base_and_derived_impl<ncvB,ncvD>::value) ||
-            (::boost::is_same<ncvB,ncvD>::value && ::boost::is_class<ncvB>::value)));
-      };
-   }
-
-   template <class Base, class Derived> struct is_base_of
-      : public integral_constant<bool, (::boost::detail::is_base_of_imp<Base, Derived>::value)> {};
-
-   template <class Base, class Derived> struct is_base_of<Base, Derived&> : false_type{};
-   template <class Base, class Derived> struct is_base_of<Base&, Derived&> : false_type{};
-   template <class Base, class Derived> struct is_base_of<Base&, Derived> : false_type{};
-
-} // namespace boost
-
-#endif // BOOST_TT_IS_BASE_AND_DERIVED_HPP_INCLUDED
-#+END_SRC
-
-     I don't know if you are interesting to know how those code
-     working? I mean, understanding to a degree such that a
-     five-year-old girl could understanding if amount of time being
-     post here.
-
-     To be honest with you, I don't know how ~is_base_of_v~
-     works. The things I can do is to google any things I don't
-     understand.
-
-     I am not sure it is very effective, but the key point is that I
-     do not have any burdon on it. It's not like a semester that I
-     have to finish it within some time. In my current case, I can
-     study it as much as possible I'd like to.
-**** nascardrive 2nd reply
-     > Thanks for pointing out this amazing std library: boost
-
-     I did not and will not recommend using boost in my replies. boost
-     is a feature-rich library of which many features have already
-     been implemented into the standard library. You don't need
-     boost. @std::is_base_of_v can be used after including the
-     <type_traits> header.
-
-     I don't think you read the chapter about templates yet, which is
-     what this is all about. I'll try to keep it simple: I'm following
-     the possible implementation shown at cppreference (
-     https://en.cppreference.com/w/cpp/types/is_base_of ). Actual
-     implementations might differ.
-
-     C++ has a feature, SFINAE. When the compiler has to construct
-     types during compile time (Types that where not explicitly
-     specified by the coder), an error might occur, because the type
-     cannot be constructed (Don't confuse "construct" with
-     constructors of classes, I mean "build" or "come up with"). This
-     error isn't treated as a compiler error, instead the
-     function/type it occurred at is ignored and cannot be used.
-     @std::is_base_of first tests if both types are classes by
-     attempting to create a pointer to a data member
-
-     1 2 3 // @T is your class (or non-class) type // @p is a pointer
-     to an int-member of a @T int T::*p{ nullptr }; @T will be filled
-     in by the compiler. If it can't be filled in, @T is not a class
-     type.  Once the compiler knows both types are classes, it checks
-     if they are unions (I couldn't find an implementation for
-     @std::is_union). If a type is a class and not a union, it
-     continues.  The compiler then tries creates a pointer to an
-     object of the derived class and tries to call a function that has
-     been overloaded to take either a pointer to the base class, or a
-     void*. Base class pointer can implicitly be cast to parent class
-     pointers. Depending on the function that has been called, the
-     compiler knows if the type is a base of the other type.
-
-     Once you're done with chapter 12, you can also use
-
-     1
-     2
-     3
-     4
-     std::cout << !!dynamic_cast<ParentA *>(&angela) << '\n';
-     std::cout << !!dynamic_cast<ParentA *>(&lucifer) << '\n';
-     std::cout << !!dynamic_cast<ParentB *>(&angela) << '\n';
-     std::cout << !!dynamic_cast<ParentB *>(&lucifer) << '\n';
-
-     as opposed to the code I posted earlier. This should be easier to
-     understand for now.
-**** my rep to nascardrive 2nd
-
-     Sorry about ~boost~, the reason why I pick up ~boost~ is that I
-     did not copy your code to my IDE, I just do a search on my
-     computer: with a filename: ~c:/Program Files/Epic
-     Games/UE_4.19/Engine/Plugins/Editor/USDImporter/Source/ThirdParty/USD/include/boost/type_traits/is_base_of.hpp~. At
-     that time I thought I was a third part library. I opened it and
-     found it. Indeed, I go to their website and read something about
-     it. I found that the repo of ~boost~ is crazy:
-
-     https://github.com/boostorg/boost
-
-     46973 comments. But I cannot view their source code on github for
-     some reasons. For example:
-     https://github.com/boostorg/boost/tree/master/libs
-     They use git-submodule with some magic stuff...
-
-     I follow your suggestion by adding the head file ~type_traits~ in
-     that c++ code snippet. It works!
-
-     I read the source code of ~type_traits~, and it writes:
-
-     #+BEGIN_SRC c++
-	// STRUCT TEMPLATE is_base_of
-	template<class _Base,
-	class _Derived>
-	struct is_base_of
-		: bool_constant<__is_base_of(_Base, _Derived)>
-	{	// determine whether _Base is a base of or the same as _Derived
-	};
-     #+END_SRC
-
-     However, I still confused how the code works. I try to find the
-     implymentation of ~is_base_of~, but I had some hard time. Really
-     appreciteing if you could pointing out the reference I could
-     further study and then I could understand what's going on here.
-
-     I double checked my study record. I indeed read that chapter 9
-     monuth
-     ago. https://github.com/randomwangran/cpp/tree/master/learnCpp/Chapter13
-     Maybe, I return it to alex.
-
-     So, I reread all the material in that chapter.
-
-     After I revise the basic idea of template, I continue with your
-     reply. I don't know the feature, SFINAE (subsitution failure is
-     not an errore). I found [[this pag][this page explain very well]] (but it is in
-     chinese).
-
-     What is token?
-
-     #+BEGIN_SRC c++
-struct A {};
-struct B: public A {}; // structure can do inherient?
-struct C {};
-
-void foo(A const&) {} // what is A const& represent?
-void foo(B const&) {}
-
-void callFoo() {
-  foo( A() );
-  foo( B() );
-  foo( C() );
-}
-     #+END_SRC
-*** when to use inherit?
-
-    If two objects have a relation ~has~, then it's not
-    inheritance. Better to use ~Object composition~.
-
-** [[https://www.learncpp.com/cpp-tutorial/112-basic-inheritance-in-c][11.2 Basic inheritance in C++]]
-
-** [[https://www.learncpp.com/cpp-tutorial/113-order-of-construction-of-derived-classes][11.3 Order of construction of derived classes]]
-
-** [[https://www.learncpp.com/cpp-tutorial/114-constructors-and-initialization-of-derived-classes][11.4 Constructors and initialization of derived classes]]
-
-** [[https://www.learncpp.com/cpp-tutorial/115-inheritance-and-access-specifiers][11.5 Inheritance and access specifiers]]
-
-** [[https://www.learncpp.com/cpp-tutorial/11-6-adding-new-functionality-to-a-derived-class][11.6 Adding new functionality to a derived class]]
-
-** [[https://www.learncpp.com/cpp-tutorial/11-6a-calling-inherited-functions-and-overriding-behavior][11.6a Calling inherited functions and overriding behavior]]
-
-** [[https://www.learncpp.com/cpp-tutorial/11-6b-hiding-inherited-functionality][11.6b Hiding inherited functionality]]
-
-** [[https://www.learncpp.com/cpp-tutorial/117-multiple-inheritance][11.7 Multiple inheritance]]
-
-** [[https://www.learncpp.com/cpp-tutorial/11-x-chapter-11-comprehensive-quiz][11.x Chapter 11 comprehensive quiz]]
-
-* Chapter 12: Virtual Functions
-** [[https://www.learncpp.com/cpp-tutorial/121-pointers-and-references-to-the-base-class-of-derived-objects][12.1 Pointers and references to the base class of derived objects]]
-
-** [[https://www.learncpp.com/cpp-tutorial/122-virtual-functions][12.2 Virtual functions and polymorphism]]
-
-** [[https://www.learncpp.com/cpp-tutorial/12-2a-the-override-and-final-specifiers-and-covariant-return-types][12.2a The override and final specifiers, and covariant return types]]
-
-** [[https://www.learncpp.com/cpp-tutorial/123-virtual-destructors-virtual-assignment-and-overriding-virtualization][12.3 Virtual destructors, virtual assignment, and overriding virtualization]]
-
-** [[https://www.learncpp.com/cpp-tutorial/124-early-binding-and-late-binding][12.4 Early binding and late binding]]
-
-** [[https://www.learncpp.com/cpp-tutorial/125-the-virtual-table][12.5 The virtual table]]
-
-** [[https://www.learncpp.com/cpp-tutorial/126-pure-virtual-functions-abstract-base-classes-and-interface-classes][12.6 Pure virtual functions, abstract base classes, and interface classes]]
-   If you want to implyment a function only in its drived class, use a
-   pure virtual function. It will serve as a reminder.
-*** DONE question
-    What's the different between ~const char*~ and ~char*~?
-
-    Why it cannot be compiled using ~char*~? as the return type of ~speak~?
+    The compile okay and programm works.
 
     #+BEGIN_SRC c++
-      #include "pch.h"
+    #include "pch.h"
+ #include <iostream>
+
+ int main()
+ {
+	 struct A {};
+	 void foo(A const& a) {}
+	 void callFoo() {
+		 foo(A());
+	 }
+     std::cout << "Hello World!\n";
+ }
+    #+END_SRC
+
+    Even I put ";" at the end of function:
+
+    #+BEGIN_SRC c++
+ #include "pch.h"
+ #include <iostream>
+
+ int main()
+ {
+	 struct A {};
+	 void foo(A const& a) {};
+	 void callFoo() {
+		 foo(A());
+	 };
+
+     std::cout << "Hello World!\n";
+ }
+    #+END_SRC
+
+    The complier still complain about ";".
+
+    My question is what ";" really means? Why it works when the
+    function is defined out of the main function, but not within the
+    main function?
+**** nascardriver's reply
+     You cannot define functions inside functions.
+     If you want to define a function in-line, have a look at lambda-functions.
+**** my reply
+
+     I guess it is because I read too much elisp code. As a result, my
+     brain changes to think c++ should have the same capcity.
+
+     What's lambda? I first check elisp:
+
+     (defun)
+
+     ((lambda (x) (* x 2)) 7)
+
+     (defun double(x)
+     (* x 2))
+
+     (double 7)
+
+     (macroexpand '(defun double (x) (* x 2)))
+***** This viedo is great
+      - [[https://youtu.be/oufGYAAVLfQ?t=180][this is how to do default value to a function]]
+
+        why my code is not working as his?
+
+        Thanks for this great tutorial, I am trying to follow your
+        instruction of the following code:
+      #+BEGIN_SRC elisp
+      (defun test-0 (x &optional (y 0))
+      (+ x y))
+      #+END_SRC
+      But I also get this:
+      #+BEGIN_SRC elisp
+      Debugger entered--Lisp error: (error "Malformed arglist: (x &optional (y 0))")
+   signal(error ("Malformed arglist: (x &optional (y 0))"))
+   error("Malformed arglist: %s" (x &optional (y 0)))
+   #f(compiled-function (name arglist &optional docstring decl &rest body) "Define NAME as a function.\nThe definition is (lambda ARGLIST [DOCSTRING] BODY...).\nSee also the function `interactive'.\nDECL is a declaration, optional, of the form (declare DECLS...) where\nDECLS is a list of elements of the form (PROP . VALUES).  These are\ninterpreted according to `defun-declarations-alist'.\nThe return value is undefined." #<bytecode 0x100082173>)(test-0 (x &optional (y 0)) (+ x y))
+   macroexpand((defun test-0 (x &optional (y 0)) (+ x y)) nil)
+   macroexp-macroexpand((defun test-0 (x &optional (y 0)) (+ x y)) nil)
+   macroexp--expand-all((defun test-0 (x &optional (y 0)) (+ x y)))
+   macroexpand-all((defun test-0 (x &optional (y 0)) (+ x y)))
+   eval-sexp-add-defvars((defun test-0 (x &optional (y 0)) (+ x y)))
+   elisp--eval-last-sexp(nil)
+   eval-last-sexp(nil)
+   funcall-interactively(eval-last-sexp nil)
+   call-interactively(eval-last-sexp nil nil)
+   command-execute(eval-last-sexp)
+      #+END_SRC
+
+      I think my code is the same as yours, not sure why this happen on
+      my machine: ~GNU Emacs 26.1 (build 1, x86_64-w64-mingw32) of
+      2018-05-30~
+
+      - I learn ~&rest~
+
+        #+BEGIN_SRC elisp
+        (defun test (&rest args)
+        (print args)
+        (length args))
+        #+END_SRC
+
+        #+BEGIN_SRC elisp
+        (defun test (&rest args)
+        (print args)
+        (length args))
+
+        (test 10)
+        (test 10 10 10)
+        #+END_SRC
+
+      - I learn ~&key~
+        #+BEGIN_SRC elisp
+        (defun test (&key foo bar)
+           (list foo bar))
+
+	   (test :foo 11 :bar 33)
+        #+END_SRC
+
+        I realize that he is teaching lisp not elisp...
+
+*** [[https://www.learncpp.com/cpp-tutorial/72-passing-arguments-by-value][7.2 Passing arguments by value]]
+
+*** [[https://www.learncpp.com/cpp-tutorial/73-passing-arguments-by-reference][7.3 Passing arguments by reference]]
+
+*** [[https://www.learncpp.com/cpp-tutorial/74-passing-arguments-by-address][7.4 Passing arguments by address]]
+
+*** [[https://www.learncpp.com/cpp-tutorial/74a-returning-values-by-value-reference-and-address][7.4a Returning values by value, reference, and address]]
+
+*** [[https://www.learncpp.com/cpp-tutorial/75-inline-functions][7.5 Inline functions]]
+
+*** [[https://www.learncpp.com/cpp-tutorial/76-function-overloading][7.6 Function overloading]]
+
+*** [[https://www.learncpp.com/cpp-tutorial/77-default-parameters][7.7 Default parameters]]
+
+*** [[https://www.learncpp.com/cpp-tutorial/78-function-pointers][7.8 Function Pointers]]
+
+*** [[https://www.learncpp.com/cpp-tutorial/79-the-stack-and-the-heap][7.9 The stack and the heap]]
+
+*** [[https://www.learncpp.com/cpp-tutorial/7-10-stdvector-capacity-and-stack-behavior][7.10 std::vector capacity and stack behavior]]
+
+*** [[https://www.learncpp.com/cpp-tutorial/7-11-recursion][7.11 Recursion]]
+**** Youtube video deomo
+     https://www.youtube.com/watch?v=2SUvWfNJSsM&feature=youtu.be
+
+*** [[https://www.learncpp.com/cpp-tutorial/712-handling-errors-assert-cerr-exit-and-exceptions][7.12 Handling errors, cerr and exit]]
+
+*** [[https://www.learncpp.com/cpp-tutorial/7-12a-assert-and-static_assert][7.12a Assert and static_assert]]
+
+*** [[https://www.learncpp.com/cpp-tutorial/713-command-line-arguments][7.13 Command line arguments]]
+
+*** [[https://www.learncpp.com/cpp-tutorial/714-ellipsis-and-why-to-avoid-them][7.14 Ellipsis (and why to avoid them)]]
+
+*** [[https://www.learncpp.com/cpp-tutorial/7-x-chapter-7-comprehensive-quiz][7.x Chapter 7 comprehensive quiz]]
+
+** Chapter 8: Basic object-oriented programming
+
+*** [[https://www.learncpp.com/cpp-tutorial/81-welcome-to-object-oriented-programming/][8.1 Welcome to object-oriented programming]]
+
+*** [[https://www.learncpp.com/cpp-tutorial/82-classes-and-class-members][8.2 Classes and class members]]
+
+**** TODO Access other function's local variables
+
+***** intial question
+
+      https://www.learncpp.com/cpp-tutorial/82-classes-and-class-members/comment-page-3/#comment-380067
+
+      In construction a class, should we define all the varibles out of
+      memeber functions? I think it is not. Because I can define some
+      varibles in the mumeber functions, and it works. My questions, is this
+      a good practice? Or, Should we avoid define varibles within a member
+      function? If you can not understand me, please let me know. Here I
+      make an example:
+
+      #+BEGIN_SRC c++
       #include <iostream>
       #include <string>
 
-      class Animal // This Animal is an abstract base class
-      {
-      protected:
-	      std::string m_name;
-
-      public:
-	      Animal(std::string name)
-		      : m_name(name)
-	      {
-	      }
-
-	      std::string getName() { return m_name; }
-	      virtual  char* speak()   = 0; // note that speak is now a pure virtual function
-      };
-
-      class Cat : public Animal
+      class Employee
       {
       public:
-	      Cat(std::string name)
-		      : Animal(name)
-	      {
-	      }
+          std::string m_name;
+          int m_id;
+          double m_wage;
 
-	      virtual   char* speak()  { return "Meow"; }
-      };
 
-      class Dog : public Animal
-      {
-      public:
-	      Dog(std::string name)
-		      : Animal(name)
-	      {
-	      }
+          // Print employee information to the screen
+          void print()
+          {
+              int m_test = 2;
+              std::cout << "Name: " << m_name <<
+                      "  Id: " << m_id <<
+                      "  Wage: $" << m_wage << '\n';
 
-	      virtual  char* speak()  { return "Woof"; }
-      };
-
-      class Cow : public Animal
-      {
-      public:
-	      Cow(std::string name)
-		      : Animal(name)
-	      {
-	      }
-
-	      virtual  char* speak()  { return "Moo"; }
+              std::cout << "We have " << m_test << " employees. "<<std::endl;
+          }
       };
 
       int main()
       {
-	      Cow cow("Betsy");
-	      std::cout << cow.getName() << " says " << cow.speak() << '\n';
-      }
-    #+END_SRC
-
-    #+BEGIN_SRC c++
-    Severity	Code	Description	Project	File	Line	Suppression State
-    Error (active)	E0120	return value type does not match the function type	ConsoleApplication7
-    Error (active)	E0120	return value type does not match the function type	ConsoleApplication7
-    Error (active)	E0120	return value type does not match the function type	ConsoleApplication7
-    Error	C2440	'return': cannot convert from 'const char [5]' to 'char *'	ConsoleApplication7
-    Error	C2440	'return': cannot convert from 'const char [5]' to 'char *'	ConsoleApplication7
-    #+END_SRC*
-*** DONE reply to nascardriver
-    #+BEGIN_QUOTE
-    - Line 8, 12, 24, 35, 46, 55: Uniform initialization
-    #+END_QUOTE
-    Thanks for reminding for the uniform initalization when
-    constructing the class.
-
-    #+BEGIN_QUOTE
-    @getName should return a const reference. Copying data is slow.
-    #+END_QUOTE
-
-    I agree with you. Indeed I copy from Alex code, maybe we could
-    suggest him to improve this point.
-
-    #+BEGIN_QUOTE
-    @main: Missing return statement
-    #+END_QUOTE
-
-    I am sorry to put ~return 0;~ in the main.
-
-    The word "immutable memory" is cool. What's the difference
-    between "immutable memory" and a "regular memory". I mean I know
-    the former could not be modified. What I want to know is the magic
-    of complier: how does the computer know some part of memory is
-    "immutable"?
-
-    As I further read your explaination, I start to think:
-
-    if a string is this:
-
-    #+BEGIN_SRC c++
-      { "STRING" }
-    #+END_SRC
-
-    It means it's an immutable string literal? Am I right?
-
-    At the end of reading your explaination, I write my understanding:
-
-    #+BEGIN_QUOTE
-    What's the different between ~const char*~ and ~char*~?
-    Why it cannot be compiled using ~char*~? as the return type of ~speak~?
-    #+END_QUOTE
-
-    ~const char*~ is an immutable string whose memory cannot be
-    modified.
-
-    ~char*~ is a regular string whose memory can be modified.
-
-    In the snippets codes:
-
-    For example:
-
-    #+BEGIN_SRC c++
-      virtual  char* speak()  { return "Moo"; }
-    #+END_SRC
-
-    The return thing: ~{ return "Moo" }~ is an immutable string, which
-    cannot be modified. However, the function declaration is ~char*~,
-    which means it can be modified! That's contradictive to what is
-    pass in it, so the complier complain.
-
-*** DONE nascardriver's reply
-    #+BEGIN_QUOTE
-    how does the computer know some part of memory is
-    "immutable"?  You can address 2^64 bytes. 2^64 bytes are 16 EiB
-    (16777216 TiB). Of course, you don't have that much physical
-    memory. To work around this, your computer uses memory pages, like a
-    book. But some pages can be missing, this allows you to address the
-    entire memory range without actually having that much memory.  Each
-    page has flags, which specify whether it's memory is readable,
-    writable, and/or executable.  Your program consists of regions. Each
-    region with it's own purpose (constants, code, data, etc.). The page
-    the regions get loaded into get their flags set
-    accordingly. Eg. constants are in a read-only page, code is in a
-    read/execute-page.  How does the computer know the flags? This can be
-    either controlled by hardware, which is faster, or by software (Your
-    OS).
-    #+END_QUOTE
-*** DONE reply to nascardriver
-    I like your metaphor using a book, but I have some more
-    questions. If I want to declare a memory space of 16 EiB using a
-    book, which has 16 pages. Assumming each page has a size of 1 EiB,
-    it should have no problem. However, today's technologies are not
-    there yet. We can have a book of 16 pages, but each page only have
-    1 PiB. How can this book has a compacity of 16 EiB memory?
-
-    This is my understanding reading your metaphor. We have a 16 pages
-    book. But, to claim we have a super big memory machine, we say
-    that this 16 pages book missing some pages. In reality, there are
-    some missing pages, 1024/(16-1) = 68.2666 pages, in between the
-    real pages (Page 1 ~ Page 2). Is this what it mean by "some pages
-    are missing."
-
-    If this is ture, what's the purpose of doing this? Indeed, if a
-    page is missing, you cannot read or write on that page, so what's
-    the purpose of doing so?
-*** TODO nascardriver's reply
-    You can address 16EiB, but not all at once. You want to be able to
-    address the full 16EiB, because that's easier than having to care
-    about how much physical memory there is. The 16EiB don't fit into
-    your RAM. The addresses you see are virtual, ie. they're just
-    aliases for a physical address. If you have 1 byte of memory at
-    the virtual address 0x1000 and 1 byte of memory at address
-    0x500000, then there won't be a huge gap of unused
-    memory. Instead, this memory could be near each other in physical
-    address space. So your 2 bytes don't occupy 0x499000 bytes, but
-    instead, only 2 pages (However much that may be).  In our book
-    analogy: You have a book with 100 pages, but you want to be able
-    to use 1000 site numbers. You don't need 1000 site numbers at
-    once. The pages don't have numbers on them, so you can write down
-    whatever number you like. If your book is empty and you want a
-    page to have number 782, you can write number 782 and the first
-    physical page of the book. You can write 695 on the second
-    physical page. You have now used a virtual range of 782-695=87
-    pages, but you have used only 2 physical pages.  How you choose
-    the next physical page and how you map physical to virtual
-    addresses can have a big impact on performance. Luckily, your
-    hardware/os takes care of that.
-*** reply to nascardrive
-    #+BEGIN_QUOTE
-    You can address 16EiB, but not all at once
-    #+END_QUOTE
-    What does it mean? If I have a regular memory, e.g., [[https://www.amazon.ca/Corsair-Vengeance-3000MHz-Desktop-Memory/dp/B01EI5Z8ZE/ref=sr_1_1?s=electronics&ie=UTF8&qid=1548865159&sr=1-1&keywords=RAM&th=1][Corsair
-    Vengeance LPX 32GB DDR4 3000 C15 for Intel 100 Series - White]]
-    (https://www.amazon.ca/Corsair-Vengeance-3000MHz-Desktop-Memory/dp/B01EI5Z8ZE/ref=sr_1_1?s=electronics&ie=UTF8&qid=1548865159&sr=1-1&keywords=RAM&th=1),
-    Do you mean that I could address 16EiB's memory using this 32GiB
-    memory card?
-    #+BEGIN_QUOTE
-    The 16EiB don't fit into
-    your RAM.
-    #+END_QUOTE
-    From my understanding: assuming the longest URL ( 2000 characters
-    ) that a typical broswer can handle
-    (https://stackoverflow.com/questions/417142/what-is-the-maximum-length-of-a-url-in-different-browsers). A
-    character has a size of 1 byte, so the maximum URL could have a
-    maximum size of ( 2000 * 1 byte = 2000 byte ). Assuming in idea
-    condition that the memory we just purchurse on amamzon, i.e. 32
-    GiB, we could store ( 34359740000 / 2000 = 17179870 ) URLs in our
-    memory. Obviously, we are not able to claim that our memory is
-    able to store a data whose size is 16 EiB ( 18446744073.71 GiB =
-    19807040628566999040 byte ). However, if we claim that each of
-    those URL is another memory whose size is ( 19807040628566999040
-    /17179870 = 1152921449846.0697921462735166215 byte =
-    1073.741773000052 GiB ). In other word, if we open the broswer and
-    open the URL that is written in the memory, and if we could read
-    and write stuff on that address (URL), we then claim that we have
-    just bought a memory with 16 EiB? Is this what you mean?
-
-    I had hard time in understanding virtual and physical address. It
-    seems that there's no virtual memoery because it's just alias for
-    a physical memoery. If so, could we just use the term physical
-    address in further discussion. Correct me if I miss something
-    about virtual address.
-
-    Go back to our book analogy. I don't understand your
-    explanation. See, if we have a book with 100 pages. We claim that
-    this book has a capcity of saving data whose size is 16 EiB. To
-    show other people, we have such a big memory. We need to test
-    it. The test is to store 1000 site number ( 1000 URLs)? Each site
-    number (URL) has a size of ( 16 / 1000 EiB = 18446744073.71 / 1000
-    GiB = 19807040628566999040 / 1000 byte ). So if we open this book
-    and read the data on that page, and we found the correct URL, we
-    could then claim that we have such a big memory.
-
-    The issue is that we don't have such a big page. In reality, each
-    page of that book could only store 1 GiB data. My question is how
-    to adress 16 EiB data using this normal memoery?
-**** nascardirver's reply
-     > Do you mean that I could address 16EiB's memory using this 32GiB
-     > memory card?
-
-     Yes
-
-     URL That example is correct up to "However, if we claim [...]". I
-     understand the calculation you're doing, but I don't understand what
-     you're trying to show.  We never claim to be able to store 16 EiB, but
-     we're able to use addresses 0x00000000'00000000 to 0xFFFFFFFF'FFFFFFFF
-     on a 64 bit machine. But not all at a time.
-
-     > It seems that there's no virtual memoery because it's just alias for
-     > a physical memoery
-
-     It's not. Virtual addresses are aliases for for physical
-     addresses. Don't mix this up with "when I say 'virtual address' I mean
-     'physical address'".  Each virtual address translates to a physical
-     address. The easiest way of imagining this is a table with virtual
-     addresses on one- and physical addresses on the other side
-
-     #+BEGIN_SRC
-       virtual     physical
-       0x00001000  0x00000020
-       0x00004000  0x59F00300
-       0xF0000000  0x00001000
-     #+END_SRC
-
-     Now, if you want to access the virtual address 0x4000, you look into
-     that table and see that the memory you want to access is at the
-     physical address 0x59F00300.  If the virtual and physical memory has
-     the same size, there's no point in doing this, because we could map
-     virtual addresses to their identity (ie. 1 is 1, 2 is 2, etc.).  But
-     as you already understood, those memory regions don't have the same
-     size. Your 32 GiB RAM is way smaller than your 16 EiB virtual memory.
-     Here's a table for virtual>physical
-
-     #+BEGIN_SRC
-       virtual              physical
-       0x0FF05E00'00030000  0x05FA0C00
-       0x3A001004'80000000  0x00010000
-       0x00000000'003D0000  0x70044000
-     #+END_SRC
-
-     We have virtual 64 bit addresses which we can use for
-     software. But your 32 GiB hardware only has a range from 0x00000000 to
-     0xFFFFFFFF. We take the virtual addresses (Only the ones that are in
-     use!) and map them to physical addresses. We can only use a maximum of
-     0xFFFFFFFF addresses (by count), but the addressable range has
-     increased significantly.
-
-     > We claim that this book has a capcity of saving data whose size is 16 EiB
-
-     No. We cannot change the capacity. The capacity stays at 100 pages. We
-     claim that we have more than 100 pages numbers.  Let's say the first
-     50 pages are filled in, we can't add any more content to them. Now you
-     want to write something on page 400. Of course you don't have a 400th
-     page, but you can use 400 as a page number. We write the new content
-     on page 51 (Again, how to choose a new page in important, I'll just
-     take the next free page) and add an entry in our page table
-
-     #+BEGIN_SRC
-       virtual  physical
-       400      51
-     #+END_SRC
-
-     The next time you access page number 400, you look in your page table,
-     see that it's on the physical page 51, and access the physical
-     page 51.  Virtual addresses aren't about increasing capacity, they're
-     about increasing the addressable range.
-
-     You as a programmer don't notice anything of the mapping, you only see
-     virtual addresses.
-**** TODO reply to nascardirver
-
-     Hi Nascardirver:
-
-     I read you reply and have more questions. But let me summary my
-     question first before I jump into the details:
-
-     What's the purpose of using such alias, i.e., virtual memory?
-
-     >> Do you mean that I could address 16EiB's memory using this 32GiB
-     >> memory card?
-     >
-     >Yes
-
-     Let me remind us the initial question: "Can we address 16 EiB memory
-     using 32 GiB"?
-
-     I ask this question because my first impression to it is not. You buy
-     a 32 GiB memory card. You could only have that space of memory. Why
-     someone could claim such a big memory. (After reading your comment
-     below, I start to understand what you are saying here. We cannot have
-     such a big memoery card, but it doesn't mean that we could not address
-     a big memoery. Indeed, very small size of memory card, i.e. 10 MiB, we
-     could also address a 16 EiB memory.)
-
-     >URL That example is correct up to "However, if we claim [...]". I
-     >understand the calculation you're doing, but I don't understand what
-     >you're trying to show.
-
-     I am trying to clear my understanding of this question, i.e., to
-     explain that I could buy a book with a capcity of 32 GiB but able to
-     adress 16 EiB memoery. If you still have question on this point please
-     let me know.
-
-     >We never claim to be able to store 16 EiB, but
-     >we're able to use addresses 0x00000000'00000000 to 0xFFFFFFFF'FFFFFFFF
-     >on a 64 bit machine. But not all at a time.
-
-     >> It seems that there's no virtual memoery because it's just alias for
-     >> a physical memoery
-
-     >It's not. Virtual addresses are aliases for for physical
-     >addresses. Don't mix this up with "when I say 'virtual address' I mean
-     >'physical address'". Each virtual address translates to a physical
-     >address. The easiest way of imagining this is a table with virtual
-     >addresses on one- and physical addresses on the other side
-     >
-     >#+BEGIN_SRC
-     >virtual     physical
-     >0x00001000  0x00000020
-     >0x00004000  0x59F00300
-     >0xF0000000  0x00001000
-     >#+END_SRC
-
-     Why we need alias for physical address? Is that because physical
-     adress is too long? I have experience using bash. One of my favourate
-     functionality of bash is to 'alias' my personal command to reduce my
-     typing work on a terminal.
-
-     >Now, if you want to access the virtual address 0x4000, you look into
-     >that table and see that the memory you want to access is at the
-     >physical address 0x59F00300.  If the virtual and physical memory has
-     >the same size, there's no point in doing this, because we could map
-     >virtual addresses to their identity (ie. 1 is 1, 2 is 2, etc.).  But
-     >as you already understood, those memory regions don't have the same
-     >size. Your 32 GiB RAM is way smaller than your 16 EiB virtual memory.
-     >Here's a table for virtual > physical
-     >
-     >#+BEGIN_SRC
-     >virtual              physical
-     >0x0FF05E00'00030000  0x05FA0C00
-     >0x3A001004'80000000  0x00010000
-     >0x00000000'003D0000  0x70044000
-     >#+END_SRC
-     >
-     >We have virtual 64 bit addresses which we can use for software. But
-     >your 32 GiB hardware only has a range from 0x00000000 to
-     >0xFFFFFFFF. We take the virtual addresses (Only the ones that are in
-     >use!) and map them to physical addresses. We can only use a maximum of
-     >0xFFFFFFFF addresses (by count), but the addressable range has
-     >increased significantly.
-
-     This will bring a issue: there must be two virtual memory pointing
-     towards the same physical address. What is side effect of this mapping?
-
-     >> We claim that this book has a capcity of saving data whose size is 16 EiB
-
-     >No. We cannot change the capacity. The capacity stays at 100 pages. We
-     >claim that we have more than 100 pages numbers.  Let's say the first
-     >50 pages are filled in, we can't add any more content to them. Now you
-     >want to write something on page 400. Of course you don't have a 400th
-     >page, but you can use 400 as a page number. We write the new content
-     >on page 51 (Again, how to choose a new page in important, I'll just
-     >take the next free page) and add an entry in our page table
-     >
-     >#+BEGIN_SRC
-     >virtual  physical
-     >400      51
-     >#+END_SRC
-
-     Why we "foo" ourself using 400 page? Is that because we can delete
-     some old memory when we need more memory space? But why not just use
-     the old memory address?
-
-     >The next time you access page number 400, you look in your page table,
-     >see that it's on the physical page 51, and access the physical
-     >page 51.  Virtual addresses aren't about increasing capacity, they're
-     >about increasing the addressable range.
-     >
-     >You as a programmer don't notice anything of the mapping, you only see
-     >virtual addresses.
-
-     Again, what' the purpose of increasing the addressable range?
-*** nascardrive reply
-    > Why we need alias for physical address?
-    > what' the purpose of increasing the addressable range?
-    See @templatetypedef's answer over at stackoverflow
-    https://stackoverflow.com/a/19349645/9364954
-
-    > very small size of memory card, i.e. 10 MiB, we
-    could also address a 16 EiB memory
-    Correct
-
-    > there must be two virtual memory addresses pointing
-    toward the same physical address
-    Please elaborate
-
-    > Why we "foo" ourself using 400 page?  Maybe page numbers 0 to
-    399 are reserved for the credits of the book. Maybe page number
-    400 is a standard page to write the index on.
-*** reply to nascardrive
-
-    Thanks for sharing [[https://stackoverflow.com/a/19349645/9364954][the stackoverflow page]]. But I cannot comment
-    at that page, so I would like to put my further study
-    here. ~Templateypedef~ metioned 5 points in this reply.
-
-**** 1st paragraph
-***** Point 1
-
-      If virtual memory exists, then we could use the same physical
-      address to loaded information stored in that memory at the same
-      time. I don't understand this point.
-
-      #+BEGIN_SRC c++
-      void fooA()
-      {
-          std::cout << "Hello, Alex.";
-      }
-
-      void fooB()
-      {
-          std::cout << "Hello, Nascardrive.";
+          // Declare two employees
+          Employee alex { "Alex", 1, 25.00 };
+          Employee joe { "Joe", 2, 22.25 };
+
+          // Print out the employee information
+          alex.print();
+          joe.print();
+
+          return 0;
       }
       #+END_SRC
 
-      In the above code, ~fooA~ and ~fooB~ are different functions, but
-      according to this explaination:
+      My question is `int m_test = 2;` a bad programming habit?
 
-      > two programs could be loaded into memory and run at the same time
+***** Alex's reply
 
-      As you can see, I revise the sentence based on this original one:
+      In general, there's nothing wrong with using local variables in a
+      member function. Use them just like you would for non-member
+      functions (e.g. when you don't need their values to persist
+      beyond the scope of the function). The way you've used it here
+      doesn't make sense though, since print() gets called for each
+      employee, and your "We have 2 employees" statement will get
+      printed twice.
 
-      (If virtual memory didn't exist, two programs couldn't be loaded
-      into memory and run at the same time,)
+***** my 2nd reply
 
-      In my naive understand, the information of two functions is
-      different. How is that possible for those two functions stored in
-      the same physical address at the same time?
+      Is the following thought a bad programming habit? Accessing a
+      local variable in a member function of a class from another class.
+      For example, I want to access `people` ( in the class 'Employee' )
+      from another class as shown in the flowing code:
 
-      I mean, if you compile this program on your computer, if you can
-      fly into your RAM at the exactly location of ~fooA~, you will find
-      a bunch of 01010. This 0101 is ~"Hello, Alex."~ It should not be
-      anything else, like "Hello, Nascardrive."
+      #+BEGIN_SRC c++
+      struct employeeGPS
+      {
+          double x;
+          double y;
+          double z;
+      };
 
-      Do I forget something?
+      class Employee
+      {
+      public:
 
-****** nascard reply
+          std::string m_name;
+          employeeGPS m_people;
 
-       Let's say there are 2 programs A and B. Both want their code to
-       be loaded at address 0x4000000. Assuming no virtual memory:
-       Program A starts and is loaded into memory.  Program B cannot
-       start, because address 0x4000000 is occupied.  With virtual
-       memory: Program A starts and is loaded into memory.  Program B
-       starts and is loaded into memory.  Neither program is using the
-       physical address 0x4000000 (They could, but it's unlikely). But
-       both get loaded at their own virtual version of 0x4000000.  A
-       single process cannot use the same memory for different
-       things. There is only ever 1 information in 1 memory.
+          void print();
 
-******* my reply
+          friend class Boss;
+      };
 
-	I start to understand why we need virtual memory. Virtual
-	memory provides programmer a uniform interface that is easy
-	for programmer to use. However, in the background, the rule
-	"reword" the memory address, so that it will guide the
-	data/function instored in the physical memory address.
+      void Employee::print()
+      {
 
-***** Point 2
+          employeeGPS people;
 
-      Yes, point 2 is what I exepected. At the single moment in our
-      world, one memory could only have one information. But
-      explanation from this point does not clarify we we need virtual
-      memory.
+          people.x = 1;
 
-***** Point 3
+          std::cout << "Name: " << m_name <<
+                  "  X Location: " << m_people.employeeGPS::x <<
+                  "  Y Location: " << m_people.employeeGPS::y <<
+                  "  Z Location: " << m_people.employeeGPS::z <<'\n';
 
-      This point is very interesting! Security issue by using direct
-      memory address. I never know this point. How can this even
-      happen? How a program using a particular part of meomory
-      (physical memory) be able to using the memory that it is not
-      assigned to? Can you provide a c++ piece of code to achieve this?
-      Or, do you have any reference on this point? I would like further
-      do some readings on this topic and share you with my
-      understanding.
+          std::cout << "Dummy variable in local function: " << people.x <<'\n';
+      }
+      #+END_SRC
 
-****** na reply on 2 and 3
+      The class `Boss` is shown in the following code:
 
-       #+BEGIN_SRC c++
-	 // Read memory from an arbitrary address and hope it's
-	 // used by another process.
-	 int *p{ reinterpret_cast<int *>(0x12345678) };
-	 std::cout << *p << '\n';
-       #+END_SRC
+      #+BEGIN_SRC c++
+      class Boss
+      {
+      public:
+          void BossChecker(Employee &employee)
+          {
+              std::cout << employee.m_name << std::endl;
+          }
 
-       Without virtual memory, this could work. With virtual memory,
-       each process has their own version of 0x12345678.
+          void BossAccessToFriendFunction(Employee &employee)
+          {
+              employee.printB();
+          }
+      };
+      #+END_SRC
 
-       http://tuhdo.github.io/c-ide.html
+      Is that possible to access the local variable ( people.x ) in
+      ~Employee::print()~ from an object of class ~Boss~ ? Or, is this
+      a bad thought? Is there any other method to achieve this thought?
 
-******** using emacs to write code
+***** nascardriver's reply
 
-         Strang error.
+      That's what the "friend" keyword is for. You'll learn about it later in chapter 8.
 
-         Try to run M-x compile from a c++ source code, but getting
-         this:
+***** final remarks
 
-         #+BEGIN_SRC sh
-           -*- mode: compilation; default-directory: "~/myGitHub/cpp/codeSnippets/cpp/" -*-
-           Compilation started at Thu Mar 21 12:28:51
+*** [[https://www.learncpp.com/cpp-tutorial/83-public-vs-private-access-specifiers][8.3 Public vs private access specifiers]]
 
-           make -k
-           /bin/bash: make: command not found
+*** [[https://www.learncpp.com/cpp-tutorial/84-access-functions-and-encapsulation][8.4 Access functions and encapsulation]]
 
-           Compilation exited abnormally with code 127 at Thu Mar 21 12:28:52
+*** [[https://www.learncpp.com/cpp-tutorial/85-constructors][8.5 Constructors]]
 
-         #+END_SRC
+*** [[https://www.learncpp.com/cpp-tutorial/8-5a-constructor-member-initializer-lists][8.5a Constructor member initializer lists]]
 
-         What strange is about is that I could compile the code using
-         the same command in the Terminal.
+*** [[https://www.learncpp.com/cpp-programming/8-5b-non-static-member-initialization][8.5b Non-static member initialization]]
 
-         Here's my command to compile the code:
+*** [[https://www.learncpp.com/cpp-tutorial/8-6-overlapping-and-delegating-constructors][8.6 Overlapping and delegating constructors]]
 
-         #+BEGIN_SRC sh
-           -*- mode: compilation; default-directory: "~/myGitHub/cpp/codeSnippets/cpp/" -*-
-           Compilation started at Thu Mar 21 12:35:41
+*** [[https://www.learncpp.com/cpp-tutorial/8-7-destructors][8.7 Destructors]]
 
-           g++ /home/superran/myGitHub/cpp/codeSnippets/cpp/virtualMemory.cpp && ./a.out
-           /bin/bash: g++: command not found
+*** [[https://www.learncpp.com/cpp-tutorial/8-8-the-hidden-this-pointer][8.8 The hidden &#8220;this&#8221; pointer]]
 
-           Compilation exited abnormally with code 127 at Thu Mar 21 12:35:42
+*** [[https://www.learncpp.com/cpp-tutorial/89-class-code-and-header-files][8.9 Class code and header files]]
 
-         #+END_SRC
+*** [[https://www.learncpp.com/cpp-tutorial/810-const-class-objects-and-member-functions][8.10 Const class objects and member functions]]
 
-         The elisp code:
+*** [[https://www.learncpp.com/cpp-tutorial/811-static-member-variables][8.11 Static member variables]]
 
-         #+BEGIN_SRC elisp
-           (defun c-gcc-and-run ()
-             "Saves current buffer, runs gcc, and runs ./a.out if compile is successful."
-             (interactive)
-             (save-buffer)
-             (compile (concat "g++ " (buffer-file-name) " && ./a.out")))
+*** [[https://www.learncpp.com/cpp-tutorial/812-static-member-functions][8.12 Static member functions]]
 
-         #+END_SRC
+*** [[https://www.learncpp.com/cpp-tutorial/813-friend-functions-and-classes][8.13 Friend functions and classes]]
 
-         Ref:
+*** [[https://www.learncpp.com/cpp-tutorial/814-anonymous-objects][8.14 Anonymous objects]]
 
-         - http://ergoemacs.org/emacs/emacs_env_var_paths.html
-         - elisp manual: 38.3 Operating System Environment
-******* my reply
+*** [[https://www.learncpp.com/cpp-tutorial/8-15-nested-types-in-classes][8.15 Nested types in classes]]
 
-	I do a test to understand this problem. From the your code, it
-	means that we could access any part of memory in my machine.
+*** [[https://www.learncpp.com/cpp-tutorial/8-16-timing-your-code][8.16 Timing your code]]
 
-	The first thing I need to know is how do my complier knows
-	this is a direct memory address.
+*** [[https://www.learncpp.com/cpp-tutorial/8-15-chapter-8-comprehensive-quiz][8.x Chapter 8 comprehensive quiz]]
 
-***** Point 4
+** Chapter 9: Operator overloading
 
-      This is what I speculated before I read this answer. One program
-      (or function) should use one region of memory at one time. What I
-      don't understand is how virtual memory massive improve the
-      performance?
+*** [[https://www.learncpp.com/cpp-tutorial/91-introduction-to-operator-overloading][9.1 Introduction to operator overloading]]
 
-****** na reply
+*** [[https://www.learncpp.com/cpp-tutorial/92-overloading-the-arithmetic-operators-using-friend-functions][9.2 Overloading the arithmetic operators using friend functions]]
 
-       A process wants memory at address 0x100 and at 0x100000, 1
-       bytes each.  Without virtual memory: Now there's a lot of memory in
-       between those 2 addresses that's unused and is difficult to use for
-       other purposes, because your new data would have to fit in there.
-       With virtual memory: The process gets one page of memory for 0x100 and
-       one page of memory for 0x100000. Where these pages are in pysical
-       memory doesn't matter, they can be right after each other, or spread
-       wide apart. The only wasted memory is whatever is unused on those 2
-       pages. Since it's unlikely that only 1 bytes is used, the amount of
-       wasted memory is little.
+*** [[https://www.learncpp.com/cpp-tutorial/9-2a-overloading-operators-using-normal-functions][9.2a Overloading operators using normal functions]]
 
-***** Point 5
+*** [[https://www.learncpp.com/cpp-tutorial/93-overloading-the-io-operators][9.3 Overloading the I/O operators]]
 
-      I think the reservation mechanism could be also done in physical
-      memory address method? Why using virtual memory address could
-      solve the physical devices issue?
-****** na reply
-       I don't remember your comment about his one. I know I referred
-       to 2 and 3. If this doesn't help, ask again.
-**** 2rd paragraph
+*** [[https://www.learncpp.com/cpp-tutorial/94-overloading-operators-using-member-functions][9.4 Overloading operators using member functions]]
+
+*** [[https://www.learncpp.com/cpp-tutorial/95-overloading-unary-operators][9.5 Overloading unary operators +, -, and !]]
+
+*** [[https://www.learncpp.com/cpp-tutorial/96-overloading-the-comparison-operators][9.6 Overloading the comparison operators]]
+
+*** [[https://www.learncpp.com/cpp-tutorial/97-overloading-the-increment-and-decrement-operators][9.7 Overloading the increment and decrement operators]]
+
+*** [[https://www.learncpp.com/cpp-tutorial/98-overloading-the-subscript-operator][9.8 Overloading the subscript operator]]
+
+*** [[https://www.learncpp.com/cpp-tutorial/99-overloading-the-parenthesis-operator][9.9 Overloading the parenthesis operator]]
+
+*** [[https://www.learncpp.com/cpp-tutorial/910-overloading-typecasts][9.10 Overloading typecasts]]
+
+*** [[https://www.learncpp.com/cpp-tutorial/911-the-copy-constructor][9.11 The copy constructor]]
+
+*** [[https://www.learncpp.com/cpp-tutorial/9-12-copy-initialization][9.12 Copy initialization]]
+
+*** [[https://www.learncpp.com/cpp-tutorial/9-13-converting-constructors-explicit-and-delete][9.13 Converting constructors, explicit, and delete]]
+
+*** [[https://www.learncpp.com/cpp-tutorial/9-14-overloading-the-assignment-operator][9.14 Overloading the assignment operator]]
+
+*** [[https://www.learncpp.com/cpp-tutorial/915-shallow-vs-deep-copying][9.15 Shallow vs. deep copying]]
+
+*** [[https://www.learncpp.com/cpp-tutorial/9-x-chapter-9-comprehensive-quiz][9.x Chapter 9 comprehensive quiz]]
+
+** Chapter 10: An introduction to object relationships
+*** [[https://www.learncpp.com/cpp-tutorial/10-1-object-relationships][10.1 Object relationships]]
+
+*** [[https://www.learncpp.com/cpp-tutorial/102-composition][10.2 Composition]]
+
+*** [[https://www.learncpp.com/cpp-tutorial/103-aggregation][10.3 Aggregation]]
+
+*** [[https://www.learncpp.com/cpp-tutorial/10-4-association][10.4 Association]]
+
+*** [[https://www.learncpp.com/cpp-tutorial/10-5-dependencies][10.5 Dependencies]]
+
+*** [[https://www.learncpp.com/cpp-tutorial/106-container-classes][10.6 Container classes]]
+
+*** [[https://www.learncpp.com/cpp-tutorial/10-7-stdinitializer_list][10.7 std::initializer_list]]
+
+*** [[https://www.learncpp.com/cpp-tutorial/10-x-chapter-10-comprehensive-quiz][10.x Chapter 10 comprehensive quiz]]
+
+** Chapter 11: Inheritance
+*** [[https://www.learncpp.com/cpp-tutorial/111-introduction-to-inheritance][11.1 Introduction to inheritance]]
+
+    Hi, Alex or nascardriver, I encontour an issue that I still have no idea for a long
+    time.
+
+    In the following code snippet, I try to do a check that:
+
+    ChildA is not inherient from ParentB.
+
+    I want the program compile and print out me a message that tells me
+    ~childA~ class is not inherient from ~ParentB~ ?
+
+    The reason why I ask this question is that I am trying to
+    understand a piece code in Unreal Game Editor.
+
+    #+BEGIN_SRC c++
+    #include "pch.h" // what's this headfile?
+    #include <iostream>
+    #include <string>
+
+    class ParentA {
+
+    public: ParentA() {}
+
+    std::string m_name;
+
+    std::string getName() const { return m_name; }
+
+    void printName() const {
+
+    std::cout << "I am a child of A." << std::endl;
+
+    }
+    };
+
+    class ParentB {
+    public: ParentB() {}
+
+    std::string m_name;
+
+    std::string getName() const { return m_name; }
+
+    void functionParentB() {
+    std::cout << "I am a child of B" << std::endl;
+    }
+    };
+
+    class childA : public ParentA {
+    public:
+
+    int ChildA() {}
+
+    void printNameInChild() {
+
+    std::cout << "This is a message from child A" << std::endl;
+    }
+
+
+    };
+
+    class childB : public ParentB {
+    public:
+
+    int ChildB() {}
+
+    void printNameInChild() {
+
+    std::cout << "This is a message from child B" << std::endl;
+    }
+
+
+    };
+
+    int main() {
+
+    childA lucifer;
+    childB angela;
+
+    lucifer.m_name = "Lucifer";
+    angela.m_name = "Angela";
+
+    //lucifer.printName();
+    lucifer.printNameInChild();
+    angela.printNameInChild();
+
+    // how to writer a if-else statement to determine one child is a child of a particular parent?
+
+    }
+
+    /* notes
+
+    Why Shift + F11 cannot jump back out the entry point?
+
+    For example, if the cursor is on
+
+
+    getName(), then press 'F11', I go to its definition,
+
+    but, I want goback by pressing 'Shift+F11', but not work.
+
+    I guess, its the issue with my emacs kbd set for VS.
+
+    In exploring, I found that "Alt + F11", which is peak definition.
+
+    It is more handy.
+
+    */
+ #+END_SRC
+***** nascardriver reply
+
+      #+BEGIN_SRC c++
+      std::cout << std::is_base_of_v<ParentA, decltype(angela)> << '\n';
+      std::cout << std::is_base_of_v<ParentA, decltype(lucifer)> << '\n';
+      std::cout << std::is_base_of_v<ParentB, decltype(angela)> << '\n';
+      std::cout << std::is_base_of_v<ParentB, decltype(lucifer)> << '\n';
+      #+END_SRC
+***** my reply to nascardriver
+
+      Thanks for pointing out this amazing std library: boost.
+
+      It solve my problem.
+
+      But, I recently have a temperation to know more details about
+      c++. For example, after reading your code, I start to read source
+      code of ~is_base_of_v~:
+
+      #+BEGIN_SRC c++
+
+      #ifndef BOOST_TT_IS_BASE_OF_HPP_INCLUDED
+      #define BOOST_TT_IS_BASE_OF_HPP_INCLUDED
+
+      #include <boost/type_traits/is_base_and_derived.hpp>
+      #include <boost/type_traits/is_same.hpp>
+      #include <boost/type_traits/is_class.hpp>
+
+      namespace boost {
+
+      namespace detail{
+       template <class B, class D>
+       struct is_base_of_imp
+       {
+           typedef typename remove_cv<B>::type ncvB;
+           typedef typename remove_cv<D>::type ncvD;
+           BOOST_STATIC_CONSTANT(bool, value = (
+             (::boost::detail::is_base_and_derived_impl<ncvB,ncvD>::value) ||
+             (::boost::is_same<ncvB,ncvD>::value && ::boost::is_class<ncvB>::value)));
+       };
+    }
+
+    template <class Base, class Derived> struct is_base_of
+       : public integral_constant<bool, (::boost::detail::is_base_of_imp<Base, Derived>::value)> {};
+
+    template <class Base, class Derived> struct is_base_of<Base, Derived&> : false_type{};
+    template <class Base, class Derived> struct is_base_of<Base&, Derived&> : false_type{};
+    template <class Base, class Derived> struct is_base_of<Base&, Derived> : false_type{};
+
+ } // namespace boost
+
+ #endif // BOOST_TT_IS_BASE_AND_DERIVED_HPP_INCLUDED
+ #+END_SRC
+
+      I don't know if you are interesting to know how those code
+      working? I mean, understanding to a degree such that a
+      five-year-old girl could understanding if amount of time being
+      post here.
+
+      To be honest with you, I don't know how ~is_base_of_v~
+      works. The things I can do is to google any things I don't
+      understand.
+
+      I am not sure it is very effective, but the key point is that I
+      do not have any burdon on it. It's not like a semester that I
+      have to finish it within some time. In my current case, I can
+      study it as much as possible I'd like to.
+***** nascardrive 2nd reply
+      > Thanks for pointing out this amazing std library: boost
+
+      I did not and will not recommend using boost in my replies. boost
+      is a feature-rich library of which many features have already
+      been implemented into the standard library. You don't need
+      boost. @std::is_base_of_v can be used after including the
+      <type_traits> header.
+
+      I don't think you read the chapter about templates yet, which is
+      what this is all about. I'll try to keep it simple: I'm following
+      the possible implementation shown at cppreference (
+      https://en.cppreference.com/w/cpp/types/is_base_of ). Actual
+      implementations might differ.
+
+      C++ has a feature, SFINAE. When the compiler has to construct
+      types during compile time (Types that where not explicitly
+      specified by the coder), an error might occur, because the type
+      cannot be constructed (Don't confuse "construct" with
+      constructors of classes, I mean "build" or "come up with"). This
+      error isn't treated as a compiler error, instead the
+      function/type it occurred at is ignored and cannot be used.
+      @std::is_base_of first tests if both types are classes by
+      attempting to create a pointer to a data member
+
+      1 2 3 // @T is your class (or non-class) type // @p is a pointer
+      to an int-member of a @T int T::*p{ nullptr }; @T will be filled
+      in by the compiler. If it can't be filled in, @T is not a class
+      type.  Once the compiler knows both types are classes, it checks
+      if they are unions (I couldn't find an implementation for
+      @std::is_union). If a type is a class and not a union, it
+      continues.  The compiler then tries creates a pointer to an
+      object of the derived class and tries to call a function that has
+      been overloaded to take either a pointer to the base class, or a
+      void*. Base class pointer can implicitly be cast to parent class
+      pointers. Depending on the function that has been called, the
+      compiler knows if the type is a base of the other type.
+
+      Once you're done with chapter 12, you can also use
+
+      1
+      2
+      3
+      4
+      std::cout << !!dynamic_cast<ParentA *>(&angela) << '\n';
+      std::cout << !!dynamic_cast<ParentA *>(&lucifer) << '\n';
+      std::cout << !!dynamic_cast<ParentB *>(&angela) << '\n';
+      std::cout << !!dynamic_cast<ParentB *>(&lucifer) << '\n';
+
+      as opposed to the code I posted earlier. This should be easier to
+      understand for now.
+***** my rep to nascardrive 2nd
+
+      Sorry about ~boost~, the reason why I pick up ~boost~ is that I
+      did not copy your code to my IDE, I just do a search on my
+      computer: with a filename: ~c:/Program Files/Epic
+      Games/UE_4.19/Engine/Plugins/Editor/USDImporter/Source/ThirdParty/USD/include/boost/type_traits/is_base_of.hpp~. At
+      that time I thought I was a third part library. I opened it and
+      found it. Indeed, I go to their website and read something about
+      it. I found that the repo of ~boost~ is crazy:
+
+      https://github.com/boostorg/boost
+
+      46973 comments. But I cannot view their source code on github for
+      some reasons. For example:
+      https://github.com/boostorg/boost/tree/master/libs
+      They use git-submodule with some magic stuff...
+
+      I follow your suggestion by adding the head file ~type_traits~ in
+      that c++ code snippet. It works!
+
+      I read the source code of ~type_traits~, and it writes:
+
+      #+BEGIN_SRC c++
+	 // STRUCT TEMPLATE is_base_of
+	 template<class _Base,
+	 class _Derived>
+	 struct is_base_of
+		 : bool_constant<__is_base_of(_Base, _Derived)>
+	 {	// determine whether _Base is a base of or the same as _Derived
+	 };
+      #+END_SRC
+
+      However, I still confused how the code works. I try to find the
+      implymentation of ~is_base_of~, but I had some hard time. Really
+      appreciteing if you could pointing out the reference I could
+      further study and then I could understand what's going on here.
+
+      I double checked my study record. I indeed read that chapter 9
+      monuth
+      ago. https://github.com/randomwangran/cpp/tree/master/learnCpp/Chapter13
+      Maybe, I return it to alex.
+
+      So, I reread all the material in that chapter.
+
+      After I revise the basic idea of template, I continue with your
+      reply. I don't know the feature, SFINAE (subsitution failure is
+      not an errore). I found [[this pag][this page explain very well]] (but it is in
+      chinese).
+
+      What is token?
+
+      #+BEGIN_SRC c++
+ struct A {};
+ struct B: public A {}; // structure can do inherient?
+ struct C {};
+
+ void foo(A const&) {} // what is A const& represent?
+ void foo(B const&) {}
+
+ void callFoo() {
+   foo( A() );
+   foo( B() );
+   foo( C() );
+ }
+      #+END_SRC
+**** when to use inherit?
+
+     If two objects have a relation ~has~, then it's not
+     inheritance. Better to use ~Object composition~.
+
+*** [[https://www.learncpp.com/cpp-tutorial/112-basic-inheritance-in-c][11.2 Basic inheritance in C++]]
+
+*** [[https://www.learncpp.com/cpp-tutorial/113-order-of-construction-of-derived-classes][11.3 Order of construction of derived classes]]
+
+*** [[https://www.learncpp.com/cpp-tutorial/114-constructors-and-initialization-of-derived-classes][11.4 Constructors and initialization of derived classes]]
+
+*** [[https://www.learncpp.com/cpp-tutorial/115-inheritance-and-access-specifiers][11.5 Inheritance and access specifiers]]
+
+*** [[https://www.learncpp.com/cpp-tutorial/11-6-adding-new-functionality-to-a-derived-class][11.6 Adding new functionality to a derived class]]
+
+*** [[https://www.learncpp.com/cpp-tutorial/11-6a-calling-inherited-functions-and-overriding-behavior][11.6a Calling inherited functions and overriding behavior]]
+
+*** [[https://www.learncpp.com/cpp-tutorial/11-6b-hiding-inherited-functionality][11.6b Hiding inherited functionality]]
+
+*** [[https://www.learncpp.com/cpp-tutorial/117-multiple-inheritance][11.7 Multiple inheritance]]
+
+*** [[https://www.learncpp.com/cpp-tutorial/11-x-chapter-11-comprehensive-quiz][11.x Chapter 11 comprehensive quiz]]
+
+** Chapter 12: Virtual Functions
+*** [[https://www.learncpp.com/cpp-tutorial/121-pointers-and-references-to-the-base-class-of-derived-objects][12.1 Pointers and references to the base class of derived objects]]
+
+*** [[https://www.learncpp.com/cpp-tutorial/122-virtual-functions][12.2 Virtual functions and polymorphism]]
+
+*** [[https://www.learncpp.com/cpp-tutorial/12-2a-the-override-and-final-specifiers-and-covariant-return-types][12.2a The override and final specifiers, and covariant return types]]
+
+*** [[https://www.learncpp.com/cpp-tutorial/123-virtual-destructors-virtual-assignment-and-overriding-virtualization][12.3 Virtual destructors, virtual assignment, and overriding virtualization]]
+
+*** [[https://www.learncpp.com/cpp-tutorial/124-early-binding-and-late-binding][12.4 Early binding and late binding]]
+
+*** [[https://www.learncpp.com/cpp-tutorial/125-the-virtual-table][12.5 The virtual table]]
+
+*** [[https://www.learncpp.com/cpp-tutorial/126-pure-virtual-functions-abstract-base-classes-and-interface-classes][12.6 Pure virtual functions, abstract base classes, and interface classes]]
+    If you want to implyment a function only in its drived class, use a
+    pure virtual function. It will serve as a reminder.
+**** DONE question
+     What's the different between ~const char*~ and ~char*~?
+
+     Why it cannot be compiled using ~char*~? as the return type of ~speak~?
+
+     #+BEGIN_SRC c++
+       #include "pch.h"
+       #include <iostream>
+       #include <string>
+
+       class Animal // This Animal is an abstract base class
+       {
+       protected:
+	       std::string m_name;
+
+       public:
+	       Animal(std::string name)
+		       : m_name(name)
+	       {
+	       }
+
+	       std::string getName() { return m_name; }
+	       virtual  char* speak()   = 0; // note that speak is now a pure virtual function
+       };
+
+       class Cat : public Animal
+       {
+       public:
+	       Cat(std::string name)
+		       : Animal(name)
+	       {
+	       }
+
+	       virtual   char* speak()  { return "Meow"; }
+       };
+
+       class Dog : public Animal
+       {
+       public:
+	       Dog(std::string name)
+		       : Animal(name)
+	       {
+	       }
+
+	       virtual  char* speak()  { return "Woof"; }
+       };
+
+       class Cow : public Animal
+       {
+       public:
+	       Cow(std::string name)
+		       : Animal(name)
+	       {
+	       }
+
+	       virtual  char* speak()  { return "Moo"; }
+       };
+
+       int main()
+       {
+	       Cow cow("Betsy");
+	       std::cout << cow.getName() << " says " << cow.speak() << '\n';
+       }
+     #+END_SRC
+
+     #+BEGIN_SRC c++
+     Severity	Code	Description	Project	File	Line	Suppression State
+     Error (active)	E0120	return value type does not match the function type	ConsoleApplication7
+     Error (active)	E0120	return value type does not match the function type	ConsoleApplication7
+     Error (active)	E0120	return value type does not match the function type	ConsoleApplication7
+     Error	C2440	'return': cannot convert from 'const char [5]' to 'char *'	ConsoleApplication7
+     Error	C2440	'return': cannot convert from 'const char [5]' to 'char *'	ConsoleApplication7
+     #+END_SRC*
+**** DONE reply to nascardriver
+     #+BEGIN_QUOTE
+     - Line 8, 12, 24, 35, 46, 55: Uniform initialization
+     #+END_QUOTE
+     Thanks for reminding for the uniform initalization when
+     constructing the class.
+
+     #+BEGIN_QUOTE
+     @getName should return a const reference. Copying data is slow.
+     #+END_QUOTE
+
+     I agree with you. Indeed I copy from Alex code, maybe we could
+     suggest him to improve this point.
+
+     #+BEGIN_QUOTE
+     @main: Missing return statement
+     #+END_QUOTE
+
+     I am sorry to put ~return 0;~ in the main.
+
+     The word "immutable memory" is cool. What's the difference
+     between "immutable memory" and a "regular memory". I mean I know
+     the former could not be modified. What I want to know is the magic
+     of complier: how does the computer know some part of memory is
+     "immutable"?
+
+     As I further read your explaination, I start to think:
+
+     if a string is this:
+
+     #+BEGIN_SRC c++
+       { "STRING" }
+     #+END_SRC
+
+     It means it's an immutable string literal? Am I right?
+
+     At the end of reading your explaination, I write my understanding:
+
+     #+BEGIN_QUOTE
+     What's the different between ~const char*~ and ~char*~?
+     Why it cannot be compiled using ~char*~? as the return type of ~speak~?
+     #+END_QUOTE
+
+     ~const char*~ is an immutable string whose memory cannot be
+     modified.
+
+     ~char*~ is a regular string whose memory can be modified.
+
+     In the snippets codes:
+
+     For example:
+
+     #+BEGIN_SRC c++
+       virtual  char* speak()  { return "Moo"; }
+     #+END_SRC
+
+     The return thing: ~{ return "Moo" }~ is an immutable string, which
+     cannot be modified. However, the function declaration is ~char*~,
+     which means it can be modified! That's contradictive to what is
+     pass in it, so the complier complain.
+
+**** DONE nascardriver's reply
+     #+BEGIN_QUOTE
+     how does the computer know some part of memory is
+     "immutable"?  You can address 2^64 bytes. 2^64 bytes are 16 EiB
+     (16777216 TiB). Of course, you don't have that much physical
+     memory. To work around this, your computer uses memory pages, like a
+     book. But some pages can be missing, this allows you to address the
+     entire memory range without actually having that much memory.  Each
+     page has flags, which specify whether it's memory is readable,
+     writable, and/or executable.  Your program consists of regions. Each
+     region with it's own purpose (constants, code, data, etc.). The page
+     the regions get loaded into get their flags set
+     accordingly. Eg. constants are in a read-only page, code is in a
+     read/execute-page.  How does the computer know the flags? This can be
+     either controlled by hardware, which is faster, or by software (Your
+     OS).
+     #+END_QUOTE
+**** DONE reply to nascardriver
+     I like your metaphor using a book, but I have some more
+     questions. If I want to declare a memory space of 16 EiB using a
+     book, which has 16 pages. Assumming each page has a size of 1 EiB,
+     it should have no problem. However, today's technologies are not
+     there yet. We can have a book of 16 pages, but each page only have
+     1 PiB. How can this book has a compacity of 16 EiB memory?
+
+     This is my understanding reading your metaphor. We have a 16 pages
+     book. But, to claim we have a super big memory machine, we say
+     that this 16 pages book missing some pages. In reality, there are
+     some missing pages, 1024/(16-1) = 68.2666 pages, in between the
+     real pages (Page 1 ~ Page 2). Is this what it mean by "some pages
+     are missing."
+
+     If this is ture, what's the purpose of doing this? Indeed, if a
+     page is missing, you cannot read or write on that page, so what's
+     the purpose of doing so?
+**** TODO nascardriver's reply
+     You can address 16EiB, but not all at once. You want to be able to
+     address the full 16EiB, because that's easier than having to care
+     about how much physical memory there is. The 16EiB don't fit into
+     your RAM. The addresses you see are virtual, ie. they're just
+     aliases for a physical address. If you have 1 byte of memory at
+     the virtual address 0x1000 and 1 byte of memory at address
+     0x500000, then there won't be a huge gap of unused
+     memory. Instead, this memory could be near each other in physical
+     address space. So your 2 bytes don't occupy 0x499000 bytes, but
+     instead, only 2 pages (However much that may be).  In our book
+     analogy: You have a book with 100 pages, but you want to be able
+     to use 1000 site numbers. You don't need 1000 site numbers at
+     once. The pages don't have numbers on them, so you can write down
+     whatever number you like. If your book is empty and you want a
+     page to have number 782, you can write number 782 and the first
+     physical page of the book. You can write 695 on the second
+     physical page. You have now used a virtual range of 782-695=87
+     pages, but you have used only 2 physical pages.  How you choose
+     the next physical page and how you map physical to virtual
+     addresses can have a big impact on performance. Luckily, your
+     hardware/os takes care of that.
+**** reply to nascardrive
+     #+BEGIN_QUOTE
+     You can address 16EiB, but not all at once
+     #+END_QUOTE
+     What does it mean? If I have a regular memory, e.g., [[https://www.amazon.ca/Corsair-Vengeance-3000MHz-Desktop-Memory/dp/B01EI5Z8ZE/ref=sr_1_1?s=electronics&ie=UTF8&qid=1548865159&sr=1-1&keywords=RAM&th=1][Corsair
+     Vengeance LPX 32GB DDR4 3000 C15 for Intel 100 Series - White]]
+     (https://www.amazon.ca/Corsair-Vengeance-3000MHz-Desktop-Memory/dp/B01EI5Z8ZE/ref=sr_1_1?s=electronics&ie=UTF8&qid=1548865159&sr=1-1&keywords=RAM&th=1),
+     Do you mean that I could address 16EiB's memory using this 32GiB
+     memory card?
+     #+BEGIN_QUOTE
+     The 16EiB don't fit into
+     your RAM.
+     #+END_QUOTE
+     From my understanding: assuming the longest URL ( 2000 characters
+     ) that a typical broswer can handle
+     (https://stackoverflow.com/questions/417142/what-is-the-maximum-length-of-a-url-in-different-browsers). A
+     character has a size of 1 byte, so the maximum URL could have a
+     maximum size of ( 2000 * 1 byte = 2000 byte ). Assuming in idea
+     condition that the memory we just purchurse on amamzon, i.e. 32
+     GiB, we could store ( 34359740000 / 2000 = 17179870 ) URLs in our
+     memory. Obviously, we are not able to claim that our memory is
+     able to store a data whose size is 16 EiB ( 18446744073.71 GiB =
+     19807040628566999040 byte ). However, if we claim that each of
+     those URL is another memory whose size is ( 19807040628566999040
+     /17179870 = 1152921449846.0697921462735166215 byte =
+     1073.741773000052 GiB ). In other word, if we open the broswer and
+     open the URL that is written in the memory, and if we could read
+     and write stuff on that address (URL), we then claim that we have
+     just bought a memory with 16 EiB? Is this what you mean?
+
+     I had hard time in understanding virtual and physical address. It
+     seems that there's no virtual memoery because it's just alias for
+     a physical memoery. If so, could we just use the term physical
+     address in further discussion. Correct me if I miss something
+     about virtual address.
+
+     Go back to our book analogy. I don't understand your
+     explanation. See, if we have a book with 100 pages. We claim that
+     this book has a capcity of saving data whose size is 16 EiB. To
+     show other people, we have such a big memory. We need to test
+     it. The test is to store 1000 site number ( 1000 URLs)? Each site
+     number (URL) has a size of ( 16 / 1000 EiB = 18446744073.71 / 1000
+     GiB = 19807040628566999040 / 1000 byte ). So if we open this book
+     and read the data on that page, and we found the correct URL, we
+     could then claim that we have such a big memory.
+
+     The issue is that we don't have such a big page. In reality, each
+     page of that book could only store 1 GiB data. My question is how
+     to adress 16 EiB data using this normal memoery?
+***** nascardirver's reply
+      > Do you mean that I could address 16EiB's memory using this 32GiB
+      > memory card?
+
+      Yes
+
+      URL That example is correct up to "However, if we claim [...]". I
+      understand the calculation you're doing, but I don't understand what
+      you're trying to show.  We never claim to be able to store 16 EiB, but
+      we're able to use addresses 0x00000000'00000000 to 0xFFFFFFFF'FFFFFFFF
+      on a 64 bit machine. But not all at a time.
+
+      > It seems that there's no virtual memoery because it's just alias for
+      > a physical memoery
+
+      It's not. Virtual addresses are aliases for for physical
+      addresses. Don't mix this up with "when I say 'virtual address' I mean
+      'physical address'".  Each virtual address translates to a physical
+      address. The easiest way of imagining this is a table with virtual
+      addresses on one- and physical addresses on the other side
+
+      #+BEGIN_SRC
+        virtual     physical
+        0x00001000  0x00000020
+        0x00004000  0x59F00300
+        0xF0000000  0x00001000
+      #+END_SRC
+
+      Now, if you want to access the virtual address 0x4000, you look into
+      that table and see that the memory you want to access is at the
+      physical address 0x59F00300.  If the virtual and physical memory has
+      the same size, there's no point in doing this, because we could map
+      virtual addresses to their identity (ie. 1 is 1, 2 is 2, etc.).  But
+      as you already understood, those memory regions don't have the same
+      size. Your 32 GiB RAM is way smaller than your 16 EiB virtual memory.
+      Here's a table for virtual>physical
+
+      #+BEGIN_SRC
+        virtual              physical
+        0x0FF05E00'00030000  0x05FA0C00
+        0x3A001004'80000000  0x00010000
+        0x00000000'003D0000  0x70044000
+      #+END_SRC
+
+      We have virtual 64 bit addresses which we can use for
+      software. But your 32 GiB hardware only has a range from 0x00000000 to
+      0xFFFFFFFF. We take the virtual addresses (Only the ones that are in
+      use!) and map them to physical addresses. We can only use a maximum of
+      0xFFFFFFFF addresses (by count), but the addressable range has
+      increased significantly.
+
+      > We claim that this book has a capcity of saving data whose size is 16 EiB
+
+      No. We cannot change the capacity. The capacity stays at 100 pages. We
+      claim that we have more than 100 pages numbers.  Let's say the first
+      50 pages are filled in, we can't add any more content to them. Now you
+      want to write something on page 400. Of course you don't have a 400th
+      page, but you can use 400 as a page number. We write the new content
+      on page 51 (Again, how to choose a new page in important, I'll just
+      take the next free page) and add an entry in our page table
+
+      #+BEGIN_SRC
+        virtual  physical
+        400      51
+      #+END_SRC
+
+      The next time you access page number 400, you look in your page table,
+      see that it's on the physical page 51, and access the physical
+      page 51.  Virtual addresses aren't about increasing capacity, they're
+      about increasing the addressable range.
+
+      You as a programmer don't notice anything of the mapping, you only see
+      virtual addresses.
+***** TODO reply to nascardirver
+
+      Hi Nascardirver:
+
+      I read you reply and have more questions. But let me summary my
+      question first before I jump into the details:
+
+      What's the purpose of using such alias, i.e., virtual memory?
+
+      >> Do you mean that I could address 16EiB's memory using this 32GiB
+      >> memory card?
+      >
+      >Yes
+
+      Let me remind us the initial question: "Can we address 16 EiB memory
+      using 32 GiB"?
+
+      I ask this question because my first impression to it is not. You buy
+      a 32 GiB memory card. You could only have that space of memory. Why
+      someone could claim such a big memory. (After reading your comment
+      below, I start to understand what you are saying here. We cannot have
+      such a big memoery card, but it doesn't mean that we could not address
+      a big memoery. Indeed, very small size of memory card, i.e. 10 MiB, we
+      could also address a 16 EiB memory.)
+
+      >URL That example is correct up to "However, if we claim [...]". I
+      >understand the calculation you're doing, but I don't understand what
+      >you're trying to show.
+
+      I am trying to clear my understanding of this question, i.e., to
+      explain that I could buy a book with a capcity of 32 GiB but able to
+      adress 16 EiB memoery. If you still have question on this point please
+      let me know.
+
+      >We never claim to be able to store 16 EiB, but
+      >we're able to use addresses 0x00000000'00000000 to 0xFFFFFFFF'FFFFFFFF
+      >on a 64 bit machine. But not all at a time.
+
+      >> It seems that there's no virtual memoery because it's just alias for
+      >> a physical memoery
+
+      >It's not. Virtual addresses are aliases for for physical
+      >addresses. Don't mix this up with "when I say 'virtual address' I mean
+      >'physical address'". Each virtual address translates to a physical
+      >address. The easiest way of imagining this is a table with virtual
+      >addresses on one- and physical addresses on the other side
+      >
+      >#+BEGIN_SRC
+      >virtual     physical
+      >0x00001000  0x00000020
+      >0x00004000  0x59F00300
+      >0xF0000000  0x00001000
+      >#+END_SRC
+
+      Why we need alias for physical address? Is that because physical
+      adress is too long? I have experience using bash. One of my favourate
+      functionality of bash is to 'alias' my personal command to reduce my
+      typing work on a terminal.
+
+      >Now, if you want to access the virtual address 0x4000, you look into
+      >that table and see that the memory you want to access is at the
+      >physical address 0x59F00300.  If the virtual and physical memory has
+      >the same size, there's no point in doing this, because we could map
+      >virtual addresses to their identity (ie. 1 is 1, 2 is 2, etc.).  But
+      >as you already understood, those memory regions don't have the same
+      >size. Your 32 GiB RAM is way smaller than your 16 EiB virtual memory.
+      >Here's a table for virtual > physical
+      >
+      >#+BEGIN_SRC
+      >virtual              physical
+      >0x0FF05E00'00030000  0x05FA0C00
+      >0x3A001004'80000000  0x00010000
+      >0x00000000'003D0000  0x70044000
+      >#+END_SRC
+      >
+      >We have virtual 64 bit addresses which we can use for software. But
+      >your 32 GiB hardware only has a range from 0x00000000 to
+      >0xFFFFFFFF. We take the virtual addresses (Only the ones that are in
+      >use!) and map them to physical addresses. We can only use a maximum of
+      >0xFFFFFFFF addresses (by count), but the addressable range has
+      >increased significantly.
+
+      This will bring a issue: there must be two virtual memory pointing
+      towards the same physical address. What is side effect of this mapping?
+
+      >> We claim that this book has a capcity of saving data whose size is 16 EiB
+
+      >No. We cannot change the capacity. The capacity stays at 100 pages. We
+      >claim that we have more than 100 pages numbers.  Let's say the first
+      >50 pages are filled in, we can't add any more content to them. Now you
+      >want to write something on page 400. Of course you don't have a 400th
+      >page, but you can use 400 as a page number. We write the new content
+      >on page 51 (Again, how to choose a new page in important, I'll just
+      >take the next free page) and add an entry in our page table
+      >
+      >#+BEGIN_SRC
+      >virtual  physical
+      >400      51
+      >#+END_SRC
+
+      Why we "foo" ourself using 400 page? Is that because we can delete
+      some old memory when we need more memory space? But why not just use
+      the old memory address?
+
+      >The next time you access page number 400, you look in your page table,
+      >see that it's on the physical page 51, and access the physical
+      >page 51.  Virtual addresses aren't about increasing capacity, they're
+      >about increasing the addressable range.
+      >
+      >You as a programmer don't notice anything of the mapping, you only see
+      >virtual addresses.
+
+      Again, what' the purpose of increasing the addressable range?
+**** nascardrive reply
+     > Why we need alias for physical address?
+     > what' the purpose of increasing the addressable range?
+     See @templatetypedef's answer over at stackoverflow
+     https://stackoverflow.com/a/19349645/9364954
 
      > very small size of memory card, i.e. 10 MiB, we
      could also address a 16 EiB memory
      Correct
 
-**** 3nd paragraph
-
      > there must be two virtual memory addresses pointing
      toward the same physical address
      Please elaborate
 
-**** 4th paragraph
-
      > Why we "foo" ourself using 400 page?  Maybe page numbers 0 to
      399 are reserved for the credits of the book. Maybe page number
      400 is a standard page to write the index on.
+**** reply to nascardrive
+
+     Thanks for sharing [[https://stackoverflow.com/a/19349645/9364954][the stackoverflow page]]. But I cannot comment
+     at that page, so I would like to put my further study
+     here. ~Templateypedef~ metioned 5 points in this reply.
+
+***** 1st paragraph
+****** Point 1
+
+       If virtual memory exists, then we could use the same physical
+       address to loaded information stored in that memory at the same
+       time. I don't understand this point.
+
+       #+BEGIN_SRC c++
+       void fooA()
+       {
+           std::cout << "Hello, Alex.";
+       }
+
+       void fooB()
+       {
+           std::cout << "Hello, Nascardrive.";
+       }
+       #+END_SRC
+
+       In the above code, ~fooA~ and ~fooB~ are different functions, but
+       according to this explaination:
+
+       > two programs could be loaded into memory and run at the same time
+
+       As you can see, I revise the sentence based on this original one:
+
+       (If virtual memory didn't exist, two programs couldn't be loaded
+       into memory and run at the same time,)
+
+       In my naive understand, the information of two functions is
+       different. How is that possible for those two functions stored in
+       the same physical address at the same time?
+
+       I mean, if you compile this program on your computer, if you can
+       fly into your RAM at the exactly location of ~fooA~, you will find
+       a bunch of 01010. This 0101 is ~"Hello, Alex."~ It should not be
+       anything else, like "Hello, Nascardrive."
+
+       Do I forget something?
+
+******* nascard reply
+
+        Let's say there are 2 programs A and B. Both want their code to
+        be loaded at address 0x4000000. Assuming no virtual memory:
+        Program A starts and is loaded into memory.  Program B cannot
+        start, because address 0x4000000 is occupied.  With virtual
+        memory: Program A starts and is loaded into memory.  Program B
+        starts and is loaded into memory.  Neither program is using the
+        physical address 0x4000000 (They could, but it's unlikely). But
+        both get loaded at their own virtual version of 0x4000000.  A
+        single process cannot use the same memory for different
+        things. There is only ever 1 information in 1 memory.
+
+******** my reply
+
+	 I start to understand why we need virtual memory. Virtual
+	 memory provides programmer a uniform interface that is easy
+	 for programmer to use. However, in the background, the rule
+	 "reword" the memory address, so that it will guide the
+	 data/function instored in the physical memory address.
+
+****** Point 2
+
+       Yes, point 2 is what I exepected. At the single moment in our
+       world, one memory could only have one information. But
+       explanation from this point does not clarify we we need virtual
+       memory.
+
+****** Point 3
+
+       This point is very interesting! Security issue by using direct
+       memory address. I never know this point. How can this even
+       happen? How a program using a particular part of meomory
+       (physical memory) be able to using the memory that it is not
+       assigned to? Can you provide a c++ piece of code to achieve this?
+       Or, do you have any reference on this point? I would like further
+       do some readings on this topic and share you with my
+       understanding.
+
+******* na reply on 2 and 3
+
+        #+BEGIN_SRC c++
+	  // Read memory from an arbitrary address and hope it's
+	  // used by another process.
+	  int *p{ reinterpret_cast<int *>(0x12345678) };
+	  std::cout << *p << '\n';
+        #+END_SRC
+
+        Without virtual memory, this could work. With virtual memory,
+        each process has their own version of 0x12345678.
+
+        http://tuhdo.github.io/c-ide.html
+
+********* using emacs to write code
+
+          Strang error.
+
+          Try to run M-x compile from a c++ source code, but getting
+          this:
+
+          #+BEGIN_SRC sh
+            -*- mode: compilation; default-directory: "~/myGitHub/cpp/codeSnippets/cpp/" -*-
+            Compilation started at Thu Mar 21 12:28:51
+
+            make -k
+            /bin/bash: make: command not found
+
+            Compilation exited abnormally with code 127 at Thu Mar 21 12:28:52
+
+          #+END_SRC
+
+          What strange is about is that I could compile the code using
+          the same command in the Terminal.
+
+          Here's my command to compile the code:
+
+          #+BEGIN_SRC sh
+            -*- mode: compilation; default-directory: "~/myGitHub/cpp/codeSnippets/cpp/" -*-
+            Compilation started at Thu Mar 21 12:35:41
+
+            g++ /home/superran/myGitHub/cpp/codeSnippets/cpp/virtualMemory.cpp && ./a.out
+            /bin/bash: g++: command not found
+
+            Compilation exited abnormally with code 127 at Thu Mar 21 12:35:42
+
+          #+END_SRC
+
+          The elisp code:
+
+          #+BEGIN_SRC elisp
+            (defun c-gcc-and-run ()
+              "Saves current buffer, runs gcc, and runs ./a.out if compile is successful."
+              (interactive)
+              (save-buffer)
+              (compile (concat "g++ " (buffer-file-name) " && ./a.out")))
+
+          #+END_SRC
+
+          Ref:
+
+          - http://ergoemacs.org/emacs/emacs_env_var_paths.html
+          - elisp manual: 38.3 Operating System Environment
+******** my reply
+
+	 I do a test to understand this problem. From the your code, it
+	 means that we could access any part of memory in my machine.
+
+	 The first thing I need to know is how do my complier knows
+	 this is a direct memory address.
+
+****** Point 4
+
+       This is what I speculated before I read this answer. One program
+       (or function) should use one region of memory at one time. What I
+       don't understand is how virtual memory massive improve the
+       performance?
+
+******* na reply
+
+        A process wants memory at address 0x100 and at 0x100000, 1
+        bytes each.  Without virtual memory: Now there's a lot of memory in
+        between those 2 addresses that's unused and is difficult to use for
+        other purposes, because your new data would have to fit in there.
+        With virtual memory: The process gets one page of memory for 0x100 and
+        one page of memory for 0x100000. Where these pages are in pysical
+        memory doesn't matter, they can be right after each other, or spread
+        wide apart. The only wasted memory is whatever is unused on those 2
+        pages. Since it's unlikely that only 1 bytes is used, the amount of
+        wasted memory is little.
+
+****** Point 5
+
+       I think the reservation mechanism could be also done in physical
+       memory address method? Why using virtual memory address could
+       solve the physical devices issue?
+******* na reply
+        I don't remember your comment about his one. I know I referred
+        to 2 and 3. If this doesn't help, ask again.
+***** 2rd paragraph
+
+      > very small size of memory card, i.e. 10 MiB, we
+      could also address a 16 EiB memory
+      Correct
+
+***** 3nd paragraph
+
+      > there must be two virtual memory addresses pointing
+      toward the same physical address
+      Please elaborate
+
+***** 4th paragraph
+
+      > Why we "foo" ourself using 400 page?  Maybe page numbers 0 to
+      399 are reserved for the credits of the book. Maybe page number
+      400 is a standard page to write the index on.
 
 
-*** interesting info
-    - [[https://www.cnsnevada.com/what-is-the-memory-capacity-of-a-human-brain/][our brain size]].
-    - when I see 0x1000, [[https://medium.com/@savas/why-do-we-use-hexadecimal-d6d80b56f026][I read this article]]. Excellent explanation
-      why people use hexadecimal.
-    - [[http://www.linfo.org/memory.html][memoery description]]: very good explanation on what is register,
-      cache (L1,L2,L3), and other concepts of memory
-** [[https://www.learncpp.com/cpp-tutorial/128-virtual-base-classes][12.7 Virtual base classes]]
+**** interesting info
+     - [[https://www.cnsnevada.com/what-is-the-memory-capacity-of-a-human-brain/][our brain size]].
+     - when I see 0x1000, [[https://medium.com/@savas/why-do-we-use-hexadecimal-d6d80b56f026][I read this article]]. Excellent explanation
+       why people use hexadecimal.
+     - [[http://www.linfo.org/memory.html][memoery description]]: very good explanation on what is register,
+       cache (L1,L2,L3), and other concepts of memory
+*** [[https://www.learncpp.com/cpp-tutorial/128-virtual-base-classes][12.7 Virtual base classes]]
 
-** [[https://www.learncpp.com/cpp-tutorial/12-8-object-slicing][12.8 Object slicing]]
+*** [[https://www.learncpp.com/cpp-tutorial/12-8-object-slicing][12.8 Object slicing]]
 
-** [[https://www.learncpp.com/cpp-tutorial/12-9-dynamic-casting][12.9 Dynamic casting]]
+*** [[https://www.learncpp.com/cpp-tutorial/12-9-dynamic-casting][12.9 Dynamic casting]]
 
-** [[https://www.learncpp.com/cpp-tutorial/12-10-printing-inherited-classes-using-operator][12.10 Printing inherited classes using operator<<]]
+*** [[https://www.learncpp.com/cpp-tutorial/12-10-printing-inherited-classes-using-operator][12.10 Printing inherited classes using operator<<]]
 
-** [[https://www.learncpp.com/cpp-tutorial/12-x-chapter-12-comprehensive-quiz][12.x Chapter 12 comprehensive quiz]]
+*** [[https://www.learncpp.com/cpp-tutorial/12-x-chapter-12-comprehensive-quiz][12.x Chapter 12 comprehensive quiz]]
 
-* Chapter 13: Templates
-** [[https://www.learncpp.com/cpp-tutorial/131-function-templates][13.1 Function templates]]
-** [[https://www.learncpp.com/cpp-tutorial/132-function-template-instances][13.2 Function template instances]]
-*** concept
-    function templete instance: the one we know its type
-** [[https://www.learncpp.com/cpp-tutorial/133-template-classes][13.3 Template classes]]
-*** questions
-    what's this?
+** Chapter 13: Templates
+*** [[https://www.learncpp.com/cpp-tutorial/131-function-templates][13.1 Function templates]]
+*** [[https://www.learncpp.com/cpp-tutorial/132-function-template-instances][13.2 Function template instances]]
+**** concept
+     function templete instance: the one we know its type
+*** [[https://www.learncpp.com/cpp-tutorial/133-template-classes][13.3 Template classes]]
+**** questions
+     what's this?
+
+     #+BEGIN_SRC c++
+     const tmp<volScalarField>& tmuEff
+     #+END_SRC
+
+     It's a class whose type is volScalarField but the coding style is
+     not my choice.
+
+     #+BEGIN_SRC c++
+     const tmp<volScalarField> &tmuEff
+     #+END_SRC
+
+**** a-ha
+***** splittering template class issue
+
+      When I was reading ~tail_type~ head file, which is a bunch of
+      template definition, I did not realize the structure of how to
+      manage the file structure of code with a lots of function
+      definition.
+
+      Separating the declaration into *.h and implymentation into *.cpp
+      won't work for template class.
+
+      Alex suggests 3 ways to walk around this issue:
+
+      - writing *.h into *.cpp
+      - second mathod is to defined a new file *.inl and include into
+        *.h file
+      - three-file approach:
+
+        1. template class definition in the head file
+
+        2. <<target>> template class memember function in the code file
+
+        3. a list of instantiated classs one need
+
+      so the question to me:
+
+      Which strategy the ~tail_type~ is using?
+***** what is the naming convention for MSVS?
+
+      I found some files in this folder:
+      ~c:/Program Files (x86)/Microsoft Visual
+      Studio/2017/Community/VC/Tools/MSVC/14.15.26726/include/~
+
+      are ended with *.h; some of file do not have any file extension,
+      which is not a typcial MS-VS coding style.
+
+      What I've found that is the file without exetension are (perhaps)
+      a bunch of template defination.
+
+      It seems to me, the method is [[target]]
+
+*** [[https://www.learncpp.com/cpp-tutorial/134-template-non-type-parameters][13.4 Template non-type parameters]]
+
+*** [[https://www.learncpp.com/cpp-tutorial/13-5-function-template-specialization][13.5 Function template specialization]]
+
+**** function template specialization is cool
+
+     If you have a template but want a particular type of function
+     doing some magic stuff. That's what you need.
+
+     The example of Storage class with datatype char* is
+     interesting. User input a temporary string. Programmer then store
+     that string into a class. But after delete the temporary string,
+     the class has some issue about the string just initialized.
+
+     The reason is that the default constructor was just done a shollow
+     copy when new class was created. That's the reason why we need
+     spcialization.
+
+*** [[https://www.learncpp.com/cpp-tutorial/136-class-template-specialization][13.6 Class template specialization]]
+**** what is byte?
+
+     Why cpu cannot address info smaller than a byte?
+
+     I checked [[https://en.wikipedia.org/wiki/Byte][wiki]]:
+
+     #+BEGIN_QUOTE
+     Historically, the byte was the number of bits used to encode a single character of text in a computer
+     #+END_QUOTE
+
+     that's the answer. To encode a singe character of text.
+
+     What's fasnating me is the link the wiki pointer to: Computer
+     System project strech.
+
+     Great book! Added to my see the world destination
+
+     #+BEGIN_QUOTE
+     this book is aimed at sheding ligth on how it is done and why the
+     system was designed the way it is, as well as describing some
+     alternative courses that were examined and rejected.
+     #+END_QUOTE
+
+*** [[https://www.learncpp.com/cpp-tutorial/137-partial-template-specialization][13.7 Partial template specialization]]
+    why ~hello world~ has blanks in between charactistic?
+
+    Hi Alex:
+
+    I just did a really minior revise on your source code to achive
+    what you want to do, insteading of using Partial template
+    specialization.
 
     #+BEGIN_SRC c++
-    const tmp<volScalarField>& tmuEff
+    void print(StaticArray<T, size> &array)
+    {
+	 for (int count = 0; count < size; ++count)
+		 std::cout << array[count];
+		 }
     #+END_SRC
 
-    It's a class whose type is volScalarField but the coding style is
-    not my choice.
+    As I prepare to ask Alex, I found it is not necessary. Indeed, the
+    Partical template has its power if the main function looks like
+    this:
 
     #+BEGIN_SRC c++
-    const tmp<volScalarField> &tmuEff
+   	 // declare a char array
+	 StaticArray<char, 14> char14;
+
+	 strcpy_s(char14.getArray(), 14, "Hello, world!");
+
+	 // Print the array
+	 print(char14);
+
+	 std::cout << std::endl;
+
+	 // declare an int array
+	 StaticArray<int, 4> int4;
+	 int4[0] = 0;
+	 int4[1] = 1;
+	 int4[2] = 2;
+	 int4[3] = 3;
+
+	 // Print the array
+	 print(int4);
+
+	 return 0;
     #+END_SRC
 
-*** a-ha
-**** splittering template class issue
+    cool.
+*** [[https://www.learncpp.com/cpp-tutorial/13-8-partial-template-specialization-for-pointers][13.8 Partial template specialization for pointers]]
+    So cool. A template write to deal with non-pointer type of data and
+    pointer type of data.
+*** [[https://www.learncpp.com/cpp-tutorial/13-x-chapter-13-comprehensive-quiz][13.x Chapter 13 comprehensive quiz]]
 
-     When I was reading ~tail_type~ head file, which is a bunch of
-     template definition, I did not realize the structure of how to
-     manage the file structure of code with a lots of function
-     definition.
+** Chapter 14: Exceptions
+*** [[https://www.learncpp.com/cpp-tutorial/141-the-need-for-exceptions][14.1 The need for exceptions]]
 
-     Separating the declaration into *.h and implymentation into *.cpp
-     won't work for template class.
+*** [[https://www.learncpp.com/cpp-tutorial/142-basic-exception-handling][14.2 Basic exception handling]]
 
-     Alex suggests 3 ways to walk around this issue:
+*** [[https://www.learncpp.com/cpp-tutorial/143-exceptions-functions-and-stack-unwinding][14.3 Exceptions, functions, and stack unwinding]]
 
-     - writing *.h into *.cpp
-     - second mathod is to defined a new file *.inl and include into
-       *.h file
-     - three-file approach:
+*** [[https://www.learncpp.com/cpp-tutorial/144-uncaught-exceptions-catch-all-handlers-and-exception-specifiers][14.4 Uncaught exceptions, catch-all handlers, and exception specifiers]]
 
-       1. template class definition in the head file
+*** [[https://www.learncpp.com/cpp-tutorial/145-exceptions-classes-and-inheritance][14.5 Exceptions, classes, and inheritance]]
 
-       2. <<target>> template class memember function in the code file
+*** [[https://www.learncpp.com/cpp-tutorial/14-6-rethrowing-exceptions][14.6 Rethrowing exceptions]]
 
-       3. a list of instantiated classs one need
+*** [[https://www.learncpp.com/cpp-tutorial/14-7-function-try-blocks][14.7 Function try blocks]]
 
-     so the question to me:
+*** [[https://www.learncpp.com/cpp-tutorial/148-exception-dangers-and-downsides][14.8 Exception dangers and downsides]]
 
-     Which strategy the ~tail_type~ is using?
-**** what is the naming convention for MSVS?
+*** [[https://www.learncpp.com/cpp-tutorial/14-x-chapter-14-comprehensive-quiz][14.x Chapter 14 comprehensive quiz]]
 
-     I found some files in this folder:
-     ~c:/Program Files (x86)/Microsoft Visual
-     Studio/2017/Community/VC/Tools/MSVC/14.15.26726/include/~
+** Chapter 15: Move semantics and smart pointers
 
-     are ended with *.h; some of file do not have any file extension,
-     which is not a typcial MS-VS coding style.
+*** [[https://www.learncpp.com/cpp-tutorial/15-1-intro-to-smart-pointers-move-semantics][15.1 Intro to smart pointers and move semantics]]
 
-     What I've found that is the file without exetension are (perhaps)
-     a bunch of template defination.
+*** [[https://www.learncpp.com/cpp-tutorial/15-2-rvalue-references][15.2 R-value references]]
 
-     It seems to me, the method is [[target]]
+*** [[https://www.learncpp.com/cpp-tutorial/15-3-move-constructors-and-move-assignment][15.3 Move constructors and move assignment]]
 
-** [[https://www.learncpp.com/cpp-tutorial/134-template-non-type-parameters][13.4 Template non-type parameters]]
+*** [[https://www.learncpp.com/cpp-tutorial/15-4-stdmove][15.4 std::move]]
 
-** [[https://www.learncpp.com/cpp-tutorial/13-5-function-template-specialization][13.5 Function template specialization]]
+*** [[https://www.learncpp.com/cpp-tutorial/15-5-stdunique_ptr][15.5 std::unique_ptr]]
 
-*** function template specialization is cool
+*** [[https://www.learncpp.com/cpp-tutorial/15-6-stdshared_ptr][15.6 std::shared_ptr]]
 
-    If you have a template but want a particular type of function
-    doing some magic stuff. That's what you need.
+*** [[https://www.learncpp.com/cpp-tutorial/15-7-circular-dependency-issues-with-stdshared_ptr-and-stdweak_ptr][15.7 Circular dependency issues with std::shared_ptr, and std::weak_ptr]]
 
-    The example of Storage class with datatype char* is
-    interesting. User input a temporary string. Programmer then store
-    that string into a class. But after delete the temporary string,
-    the class has some issue about the string just initialized.
+*** [[https://www.learncpp.com/cpp-tutorial/15-x-chapter-15-comprehensive-review][15.x Chapter 15 comprehensive review]]
 
-    The reason is that the default constructor was just done a shollow
-    copy when new class was created. That's the reason why we need
-    spcialization.
+** Chapter 16: The Standard Template Library
 
-** [[https://www.learncpp.com/cpp-tutorial/136-class-template-specialization][13.6 Class template specialization]]
-*** what is byte?
+*** [[https://www.learncpp.com/cpp-tutorial/16-1-the-standard-template-library-stl][16.1 The Standard Template Library (STL)]]
 
-    Why cpu cannot address info smaller than a byte?
+*** [[https://www.learncpp.com/cpp-tutorial/16-2-stl-containers-overview][16.2 STL containers overview]]
 
-    I checked [[https://en.wikipedia.org/wiki/Byte][wiki]]:
+*** [[https://www.learncpp.com/cpp-tutorial/16-3-stl-iterators-overview][16.3 STL iterators overview]]
 
-    #+BEGIN_QUOTE
-    Historically, the byte was the number of bits used to encode a single character of text in a computer
-    #+END_QUOTE
+*** [[https://www.learncpp.com/cpp-tutorial/16-4-stl-algorithms-overview][16.4 STL algorithms overview]]
 
-    that's the answer. To encode a singe character of text.
+** Chapter 17: std::string
 
-    What's fasnating me is the link the wiki pointer to: Computer
-    System project strech.
+*** [[https://www.learncpp.com/cpp-tutorial/17-1-stdstring-and-stdwstring][17.1 std::string and std::wstring]]
 
-    Great book! Added to my see the world destination
+*** [[https://www.learncpp.com/cpp-tutorial/17-2-stdstring-construction-and-destruction][17.2 std::string construction and destruction]]
 
-    #+BEGIN_QUOTE
-    this book is aimed at sheding ligth on how it is done and why the
-    system was designed the way it is, as well as describing some
-    alternative courses that were examined and rejected.
-    #+END_QUOTE
+*** [[https://www.learncpp.com/cpp-tutorial/17-3-stdstring-length-and-capacity][17.3 std::string length and capacity]]
 
-** [[https://www.learncpp.com/cpp-tutorial/137-partial-template-specialization][13.7 Partial template specialization]]
-   why ~hello world~ has blanks in between charactistic?
+*** [[https://www.learncpp.com/cpp-tutorial/17-4-stdstring-character-access-and-conversion-to-c-style-arrays][17.4 std::string character access and conversion to C-style arrays]]
 
-   Hi Alex:
+*** [[https://www.learncpp.com/cpp-tutorial/17-5-stdstring-assignment-and-swapping][17.5 std::string assignment and swapping]]
 
-   I just did a really minior revise on your source code to achive
-   what you want to do, insteading of using Partial template
-   specialization.
+*** [[https://www.learncpp.com/cpp-tutorial/17-6-stdstring-appending][17.6 std::string appending]]
 
-   #+BEGIN_SRC c++
-   void print(StaticArray<T, size> &array)
-   {
-	for (int count = 0; count < size; ++count)
-		std::cout << array[count];
-		}
-   #+END_SRC
+*** [[https://www.learncpp.com/cpp-tutorial/17-7-stdstring-inserting][17.7 std::string inserting]]
 
-   As I prepare to ask Alex, I found it is not necessary. Indeed, the
-   Partical template has its power if the main function looks like
-   this:
+** Chapter 18: Input and output (I/O)
 
-   #+BEGIN_SRC c++
-   	// declare a char array
-	StaticArray<char, 14> char14;
+*** [[https://www.learncpp.com/cpp-tutorial/181-input-and-output-io-streams][18.1  Input and output (I/O) streams]]
 
-	strcpy_s(char14.getArray(), 14, "Hello, world!");
+*** [[https://www.learncpp.com/cpp-tutorial/182-input-with-istream][18.2 Input with istream]]
 
-	// Print the array
-	print(char14);
+*** [[https://www.learncpp.com/cpp-tutorial/183-output-with-ostream-and-ios][18.3 Output with ostream and ios]]
 
-	std::cout << std::endl;
+*** [[https://www.learncpp.com/cpp-tutorial/184-stream-classes-for-strings][18.4 Stream classes for strings]]
 
-	// declare an int array
-	StaticArray<int, 4> int4;
-	int4[0] = 0;
-	int4[1] = 1;
-	int4[2] = 2;
-	int4[3] = 3;
+*** [[https://www.learncpp.com/cpp-tutorial/185-stream-states-and-input-validation][18.5 Stream states and input validation]]
 
-	// Print the array
-	print(int4);
+*** [[https://www.learncpp.com/cpp-tutorial/186-basic-file-io][18.6 Basic file I/O]]
 
-	return 0;
-   #+END_SRC
+*** [[https://www.learncpp.com/cpp-tutorial/187-random-file-io][18.7 Random file I/O]]
 
-   cool.
-** [[https://www.learncpp.com/cpp-tutorial/13-8-partial-template-specialization-for-pointers][13.8 Partial template specialization for pointers]]
-   So cool. A template write to deal with non-pointer type of data and
-   pointer type of data.
-** [[https://www.learncpp.com/cpp-tutorial/13-x-chapter-13-comprehensive-quiz][13.x Chapter 13 comprehensive quiz]]
+** Appendix A: Miscellaneous Subjects
 
-* Chapter 14: Exceptions
-** [[https://www.learncpp.com/cpp-tutorial/141-the-need-for-exceptions][14.1 The need for exceptions]]
+*** [[https://www.learncpp.com/cpp-tutorial/a1-static-and-dynamic-libraries][A.1  Static and dynamic libraries]]
 
-** [[https://www.learncpp.com/cpp-tutorial/142-basic-exception-handling][14.2 Basic exception handling]]
+*** [[https://www.learncpp.com/cpp-tutorial/a2-using-libraries-with-visual-studio-2005-express][A.2 Using libraries with Visual Studio Express 2005]]
 
-** [[https://www.learncpp.com/cpp-tutorial/143-exceptions-functions-and-stack-unwinding][14.3 Exceptions, functions, and stack unwinding]]
+*** [[https://www.learncpp.com/cpp-tutorial/a3-using-libraries-with-codeblocks][A.3 Using libraries with Code::Blocks]]
 
-** [[https://www.learncpp.com/cpp-tutorial/144-uncaught-exceptions-catch-all-handlers-and-exception-specifiers][14.4 Uncaught exceptions, catch-all handlers, and exception specifiers]]
+** Appendix B: C++ Updates
 
-** [[https://www.learncpp.com/cpp-tutorial/145-exceptions-classes-and-inheritance][14.5 Exceptions, classes, and inheritance]]
+*** [[https://www.learncpp.com/cpp-tutorial/b-1-introduction-to-c11][B.1 Introduction to C++11]]
 
-** [[https://www.learncpp.com/cpp-tutorial/14-6-rethrowing-exceptions][14.6 Rethrowing exceptions]]
+*** [[https://www.learncpp.com/cpp-tutorial/b-2-introduction-to-c14][B.2 Introduction to C++14]]
 
-** [[https://www.learncpp.com/cpp-tutorial/14-7-function-try-blocks][14.7 Function try blocks]]
+*** [[https://www.learncpp.com/cpp-tutorial/b-3-introduction-to-c17][B.3 Introduction to C++17]]
 
-** [[https://www.learncpp.com/cpp-tutorial/148-exception-dangers-and-downsides][14.8 Exception dangers and downsides]]
-
-** [[https://www.learncpp.com/cpp-tutorial/14-x-chapter-14-comprehensive-quiz][14.x Chapter 14 comprehensive quiz]]
-
-* Chapter 15: Move semantics and smart pointers
-
-** [[https://www.learncpp.com/cpp-tutorial/15-1-intro-to-smart-pointers-move-semantics][15.1 Intro to smart pointers and move semantics]]
-
-** [[https://www.learncpp.com/cpp-tutorial/15-2-rvalue-references][15.2 R-value references]]
-
-** [[https://www.learncpp.com/cpp-tutorial/15-3-move-constructors-and-move-assignment][15.3 Move constructors and move assignment]]
-
-** [[https://www.learncpp.com/cpp-tutorial/15-4-stdmove][15.4 std::move]]
-
-** [[https://www.learncpp.com/cpp-tutorial/15-5-stdunique_ptr][15.5 std::unique_ptr]]
-
-** [[https://www.learncpp.com/cpp-tutorial/15-6-stdshared_ptr][15.6 std::shared_ptr]]
-
-** [[https://www.learncpp.com/cpp-tutorial/15-7-circular-dependency-issues-with-stdshared_ptr-and-stdweak_ptr][15.7 Circular dependency issues with std::shared_ptr, and std::weak_ptr]]
-
-** [[https://www.learncpp.com/cpp-tutorial/15-x-chapter-15-comprehensive-review][15.x Chapter 15 comprehensive review]]
-
-* Chapter 16: The Standard Template Library
-
-** [[https://www.learncpp.com/cpp-tutorial/16-1-the-standard-template-library-stl][16.1 The Standard Template Library (STL)]]
-
-** [[https://www.learncpp.com/cpp-tutorial/16-2-stl-containers-overview][16.2 STL containers overview]]
-
-** [[https://www.learncpp.com/cpp-tutorial/16-3-stl-iterators-overview][16.3 STL iterators overview]]
-
-** [[https://www.learncpp.com/cpp-tutorial/16-4-stl-algorithms-overview][16.4 STL algorithms overview]]
-
-* Chapter 17: std::string
-
-** [[https://www.learncpp.com/cpp-tutorial/17-1-stdstring-and-stdwstring][17.1 std::string and std::wstring]]
-
-** [[https://www.learncpp.com/cpp-tutorial/17-2-stdstring-construction-and-destruction][17.2 std::string construction and destruction]]
-
-** [[https://www.learncpp.com/cpp-tutorial/17-3-stdstring-length-and-capacity][17.3 std::string length and capacity]]
-
-** [[https://www.learncpp.com/cpp-tutorial/17-4-stdstring-character-access-and-conversion-to-c-style-arrays][17.4 std::string character access and conversion to C-style arrays]]
-
-** [[https://www.learncpp.com/cpp-tutorial/17-5-stdstring-assignment-and-swapping][17.5 std::string assignment and swapping]]
-
-** [[https://www.learncpp.com/cpp-tutorial/17-6-stdstring-appending][17.6 std::string appending]]
-
-** [[https://www.learncpp.com/cpp-tutorial/17-7-stdstring-inserting][17.7 std::string inserting]]
-
-* Chapter 18: Input and output (I/O)
-
-** [[https://www.learncpp.com/cpp-tutorial/181-input-and-output-io-streams][18.1  Input and output (I/O) streams]]
-
-** [[https://www.learncpp.com/cpp-tutorial/182-input-with-istream][18.2 Input with istream]]
-
-** [[https://www.learncpp.com/cpp-tutorial/183-output-with-ostream-and-ios][18.3 Output with ostream and ios]]
-
-** [[https://www.learncpp.com/cpp-tutorial/184-stream-classes-for-strings][18.4 Stream classes for strings]]
-
-** [[https://www.learncpp.com/cpp-tutorial/185-stream-states-and-input-validation][18.5 Stream states and input validation]]
-
-** [[https://www.learncpp.com/cpp-tutorial/186-basic-file-io][18.6 Basic file I/O]]
-
-** [[https://www.learncpp.com/cpp-tutorial/187-random-file-io][18.7 Random file I/O]]
-
-* Appendix A: Miscellaneous Subjects
-
-** [[https://www.learncpp.com/cpp-tutorial/a1-static-and-dynamic-libraries][A.1  Static and dynamic libraries]]
-
-** [[https://www.learncpp.com/cpp-tutorial/a2-using-libraries-with-visual-studio-2005-express][A.2 Using libraries with Visual Studio Express 2005]]
-
-** [[https://www.learncpp.com/cpp-tutorial/a3-using-libraries-with-codeblocks][A.3 Using libraries with Code::Blocks]]
-
-* Appendix B: C++ Updates
-
-** [[https://www.learncpp.com/cpp-tutorial/b-1-introduction-to-c11][B.1 Introduction to C++11]]
-
-** [[https://www.learncpp.com/cpp-tutorial/b-2-introduction-to-c14][B.2 Introduction to C++14]]
-
-** [[https://www.learncpp.com/cpp-tutorial/b-3-introduction-to-c17][B.3 Introduction to C++17]]
-
-* Appendix C: The end
-** [[https://www.learncpp.com/cpp-tutorial/appendix-c-the-end][The end?]]
+** Appendix C: The end
+*** [[https://www.learncpp.com/cpp-tutorial/appendix-c-the-end][The end?]]
