@@ -53,9 +53,9 @@ polyMesh
 
 ## post process
 postProcessing
-[1-9]*
-*.[1-9]*
-*.dat
+#  [1-9]*
+#  *.[1-9]*
+#  *.dat
 
 ## latex related
 *.xml
@@ -83,4 +83,3 @@ _region_*
 ##########################
 # Dealii		 #
 ##########################
-
