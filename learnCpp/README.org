@@ -9,6 +9,63 @@ the learnCpp) started to change the structure of website, so I found
 some URLs are not correct. Once the the website is stable, I will
 update all the links to the new one.
 
+* polymorphism
+  :PROPERTIES:
+  :ID:       909e402b-7df4-4acb-9c8c-2830c1079413
+  :END:
+* abstraction
+  :PROPERTIES:
+  :ID:       0959f6a4-1427-4a40-ab52-01b04a6b3bd6
+  :END:
+* encapsulation
+  :PROPERTIES:
+  :ID:       c171cdf0-b519-4fa4-bb9c-09f9c04e3f88
+  :END:
+* inheritance
+  :PROPERTIES:
+  :ID:       8c8748e7-e9fc-4610-8f7b-22b543aebc9d
+  :END:
+* counter
+  :PROPERTIES:
+  :ID:       c23c7b6e-2fe2-42dc-b5c8-70382e17dcb9
+  :END:
+
+#+begin_src cpp
+#include <iostream>
+class Something
+{
+private:
+    static int s_idGenerator;
+    int m_id;
+
+public:
+    Something() { m_id = s_idGenerator++; } // grab the next value from the id generator
+
+    int getID() const { return m_id; }
+};
+
+// Note that we're defining and initializing s_idGenerator even though it is declared as private above.
+// This is okay since the definition isn't subject to access controls.
+int Something::s_idGenerator = 1; // start our ID generator with value 1
+
+int main()
+{
+    Something first;
+    Something second;
+    Something third;
+
+    std::cout << first.getID() << '\n';
+    std::cout << second.getID() << '\n';
+    std::cout << third.getID() << '\n';
+    return 0;
+}
+#+end_src
+
+#+RESULTS:
+| 1 |
+| 2 |
+| 3 |
+
 * Chapter 1: C++ Basics
 ** [[https://www.learncpp.com/cpp-tutorial/statements-and-the-structure-of-a-program/][1.1 Statements and the structure of a program]]
 #+BEGIN_SRC cpp
