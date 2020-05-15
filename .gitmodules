@@ -1,3 +1,6 @@
 [submodule "3rd/vtk"]
 	path = 3rd/vtk
 	url = https://github.com/randomwangran/VTK
+[submodule "cppjieba"]
+	path = cppjieba
+	url = git@github.com:yanyiwu/cppjieba.git
