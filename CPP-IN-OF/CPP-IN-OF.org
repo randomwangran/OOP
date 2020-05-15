@@ -1,5 +1,5 @@
 ** [[https://www.youtube.com/watch?v=_8A5CsIQ1xI&list=PLhPfNw4V4_YT9OgqS7ZPlot_Ucxzc6pQJ&index=1][Introductory C++ for OpenFoam Users 1 - Hello World]]
-** [[https://www.youtube.com/watch?v=ij0Ycn5nCUo&list=PLhPfNw4V4_YT9OgqS7ZPlot_Ucxzc6pQJ&index=7][Introductory C++ for OpenFoam Users 2 - endl and cout (printing)]]
+** [[https://www.youtube.com/watch?v=V4xWtMYBX6M&list=PLhPfNw4V4_YT9OgqS7ZPlot_Ucxzc6pQJ&index=2][Introductory C++ for OpenFoam Users 2 - endl and cout (printing)]]
 ** [[https://www.youtube.com/watch?v=V4xWtMYBX6M&list=PLhPfNw4V4_YT9OgqS7ZPlot_Ucxzc6pQJ&index=3&t=0s][Introductory C++ for OpenFoam Users 3 - Declaration of Variables and Addition]]
 ** [[https://www.youtube.com/watch?v=Q_Samjj7Plw&list=PLhPfNw4V4_YT9OgqS7ZPlot_Ucxzc6pQJ&index=4&t=0s][Introductory C++ for OpenFoam Users 4 - Some Basic Math Operations]]
 ** [[https://www.youtube.com/watch?v=oYgCsTtAzSA&list=PLhPfNw4V4_YT9OgqS7ZPlot_Ucxzc6pQJ&index=5&t=0s][Introductory C++ for OpenFoam Users 5 - Basic Functions Reynold's Number Example]]
