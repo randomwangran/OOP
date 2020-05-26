@@ -9,6 +9,12 @@ the learnCpp) started to change the structure of website, so I found
 some URLs are not correct. Once the the website is stable, I will
 update all the links to the new one.
 
+* lego
+  :PROPERTIES:
+  :ID:       08e8fbdc-bf4a-4134-9936-c556618725e5
+  :END:
+  https://github.com/arc80/plywood
+  Combine things together.
 * polymorphism
   :PROPERTIES:
   :ID:       909e402b-7df4-4acb-9c8c-2830c1079413
